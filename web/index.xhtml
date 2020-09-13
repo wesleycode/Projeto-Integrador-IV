@@ -6,6 +6,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
    <f:view>
-      <h:outputLabel value="Hello, world"/>
+      <h:form>
+         <h:commandButton value="Criar Usuario" action="#{controllerUsuarioBean.criarUsuario()}"/>
+      </h:form>
    </f:view>
 </html>

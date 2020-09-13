@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@DiscriminatorValue(value = "Cliente")
 public class Usuario implements EntityBase {
 
     @Id

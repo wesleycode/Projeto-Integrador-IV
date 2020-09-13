@@ -1,10 +1,11 @@
+
 package dao;
 
 import model.Estado;
 
 import javax.persistence.Query;
 
-public class EstadoDao extends DaoGenerica<Estado> {
+public class EstadoDao extends GenericDao<Estado> {
 
     public Estado listarEstadoPorNome(String nome) throws Exception {
         try {
