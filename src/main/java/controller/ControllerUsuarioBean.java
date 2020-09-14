@@ -17,4 +17,8 @@ public class ControllerUsuarioBean {
         }
     }
 
+    public String irParaPagina2() {
+        return "page2?faces-redirect=true";
+    }
+
 }
