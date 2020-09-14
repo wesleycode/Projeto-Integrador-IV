@@ -9,25 +9,7 @@
         <webroots>
           <root url="file://$MODULE_DIR$/web" relative="/" />
         </webroots>
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/src" />
-        </sourceRoots>
-      </configuration>
-    </facet>
-    <facet type="jpa" name="JPA">
-      <configuration>
-        <setting name="validation-enabled" value="true" />
-        <datasource-mapping />
-        <naming-strategy-map />
-        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/META-INF/persistence.xml" />
-      </configuration>
-    </facet>
-    <facet type="jpa" name="JPA">
-      <configuration>
-        <setting name="validation-enabled" value="true" />
-        <datasource-mapping />
-        <naming-strategy-map />
-        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/META-INF/persistence.xml" />
+        <sourceRoots />
       </configuration>
     </facet>
   </component>
@@ -44,8 +26,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="WildFly 20.0.1.Final" level="application_server_libraries" />
     <orderEntry type="library" name="JSF-API-2.2.20" level="project" />
-    <orderEntry type="library" name="Hibernate 5.4.21 Final" level="project" />
     <orderEntry type="library" name="javaee-api-8.0.1" level="project" />
-    <orderEntry type="library" name="postgresql-42.2.11" level="project" />
   </component>
 </module>
