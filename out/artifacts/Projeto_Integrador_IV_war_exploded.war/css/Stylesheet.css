@@ -1,0 +1,23 @@
+#social {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    display: grid;
+    grid-auto-flow: column;
+    width: 400px;
+}
+
+#footer-box {
+    padding: 10px;
+    display: grid;
+    text-align: center;
+    grid-auto-flow: row;
+}
+
+.footer-text {
+    color: white;
+}
+
+.light-gray {
+    color: #7c868c;
+}
