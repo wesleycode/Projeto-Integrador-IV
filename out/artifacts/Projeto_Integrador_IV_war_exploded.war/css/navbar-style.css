@@ -1,0 +1,8 @@
+#category {
+    display: flex;
+    justify-content: center;
+}
+
+#div-category-drop-down > a > i {
+    color: #3d444b;
+}

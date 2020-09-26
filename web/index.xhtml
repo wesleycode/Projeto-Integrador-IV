@@ -29,15 +29,19 @@
     </h:head>
 
     <h:body>
-        <h:form>
-            <div id="navbar"></div>
-            <div id="main" style="height: 500px">
-                <!-- Conteudo da página fica aqui!!! -->
-            </div>
-            <h:commandButton action="#{controllerUsuarioBean.irParaPagina2()}" value="Ir Para a próxima página"/>
-            <h:commandButton value="Criar Usuario" action="#{controllerUsuarioBean.criarUsuario()}"/>
-            <div id="footer"></div>
-        </h:form>
+        <!-- Navbar -->
+        <div id="navbar"></div>
+        <!-- Conteudo da página fica aqui!!! -->
+        <div id="main" style="height: 500px">
+
+            <h:form>
+                <h:commandButton action="#{controllerUsuarioBean.irParaPagina2()}" value="Ir Para a próxima página"/>
+                <h:commandButton value="Criar Usuario" action="#{controllerUsuarioBean.criarUsuario()}"/>
+            </h:form>
+
+        </div>
+        <!-- Footer -->
+        <div id="footer"></div>
     </h:body>
 
 </f:view>
