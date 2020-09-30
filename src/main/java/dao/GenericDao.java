@@ -1,7 +1,7 @@
 package dao;
 
 import connections.ConnectionFactory;
-import model.EntityBase;
+import model.entities.EntityBase;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;

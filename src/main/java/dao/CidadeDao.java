@@ -1,6 +1,6 @@
 package dao;
 
-import model.Cidade;
+import model.entities.Cidade;
 
 public class CidadeDao extends GenericDao<Cidade>{
 

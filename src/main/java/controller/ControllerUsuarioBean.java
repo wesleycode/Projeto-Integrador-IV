@@ -1,20 +1,21 @@
 package controller;
 
-import dao.ClienteDao;
-import model.Cliente;
-
+import javax.faces.bean.RequestScoped;
 import javax.inject.Named;
+import java.io.Serializable;
 
 @Named
-public class ControllerUsuarioBean {
+@RequestScoped
+public class ControllerUsuarioBean implements Serializable {
 
     public void criarUsuario() {
-        System.out.println("Aqui");
+        /*
         try {
             new ClienteDao().salvar(new Cliente());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        */
     }
 
     public String irParaPagina2() {

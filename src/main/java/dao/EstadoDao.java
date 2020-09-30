@@ -1,7 +1,7 @@
 
 package dao;
 
-import model.Estado;
+import model.entities.Estado;
 
 import javax.persistence.Query;
 

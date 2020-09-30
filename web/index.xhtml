@@ -5,44 +5,81 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:head>
-        <!-- JQUERY -->
-        <script src="js/jquery-3.5.1.js" type="text/javascript"></script>
-        <!-- JAVASCRIPT -->
-        <script src="js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="js/jquery.mask.min.js" type="text/javascript"></script>
-        <!-- STYLESHEET -->
-        <link href="css/Stylesheet.css" rel="stylesheet" type="text/css"/>
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/all.min.css" rel="stylesheet" type="text/css"/>
-        <!-- FONTS -->
-        <h:outputStylesheet href="css/fontawesome.min.css" rel="stylesheet" type="text/css"/>
-        <!-- SCRIPT -->
-        <script type="application/javascript">
-            $(function () {
-                $("#navbar").load("navbar.html");
-                $("#footer").load("footer.html");
-            });
-        </script>
+<h:head>
+    <!-- JQUERY -->
+    <h:outputScript library="js" name="jquery-3.5.1.js"/>
+    <!-- BOOTSTRAP -->
+    <h:outputScript library="js" name="bootstrap.min.js"/>
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    <!-- FONTAWESOME -->
+    <h:outputScript library="js" name="all.js"/>
+    <h:outputStylesheet library="css" name="all.css"/>
+    <h:outputStylesheet library="css" name="fontawesome.css"/>
+    <!-- STYLESHEET -->
+    <h:outputStylesheet library="css" name="indexStyle.css"/>
+    <!-- SCRIPT -->
+    <script type="application/javascript">
+        $(function () {
+            $("#navbar").load("navbar.xhtml");
+            $("#footer").load("footer.html");
+        });
+    </script>
+</h:head>
 
-    </h:head>
+<h:body>
 
-    <h:body>
-        <!-- Navbar -->
-        <div id="navbar"></div>
-        <!-- Conteudo da página fica aqui!!! -->
-        <div id="main" style="height: 500px">
+    <!-- Navbar -->
+    <div id="navbar"></div>
+    <!-- Conteudo da página fica aqui!!! -->
 
-            <h:form>
-                <h:commandButton action="#{controllerUsuarioBean.irParaPagina2()}" value="Ir Para a próxima página"/>
-                <h:commandButton value="Criar Usuario" action="#{controllerUsuarioBean.criarUsuario()}"/>
-            </h:form>
+    <div class="conteudo">
 
+        <div class="row">
+            <div class="leftcolumn">
+                <div class="card">
+                    <h2>ITEM 1</h2>
+                    <h5>Descrição do item, 7 dezembro, 2020</h5>
+                    <div class="fakeimg" style="height:200px;">Image</div>
+                    <p>R$0000,00</p>
+                </div>
+                <div class="card">
+                    <h2>ITEM 2</h2>
+                    <h5>Descrição do item, 8 dezembro, 2020</h5>
+                    <div class="fakeimg" style="height:200px;">Image</div>
+                    <p>R$0000,00</p>
+                </div>
+            </div>
+            <div class="rightcolumn">
+                <div class="card">
+                    <h2>Sobre nós</h2>
+                    <div class="fakeimg" style="height:100px;">Image</div>
+                    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+                </div>
+                <div class="card">
+                    <h3>Mais Vendidos</h3>
+                    <div class="fakeimg">Image</div><br></br>
+                    <div class="fakeimg">Image</div><br></br>
+                    <div class="fakeimg">Image</div>
+                </div>
+                <div class="card">
+                    <h3>Siga-nos</h3>
+                    <p>Some text..</p>
+                </div>
+            </div>
         </div>
-        <!-- Footer -->
-        <div id="footer"></div>
-    </h:body>
 
-</f:view>
+    </div>
+
+    <!--    <h:outputText value="Email"/>-->
+    <!--    <h:form>-->
+    <!--        <h:commandButton action="#{controllerUsuarioBean.irParaPagina2()}" value="Ir Para a próxima página"/>-->
+    <!--        <br/>-->
+    <!--        <h:commandButton value="Criar Usuario" action="#{controllerUsuarioBean.criarUsuario()}"/>-->
+    <!--    </h:form>-->
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+</h:body>
+
 </html>

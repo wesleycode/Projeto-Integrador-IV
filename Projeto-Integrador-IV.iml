@@ -37,5 +37,7 @@
     <orderEntry type="library" scope="PROVIDED" name="WildFly 20.0.1.Final" level="application_server_libraries" />
     <orderEntry type="library" name="JSF-API-2.2.20" level="project" />
     <orderEntry type="library" name="javaee-api-8.0.1" level="project" />
+    <orderEntry type="library" name="Hibernate _Postgres" level="project" />
+    <orderEntry type="library" name="primefaces-8.0" level="project" />
   </component>
 </module>

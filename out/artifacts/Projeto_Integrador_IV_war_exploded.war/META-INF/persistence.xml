@@ -4,26 +4,26 @@
     <!-- You create this name -->
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <!-- List of entities -->
-    <class>model.Avaliacao</class>
-    <class>model.Carrinho</class>
-    <class>model.Categoria</class>
-    <class>model.Cidade</class>
-    <class>model.Cliente</class>
-    <class>model.Endereco</class>
-    <class>model.Estado</class>
-    <class>model.FormaPagamento</class>
-    <class>model.Fornecedor</class>
-    <class>model.FotoProduto</class>
-    <class>model.InformacoesPeca</class>
-    <class>model.ItensCarrinho</class>
-    <class>model.ItensPedido</class>
-    <class>model.Loja</class>
-    <class>model.MarcaProduto</class>
-    <class>model.Peca</class>
-    <class>model.Pedido</class>
-    <class>model.Pessoa</class>
-    <class>model.Produto</class>
-    <class>model.TipoEntrega</class>
+    <class>model.entities.Avaliacao</class>
+    <class>model.entities.Carrinho</class>
+    <class>model.entities.Categoria</class>
+    <class>model.entities.Cidade</class>
+    <class>model.entities.Cliente</class>
+    <class>model.entities.Endereco</class>
+    <class>model.entities.Estado</class>
+    <class>model.entities.FormaPagamento</class>
+    <class>model.entities.Fornecedor</class>
+    <class>model.entities.FotoProduto</class>
+    <class>model.entities.InformacoesPeca</class>
+    <class>model.entities.ItensCarrinho</class>
+    <class>model.entities.ItensPedido</class>
+    <class>model.entities.Loja</class>
+    <class>model.entities.MarcaProduto</class>
+    <class>model.entities.Peca</class>
+    <class>model.entities.Pedido</class>
+    <class>model.entities.Pessoa</class>
+    <class>model.entities.Produto</class>
+    <class>model.entities.TipoEntrega</class>
     <!--  -->
     <properties>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
