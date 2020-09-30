@@ -11,22 +11,20 @@ body {
     text-align: center;
 }
 
-.login-page {
-    width: 360px;
-    padding: 8% 0 0;
-    margin: auto;
+.wrapper {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    margin: 20px auto;
+    padding: 45px;
 }
 
-.form {
-    position: relative;
-    z-index: 1;
-    border-radius: 10px;
-    /*background: #FFFFFF;*/
-    max-width: 360px;
-    margin: 0 auto 100px;
-    padding: 45px;
-    text-align: center;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+.input-field label {
+    width: 200px;
+    color: #757575;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .form input {

@@ -27,32 +27,92 @@
 <h:body>
 
     <!-- Conteudo da página fica aqui!!! -->
-    <div class="login-page">
-        <div class="form bg-dark">
-            <div class="navbar-brand text-white logo">SAPITCHO</div>
+    <div class="wrapper bg-dark">
+        <div class="form">
+            <div class="title">
+                <div class="navbar-brand text-white logo">SAPITCHO</div>
+            </div>
             <form class="register-form">
-                <input type="text" placeholder="Nome"/>
-                <input type="text" placeholder="Telefone"/>
-                <input type="text" placeholder="Cpf"/>
-                <input id="form_email" type="email" name="email" placeholder="Email" required="required" data-error="Valid email is required."/>
-                <input type="password" placeholder="Senha"/>
-                <input type="text" placeholder="Data de Nascimento"/>
-                <input type="text" placeholder="Endereço"/>
-                <button type="submit">Cadastrar</button>
-                <p class="message">Já possui um cadastro? <a href="#">Logar-se</a></p>
+                <div class="input-field">
+                    <label>Nome</label>
+                    <input type="text" class="input"/>
+                </div>
+
+                <div class="input-field">
+                    <label>Telefone</label>
+                    <input type="text" class="input"/>
+                </div>
+
+                <div class="input-field">
+                    <label>Cpf</label>
+                    <input type="text" class="input"/>
+                </div>
+
+                <div class="input-field">
+                    <label>Email</label>
+                    <input id="form_email" type="email" name="email" required="required"
+                           data-error="Valid email is required." class="input"/>
+                </div>
+
+                <div class="input-field">
+                    <label>Senha</label>
+                    <input type="password" class="input"/>
+                </div>
+
+                <div class="input-field">
+                    <label>Endereço</label>
+                    <input type="text" class="input"/>
+                </div>
+
+                <div class="input-field">
+                    <label>Data de Nascimento</label>
+                    <input type="text" class="input"/>
+                </div>
+
+                <div class="input-field">
+                    <label>Gênero</label>
+                    <div class="custom_select">
+                        <select class="browser-default custom-select">
+                            <option value="">Selecione</option>
+                            <option value="M">Homem</option>
+                            <option value="F">Mulher</option>
+                            <option value="I">Indefinido</option>
+                        </select>
+                    </div>
+                </div>
+
+                <br/>
+
+                <div class="input-field">
+                    <button type="submit">Cadastrar</button>
+                    <p class="message">Já possui um cadastro? <a href="#">Logar-se</a></p>
+                </div>
+
             </form>
             <form class="login-form">
-                <input type="text" placeholder="username"/>
-                <input type="password" placeholder="password"/>
-                <button class="">login</button>
+
+                <div class="input-field">
+                    <label>Usuário</label>
+                    <input type="text" class="input"/>
+                </div>
+
+                <div class="input-field">
+                    <label>Senha</label>
+                    <input type="text" class="input"/>
+                </div>
+
+                <br/>
+
+                <button>login</button>
                 <p class="message">Não possui um cadastro? <a href="#">Criar uma conta</a></p>
             </form>
         </div>
     </div>
 
+
     <!-- SCRIPT -->
     <script type="application/javascript">
-        $('.message a').click(function(){
+        $('.message a').click(function () {
             $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
         });
     </script>

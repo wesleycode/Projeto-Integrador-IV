@@ -1,4 +1,4 @@
-package dao;
+package model.dao;
 
 import connections.ConnectionFactory;
 import model.entities.EntityBase;

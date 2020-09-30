@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 @Named
 @RequestScoped
-public class ControllerUsuarioBean implements Serializable {
+public class UsuarioController implements Serializable {
 
     public void criarUsuario() {
         /*
