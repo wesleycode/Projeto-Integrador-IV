@@ -5,9 +5,9 @@ import model.entities.Pedido;
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class PedidoDao extends GenericDao<Pedido>{
-    private EntityManager entityManager;
+public class PedidoDao extends GenericDao<Pedido> {
 
+    private EntityManager entityManager;
 
     /*
     public List<Avaliacao> listarAvaliacaoPorNota() throws Exception {

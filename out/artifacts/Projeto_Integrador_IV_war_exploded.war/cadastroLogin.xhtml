@@ -89,26 +89,25 @@
                 </div>
 
             </form>
-            <form class="login-form">
+            <h:form class="login-form">
 
                 <div class="input-field">
                     <label>Usuário</label>
-                    <input type="text" class="input"/>
+                    <h:inputText value="#{loginController.nome}" type="text" class="input"/>
                 </div>
 
                 <div class="input-field">
                     <label>Senha</label>
-                    <input type="text" class="input"/>
+                    <h:inputText type="text" class="input"/>
                 </div>
 
                 <br/>
 
-                <button>login</button>
+                <h:commandLink styleClass="btn btn-primary" actionListener="#{loginController.nomeUsuario()}">login</h:commandLink>
                 <p class="message">Não possui um cadastro? <a href="#">Criar uma conta</a></p>
-            </form>
+            </h:form>
         </div>
     </div>
-
 
     <!-- SCRIPT -->
     <script type="application/javascript">

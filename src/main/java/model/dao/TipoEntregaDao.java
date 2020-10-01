@@ -1,12 +1,13 @@
 package model.dao;
 
 import model.entities.TipoEntrega;
+
 import java.util.List;
 import javax.persistence.EntityManager;
 
-public class TipoEntregaDao extends GenericDao<TipoEntrega>{
-    private EntityManager entityManager;
+public class TipoEntregaDao extends GenericDao<TipoEntrega> {
 
+    private EntityManager entityManager;
 
     /*
     public List<Avaliacao> listarAvaliacaoPorNota() throws Exception {
