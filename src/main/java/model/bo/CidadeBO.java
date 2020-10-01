@@ -3,6 +3,7 @@ package model.bo;
 import model.entities.Cidade;
 
 import java.util.List;
+import model.dao.GenericDao;
 
 public class CidadeBO implements GenericBO<Cidade>{
 

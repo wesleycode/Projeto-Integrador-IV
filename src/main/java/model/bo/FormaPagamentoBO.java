@@ -3,7 +3,7 @@ package model.bo;
 import model.entities.FormaPagamento;
 
 import java.util.List;
-
+import model.dao.GenericDao;
 public class FormaPagamentoBO implements GenericBO<FormaPagamento>{
 
     private GenericDao<FormaPagamento> genericDAO;

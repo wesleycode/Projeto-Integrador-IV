@@ -1,7 +1,7 @@
 package model.bo;
 
+import model.dao.GenericDao;
 import model.entities.Carrinho;
-
 import java.util.List;
 
 public class CarrinhoBO  implements GenericBO<Carrinho>{

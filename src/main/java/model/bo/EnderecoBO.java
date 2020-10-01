@@ -4,6 +4,7 @@ import model.entities.Endereco;
 
 import java.util.List;
 
+import model.dao.GenericDao;
 public class EnderecoBO implements GenericBO<Endereco>{
 
     private GenericDao<Endereco> genericDAO;

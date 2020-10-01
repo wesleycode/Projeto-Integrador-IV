@@ -1,5 +1,5 @@
 package model.bo;
-
+import model.dao.GenericDao;
 import model.entities.ItensPedido;
 
 import java.util.List;

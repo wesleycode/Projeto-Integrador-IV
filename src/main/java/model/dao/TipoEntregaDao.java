@@ -1,10 +1,10 @@
 package model.dao;
 
-import model.entities.Cliente;
+import model.entities.TipoEntrega;
 import java.util.List;
 import javax.persistence.EntityManager;
 
-public class ClienteDao extends GenericDao<Cliente>{
+public class TipoEntregaDao extends GenericDao<TipoEntrega>{
     private EntityManager entityManager;
 
 

@@ -3,7 +3,7 @@ package model.bo;
 import model.entities.Fornecedor;
 
 import java.util.List;
-
+import model.dao.GenericDao;
 public class FornecedorBO implements GenericBO<Fornecedor>{
 
     private GenericDao<Fornecedor> genericDAO;

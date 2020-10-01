@@ -1,10 +1,11 @@
 package model.dao;
 
-import model.entities.Cliente;
-import java.util.List;
-import javax.persistence.EntityManager;
+import model.entities.Pedido;
 
-public class ClienteDao extends GenericDao<Cliente>{
+import javax.persistence.EntityManager;
+import java.util.List;
+
+public class PedidoDao extends GenericDao<Pedido>{
     private EntityManager entityManager;
 
 
@@ -19,4 +20,5 @@ public class ClienteDao extends GenericDao<Cliente>{
         }
     }
      */
+
 }

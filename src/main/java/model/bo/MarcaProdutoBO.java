@@ -3,6 +3,7 @@ package model.bo;
 import model.entities.MarcaProduto;
 
 import java.util.List;
+import model.dao.GenericDao;
 
 public class MarcaProdutoBO implements GenericBO<MarcaProduto>{
 

@@ -3,6 +3,7 @@ package model.bo;
 import model.entities.TipoEntrega;
 
 import java.util.List;
+import model.dao.GenericDao;
 
 public class TipoEntregaBO implements GenericBO<TipoEntrega>{
 

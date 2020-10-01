@@ -1,10 +1,11 @@
 package model.dao;
 
-import model.entities.Cliente;
-import java.util.List;
-import javax.persistence.EntityManager;
+import model.entities.Loja;
 
-public class ClienteDao extends GenericDao<Cliente>{
+import javax.persistence.EntityManager;
+import java.util.List;
+
+public class LojaDao extends GenericDao<Loja>{
     private EntityManager entityManager;
 
 

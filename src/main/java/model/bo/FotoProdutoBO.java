@@ -1,5 +1,6 @@
 package model.bo;
 
+import model.dao.GenericDao;
 import model.entities.FotoProduto;
 
 import java.util.List;

@@ -4,6 +4,7 @@ import model.entities.Peca;
 
 import java.util.List;
 
+import model.dao.GenericDao;
 public class PecaBO implements GenericBO<Peca>{
 
     private GenericDao<Peca> genericDAO;

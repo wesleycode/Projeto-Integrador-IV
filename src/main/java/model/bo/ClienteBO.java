@@ -3,6 +3,7 @@ package model.bo;
 import model.entities.Cliente;
 
 import java.util.List;
+import model.dao.GenericDao;
 
 public class ClienteBO implements GenericBO<Cliente>{
 

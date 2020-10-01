@@ -1,7 +1,7 @@
 package model.bo;
 
 import model.entities.Produto;
-
+import model.dao.GenericDao;
 import java.util.List;
 
 public class ProdutoBO implements GenericBO<Produto>{

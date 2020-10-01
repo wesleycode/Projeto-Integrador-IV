@@ -1,12 +1,12 @@
 package model.dao;
 
-import model.entities.Cliente;
+import model.entities.Carrinho;
+
 import java.util.List;
 import javax.persistence.EntityManager;
 
-public class ClienteDao extends GenericDao<Cliente>{
+public class CarrinhoDao extends GenericDao<Carrinho>{
     private EntityManager entityManager;
-
 
     /*
     public List<Avaliacao> listarAvaliacaoPorNota() throws Exception {
@@ -19,4 +19,5 @@ public class ClienteDao extends GenericDao<Cliente>{
         }
     }
      */
+
 }
