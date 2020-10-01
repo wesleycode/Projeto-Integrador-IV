@@ -22,4 +22,8 @@ public class UsuarioController implements Serializable {
         return "page2?faces-redirect=true";
     }
 
+    public static boolean validarLogin(String nomeUsuario,String senha) {
+        return false;
+    }
+
 }

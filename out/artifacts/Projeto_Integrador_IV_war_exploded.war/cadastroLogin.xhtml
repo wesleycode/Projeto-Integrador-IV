@@ -84,7 +84,7 @@
                 <br/>
 
                 <div class="input-field">
-                    <button type="submit">Cadastrar</button>
+                    <h:commandLink styleClass="button" type="submit">Cadastrar</h:commandLink>
                     <p class="message">Já possui um cadastro? <a href="#">Logar-se</a></p>
                 </div>
 
@@ -93,17 +93,20 @@
 
                 <div class="input-field">
                     <label>Usuário</label>
-                    <h:inputText value="#{loginController.nome}" type="text" class="input"/>
+                    <h:inputText value="#{loginController.cliente.nome}" type="text" class="input"/>
                 </div>
 
                 <div class="input-field">
                     <label>Senha</label>
-                    <h:inputText type="text" class="input"/>
+                    <h:inputSecret value="#{loginController.cliente.senha}" type="text" class="input"/>
                 </div>
 
                 <br/>
 
-                <h:commandLink styleClass="btn btn-primary" actionListener="#{loginController.nomeUsuario()}">login</h:commandLink>
+                <h:commandLink styleClass="button"
+                               actionListener="#{loginController.logar()}">login</h:commandLink>
+                <br/>
+                <br/>
                 <p class="message">Não possui um cadastro? <a href="#">Criar uma conta</a></p>
             </h:form>
         </div>

@@ -39,7 +39,7 @@ body {
     font-size: 14px;
 }
 
-.form button {
+.button {
     text-transform: uppercase;
     outline: 0;
     background: #0069d9;
@@ -49,6 +49,7 @@ body {
     padding: 15px;
     color: #FFFFFF;
     font-size: 14px;
+    text-align: center;
     cursor: pointer;
 }
 
