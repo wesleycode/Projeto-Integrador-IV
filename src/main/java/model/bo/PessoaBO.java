@@ -1,13 +1,12 @@
-package model.entities.bo;
+package model.bo;
 
-import model.dao.GenericDao;
 import model.entities.Pessoa;
 
 import java.util.List;
 
-public class PessoaBO implements GenericBO<Pessoa> {
+public class PessoaBO implements GenericBO<Pessoa>{
 
-    private GenericDao<Pessoa> genericDAO;
+   private GenericDao<Pessoa> genericDAO;
 
     public PessoaBO() {
 
@@ -15,29 +14,20 @@ public class PessoaBO implements GenericBO<Pessoa> {
 
     @Override
     public boolean criar(Pessoa o) throws Exception {
-        if (validar(o)) {
-            genericDAO = new GenericDao<>();
-            return genericDAO.salvar(o);
-        }
-        return false;
+        genericDAO = new GenericDao<>();
+        return genericDAO.salvar(o);
     }
 
     @Override
     public boolean deletar(Pessoa o) throws Exception {
-        if (validar(o)) {
-            genericDAO = new GenericDao<>();
-            return genericDAO.deletar(Pessoa.class, o.getId());
-        }
-        return false;
+        genericDAO = new GenericDao<>();
+        return genericDAO.deletar(Pessoa.class, o.getId());
     }
 
     @Override
     public boolean alterar(Pessoa o) throws Exception {
-        if (validar(o)) {
-            genericDAO = new GenericDao<>();
-            return genericDAO.alterar(o);
-        }
-        return false;
+        genericDAO = new GenericDao<>();
+        return genericDAO.alterar(o);
     }
 
     @Override
@@ -47,33 +37,19 @@ public class PessoaBO implements GenericBO<Pessoa> {
     }
 
     @Override
-    public Pessoa getById(long id) throws Exception {
-        if (validaId(id)) {
-            genericDAO = new GenericDao<>();
-            return genericDAO.getById(Pessoa.class, id);
-        } else {
-            return null;
-        }
+    public Pessoa getById(int id) throws Exception {
+        genericDAO = new GenericDao<>();
+        return genericDAO.getById(Pessoa.class,id);
     }
 
     @Override
-    public boolean validar(Pessoa o) throws Exception {
-        validaId(o.getId());
-        if (o.getNome().isEmpty()) {
-            throw new Exception("Erro: NOME EM BRANCO");
-        }
-        if (o.getEmail().isEmpty()) {
-            throw new Exception("Erro: EMAIL EM BRANCO");
-        }
-        return true;
+    public boolean valida(Pessoa o) throws Exception {
+        return false;
     }
 
     @Override
     public boolean validaId(long id) throws Exception {
-        if (id < 0) {
-            throw new Exception("Erro: ID MENOR QUE ZERO");
-        }
-        return true;
+        return false;
     }
 
 }
