@@ -1,12 +1,15 @@
 package model.dao;
 
+import connections.ConnectionFactory;
 import model.entities.Cliente;
+import model.entities.Pessoa;
+
 import java.util.List;
 import javax.persistence.EntityManager;
 
-public class ClienteDao extends GenericDao<Cliente>{
-    private EntityManager entityManager;
+public class ClienteDao extends GenericDao<Cliente> {
 
+    private EntityManager entityManager;
 
     /*
     public List<Avaliacao> listarAvaliacaoPorNota() throws Exception {
@@ -19,4 +22,24 @@ public class ClienteDao extends GenericDao<Cliente>{
         }
     }
      */
+
+    public ClienteDao() {
+        entityManager = new ConnectionFactory().getConnection();
+    }
+
+    public boolean isClienteExisteNoBancoDeDados(String email, String senha) throws Exception {
+        try {
+            return entityManager.createQuery(
+                    "SELECT c FROM Cliente c WHERE c.email = :email AND c.senha = :senha", Cliente.class)
+                    .setParameter("email", email)
+                    .setParameter("senha", senha)
+                    .getResultList().size() > 0;
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw new Exception(e.getMessage());
+        } finally {
+            entityManager.close();
+        }
+    }
+
 }

@@ -16,7 +16,7 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
-          <factory-entry name="myUnity" />
+          <factory-entry name="myUnity" value="c850ba9e-3b95-4511-9280-cdebd288c8ce" />
         </datasource-mapping>
         <naming-strategy-map />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/web/META-INF/persistence.xml" />

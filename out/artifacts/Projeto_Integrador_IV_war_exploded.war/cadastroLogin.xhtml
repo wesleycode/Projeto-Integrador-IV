@@ -25,14 +25,14 @@
 
 <!-- Inicia Body -->
 <h:body>
-
     <!-- Conteudo da página fica aqui!!! -->
     <div class="wrapper bg-dark">
         <div class="form">
             <div class="title">
                 <div class="navbar-brand text-white logo">SAPITCHO</div>
             </div>
-            <form class="register-form">
+            <p:messages autoUpdate="true"/>
+            <h:form class="register-form">
                 <div class="input-field">
                     <label>Nome</label>
                     <input type="text" class="input"/>
@@ -88,12 +88,11 @@
                     <p class="message">Já possui um cadastro? <a href="#">Logar-se</a></p>
                 </div>
 
-            </form>
+            </h:form>
             <h:form class="login-form">
-
                 <div class="input-field">
-                    <label>Usuário</label>
-                    <h:inputText value="#{loginController.cliente.nome}" type="text" class="input"/>
+                    <label>Email</label>
+                    <h:inputText value="#{loginController.cliente.email}" type="text" class="input"/>
                 </div>
 
                 <div class="input-field">
@@ -104,7 +103,7 @@
                 <br/>
 
                 <h:commandLink styleClass="button"
-                               actionListener="#{loginController.logar()}">login</h:commandLink>
+                               actionListener="#{loginController.logar}">login</h:commandLink>
                 <br/>
                 <br/>
                 <p class="message">Não possui um cadastro? <a href="#">Criar uma conta</a></p>
@@ -118,6 +117,7 @@
             $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
         });
     </script>
+    <!-- SCRIPT -->
 
 </h:body>
 <!-- Finaliza body -->

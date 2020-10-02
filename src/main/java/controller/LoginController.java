@@ -1,5 +1,8 @@
 package controller;
 
+import model.bo.ClienteBO;
+import model.dao.ClienteDao;
+import model.dao.GenericDao;
 import model.entities.Cliente;
 import model.entities.Pessoa;
 
@@ -14,7 +17,7 @@ import java.io.Serializable;
 public class LoginController implements Serializable {
 
     private Cliente cliente;
-    
+
     public LoginController() {
         cliente = new Cliente();
     }
@@ -28,13 +31,9 @@ public class LoginController implements Serializable {
     }
 
     public String logar() {
-        if (UsuarioController.validarLogin(cliente.getNome(), cliente.getSenha())) {
-            System.out.println("Encontrou o usuario");
-            return "OK";
-        }
-        FacesContext.getCurrentInstance().addMessage("form",
-                new FacesMessage("Usuario/senha invalidos"));
-        return "";
+        String message = new ClienteBO().logar(cliente);
+        FacesContext.getCurrentInstance().addMessage("form", new FacesMessage(message));
+        return message;
     }
 
 }

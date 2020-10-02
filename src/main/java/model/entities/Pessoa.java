@@ -5,6 +5,7 @@ import java.sql.Date;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "TipoPessoa")
 public abstract class Pessoa implements EntityBase {
 
     @Id
