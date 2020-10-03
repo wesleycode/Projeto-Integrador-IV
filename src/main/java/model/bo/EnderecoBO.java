@@ -15,20 +15,26 @@ public class EnderecoBO implements GenericBO<Endereco>{
 
     @Override
     public boolean criar(Endereco o) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.salvar(o);
+        if (valida(o)) {
+            genericDAO = new GenericDao<>();
+            return genericDAO.salvar(o);
+        }return false;
     }
 
     @Override
     public boolean deletar(Endereco o) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.deletar(Endereco.class, o.getId());
+        if (validaId(o.getId())) {
+            genericDAO = new GenericDao<>();
+            return genericDAO.deletar(Endereco.class, o.getId());
+        }return false;
     }
 
     @Override
     public boolean alterar(Endereco o) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.alterar(o);
+        if(valida(o)) {
+            genericDAO = new GenericDao<>();
+            return genericDAO.alterar(o);
+        }return false;
     }
 
     @Override
@@ -45,12 +51,28 @@ public class EnderecoBO implements GenericBO<Endereco>{
 
     @Override
     public boolean valida(Endereco o) throws Exception {
-        return false;
+        if (o.getBairro().equals("")) {
+            throw new Exception("Bairro nulo");
+        }else if (o.getCep().equals("")){
+            throw new Exception("CEP nulo");
+        }else if(o.getCidade().getId()<0){
+            throw new Exception("Cidade nulo");
+        }else if(o.getNumero()<0){
+            throw new Exception("Numero nulo");
+        }else if(o.getRua().equals("")){
+            throw new Exception("Rua nulo");
+        }else if(o.getBairro().equals("")){
+            throw new Exception("Bairro nulo");
+        }
+        return true;
     }
 
     @Override
     public boolean validaId(long id) throws Exception {
-        return false;
+        if (id < 0){
+            throw new Exception("Id nulo");
+        }
+        return true;
     }
 
 }

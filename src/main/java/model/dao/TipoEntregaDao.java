@@ -1,5 +1,6 @@
 package model.dao;
 
+import connections.ConnectionFactory;
 import model.entities.TipoEntrega;
 
 import java.util.List;
@@ -9,6 +10,9 @@ public class TipoEntregaDao extends GenericDao<TipoEntrega> {
 
     private EntityManager entityManager;
 
+    public TipoEntregaDao(){
+        entityManager = new ConnectionFactory().getConnection();
+    }
     /*
     public List<Avaliacao> listarAvaliacaoPorNota() throws Exception {
         try {

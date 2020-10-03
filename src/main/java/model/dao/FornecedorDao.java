@@ -1,5 +1,6 @@
 package model.dao;
 
+import connections.ConnectionFactory;
 import model.entities.Fornecedor;
 
 import javax.persistence.EntityManager;
@@ -7,7 +8,9 @@ import java.util.List;
 
 public class FornecedorDao extends GenericDao<Fornecedor>{
     private EntityManager entityManager;
-
+    public FornecedorDao(){
+        entityManager = new ConnectionFactory().getConnection();
+    }
 
     /*
     public List<Avaliacao> listarAvaliacaoPorNota() throws Exception {

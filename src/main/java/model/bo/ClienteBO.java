@@ -54,6 +54,9 @@ public class ClienteBO implements GenericBO<Cliente> {
 
     @Override
     public boolean validaId(long id) throws Exception {
+        if (id < 0){
+            throw new Exception("Id nulo");
+        }
         return false;
     }
 

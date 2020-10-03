@@ -14,20 +14,24 @@ public class LojaBO implements GenericBO<Loja>{
 
     @Override
     public boolean criar(Loja o) throws Exception {
+        if (valida(o)){
         genericDAO = new GenericDao<>();
-        return genericDAO.salvar(o);
+        return genericDAO.salvar(o);}return false;
     }
 
     @Override
     public boolean deletar(Loja o) throws Exception {
+        if (validaId(o.getId())){
         genericDAO = new GenericDao<>();
-        return genericDAO.deletar(Loja.class, o.getId());
+        return genericDAO.deletar(Loja.class, o.getId());}return false;
     }
 
     @Override
     public boolean alterar(Loja o) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.alterar(o);
+        if (valida(o)) {
+            genericDAO = new GenericDao<>();
+            return genericDAO.alterar(o);
+        }return false;
     }
 
     @Override
@@ -44,12 +48,20 @@ public class LojaBO implements GenericBO<Loja>{
 
     @Override
     public boolean valida(Loja o) throws Exception {
-        return false;
+        if (o.getCnpj().equals("")){
+            throw new Exception("CNPJ nulo");
+        }else if(o.getNomeLoja().equals("")){
+            throw new Exception("nome nulo");
+        }
+        return true;
     }
 
     @Override
     public boolean validaId(long id) throws Exception {
-        return false;
+        if (id < 0){
+            throw new Exception("Id nulo");
+        }
+        return true;
     }
 
 }

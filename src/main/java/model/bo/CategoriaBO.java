@@ -1,5 +1,6 @@
 package model.bo;
 
+import model.dao.CategoriaDao;
 import model.entities.Categoria;
 
 import java.util.List;
@@ -14,22 +15,30 @@ public class CategoriaBO implements GenericBO<Categoria>{
 
     @Override
     public boolean criar(Categoria o) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.salvar(o);
+        if (valida(o)) {
+            genericDAO = new GenericDao<>();
+            return genericDAO.salvar(o);
+        }
+        return false;
     }
 
     @Override
     public boolean deletar(Categoria o) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.deletar(Categoria.class, o.getId());
+        if (validaId(o.getId())) {
+            genericDAO = new GenericDao<>();
+            return genericDAO.deletar(Categoria.class, o.getId());
+        }
+        return false;
     }
 
     @Override
     public boolean alterar(Categoria o) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.alterar(o);
+        if (valida(o)) {
+            genericDAO = new GenericDao<>();
+            return genericDAO.alterar(o);
+        }
+        return false;
     }
-
     @Override
     public List<Categoria> listarTodos() throws Exception {
         genericDAO = new GenericDao<>();
@@ -44,12 +53,22 @@ public class CategoriaBO implements GenericBO<Categoria>{
 
     @Override
     public boolean valida(Categoria o) throws Exception {
+        if (o.getCategoria().equals("")){
+            throw new Exception("Nome inválido da Categoria");
+        }
         return false;
     }
 
     @Override
     public boolean validaId(long id) throws Exception {
-        return false;
+        if (id < 0){
+            throw new Exception("Id nulo");
+        }
+        return true;
+    }
+    public Categoria listarACategoriaPorNome(String nome) throws Exception {
+        CategoriaDao categoriadao = new CategoriaDao();
+        return categoriadao.listarACategoriaPorNome(nome);
     }
 
-}
+    }

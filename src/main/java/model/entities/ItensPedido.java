@@ -13,7 +13,7 @@ public class ItensPedido implements EntityBase {
     @ManyToOne
     private Produto produto;
     @ManyToOne
-    private Carrinho cliente;
+    private Pedido pedido;
 
     @Override
     public long getId() {
@@ -36,12 +36,12 @@ public class ItensPedido implements EntityBase {
         this.produto = produto;
     }
 
-    public Carrinho getCarrinho() {
-        return cliente;
+    public Pedido getPedido() {
+        return pedido;
     }
 
-    public void setCliente(Carrinho carrinho) {
-        this.cliente = cliente;
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
     }
 
     public void setId(long id) {

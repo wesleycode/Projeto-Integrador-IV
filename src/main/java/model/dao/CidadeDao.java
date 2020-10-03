@@ -1,5 +1,6 @@
 package model.dao;
 
+import connections.ConnectionFactory;
 import model.entities.Cidade;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -8,7 +9,9 @@ import javax.persistence.EntityManager;
 
 public class CidadeDao extends GenericDao<Cidade>{
     private EntityManager entityManager;
-
+    public CidadeDao(){
+        entityManager = new ConnectionFactory().getConnection();
+    }
     /*
     public List<Avaliacao> listarAvaliacaoPorNota() throws Exception {
         try {

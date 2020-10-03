@@ -1,9 +1,11 @@
 package model.bo;
 
+import model.dao.ItensCarrinhoDao;
 import model.entities.ItensCarrinho;
 
 import java.util.List;
 import model.dao.GenericDao;
+import model.entities.Produto;
 
 public class ItensCarrinhoBO implements GenericBO<ItensCarrinho>{
 
@@ -13,22 +15,33 @@ public class ItensCarrinhoBO implements GenericBO<ItensCarrinho>{
 
     }
 
+    public List<ItensCarrinho> listarItensCarrinhoDeProduto(Produto produto) throws Exception {
+        ItensCarrinhoDao itensCarrinhoDao = new ItensCarrinhoDao();
+        return itensCarrinhoDao.listarItensCarrinhoDeProduto(produto);
+
+    }
+
     @Override
     public boolean criar(ItensCarrinho o) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.salvar(o);
+        if (valida(o)) {
+            genericDAO = new GenericDao<>();
+            return genericDAO.salvar(o);
+        }return false;
     }
 
     @Override
     public boolean deletar(ItensCarrinho o) throws Exception {
+        if (validaId(o.getId())){
         genericDAO = new GenericDao<>();
-        return genericDAO.deletar(ItensCarrinho.class, o.getId());
+        return genericDAO.deletar(ItensCarrinho.class, o.getId());}return false;
     }
 
     @Override
     public boolean alterar(ItensCarrinho o) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.alterar(o);
+        if (valida(o)) {
+            genericDAO = new GenericDao<>();
+            return genericDAO.alterar(o);
+        }return false;
     }
 
     @Override
@@ -45,12 +58,20 @@ public class ItensCarrinhoBO implements GenericBO<ItensCarrinho>{
 
     @Override
     public boolean valida(ItensCarrinho o) throws Exception {
-        return false;
+        if (o.getCarrinho().getId()<0){
+            throw new Exception("Carrinho não encontrado");
+        }else if(o.getProduto().getId()<0){
+            throw new Exception("Produto não encontrado");
+        }
+        return true;
     }
 
     @Override
     public boolean validaId(long id) throws Exception {
-        return false;
+        if (id < 0){
+            throw new Exception("Id nulo");
+        }
+        return true;
     }
 
 }

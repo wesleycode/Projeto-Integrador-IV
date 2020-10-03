@@ -14,6 +14,17 @@ public class Pedido implements EntityBase {
     
     @ManyToOne
     private Cliente cliente;
+    @ManyToOne
+    private Endereco endereco;
+
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 
     public Cliente getCliente() {
         return cliente;

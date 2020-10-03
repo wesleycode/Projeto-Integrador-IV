@@ -1,5 +1,6 @@
 package model.dao;
 
+import connections.ConnectionFactory;
 import model.entities.Endereco;
 
 import javax.persistence.EntityManager;
@@ -7,7 +8,9 @@ import java.util.List;
 
 public class EnderecoDao extends GenericDao<Endereco>{
     private EntityManager entityManager;
-
+    public EnderecoDao(){
+        entityManager = new ConnectionFactory().getConnection();
+    }
 
     /*
     public List<Avaliacao> listarAvaliacaoPorNota() throws Exception {

@@ -14,20 +14,26 @@ public class InformacoesPecaBO implements GenericBO<InformacoesPeca>{
 
     @Override
     public boolean criar(InformacoesPeca o) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.salvar(o);
+        if (valida(o)) {
+            genericDAO = new GenericDao<>();
+            return genericDAO.salvar(o);
+        }return false;
     }
 
     @Override
     public boolean deletar(InformacoesPeca o) throws Exception {
+        if (validaId(o.getId())){
         genericDAO = new GenericDao<>();
         return genericDAO.deletar(InformacoesPeca.class, o.getId());
+        }return false;
     }
 
     @Override
     public boolean alterar(InformacoesPeca o) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.alterar(o);
+        if(valida(o)) {
+            genericDAO = new GenericDao<>();
+            return genericDAO.alterar(o);
+        }return false;
     }
 
     @Override
@@ -44,12 +50,18 @@ public class InformacoesPecaBO implements GenericBO<InformacoesPeca>{
 
     @Override
     public boolean valida(InformacoesPeca o) throws Exception {
-        return false;
+        if(o.getInfopeca().equals("")){
+            throw new Exception("informações de peça nulo");
+        }
+        return true;
     }
 
     @Override
     public boolean validaId(long id) throws Exception {
-        return false;
+        if (id < 0){
+            throw new Exception("Id nulo");
+        }
+        return true;
     }
 
 }

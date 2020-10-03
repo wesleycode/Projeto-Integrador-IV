@@ -16,20 +16,26 @@ public class CidadeBO implements GenericBO<Cidade>{
 
     @Override
     public boolean criar(Cidade o) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.salvar(o);
+        if (valida(o)) {
+            genericDAO = new GenericDao<>();
+            return genericDAO.salvar(o);
+        }return false;
     }
 
     @Override
     public boolean deletar(Cidade o) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.deletar(Cidade.class, o.getId());
+        if (validaId(o.getId())){
+            genericDAO = new GenericDao<>();
+            return genericDAO.deletar(Cidade.class, o.getId());
+        }return false;
     }
 
     @Override
     public boolean alterar(Cidade o) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.alterar(o);
+        if (valida(o)) {
+            genericDAO = new GenericDao<>();
+            return genericDAO.alterar(o);
+        }return false;
     }
 
     @Override
@@ -41,17 +47,23 @@ public class CidadeBO implements GenericBO<Cidade>{
     @Override
     public Cidade getById(int id) throws Exception {
         genericDAO = new GenericDao<>();
-        return genericDAO.getById(Cidade.class,id);
+        return genericDAO.getById(Cidade.class, id);
     }
 
     @Override
     public boolean valida(Cidade o) throws Exception {
-        return false;
+        if (o.getNome().equals("")){
+            throw new Exception("nome inválido");
+        }
+        return true;
     }
 
     @Override
     public boolean validaId(long id) throws Exception {
-        return false;
+        if (id < 0){
+            throw new Exception("Id nulo");
+        }
+        return true;
     }
 
 }
