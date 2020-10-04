@@ -27,12 +27,12 @@ public class ClienteDao extends GenericDao<Cliente> {
         entityManager = new ConnectionFactory().getConnection();
     }
 
-    public boolean isClienteExisteNoBancoDeDados(String email, String senha) throws Exception {
+    public boolean isClienteExisteNoBancoDeDados(Cliente cliente) throws Exception {
         try {
             return entityManager.createQuery(
                     "SELECT c FROM Cliente c WHERE c.email = :email AND c.senha = :senha", Cliente.class)
-                    .setParameter("email", email)
-                    .setParameter("senha", senha)
+                    .setParameter("email", cliente.getEmail())
+                    .setParameter("senha", cliente.getSenha())
                     .getResultList().size() > 0;
         } catch (Exception e) {
             entityManager.getTransaction().rollback();

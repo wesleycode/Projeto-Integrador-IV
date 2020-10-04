@@ -6,9 +6,6 @@ import model.entities.Cliente;
 import java.util.List;
 import model.dao.GenericDao;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-
 public class ClienteBO implements GenericBO<Cliente> {
 
     private GenericDao<Cliente> genericDAO;
@@ -18,9 +15,21 @@ public class ClienteBO implements GenericBO<Cliente> {
     }
 
     @Override
-    public boolean criar(Cliente o) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.salvar(o);
+    public boolean criar(Cliente o) {
+        try {
+            if (valida(o)) {
+                if (new GenericDao<>().salvar(o)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                throw new Exception("Cliente não validado!");
+            }
+        } catch (Exception e) {
+            System.out.println("CLIENTE BO: " + e.getMessage());
+            return false;
+        }
     }
 
     @Override
@@ -49,32 +58,24 @@ public class ClienteBO implements GenericBO<Cliente> {
 
     @Override
     public boolean valida(Cliente o) throws Exception {
-        return false;
+        return true;
     }
 
     @Override
     public boolean validaId(long id) throws Exception {
-        if (id < 0){
-            throw new Exception("Id nulo");
-        }
         return false;
     }
 
     public String logar(Cliente cliente) {
         try {
-            if (new ClienteDao().isClienteExisteNoBancoDeDados(cliente.getEmail(), cliente.getSenha())) {
+            if (new ClienteDao().isClienteExisteNoBancoDeDados(cliente)) {
                 return "OK";
             } else {
-                return "";
+                return "SOPA";
             }
         } catch (Exception e) {
             return "ERRO AO LOGAR: " + e.getMessage();
         }
-    }
-
-    public boolean validarCliente(String email, String senha) {
-        System.out.println("EMAIL: " + email + " SENHA: " + senha + " VALIDADO COM ESSES VALORES!");
-        return true;
     }
 
 }

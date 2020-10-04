@@ -1,19 +1,19 @@
+
+
 package controller;
 
 import model.bo.ClienteBO;
-import model.dao.ClienteDao;
-import model.dao.GenericDao;
 import model.entities.Cliente;
-import model.entities.Pessoa;
 
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
 
 @Named
-@RequestScoped
+@SessionScoped
 public class LoginController implements Serializable {
 
     private Cliente cliente;
@@ -30,10 +30,39 @@ public class LoginController implements Serializable {
         this.cliente = cliente;
     }
 
-    public String logar() {
-        String message = new ClienteBO().logar(cliente);
-        FacesContext.getCurrentInstance().addMessage("form", new FacesMessage(message));
-        return message;
+    public String logarCliente() {
+        if (new ClienteBO().logar(cliente).equals("OK")) {
+            FacesContext.getCurrentInstance().addMessage("form", new FacesMessage("Logado com sucesso"));
+            return "/index.xhtml?faces-redirect=true";
+        } else {
+            FacesContext.getCurrentInstance().addMessage("form", new FacesMessage("Usuário e/ou senha inválidos"));
+            return "";
+        }
+    }
+
+    public String deslogar() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        cliente = null;
+        return "/index.xhtml?faces-redirect=true";
+    }
+
+    public void cadastrarCliente() {
+
+        System.out.println("ID: " + cliente.getId());
+        System.out.println("EMAIL: " + cliente.getEmail());
+        System.out.println("SENHA: " + cliente.getSenha());
+        System.out.println("NOME: " + cliente.getNome());
+        System.out.println("CPF: " + cliente.getCpf());
+        System.out.println("TELEFONE: " + cliente.getTelefone());
+        System.out.println("DATA NASCIMENTO: " + cliente.getDataNascimento());
+        System.out.println("ENDEREÇO: " + cliente.getEndereco());
+
+//        String message = new ClienteBO().criar(cliente);
+//        if (message.equals("OK")) {
+//            FacesContext.getCurrentInstance().addMessage("form", new FacesMessage("Usuário Cadastrado com sucesso"));
+//        } else {
+//            FacesContext.getCurrentInstance().addMessage("form", new FacesMessage(message));
+//        }
     }
 
 }

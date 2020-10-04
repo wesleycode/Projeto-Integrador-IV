@@ -28,63 +28,63 @@
     <!-- Conteudo da página fica aqui!!! -->
     <div class="wrapper bg-dark">
         <div class="form">
-            <div class="title">
+            <div class="title" style="text-align: center;">
                 <div class="navbar-brand text-white logo">SAPITCHO</div>
             </div>
             <p:messages autoUpdate="true"/>
             <h:form class="register-form">
                 <div class="input-field">
                     <label>Nome</label>
-                    <input type="text" class="input"/>
+                    <h:inputText value="#{loginController.cliente.nome}" type="text" class="input" required="true"/>
                 </div>
 
                 <div class="input-field">
                     <label>Telefone</label>
-                    <input type="text" class="input"/>
+                    <input id="telefone" value="#{loginController.cliente.telefone}" data-mask="(00) 0000-0000"/>
                 </div>
 
-                <div class="input-field">
-                    <label>Cpf</label>
-                    <input type="text" class="input"/>
-                </div>
+                <!--                <div class="input-field">-->
+                <!--                    <label>Cpf</label>-->
+                <!--                    <h:inputText value="#{loginController.cliente.cpf}" type="text" class="input" required="true"/>-->
+                <!--                </div>-->
 
-                <div class="input-field">
-                    <label>Email</label>
-                    <input id="form_email" type="email" name="email" required="required"
-                           data-error="Valid email is required." class="input"/>
-                </div>
+                <!--                <div class="input-field">-->
+                <!--                    <label>Email</label>-->
+                <!--                    <h:inputText value="#{loginController.cliente.email}" type="email" class="input" required="true"/>-->
+                <!--                </div>-->
 
-                <div class="input-field">
-                    <label>Senha</label>
-                    <input type="password" class="input"/>
-                </div>
+                <!--                <div class="input-field">-->
+                <!--                    <label>Senha</label>-->
+                <!--                    <h:inputText value="#{loginController.cliente.senha}" type="password" class="input"/>-->
+                <!--                </div>-->
 
-                <div class="input-field">
-                    <label>Endereço</label>
-                    <input type="text" class="input"/>
-                </div>
+                <!--                <div class="input-field">-->
+                <!--                    <label>Endereço</label>-->
+                <!--                    <h:inputText value="#{loginController.cliente.endereco}" type="text" class="input"/>-->
+                <!--                </div>-->
 
-                <div class="input-field">
-                    <label>Data de Nascimento</label>
-                    <input type="text" class="input"/>
-                </div>
+                <!--                <div class="input-field">-->
+                <!--                    <label>Data de Nascimento</label>-->
+                <!--                    <p:calendar value="#{loginController.cliente.dataNascimento}" type="text" class="input"/>-->
+                <!--                </div>-->
 
-                <div class="input-field">
-                    <label>Gênero</label>
-                    <div class="custom_select">
-                        <select class="browser-default custom-select">
-                            <option value="">Selecione</option>
-                            <option value="M">Homem</option>
-                            <option value="F">Mulher</option>
-                            <option value="I">Indefinido</option>
-                        </select>
-                    </div>
-                </div>
+                <!--                <div class="input-field">-->
+                <!--                    <label>Gênero</label>-->
+                <!--                    <div class="custom_select">-->
+                <!--                        <select class="browser-default custom-select">-->
+                <!--                            <option value="">Selecione</option>-->
+                <!--                            <option value="M">Homem</option>-->
+                <!--                            <option value="F">Mulher</option>-->
+                <!--                            <option value="I">Indefinido</option>-->
+                <!--                        </select>-->
+                <!--                    </div>-->
+                <!--                </div>-->
 
                 <br/>
 
                 <div class="input-field">
-                    <h:commandLink styleClass="button" type="submit">Cadastrar</h:commandLink>
+                    <h:commandLink action="#{loginController.cadastrarCliente()}" styleClass="button"
+                                   type="submit">Cadastrar</h:commandLink>
                     <p class="message">Já possui um cadastro? <a href="#">Logar-se</a></p>
                 </div>
 
@@ -102,11 +102,24 @@
 
                 <br/>
 
-                <h:commandLink styleClass="button"
-                               actionListener="#{loginController.logar}">login</h:commandLink>
-                <br/>
-                <br/>
-                <p class="message">Não possui um cadastro? <a href="#">Criar uma conta</a></p>
+                <div style="text-align: center;">
+
+                    <h:commandLink styleClass="button" value="Entrar"
+                                   action="#{loginController.logarCliente()}"/>
+
+                    <br/>
+                    <br/>
+
+                    <p class="message">Não possui um cadastro? <a href="#">Criar uma conta</a></p>
+
+                </div>
+
+                <!--                <h:commandLink styleClass="button"-->
+                <!--                               action="#{loginController.deslogar()}">Sair</h:commandLink>-->
+
+                <!--                <br/>-->
+                <!--                <br/>-->
+
             </h:form>
         </div>
     </div>
@@ -116,6 +129,12 @@
         $('.message a').click(function () {
             $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
         });
+    </script>
+    <script type="javascript" src="resources/js/jquery.mask.js"></script>
+    <script type="javascript">
+        $(document).ready(function () {
+            $('#telefone').mask('(00) 0000-0000');
+        })
     </script>
     <!-- SCRIPT -->
 
