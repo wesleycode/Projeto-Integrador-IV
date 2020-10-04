@@ -1,10 +1,12 @@
 package model.bo;
 
+import model.dao.CidadeDao;
 import model.entities.Cidade;
 
 import java.util.List;
 import model.dao.GenericDao;
 import model.entities.Cliente;
+import model.entities.Estado;
 
 public class CidadeBO implements GenericBO<Cidade>{
 
@@ -12,6 +14,11 @@ public class CidadeBO implements GenericBO<Cidade>{
 
     public CidadeBO() {
 
+    }
+
+    public List<Cidade> listarCidadePorEstado(Estado estado) throws Exception {
+        CidadeDao cidadeDao = new CidadeDao();
+        return cidadeDao.listarCidadePorEstado(estado);
     }
 
     @Override

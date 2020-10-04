@@ -1,6 +1,7 @@
 package model.dao;
 
 import connections.ConnectionFactory;
+import model.entities.Carrinho;
 import model.entities.ItensCarrinho;
 import model.entities.ItensPedido;
 import model.entities.Produto;
@@ -18,6 +19,17 @@ public class ItensCarrinhoDao extends GenericDao<ItensCarrinho>{
         try {
             return entityManager.createQuery("SELECT a FROM ItensCarrinho a where a.produto =:produto")
                     .setParameter("produto",produto)
+                    .getResultList();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            entityManager.close();
+        }
+    }
+    public List<ItensCarrinho> ListarItensCarrinhoDeCarrinho(Carrinho carrinho) throws Exception{
+        try {
+            return entityManager.createQuery("SELECT a FROM ItensCarrinho a where a.Carrinho =:car")
+                    .setParameter("car",carrinho)
                     .getResultList();
         } catch (Exception e) {
             throw new Exception(e.getMessage());

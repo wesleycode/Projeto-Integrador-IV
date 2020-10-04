@@ -14,7 +14,7 @@ public class ItensCarrinho implements EntityBase {
     @ManyToOne
     private Produto produto;
     @ManyToOne
-    private Carrinho cliente;
+    private Carrinho Carrinho;
 
     @Override
     public long getId() {
@@ -38,11 +38,11 @@ public class ItensCarrinho implements EntityBase {
     }
 
     public Carrinho getCarrinho() {
-        return cliente;
+        return Carrinho;
     }
 
-    public void setCliente(Carrinho carrinho) {
-        this.cliente = cliente;
+    public void setCarrinho(Carrinho carrinho) {
+        Carrinho = carrinho;
     }
 
     public void setId(long id) {

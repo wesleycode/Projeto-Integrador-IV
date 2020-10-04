@@ -1,6 +1,7 @@
 package model.bo;
 
 import model.dao.ItensCarrinhoDao;
+import model.entities.Carrinho;
 import model.entities.ItensCarrinho;
 
 import java.util.List;
@@ -18,6 +19,12 @@ public class ItensCarrinhoBO implements GenericBO<ItensCarrinho>{
     public List<ItensCarrinho> listarItensCarrinhoDeProduto(Produto produto) throws Exception {
         ItensCarrinhoDao itensCarrinhoDao = new ItensCarrinhoDao();
         return itensCarrinhoDao.listarItensCarrinhoDeProduto(produto);
+
+    }
+
+    public List<ItensCarrinho> ListarItensCarrinhoDeCarrinho(Carrinho carrinho) throws Exception{
+        ItensCarrinhoDao itensCarrinhoDao = new ItensCarrinhoDao();
+        return itensCarrinhoDao.ListarItensCarrinhoDeCarrinho(carrinho);
 
     }
 

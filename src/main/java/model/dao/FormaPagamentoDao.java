@@ -1,6 +1,7 @@
 package model.dao;
 
 import connections.ConnectionFactory;
+import model.entities.Categoria;
 import model.entities.FormaPagamento;
 import model.entities.Fornecedor;
 
@@ -12,7 +13,7 @@ public class FormaPagamentoDao extends GenericDao<Fornecedor>{
     public FormaPagamentoDao(){
         entityManager = new ConnectionFactory().getConnection();
     }
-    public FormaPagamento ListarFormaPagamentoPorNome(String nome) throws Exception {
+    public FormaPagamento listarFormaPagamentoPorNome(String nome) throws Exception {
         try {
             List<FormaPagamento> formaPagamentos = entityManager.createQuery("SELECT a FROM FormaPagamento a where a.formapagamento = :nome")
                     .setParameter("nome",nome)
@@ -25,15 +26,4 @@ public class FormaPagamentoDao extends GenericDao<Fornecedor>{
         }
     }
 
-    /*
-    public List<Avaliacao> listarAvaliacaoPorNota() throws Exception {
-        try {
-            return entityManager.createQuery("SELECT a FROM Avaliacao a order by a.nota asc ").getResultList();
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        } finally {
-            entityManager.close();
-        }
-    }
-     */
 }

@@ -15,7 +15,7 @@ public class FormaPagamentoBO implements GenericBO<FormaPagamento>{
 
     public FormaPagamento ListarFormaPagamentoPorNome(String nome) throws Exception {
         FormaPagamentoDao fpdao = new FormaPagamentoDao();
-        return fpdao.ListarFormaPagamentoPorNome(nome);
+        return fpdao.listarFormaPagamentoPorNome(nome);
     }
 
     @Override

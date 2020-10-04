@@ -1,6 +1,7 @@
 package model.dao;
 
 import connections.ConnectionFactory;
+import model.entities.FormaPagamento;
 import model.entities.Fornecedor;
 
 import javax.persistence.EntityManager;
@@ -12,15 +13,16 @@ public class FornecedorDao extends GenericDao<Fornecedor>{
         entityManager = new ConnectionFactory().getConnection();
     }
 
-    /*
-    public List<Avaliacao> listarAvaliacaoPorNota() throws Exception {
+    public Fornecedor listarFornecedorPorNome(String nome) throws Exception {
         try {
-            return entityManager.createQuery("SELECT a FROM Avaliacao a order by a.nota asc ").getResultList();
+            List<Fornecedor> fornecedors = entityManager.createQuery("SELECT a FROM Fornecedor a where a.Fornecedor = :nome")
+                    .setParameter("nome",nome)
+                    .getResultList();
+            return fornecedors.get(0);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         } finally {
             entityManager.close();
         }
     }
-     */
 }

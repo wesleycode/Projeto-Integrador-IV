@@ -1,5 +1,6 @@
 package model.bo;
 
+import model.dao.FornecedorDao;
 import model.entities.Fornecedor;
 
 import java.util.List;
@@ -9,6 +10,12 @@ public class FornecedorBO implements GenericBO<Fornecedor>{
     private GenericDao<Fornecedor> genericDAO;
 
     public FornecedorBO() {
+
+    }
+
+    public Fornecedor listarFornecedorPorNome(String nome) throws Exception {
+        FornecedorDao fornecedorDao = new FornecedorDao();
+        return fornecedorDao.listarFornecedorPorNome(nome);
 
     }
 

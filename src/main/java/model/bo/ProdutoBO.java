@@ -14,20 +14,23 @@ public class ProdutoBO implements GenericBO<Produto>{
 
     @Override
     public boolean criar(Produto o) throws Exception {
+        if(valida(o)){
         genericDAO = new GenericDao<>();
-        return genericDAO.salvar(o);
+        return genericDAO.salvar(o);}return false;
     }
 
     @Override
     public boolean deletar(Produto o) throws Exception {
+        if(validaId(o.getId())){
         genericDAO = new GenericDao<>();
-        return genericDAO.deletar(Produto.class, o.getId());
+        return genericDAO.deletar(Produto.class, o.getId());}return false;
     }
 
     @Override
     public boolean alterar(Produto o) throws Exception {
+        if (valida(o)){
         genericDAO = new GenericDao<>();
-        return genericDAO.alterar(o);
+        return genericDAO.alterar(o);}return false;
     }
 
     @Override
@@ -44,7 +47,27 @@ public class ProdutoBO implements GenericBO<Produto>{
 
     @Override
     public boolean valida(Produto o) throws Exception {
-        return false;
+        if(o.getCategoria().getId()<0){
+            throw new Exception("Categoria de Produto nulo");
+        }else if(o.getDescricao().equals("")){
+            throw new Exception("Falta de descrição");
+        }
+        /*else if(o.getFormaPagamento().getId()<0){
+            throw new Exception("Forma de Pagamento de produto nulo");
+        } //não sei como vamos usar essa classe ainda então vou manter em comentário*/
+        else if(o.getFornecedor().getId()<0){
+            throw new Exception("Fornecedor de Produto nulo");
+        }else if(o.getMarca().getId()<0){
+            throw new Exception("Marca de Produto nulo");
+        }else if(o.getNome().equals("")){
+            throw new Exception("Nome do Produto nulo");
+        }else if(o.getPreco()<0){
+            throw new Exception("Preço não Permitido");
+        }
+        /*else if(o.getTipoentrega().getId()<0){
+            throw new Exception("Tipo Entrega nulo");
+        } //não sei como vamos usar essa classe ainda então vou manter em comentário */
+        return true;
     }
 
     @Override

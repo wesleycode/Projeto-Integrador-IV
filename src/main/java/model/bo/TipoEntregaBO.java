@@ -15,20 +15,24 @@ public class TipoEntregaBO implements GenericBO<TipoEntrega>{
 
     @Override
     public boolean criar(TipoEntrega o) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.salvar(o);
+        if (valida(o)) {
+            genericDAO = new GenericDao<>();
+            return genericDAO.salvar(o);
+        }return false;
     }
 
     @Override
     public boolean deletar(TipoEntrega o) throws Exception {
+        if(validaId(o.getId())){
         genericDAO = new GenericDao<>();
-        return genericDAO.deletar(TipoEntrega.class, o.getId());
+        return genericDAO.deletar(TipoEntrega.class, o.getId());}return false;
     }
 
     @Override
     public boolean alterar(TipoEntrega o) throws Exception {
+        if (valida(o)){
         genericDAO = new GenericDao<>();
-        return genericDAO.alterar(o);
+        return genericDAO.alterar(o);}return false;
     }
 
     @Override
@@ -45,7 +49,10 @@ public class TipoEntregaBO implements GenericBO<TipoEntrega>{
 
     @Override
     public boolean valida(TipoEntrega o) throws Exception {
-        return false;
+        if (o.getTipoentrega().equals("")){
+            throw new Exception("Tipo Entrega nulo");
+        }
+        return true;
     }
 
     @Override

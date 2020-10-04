@@ -16,7 +16,7 @@ public class PecaDao extends GenericDao<Peca>{
     public List<Peca> listarProdutoscomPeca(Produto produto) throws Exception {
         try {
             return entityManager.createQuery("SELECT a FROM Peca a where a.produto = :produto")
-                    .setParameter("produto",produto)
+                    .setParameter("produto", produto)
                     .getResultList();
         } catch (Exception e) {
             throw new Exception(e.getMessage());

@@ -1,7 +1,10 @@
 package model.bo;
 
+import model.dao.CarrinhoDao;
 import model.dao.GenericDao;
 import model.entities.Carrinho;
+import model.entities.ItensCarrinho;
+
 import java.util.List;
 
 public class CarrinhoBO  implements GenericBO<Carrinho>{
@@ -10,6 +13,19 @@ public class CarrinhoBO  implements GenericBO<Carrinho>{
 
     public CarrinhoBO() {
 
+    }
+    public Boolean atualizarInformacaoValorTotalEQauntidade(Carrinho carrinho) throws Exception{
+        try {
+            carrinho.setValorTotal(0);
+            carrinho.setQuantidade(0);
+            for (ItensCarrinho itensCarrinho : new ItensCarrinhoBO().ListarItensCarrinhoDeCarrinho(carrinho)) {
+                carrinho.setQuantidade(carrinho.getQuantidade() + itensCarrinho.getQuantidade());
+                carrinho.setValorTotal(carrinho.getValorTotal() + itensCarrinho.getValor());
+            }
+            return alterar(carrinho);
+        }catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 
     @Override
