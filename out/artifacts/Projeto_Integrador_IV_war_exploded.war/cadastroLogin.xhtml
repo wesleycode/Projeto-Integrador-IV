@@ -3,7 +3,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
@@ -26,117 +26,142 @@
 <!-- Inicia Body -->
 <h:body>
     <!-- Conteudo da página fica aqui!!! -->
-    <div class="wrapper bg-dark">
-        <div class="form">
-            <div class="title" style="text-align: center;">
+
+    <div class="conteudo">
+
+        <div class="wrapper bg-dark">
+
+            <b:growl autoUpdate="true"/>
+
+            <div class="title">
                 <div class="navbar-brand text-white logo">SAPITCHO</div>
             </div>
-            <p:messages autoUpdate="true"/>
-            <h:form class="register-form">
-                <div class="input-field">
-                    <label>Nome</label>
-                    <h:inputText value="#{loginController.cliente.nome}" type="text" class="input" required="true"/>
-                </div>
 
-                <div class="input-field">
-                    <label>Telefone</label>
-                    <input id="telefone" value="#{loginController.cliente.telefone}" data-mask="(00) 0000-0000"/>
-                </div>
+            <div class="form">
 
-                <!--                <div class="input-field">-->
-                <!--                    <label>Cpf</label>-->
-                <!--                    <h:inputText value="#{loginController.cliente.cpf}" type="text" class="input" required="true"/>-->
-                <!--                </div>-->
+                <h:form class="register-form">
 
-                <!--                <div class="input-field">-->
-                <!--                    <label>Email</label>-->
-                <!--                    <h:inputText value="#{loginController.cliente.email}" type="email" class="input" required="true"/>-->
-                <!--                </div>-->
+                    <b:inputText value="#{loginController.cliente.nome}" placeholder="Nome" required="true"
+                                 mask="{regex:'[a-zA-Z\s]*'}">
+                        <f:facet name="prepend">
+                            <b:icon name="user"/>
+                        </f:facet>
+                    </b:inputText>
 
-                <!--                <div class="input-field">-->
-                <!--                    <label>Senha</label>-->
-                <!--                    <h:inputText value="#{loginController.cliente.senha}" type="password" class="input"/>-->
-                <!--                </div>-->
+                    <b:inputText value="#{loginController.cliente.telefone}" placeholder="Telefone" required="true"
+                                 mask="(99) 9999-9999">
+                        <f:facet name="prepend">
+                            <b:iconAwesome name="phone"/>
+                        </f:facet>
+                    </b:inputText>
 
-                <!--                <div class="input-field">-->
-                <!--                    <label>Endereço</label>-->
-                <!--                    <h:inputText value="#{loginController.cliente.endereco}" type="text" class="input"/>-->
-                <!--                </div>-->
+                    <b:inputText value="#{loginController.cliente.cpf}" placeholder="Cpf" required="true"
+                                 mask="999.999.999-99">
+                        <f:facet name="prepend">
+                            <b:iconAwesome name="id-card"/>
+                        </f:facet>
+                    </b:inputText>
 
-                <!--                <div class="input-field">-->
-                <!--                    <label>Data de Nascimento</label>-->
-                <!--                    <p:calendar value="#{loginController.cliente.dataNascimento}" type="text" class="input"/>-->
-                <!--                </div>-->
+                    <b:inputText value="#{loginController.cliente.email}" placeholder="Email" required="true"
+                                 mask="email">
+                        <f:facet name="prepend">
+                            <b:iconAwesome name="envelope"/>
+                        </f:facet>
+                    </b:inputText>
 
-                <!--                <div class="input-field">-->
-                <!--                    <label>Gênero</label>-->
-                <!--                    <div class="custom_select">-->
-                <!--                        <select class="browser-default custom-select">-->
-                <!--                            <option value="">Selecione</option>-->
-                <!--                            <option value="M">Homem</option>-->
-                <!--                            <option value="F">Mulher</option>-->
-                <!--                            <option value="I">Indefinido</option>-->
-                <!--                        </select>-->
-                <!--                    </div>-->
-                <!--                </div>-->
+                    <b:inputSecret value="#{loginController.cliente.senha}" placeholder="Senha" required="true">
+                        <f:facet name="prepend">
+                            <b:iconAwesome name="key"/>
+                        </f:facet>
+                    </b:inputSecret>
 
-                <br/>
+<!--                    <b:inputText value="#{loginController.cliente.endereco}" placeholder="Endereço" required="true">-->
+<!--                        <f:facet name="prepend">-->
+<!--                            <b:iconAwesome name="map-marker-alt"/>-->
+<!--                        </f:facet>-->
+<!--                    </b:inputText>-->
 
-                <div class="input-field">
-                    <h:commandLink action="#{loginController.cadastrarCliente()}" styleClass="button"
-                                   type="submit">Cadastrar</h:commandLink>
-                    <p class="message">Já possui um cadastro? <a href="#">Logar-se</a></p>
-                </div>
+                    <b:inputText value="#{loginController.cliente.dataNascimento}"
+                                 mask="dd/mm/yyyy" placeholder="Data de Nascimento" required="true">
+                        <f:facet name="prepend">
+                            <b:iconAwesome name="birthday-cake"/>
+                        </f:facet>
+                    </b:inputText>
 
-            </h:form>
-            <h:form class="login-form">
-                <div class="input-field">
-                    <label>Email</label>
-                    <h:inputText value="#{loginController.cliente.email}" type="text" class="input"/>
-                </div>
+                    <b:dropButton value="Sexo">
+                        <b:navLink value="Action" href="#"/>
+                        <b:navLink value="Another action" href="#"/>
+                        <b:navLink value="Something else here" href="#"/>
+                    </b:dropButton>
 
-                <div class="input-field">
-                    <label>Senha</label>
-                    <h:inputSecret value="#{loginController.cliente.senha}" type="text" class="input"/>
-                </div>
-
-                <br/>
-
-                <div style="text-align: center;">
-
-                    <h:commandLink styleClass="button" value="Entrar"
-                                   action="#{loginController.logarCliente()}"/>
+                    <!--                <div class="input-field">-->
+                    <!--                    <label>Gênero</label>-->
+                    <!--                    <div class="custom_select">-->
+                    <!--                        <select class="browser-default custom-select">-->
+                    <!--                            <option value="">Selecione</option>-->
+                    <!--                            <option value="M">Homem</option>-->
+                    <!--                            <option value="F">Mulher</option>-->
+                    <!--                            <option value="I">Indefinido</option>-->
+                    <!--                        </select>-->
+                    <!--                    </div>-->
+                    <!--                </div>-->
 
                     <br/>
                     <br/>
 
-                    <p class="message">Não possui um cadastro? <a href="#">Criar uma conta</a></p>
+                    <div class="input-field">
+                        <h:commandLink action="#{loginController.cadastrarCliente()}" styleClass="button"
+                                       type="submit">Cadastrar</h:commandLink>
+                        <p class="message">Já possui um cadastro? <a href="#">Logar-se</a></p>
+                    </div>
 
-                </div>
+                </h:form>
 
-                <!--                <h:commandLink styleClass="button"-->
-                <!--                               action="#{loginController.deslogar()}">Sair</h:commandLink>-->
+                <h:form class="login-form">
 
-                <!--                <br/>-->
-                <!--                <br/>-->
+                    <b:inputText value="#{loginController.cliente.email}" placeholder="Email" required="true"
+                                 mask="email">
+                        <f:facet name="prepend">
+                            <b:iconAwesome name="envelope"/>
+                        </f:facet>
+                    </b:inputText>
 
-            </h:form>
+                    <br/>
+
+                    <b:inputSecret value="#{loginController.cliente.senha}" placeholder="Senha">
+                        <f:facet name="prepend">
+                            <b:iconAwesome name="key"/>
+                        </f:facet>
+                    </b:inputSecret>
+
+                    <br/>
+                    <br/>
+
+                    <div style="text-align: center;">
+                        <h:commandLink styleClass="button" value="Entrar"
+                                       action="#{loginController.logarCliente()}"/>
+                        <br/>
+                        <br/>
+                        <p class="message">Não possui um cadastro? <a href="#">Criar uma conta</a></p>
+                    </div>
+
+                </h:form>
+
+            </div>
+
         </div>
-    </div>
 
-    <!-- SCRIPT -->
-    <script type="application/javascript">
-        $('.message a').click(function () {
-            $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-        });
-    </script>
-    <script type="javascript" src="resources/js/jquery.mask.js"></script>
-    <script type="javascript">
-        $(document).ready(function () {
-            $('#telefone').mask('(00) 0000-0000');
-        })
-    </script>
-    <!-- SCRIPT -->
+        <div style="margin-bottom: 170px;"></div>
+
+        <!-- SCRIPT -->
+        <script type="application/javascript">
+            $('.message a').click(function () {
+                $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+            });
+        </script>
+        <!-- SCRIPT -->
+
+    </div>
 
 </h:body>
 <!-- Finaliza body -->

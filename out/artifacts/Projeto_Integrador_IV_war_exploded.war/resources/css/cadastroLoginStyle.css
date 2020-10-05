@@ -2,13 +2,17 @@
     font-family: "Roboto", sans-serif;
 }
 
-body {
-    background-color: #0069d9;
+.conteudo {
+    background-color: #005cbf;
+    padding: 20px 100px;
 }
 
 .logo {
     padding-bottom: 20px;
-    text-align: center;
+}
+
+.title {
+    margin-bottom: 75px;
 }
 
 .wrapper {
