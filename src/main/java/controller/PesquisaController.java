@@ -40,6 +40,31 @@ public class PesquisaController implements Serializable {
         * Cada uma das Div de Produtos no site vai ter seu valores baseados nesses valores de produtoAtuais
         * */
     }
+
+    public List<Produto> getTodosProdutos() {
+        return todosProdutos;
+    }
+
+    public void setTodosProdutos(List<Produto> todosProdutos) {
+        this.todosProdutos = todosProdutos;
+    }
+
+    public List<Produto> getProdutosAtuais() {
+        return produtosAtuais;
+    }
+
+    public void setProdutosAtuais(List<Produto> produtosAtuais) {
+        this.produtosAtuais = produtosAtuais;
+    }
+
+    public List<Integer> getBotoesPesquisa() {
+        return botoesPesquisa;
+    }
+
+    public void setBotoesPesquisa(List<Integer> botoesPesquisa) {
+        this.botoesPesquisa = botoesPesquisa;
+    }
+
     public void MudarPag(int Numero_da_pag_Atual){
         for(int x=0;x<15;x++){
             produtosAtuais.set(x,todosProdutos.get(x + (15 * (Numero_da_pag_Atual - 1))));
@@ -53,18 +78,8 @@ public class PesquisaController implements Serializable {
             y++;
             //atualiza os valores dos botoes da pag
         }
-        /* set das paginas com base na pag atual, ai caso a pag seja 0 pra baixo no web deve ficar invisivel
-        botoesPesquisa.set(0,Numero_da_pag_Atual-4);
-        botoesPesquisa.set(1,Numero_da_pag_Atual-3);
-        botoesPesquisa.set(2,Numero_da_pag_Atual-2);
-        botoesPesquisa.set(3,Numero_da_pag_Atual-1);
-        botoesPesquisa.set(4,Numero_da_pag_Atual);
-        botoesPesquisa.set(5,Numero_da_pag_Atual+1);
-        botoesPesquisa.set(6,Numero_da_pag_Atual+2);
-        botoesPesquisa.set(7,Numero_da_pag_Atual+3);
-        botoesPesquisa.set(8,Numero_da_pag_Atual+4);
 
-         */
+
     }
 
 }
