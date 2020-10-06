@@ -73,7 +73,7 @@ public class Endereco implements EntityBase {
     }
 
     public Endereco() {
-
+        cidade = new Cidade();
     }
 
 }

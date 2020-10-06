@@ -43,7 +43,7 @@ public class Cidade implements EntityBase {
     }
 
     public Cidade() {
-
+        estado = new Estado();
     }
 
 }

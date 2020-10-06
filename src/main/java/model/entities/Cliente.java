@@ -13,6 +13,21 @@ public class Cliente extends Pessoa implements EntityBase {
     @ManyToOne
     private Endereco endereco;
 
+    @Override
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    @Override
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public Cliente() {
+        carrinho = new Carrinho();
+        endereco = new Endereco();
+    }
+
     public Carrinho getCarrinho() {
         return carrinho;
     }

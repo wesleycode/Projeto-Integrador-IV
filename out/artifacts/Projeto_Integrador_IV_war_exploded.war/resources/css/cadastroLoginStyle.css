@@ -4,7 +4,7 @@
 
 .conteudo {
     background-color: #005cbf;
-    padding: 20px 100px;
+    padding: 20px 200px;
 }
 
 .logo {
@@ -29,6 +29,10 @@
     color: #757575;
     font-size: 14px;
     font-weight: bold;
+}
+
+label {
+    color: white;
 }
 
 .form input {
