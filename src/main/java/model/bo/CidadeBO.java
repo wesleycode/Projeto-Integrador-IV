@@ -17,8 +17,7 @@ public class CidadeBO implements GenericBO<Cidade>{
     }
 
     public List<Cidade> listarCidadePorEstado(Estado estado) throws Exception {
-        CidadeDao cidadeDao = new CidadeDao();
-        return cidadeDao.listarCidadePorEstado(estado);
+        return new CidadeDao().listarCidadesPorEstado(estado);
     }
 
     @Override

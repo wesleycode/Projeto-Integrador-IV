@@ -1,7 +1,7 @@
 package model.entities;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -16,8 +16,7 @@ public abstract class Pessoa implements EntityBase {
     private String cpf;
     private String email;
     private String senha;
-
-    @Temporal(TemporalType.DATE)
+    
     private Date dataNascimento;
     @ManyToOne
     private Endereco endereco;
@@ -96,7 +95,7 @@ public abstract class Pessoa implements EntityBase {
     }
 
     public Pessoa() {
-
+        endereco = new Endereco();
     }
 
 }

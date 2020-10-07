@@ -5,9 +5,8 @@ import model.entities.Endereco;
 import java.util.List;
 
 import model.dao.GenericDao;
-public class EnderecoBO implements GenericBO<Endereco>{
 
-    private GenericDao<Endereco> genericDAO;
+public class EnderecoBO implements GenericBO<Endereco> {
 
     public EnderecoBO() {
 
@@ -16,52 +15,50 @@ public class EnderecoBO implements GenericBO<Endereco>{
     @Override
     public boolean criar(Endereco o) throws Exception {
         if (valida(o)) {
-            genericDAO = new GenericDao<>();
-            return genericDAO.salvar(o);
-        }return false;
+            return new GenericDao<>().salvar(o);
+        }
+        return false;
     }
 
     @Override
     public boolean deletar(Endereco o) throws Exception {
         if (validaId(o.getId())) {
-            genericDAO = new GenericDao<>();
-            return genericDAO.deletar(Endereco.class, o.getId());
-        }return false;
+            return new GenericDao<Endereco>().deletar(Endereco.class, o.getId());
+        }
+        return false;
     }
 
     @Override
     public boolean alterar(Endereco o) throws Exception {
-        if(valida(o)) {
-            genericDAO = new GenericDao<>();
-            return genericDAO.alterar(o);
-        }return false;
+        if (valida(o)) {
+            return new GenericDao<>().alterar(o);
+        }
+        return false;
     }
 
     @Override
     public List<Endereco> listarTodos() throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.listarTodos(Endereco.class);
+        return new GenericDao<Endereco>().listarTodos(Endereco.class);
     }
 
     @Override
     public Endereco getById(int id) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.getById(Endereco.class,id);
+        return new GenericDao<Endereco>().getById(Endereco.class, id);
     }
 
     @Override
     public boolean valida(Endereco o) throws Exception {
         if (o.getBairro().equals("")) {
             throw new Exception("Bairro nulo");
-        }else if (o.getCep().equals("")){
+        } else if (o.getCep().equals("")) {
             throw new Exception("CEP nulo");
-        }else if(o.getCidade().getId()<0){
+        } else if (o.getCidade().getId() < 0) {
             throw new Exception("Cidade nulo");
-        }else if(o.getNumero()<0){
+        } else if (o.getNumero() < 0) {
             throw new Exception("Numero nulo");
-        }else if(o.getRua().equals("")){
+        } else if (o.getRua().equals("")) {
             throw new Exception("Rua nulo");
-        }else if(o.getBairro().equals("")){
+        } else if (o.getBairro().equals("")) {
             throw new Exception("Bairro nulo");
         }
         return true;
@@ -69,8 +66,8 @@ public class EnderecoBO implements GenericBO<Endereco>{
 
     @Override
     public boolean validaId(long id) throws Exception {
-        if (id < 0){
-            throw new Exception("Id nulo");
+        if (id < 0) {
+            throw new Exception("Id menor que zero");
         }
         return true;
     }

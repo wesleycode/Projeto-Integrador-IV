@@ -4,56 +4,54 @@ import model.dao.ClienteDao;
 import model.entities.Cliente;
 
 import java.util.List;
+
 import model.dao.GenericDao;
 
 public class ClienteBO implements GenericBO<Cliente> {
-
-    private GenericDao<Cliente> genericDAO;
 
     public ClienteBO() {
 
     }
 
     @Override
-    public boolean criar(Cliente o) {
-        try {
-            if (valida(o)) {
-                if (new GenericDao<>().salvar(o)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                throw new Exception("Cliente não validado!");
-            }
-        } catch (Exception e) {
-            System.out.println("CLIENTE BO: " + e.getMessage());
-            return false;
+    public boolean criar(Cliente o) throws Exception {
+        if (valida(o)) {
+            return new GenericDao<>().salvar(o);
         }
+        return false;
     }
 
     @Override
     public boolean deletar(Cliente o) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.deletar(Cliente.class, o.getId());
+        if (valida(o)) {
+            return new GenericDao<Cliente>().deletar(Cliente.class, o.getId());
+        }
+        return false;
     }
 
     @Override
     public boolean alterar(Cliente o) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.alterar(o);
+        if (valida(o)) {
+            return new GenericDao<>().alterar(o);
+        }
+        return false;
     }
 
     @Override
     public List<Cliente> listarTodos() throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.listarTodos(Cliente.class);
+        return new GenericDao<Cliente>().listarTodos(Cliente.class);
     }
 
     @Override
     public Cliente getById(int id) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.getById(Cliente.class, id);
+        if (validaId(id)) {
+            return new GenericDao<Cliente>().getById(Cliente.class, id);
+        }
+        return null;
+    }
+
+    public Cliente getByName(String name) throws Exception {
+        return new ClienteDao().getByName(name);
     }
 
     @Override

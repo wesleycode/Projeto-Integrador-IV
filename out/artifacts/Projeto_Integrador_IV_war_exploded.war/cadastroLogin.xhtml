@@ -31,7 +31,7 @@
 
         <div class="wrapper bg-dark">
 
-            <b:growl autoUpdate="true"/>
+            <b:messages autoUpdate="true"/>
 
             <div class="title">
                 <div class="navbar-brand text-white logo">SAPITCHO</div>
@@ -46,7 +46,6 @@
 
                     <b:inputText value="#{loginController.cliente.nome}" placeholder="Nome" required="true"
                                  mask="{regex:'[a-zA-Z ]*'}">
-                        <f:validateLength minimum="5" maximum="15"/>
                         <f:facet name="prepend">
                             <b:icon name="user"/>
                         </f:facet>
@@ -68,7 +67,8 @@
 
                     <b:inputText value="#{loginController.cliente.dataNascimento}"
                                  mask="dd/mm/yyyy" placeholder="Data de Nascimento" required="true">
-                        <f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+<!--                        <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>-->
+                        <f:converter converterId="dateConverter"/>
                         <f:facet name="prepend">
                             <b:iconAwesome name="birthday-cake"/>
                         </f:facet>
@@ -81,8 +81,8 @@
                         </f:facet>
                     </b:inputText>
 
-                    <b:inputSecret value="#{loginController.cliente.senha}" placeholder="Senha" required="true">
-                        <f:validateLength minimum="5" maximum="15"/>
+                    <b:inputSecret value="#{loginController.cliente.senha}" placeholder="Senha" required="true"
+                                   mask="{regex:'[a-zA-Z0-9]*'}">>
                         <f:facet name="prepend">
                             <b:iconAwesome name="key"/>
                         </f:facet>
@@ -112,7 +112,8 @@
                         </f:facet>
                     </b:inputText>
 
-                    <b:inputText value="#{loginController.cliente.endereco.complemento}" placeholder="Complemento" required="true"
+                    <b:inputText value="#{loginController.cliente.endereco.complemento}" placeholder="Complemento"
+                                 required="true"
                                  mask="{regex:'[a-zA-Z ]*'}">
                         <f:facet name="prepend">
                             <b:iconAwesome name="map-marker-alt"/>
@@ -126,31 +127,29 @@
                         </f:facet>
                     </b:inputText>
 
-                    <h:outputLabel value="Selecione um estado"/>
+                    <h:outputLabel value="Sua localização"/>
                     <br/>
 
-                    <b:selectOneMenu value="#{loginController.cliente.email}" ajax="true" process="@this" update="@next @next:@next">
+                    <b:selectOneMenu value="#{loginController.cliente.endereco.cidade.estado}" ajax="true"
+                                     process="@this" update="@next @next:@next">
+                        <f:selectItem value="#{null}" itemLabel="Selecione um estado"/>
                         <f:selectItems value="#{loginController.listarTodosOsEstados()}" var="estado"
                                        itemValue="#{estado}" itemLabel="#{estado.nome}"/>
-                        <f:ajax event="change" listener="#{loginController.listarTodosAsCidadesPorEstado(estado)}" render="jsfMessages messages" />
+                        <f:ajax event="change" execute="@this" render="cidadesSelect"/>
                     </b:selectOneMenu>
 
-                    <b:selectOneMenu value="#{loginController.cliente.email}" ajax="true" process="@this" update="@next @next:@next">
-                        <f:selectItems value="#{loginController.listarTodosOsEstados()}" var="estado"
-                                       itemValue="#{estado}" itemLabel="#{estado.nome}" />
+                    <b:selectOneMenu id="cidadesSelect" value="#{loginController.cliente.endereco.cidade}" ajax="true"
+                                     process="@this" update="@next @next:@next">
+                        <f:selectItems
+                                value="#{loginController.listarTodosAsCidadesPorEstado(loginController.cliente.endereco.cidade.estado)}"
+                                var="cidade"
+                                itemValue="#{cidade}" itemLabel="#{cidade.nome}"/>
                     </b:selectOneMenu>
-
-<!--                    <b:inputText value="#{loginController.cliente.endereco.cidade}" placeholder="Cep" required="true"-->
-<!--                                 mask="">-->
-<!--                        <f:facet name="prepend">-->
-<!--                            <b:iconAwesome name="map-marker-alt"/>-->
-<!--                        </f:facet>-->
-<!--                    </b:inputText>-->
 
                     <br/>
 
                     <div class="input-field">
-                        <h:commandLink action="#{loginController.cadastrarCliente()}" styleClass="button"
+                        <h:commandLink action="#{loginController.cadastrarNovoCliente()}" styleClass="button"
                                        type="submit">Cadastrar</h:commandLink>
                         <p class="message">Já possui um cadastro? <a href="#">Logar-se</a></p>
                     </div>
@@ -180,6 +179,7 @@
                     <div style="text-align: center;">
                         <h:commandLink styleClass="button" value="Entrar"
                                        action="#{loginController.logarCliente()}"/>
+
                         <br/>
                         <br/>
                         <p class="message">Não possui um cadastro? <a href="#">Criar uma conta</a></p>
@@ -187,6 +187,13 @@
 
                 </h:form>
 
+                <br/>
+                <br/>
+
+                <h:form>
+                    <h:commandLink styleClass="btn btn-warning" value="Voltar ao inicio"
+                                   action="#{loginController.irParaIndex()}"/>
+                </h:form>
             </div>
 
         </div>

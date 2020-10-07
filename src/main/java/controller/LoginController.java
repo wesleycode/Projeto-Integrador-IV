@@ -1,19 +1,15 @@
 package controller;
 
-import model.bo.CidadeBO;
-import model.bo.ClienteBO;
-import model.bo.EstadoBO;
+import model.bo.*;
+import model.entities.Carrinho;
 import model.entities.Cidade;
 import model.entities.Cliente;
 import model.entities.Estado;
-import utilities.Datas;
-
+import net.bootsfaces.utils.FacesMessages;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Named
@@ -22,7 +18,7 @@ public class LoginController implements Serializable {
 
     private Cliente cliente;
 
-    // Contrutor //
+    // Construtor //
     public LoginController() {
         cliente = new Cliente();
     }
@@ -37,10 +33,10 @@ public class LoginController implements Serializable {
 
     public String logarCliente() {
         if (new ClienteBO().logar(cliente).equals("OK")) {
-            FacesContext.getCurrentInstance().addMessage("form", new FacesMessage("Logado com sucesso"));
+            FacesMessages.info("Logado com sucesso", "detail message");
             return "/index.xhtml?faces-redirect=true";
         } else {
-            FacesContext.getCurrentInstance().addMessage("form", new FacesMessage("Usuário e/ou senha inválidos"));
+            FacesMessages.info("Usuário e/ou senha inválidos", "detail message");
             return "";
         }
     }
@@ -54,7 +50,6 @@ public class LoginController implements Serializable {
         }
     }
 
-
     public List<Cidade> listarTodosAsCidadesPorEstado(Estado estado) {
         try {
             return new CidadeBO().listarCidadePorEstado(estado);
@@ -67,40 +62,42 @@ public class LoginController implements Serializable {
     public String deslogar() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         cliente = null;
+        return irParaIndex();
+    }
+
+    public String irParaIndex() {
         return "/index.xhtml?faces-redirect=true";
     }
 
-    public void cadastrarCliente() {
+    public void cadastrarNovoCliente() {
 
-        System.out.println("ID: " + cliente.getId());
-        System.out.println("EMAIL: " + cliente.getEmail());
-        System.out.println("SENHA: " + cliente.getSenha());
-        System.out.println("NOME: " + cliente.getNome());
-        System.out.println("CPF: " + cliente.getCpf());
-        System.out.println("TELEFONE: " + cliente.getTelefone());
-        System.out.println("DATA NASCIMENTO: " + cliente.getDataNascimento());
+        // Sempre ao CADASTRAR um novo cliente o status dele é ativo por padrão //
+        cliente.setAtivo(true);
 
-        System.out.println("ENDEREÇO NUMERO: " + cliente.getEndereco().getId());
-        System.out.println("ENDEREÇO RUA: " + cliente.getEndereco().getRua());
-        System.out.println("ENDEREÇO BAIRRO: " + cliente.getEndereco().getBairro());
-        System.out.println("ENDEREÇO CEP: " + cliente.getEndereco().getCep());
-        System.out.println("ENDEREÇO COMPLEMENTO: " + cliente.getEndereco().getComplemento());
-        System.out.println("ENDEREÇO NUMERO: " + cliente.getEndereco().getNumero());
+        // Grava o endereco //
 
-        System.out.println("CIDADE ID: " + cliente.getEndereco().getCidade().getId());
-        System.out.println("CIDADE NOME: " + cliente.getEndereco().getCidade().getNome());
+        try {
+            if (new EnderecoBO().criar(cliente.getEndereco())) {
+                FacesMessages.info("Endereco cadastrado com sucesso");
+            } else {
+                FacesMessages.error("Erro ao cadastrar endereço do usuario");
+            }
+        } catch (Exception e) {
+            FacesMessages.error("Erro: " + e.getMessage());
+        }
 
-        System.out.println("ESTADO ID: " + cliente.getEndereco().getCidade().getEstado().getId());
-        System.out.println("ESTADO NOME: " + cliente.getEndereco().getCidade().getEstado().getNome());
-        System.out.println("ESTADO UF: " + cliente.getEndereco().getCidade().getEstado().getUf());
+        // Grava o cliente //
 
+        try {
+            if (new ClienteBO().criar(cliente)) {
+                FacesMessages.info("Usuário Cadastrado com sucesso");
+            } else {
+                FacesMessages.error("Erro ao cadastrar usuário");
+            }
+        } catch (Exception e) {
+            FacesMessages.error("Erro: " + e.getMessage());
+        }
 
-//        String message = new ClienteBO().criar(cliente);
-//        if (message.equals("OK")) {
-//            FacesContext.getCurrentInstance().addMessage("form", new FacesMessage("Usuário Cadastrado com sucesso"));
-//        } else {
-//            FacesContext.getCurrentInstance().addMessage("form", new FacesMessage(message));
-//        }
     }
 
 }

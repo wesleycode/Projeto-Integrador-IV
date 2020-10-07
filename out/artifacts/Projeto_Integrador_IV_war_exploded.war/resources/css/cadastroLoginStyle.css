@@ -2,6 +2,10 @@
     font-family: "Roboto", sans-serif;
 }
 
+body {
+    background-color: #005cbf;
+}
+
 .conteudo {
     background-color: #005cbf;
     padding: 20px 200px;
@@ -20,6 +24,7 @@
     border-radius: 10px;
     max-width: 500px;
     width: 100%;
+    text-align: center;
     margin: 20px auto;
     padding: 45px;
 }

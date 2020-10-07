@@ -11,18 +11,6 @@ public class ClienteDao extends GenericDao<Cliente> {
 
     private EntityManager entityManager;
 
-    /*
-    public List<Avaliacao> listarAvaliacaoPorNota() throws Exception {
-        try {
-            return entityManager.createQuery("SELECT a FROM Avaliacao a order by a.nota asc ").getResultList();
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        } finally {
-            entityManager.close();
-        }
-    }
-     */
-
     public ClienteDao() {
         entityManager = new ConnectionFactory().getConnection();
     }
@@ -39,6 +27,15 @@ public class ClienteDao extends GenericDao<Cliente> {
             throw new Exception(e.getMessage());
         } finally {
             entityManager.close();
+        }
+    }
+
+    public Cliente getByName(String name) throws Exception {
+        try {
+            return (Cliente) entityManager.createQuery("from Cliente c where c.nome = :name")
+                    .setParameter("name", name).getSingleResult();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
         }
     }
 

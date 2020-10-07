@@ -1,6 +1,7 @@
 package controller;
 
 import model.dao.GenericDao;
+import model.entities.Carrinho;
 import model.entities.Cliente;
 
 import javax.faces.bean.RequestScoped;
@@ -14,7 +15,7 @@ public class UsuarioController implements Serializable {
 
     public void criarUsuario() {
         Cliente cliente = new Cliente();
-        cliente.setCarrinho(null);
+        //cliente.setCarrinho(new Carrinho());
         cliente.setAtivo(true);
         cliente.setCpf("asd");
         cliente.setDataNascimento(Date.valueOf("2019-09-01"));

@@ -7,19 +7,18 @@ import model.entities.Estado;
 import java.util.List;
 import javax.persistence.EntityManager;
 
-import javax.persistence.EntityManager;
-
 public class CidadeDao extends GenericDao<Cidade>{
+
     private EntityManager entityManager;
+
     public CidadeDao(){
         entityManager = new ConnectionFactory().getConnection();
     }
 
-    public List<Cidade> listarCidadePorEstado(Estado estado) throws Exception {
+    public List<Cidade> listarCidadesPorEstado(Estado estado) throws Exception {
         try {
-            return entityManager.createQuery("SELECT a FROM Estado a where a.uf = :estado")
-                    .setParameter("estado",estado.getUf())
-                    .getResultList();
+            return entityManager.createQuery("SELECT c FROM Cidade c WHERE c.estado = :estado ORDER BY c.nome")
+                    .setParameter("estado", estado).getResultList();
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         } finally {
