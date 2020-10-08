@@ -1,7 +1,7 @@
 package model.converters;
 
 import net.bootsfaces.utils.FacesMessages;
-import utilities.Datas;
+import utilities.Tempo;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -15,7 +15,7 @@ public class DateConverter implements Converter {
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         try {
-            return Datas.converterStringParaSqlDate(value);
+            return Tempo.converterStringParaSqlDate(value);
         } catch (Exception e) {
             FacesMessages.error("Não foi possivel converter a data (OBJECT): " + e.getMessage());
         }
@@ -25,7 +25,7 @@ public class DateConverter implements Converter {
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
         try {
-            return Datas.converterDateParaString((Date) value);
+            return Tempo.converterDateParaString((Date) value);
         } catch (Exception e) {
             FacesMessages.error("Não foi possivel converter a data (STRING): " + e.getMessage());
         }

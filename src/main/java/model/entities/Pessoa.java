@@ -16,7 +16,7 @@ public abstract class Pessoa implements EntityBase {
     private String cpf;
     private String email;
     private String senha;
-    
+
     private Date dataNascimento;
     @ManyToOne
     private Endereco endereco;

@@ -29,171 +29,234 @@
 
     <div class="conteudo">
 
-        <div class="wrapper bg-dark">
+        <div class="panel bg-dark" style="margin:20px;">
 
-            <b:messages autoUpdate="true"/>
+            <div class="panel-body">
 
-            <div class="title">
-                <div class="navbar-brand text-white logo">SAPITCHO</div>
-            </div>
+                <b:messages autoUpdate="true"/>
 
-            <div class="form">
+                <div class="form">
 
-                <h:form class="register-form">
+                    <h:form class="register-form">
 
-                    <h:outputLabel value="Complete seu cadastro"/>
-                    <br/>
+                        <div class="col-md-12 col-sm-12" style="text-align: center; padding-top: 20px; color: white;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">SAPITCHO</h3>
+                            </div>
+                        </div>
 
-                    <b:inputText value="#{loginController.cliente.nome}" placeholder="Nome" required="true"
-                                 mask="{regex:'[a-zA-Z ]*'}">
-                        <f:facet name="prepend">
-                            <b:icon name="user"/>
-                        </f:facet>
-                    </b:inputText>
+                        <div class="col-md-12 col-sm-12">
 
-                    <b:inputText value="#{loginController.cliente.telefone}" placeholder="Telefone" required="true"
-                                 mask="(99) 9999-9999">
-                        <f:facet name="prepend">
-                            <b:iconAwesome name="phone"/>
-                        </f:facet>
-                    </b:inputText>
+                            <div class="form-group col-md-12 col-sm-12">
+                                <span class="help-block">Fale um pouco sobre você</span>
+                            </div>
 
-                    <b:inputText value="#{loginController.cliente.cpf}" placeholder="Cpf" required="true"
-                                 mask="999.999.999-99">
-                        <f:facet name="prepend">
-                            <b:iconAwesome name="id-card"/>
-                        </f:facet>
-                    </b:inputText>
+                            <div class="form-group col-md-6 col-sm-6">
+                                <b:inputText value="#{loginController.cliente.nome}" placeholder="Nome"
+                                             required="true"
+                                             mask="{regex:'[a-zA-Z ]*'}">
+                                    <f:facet name="prepend">
+                                        <b:icon name="user"/>
+                                    </f:facet>
+                                </b:inputText>
+                            </div>
 
-                    <b:inputText value="#{loginController.cliente.dataNascimento}"
-                                 mask="dd/mm/yyyy" placeholder="Data de Nascimento" required="true">
-<!--                        <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>-->
-                        <f:converter converterId="dateConverter"/>
-                        <f:facet name="prepend">
-                            <b:iconAwesome name="birthday-cake"/>
-                        </f:facet>
-                    </b:inputText>
+                            <div class="form-group col-md-6 col-sm-6">
+                                <b:inputText value="#{loginController.cliente.email}" placeholder="Email"
+                                             required="true"
+                                             mask="email">
+                                    <f:facet name="prepend">
+                                        <b:iconAwesome name="envelope"/>
+                                    </f:facet>
+                                </b:inputText>
+                            </div>
 
-                    <b:inputText value="#{loginController.cliente.email}" placeholder="Email" required="true"
-                                 mask="email">
-                        <f:facet name="prepend">
-                            <b:iconAwesome name="envelope"/>
-                        </f:facet>
-                    </b:inputText>
+                            <div class="form-group col-md-6 col-sm-6">
+                                <b:inputText value="#{loginController.cliente.telefone}" placeholder="Telefone"
+                                             required="true"
+                                             mask="(99) 9999-9999">
+                                    <f:facet name="prepend">
+                                        <b:iconAwesome name="phone"/>
+                                    </f:facet>
+                                </b:inputText>
+                            </div>
 
-                    <b:inputSecret value="#{loginController.cliente.senha}" placeholder="Senha" required="true"
-                                   mask="{regex:'[a-zA-Z0-9]*'}">>
-                        <f:facet name="prepend">
-                            <b:iconAwesome name="key"/>
-                        </f:facet>
-                    </b:inputSecret>
+                            <div class="form-group col-md-6 col-sm-6">
+                                <b:inputText value="#{loginController.cliente.dataNascimento}"
+                                             mask="dd/mm/yyyy" placeholder="Data de Nascimento" required="true">
+                                    <!--                        <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>-->
+                                    <f:converter converterId="dateConverter"/>
+                                    <f:facet name="prepend">
+                                        <b:iconAwesome name="birthday-cake"/>
+                                    </f:facet>
+                                </b:inputText>
+                            </div>
 
-                    <h:outputLabel value="Complete seu endereço"/>
-                    <br/>
+                            <div class="form-group col-md-6 col-sm-6">
+                                <b:inputSecret value="#{loginController.cliente.senha}" placeholder="Senha"
+                                               required="true"
+                                               mask="{regex:'[a-zA-Z0-9]*'}">
+                                    <f:facet name="prepend">
+                                        <b:iconAwesome name="key"/>
+                                    </f:facet>
+                                </b:inputSecret>
+                            </div>
 
-                    <b:inputText value="#{loginController.cliente.endereco.rua}" placeholder="Rua" required="true"
-                                 mask="{regex:'[a-zA-Z ]*'}">
-                        <f:facet name="prepend">
-                            <b:iconAwesome name="map-marker-alt"/>
-                        </f:facet>
-                    </b:inputText>
+                            <div class="form-group col-md-6 col-sm-6">
+                                <b:inputText value="#{loginController.cliente.cpf}" placeholder="Cpf"
+                                             required="true"
+                                             mask="999.999.999-99">
+                                    <f:facet name="prepend">
+                                        <b:iconAwesome name="id-card"/>
+                                    </f:facet>
+                                </b:inputText>
+                            </div>
 
-                    <b:inputText value="#{loginController.cliente.endereco.bairro}" placeholder="Bairro" required="true"
-                                 mask="{regex:'[a-zA-Z ]*'}">
-                        <f:facet name="prepend">
-                            <b:iconAwesome name="map-marker-alt"/>
-                        </f:facet>
-                    </b:inputText>
+                            <div class="form-group col-md-12 col-sm-12">
+                                <b:inputText value="#{loginController.cliente.endereco.rua}" placeholder="Rua"
+                                             required="true"
+                                             mask="{regex:'[a-zA-Z ]*'}">
+                                    <f:facet name="prepend">
+                                        <b:iconAwesome name="map-marker-alt"/>
+                                    </f:facet>
+                                </b:inputText>
+                            </div>
 
-                    <b:inputText value="#{loginController.cliente.endereco.cep}" placeholder="Cep" required="true"
-                                 mask="99999-999">
-                        <f:facet name="prepend">
-                            <b:iconAwesome name="map-marker-alt"/>
-                        </f:facet>
-                    </b:inputText>
+                            <div class="form-group col-md-6 col-sm-6">
+                                <b:selectOneMenu value="#{loginController.cliente.endereco.cidade.estado}"
+                                                 ajax="true"
+                                                 process="@this" update="@next @next:@next">
+                                    <f:selectItem value="#{null}" itemLabel="Selecione um estado"/>
+                                    <f:selectItems value="#{loginController.listarTodosOsEstados()}" var="estado"
+                                                   itemValue="#{estado}" itemLabel="#{estado.nome}"/>
+                                    <f:ajax event="change" execute="@this" render="cidadesSelect"/>
+                                </b:selectOneMenu>
+                            </div>
 
-                    <b:inputText value="#{loginController.cliente.endereco.complemento}" placeholder="Complemento"
-                                 required="true"
-                                 mask="{regex:'[a-zA-Z ]*'}">
-                        <f:facet name="prepend">
-                            <b:iconAwesome name="map-marker-alt"/>
-                        </f:facet>
-                    </b:inputText>
+                            <div class="form-group col-md-6 col-sm-6">
+                                <b:selectOneMenu id="cidadesSelect"
+                                                 value="#{loginController.cliente.endereco.cidade}" ajax="true"
+                                                 process="@this" update="@next @next:@next">
+                                    <f:selectItem value="#{null}" itemLabel="Selecione uma cidade"/>
+                                    <f:selectItems
+                                            value="#{loginController.listarTodosAsCidadesPorEstado(loginController.cliente.endereco.cidade.estado)}"
+                                            var="cidade"
+                                            itemValue="#{cidade}" itemLabel="#{cidade.nome}"/>
+                                </b:selectOneMenu>
+                            </div>
 
-                    <b:inputText value="#{loginController.cliente.endereco.numero}" placeholder="Numero" required="true"
-                                 mask="{regex:'[0-9]*'}">
-                        <f:facet name="prepend">
-                            <b:iconAwesome name="map-marker-alt"/>
-                        </f:facet>
-                    </b:inputText>
+                            <div class="form-group col-md-6 col-sm-6">
+                                <span class="help-block">Onde vamos entregar seu produto?</span>
+                            </div>
 
-                    <h:outputLabel value="Sua localização"/>
-                    <br/>
+                        </div>
+                        <div class="col-md-12 col-sm-12" id="deceased">
+                            <div class="form-group col-md-3 col-sm-3">
+                                <b:inputText value="#{loginController.cliente.endereco.rua}" placeholder="Rua"
+                                             required="true"
+                                             mask="{regex:'[a-zA-Z ]*'}">
+                                    <f:facet name="prepend">
+                                        <b:iconAwesome name="map-marker-alt"/>
+                                    </f:facet>
+                                </b:inputText>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-3">
+                                <b:inputText value="#{loginController.cliente.endereco.bairro}" placeholder="Bairro"
+                                             required="true"
+                                             mask="{regex:'[a-zA-Z ]*'}">
+                                    <f:facet name="prepend">
+                                        <b:iconAwesome name="map-marker-alt"/>
+                                    </f:facet>
+                                </b:inputText>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-3">
+                                <b:inputText value="#{loginController.cliente.endereco.cep}" placeholder="Cep"
+                                             required="true"
+                                             mask="99999-999">
+                                    <f:facet name="prepend">
+                                        <b:iconAwesome name="map-marker-alt"/>
+                                    </f:facet>
+                                </b:inputText>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-3">
+                                <b:inputText value="#{loginController.cliente.endereco.complemento}"
+                                             placeholder="Complemento"
+                                             required="true"
+                                             mask="{regex:'[a-zA-Z ]*'}">
+                                    <f:facet name="prepend">
+                                        <b:iconAwesome name="map-marker-alt"/>
+                                    </f:facet>
+                                </b:inputText>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-3">
+                                <b:inputText value="#{loginController.cliente.endereco.numero}" placeholder="Numero"
+                                             required="true"
+                                             mask="{regex:'[0-9]*'}">
+                                    <f:facet name="prepend">
+                                        <b:iconAwesome name="map-marker-alt"/>
+                                    </f:facet>
+                                </b:inputText>
+                            </div>
+                        </div>
 
-                    <b:selectOneMenu value="#{loginController.cliente.endereco.cidade.estado}" ajax="true"
-                                     process="@this" update="@next @next:@next">
-                        <f:selectItem value="#{null}" itemLabel="Selecione um estado"/>
-                        <f:selectItems value="#{loginController.listarTodosOsEstados()}" var="estado"
-                                       itemValue="#{estado}" itemLabel="#{estado.nome}"/>
-                        <f:ajax event="change" execute="@this" render="cidadesSelect"/>
-                    </b:selectOneMenu>
+                        <div class="col-md-12 col-sm-12" style="text-align: center;">
+                            <div class="form-group col-md-3 col-sm-3 pull-right">
+                                <h:commandLink action="#{loginController.cadastrarNovoCliente()}"
+                                               styleClass="btn btn-primary"
+                                               type="submit">Cadastrar</h:commandLink>
+                                <p class="message">Já possui um cadastro? <a href="#">Logar-se</a></p>
+                            </div>
+                        </div>
 
-                    <b:selectOneMenu id="cidadesSelect" value="#{loginController.cliente.endereco.cidade}" ajax="true"
-                                     process="@this" update="@next @next:@next">
-                        <f:selectItems
-                                value="#{loginController.listarTodosAsCidadesPorEstado(loginController.cliente.endereco.cidade.estado)}"
-                                var="cidade"
-                                itemValue="#{cidade}" itemLabel="#{cidade.nome}"/>
-                    </b:selectOneMenu>
+                    </h:form>
 
-                    <br/>
+                    <h:form class="login-form">
 
-                    <div class="input-field">
-                        <h:commandLink action="#{loginController.cadastrarNovoCliente()}" styleClass="button"
-                                       type="submit">Cadastrar</h:commandLink>
-                        <p class="message">Já possui um cadastro? <a href="#">Logar-se</a></p>
-                    </div>
+                        <div class="col-md-12 col-sm-12" style="text-align: center; padding: 20px; color: white;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">SAPITCHO</h3>
+                            </div>
+                        </div>
 
-                </h:form>
+                        <b:inputText value="#{loginController.cliente.email}" placeholder="Email" required="true"
+                                     mask="email">
+                            <f:facet name="prepend">
+                                <b:iconAwesome name="envelope"/>
+                            </f:facet>
+                        </b:inputText>
 
-                <h:form class="login-form">
+                        <br/>
 
-                    <b:inputText value="#{loginController.cliente.email}" placeholder="Email" required="true"
-                                 mask="email">
-                        <f:facet name="prepend">
-                            <b:iconAwesome name="envelope"/>
-                        </f:facet>
-                    </b:inputText>
-
-                    <br/>
-
-                    <b:inputSecret value="#{loginController.cliente.senha}" placeholder="Senha">
-                        <f:facet name="prepend">
-                            <b:iconAwesome name="key"/>
-                        </f:facet>
-                    </b:inputSecret>
-
-                    <br/>
-                    <br/>
-
-                    <div style="text-align: center;">
-                        <h:commandLink styleClass="button" value="Entrar"
-                                       action="#{loginController.logarCliente()}"/>
+                        <b:inputSecret value="#{loginController.cliente.senha}" placeholder="Senha">
+                            <f:facet name="prepend">
+                                <b:iconAwesome name="key"/>
+                            </f:facet>
+                        </b:inputSecret>
 
                         <br/>
                         <br/>
-                        <p class="message">Não possui um cadastro? <a href="#">Criar uma conta</a></p>
-                    </div>
 
-                </h:form>
+                        <div style="text-align: center;">
+                            <h:commandLink styleClass="btn btn-primary" value="Entrar"
+                                           action="#{loginController.logarCliente()}"/>
 
-                <br/>
-                <br/>
+                            <br/>
+                            <br/>
+                            <p class="message">Não possui um cadastro? <a href="#">Criar uma conta</a></p>
+                        </div>
 
-                <h:form>
-                    <h:commandLink styleClass="btn btn-warning" value="Voltar ao inicio"
-                                   action="#{loginController.irParaIndex()}"/>
-                </h:form>
+                    </h:form>
+
+                    <br/>
+                    <br/>
+
+                    <h:form>
+                        <h:commandLink styleClass="btn btn-warning" value="Voltar ao inicio"
+                                       action="#{loginController.irParaIndex()}"/>
+                    </h:form>
+
+                </div>
+
             </div>
 
         </div>
@@ -209,6 +272,7 @@
         <!-- SCRIPT -->
 
     </div>
+
 
 </h:body>
 <!-- Finaliza body -->
