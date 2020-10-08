@@ -212,47 +212,57 @@
 
                     <h:form class="login-form">
 
-                        <div class="col-md-12 col-sm-12" style="text-align: center; padding: 20px; color: white;">
+                        <div class="col-md-6 col-sm-6" style="text-align: center; padding: 20px; color: white;">
                             <div class="panel-heading">
                                 <h3 class="panel-title">SAPITCHO</h3>
                             </div>
-                        </div>
 
-                        <b:inputText value="#{loginController.cliente.email}" placeholder="Email" required="true"
-                                     mask="email">
-                            <f:facet name="prepend">
-                                <b:iconAwesome name="envelope"/>
-                            </f:facet>
-                        </b:inputText>
+                            <b:inputText value="#{loginController.cliente.email}" placeholder="Email" required="true"
+                                         mask="email">
+                                <f:facet name="prepend">
+                                    <b:iconAwesome name="envelope"/>
+                                </f:facet>
+                            </b:inputText>
 
-                        <br/>
+                            <br/>
 
-                        <b:inputSecret value="#{loginController.cliente.senha}" placeholder="Senha">
-                            <f:facet name="prepend">
-                                <b:iconAwesome name="key"/>
-                            </f:facet>
-                        </b:inputSecret>
+                            <b:inputSecret value="#{loginController.cliente.senha}" placeholder="Senha">
+                                <f:facet name="prepend">
+                                    <b:iconAwesome name="key"/>
+                                </f:facet>
+                            </b:inputSecret>
 
-                        <br/>
-                        <br/>
+                            <br/>
 
-                        <div style="text-align: center;">
-                            <h:commandLink styleClass="btn btn-primary" value="Entrar"
-                                           action="#{loginController.logarCliente()}"/>
+                            <b:selectOneMenu value="" required="true">
+                                <f:selectItem itemLabel="(Tipo de login)" itemValue=""/>
+                                <f:selectItem itemLabel="Sou usuário" itemValue="1"/>
+                                <f:selectItem itemLabel="Sou vendedor" itemValue="2"/>
+                                <f:selectItem itemLabel="Sou administrador" itemValue="3"/>
+                            </b:selectOneMenu>
 
                             <br/>
                             <br/>
-                            <p class="message">Não possui um cadastro? <a href="#">Criar uma conta</a></p>
+
+                            <div style="text-align: center;">
+                                <h:commandLink styleClass="btn btn-primary" value="Entrar"
+                                               action="#{loginController.logarCliente()}"/>
+
+                                <br/>
+                                <br/>
+                                <p class="message">Não possui um cadastro? <a href="#">Criar uma conta</a></p>
+                            </div>
+
+                            <br/>
+                            <br/>
+
+                            <h:form>
+                                <h:commandLink styleClass="btn btn-warning" value="Voltar ao inicio"
+                                               action="#{loginController.irParaIndex()}"/>
+                            </h:form>
+
                         </div>
 
-                    </h:form>
-
-                    <br/>
-                    <br/>
-
-                    <h:form>
-                        <h:commandLink styleClass="btn btn-warning" value="Voltar ao inicio"
-                                       action="#{loginController.irParaIndex()}"/>
                     </h:form>
 
                 </div>

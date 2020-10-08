@@ -10,6 +10,8 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Named
@@ -45,7 +47,7 @@ public class LoginController implements Serializable {
         try {
             return new EstadoBO().listarTodos();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            FacesMessages.error("Erro: " + e.getMessage());
             return null;
         }
     }
@@ -54,7 +56,7 @@ public class LoginController implements Serializable {
         try {
             return new CidadeBO().listarCidadePorEstado(estado);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            FacesMessages.error("Erro: " + e.getMessage());
             return null;
         }
     }
@@ -75,7 +77,6 @@ public class LoginController implements Serializable {
         cliente.setAtivo(true);
 
         // Grava o endereco //
-
         try {
             if (new EnderecoBO().criar(cliente.getEndereco())) {
                 FacesMessages.info("Endereco cadastrado com sucesso");
@@ -87,7 +88,6 @@ public class LoginController implements Serializable {
         }
 
         // Grava o cliente //
-
         try {
             if (new ClienteBO().criar(cliente)) {
                 FacesMessages.info("Usuário Cadastrado com sucesso");
