@@ -13,7 +13,7 @@ public class Pedido implements EntityBase {
     private long quantidade;
     
     @ManyToOne
-    private Cliente cliente;
+    private Pessoa pessoa;
     @ManyToOne
     private Endereco endereco;
 
@@ -26,12 +26,12 @@ public class Pedido implements EntityBase {
         this.endereco = endereco;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     public long getId() {

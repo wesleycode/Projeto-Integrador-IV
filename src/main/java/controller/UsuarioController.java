@@ -1,8 +1,7 @@
 package controller;
 
 import model.dao.GenericDao;
-import model.entities.Carrinho;
-import model.entities.Cliente;
+import model.entities.Pessoa;
 
 import javax.faces.bean.RequestScoped;
 import javax.inject.Named;
@@ -14,22 +13,22 @@ import java.sql.Date;
 public class UsuarioController implements Serializable {
 
     public void criarUsuario() {
-        Cliente cliente = new Cliente();
+        Pessoa pessoa = new Pessoa();
         //cliente.setCarrinho(new Carrinho());
-        cliente.setAtivo(true);
-        cliente.setCpf("asd");
-        cliente.setDataNascimento(Date.valueOf("2019-09-01"));
-        cliente.setEmail("kako.araujo.24@gmail.com");
-        cliente.setEndereco(null);
-        cliente.setNome("Wesley");
-        cliente.setSenha("123");
-        cliente.setTelefone("3345-4406");
+        pessoa.setAtivo(true);
+        pessoa.setCpf("asd");
+        pessoa.setDataNascimento(Date.valueOf("2019-09-01"));
+        pessoa.setEmail("kako.araujo.24@gmail.com");
+        pessoa.setEndereco(null);
+        pessoa.setNome("Wesley");
+        pessoa.setSenha("123");
+        pessoa.setTelefone("3345-4406");
 
         System.out.println("Criou cliente");
 
         try {
             System.out.println("Entrou no try");
-            new GenericDao<Cliente>().salvar(cliente);
+            new GenericDao<Pessoa>().salvar(pessoa);
             System.out.println("Passou do try");
         } catch (Exception e) {
             System.out.println("Entrou no catch");

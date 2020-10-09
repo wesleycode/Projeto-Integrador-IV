@@ -52,7 +52,7 @@
                             </div>
 
                             <div class="form-group col-md-6 col-sm-6">
-                                <b:inputText value="#{loginController.cliente.nome}" placeholder="Nome"
+                                <b:inputText value="#{loginController.pessoa.nome}" placeholder="Nome"
                                              required="true"
                                              mask="{regex:'[a-zA-Z ]*'}">
                                     <f:facet name="prepend">
@@ -62,7 +62,7 @@
                             </div>
 
                             <div class="form-group col-md-6 col-sm-6">
-                                <b:inputText value="#{loginController.cliente.email}" placeholder="Email"
+                                <b:inputText value="#{loginController.pessoa.email}" placeholder="Email"
                                              required="true"
                                              mask="email">
                                     <f:facet name="prepend">
@@ -72,7 +72,7 @@
                             </div>
 
                             <div class="form-group col-md-6 col-sm-6">
-                                <b:inputText value="#{loginController.cliente.telefone}" placeholder="Telefone"
+                                <b:inputText value="#{loginController.pessoa.telefone}" placeholder="Telefone"
                                              required="true"
                                              mask="(99) 9999-9999">
                                     <f:facet name="prepend">
@@ -82,7 +82,7 @@
                             </div>
 
                             <div class="form-group col-md-6 col-sm-6">
-                                <b:inputText value="#{loginController.cliente.dataNascimento}"
+                                <b:inputText value="#{loginController.pessoa.dataNascimento}"
                                              mask="dd/mm/yyyy" placeholder="Data de Nascimento" required="true">
                                     <!--                        <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>-->
                                     <f:converter converterId="dateConverter"/>
@@ -93,7 +93,7 @@
                             </div>
 
                             <div class="form-group col-md-6 col-sm-6">
-                                <b:inputSecret value="#{loginController.cliente.senha}" placeholder="Senha"
+                                <b:inputSecret value="#{loginController.pessoa.senha}" placeholder="Senha"
                                                required="true"
                                                mask="{regex:'[a-zA-Z0-9]*'}">
                                     <f:facet name="prepend">
@@ -103,7 +103,7 @@
                             </div>
 
                             <div class="form-group col-md-6 col-sm-6">
-                                <b:inputText value="#{loginController.cliente.cpf}" placeholder="Cpf"
+                                <b:inputText value="#{loginController.pessoa.cpf}" placeholder="Cpf"
                                              required="true"
                                              mask="999.999.999-99">
                                     <f:facet name="prepend">
@@ -113,7 +113,7 @@
                             </div>
 
                             <div class="form-group col-md-12 col-sm-12">
-                                <b:inputText value="#{loginController.cliente.endereco.rua}" placeholder="Rua"
+                                <b:inputText value="#{loginController.pessoa.endereco.rua}" placeholder="Rua"
                                              required="true"
                                              mask="{regex:'[a-zA-Z ]*'}">
                                     <f:facet name="prepend">
@@ -123,7 +123,7 @@
                             </div>
 
                             <div class="form-group col-md-6 col-sm-6">
-                                <b:selectOneMenu value="#{loginController.cliente.endereco.cidade.estado}"
+                                <b:selectOneMenu value="#{loginController.pessoa.endereco.cidade.estado}"
                                                  ajax="true"
                                                  process="@this" update="@next @next:@next">
                                     <f:selectItem value="#{null}" itemLabel="Selecione um estado"/>
@@ -135,11 +135,11 @@
 
                             <div class="form-group col-md-6 col-sm-6">
                                 <b:selectOneMenu id="cidadesSelect"
-                                                 value="#{loginController.cliente.endereco.cidade}" ajax="true"
+                                                 value="#{loginController.pessoa.endereco.cidade}" ajax="true"
                                                  process="@this" update="@next @next:@next">
                                     <f:selectItem value="#{null}" itemLabel="Selecione uma cidade"/>
                                     <f:selectItems
-                                            value="#{loginController.listarTodosAsCidadesPorEstado(loginController.cliente.endereco.cidade.estado)}"
+                                            value="#{loginController.listarTodosAsCidadesPorEstado(loginController.pessoa.endereco.cidade.estado)}"
                                             var="cidade"
                                             itemValue="#{cidade}" itemLabel="#{cidade.nome}"/>
                                 </b:selectOneMenu>
@@ -152,7 +152,7 @@
                         </div>
                         <div class="col-md-12 col-sm-12" id="deceased">
                             <div class="form-group col-md-3 col-sm-3">
-                                <b:inputText value="#{loginController.cliente.endereco.rua}" placeholder="Rua"
+                                <b:inputText value="#{loginController.pessoa.endereco.bairro}" placeholder="Bairro"
                                              required="true"
                                              mask="{regex:'[a-zA-Z ]*'}">
                                     <f:facet name="prepend">
@@ -161,16 +161,7 @@
                                 </b:inputText>
                             </div>
                             <div class="form-group col-md-3 col-sm-3">
-                                <b:inputText value="#{loginController.cliente.endereco.bairro}" placeholder="Bairro"
-                                             required="true"
-                                             mask="{regex:'[a-zA-Z ]*'}">
-                                    <f:facet name="prepend">
-                                        <b:iconAwesome name="map-marker-alt"/>
-                                    </f:facet>
-                                </b:inputText>
-                            </div>
-                            <div class="form-group col-md-3 col-sm-3">
-                                <b:inputText value="#{loginController.cliente.endereco.cep}" placeholder="Cep"
+                                <b:inputText value="#{loginController.pessoa.endereco.cep}" placeholder="Cep"
                                              required="true"
                                              mask="99999-999">
                                     <f:facet name="prepend">
@@ -179,7 +170,7 @@
                                 </b:inputText>
                             </div>
                             <div class="form-group col-md-3 col-sm-3">
-                                <b:inputText value="#{loginController.cliente.endereco.complemento}"
+                                <b:inputText value="#{loginController.pessoa.endereco.complemento}"
                                              placeholder="Complemento"
                                              required="true"
                                              mask="{regex:'[a-zA-Z ]*'}">
@@ -189,7 +180,7 @@
                                 </b:inputText>
                             </div>
                             <div class="form-group col-md-3 col-sm-3">
-                                <b:inputText value="#{loginController.cliente.endereco.numero}" placeholder="Numero"
+                                <b:inputText value="#{loginController.pessoa.endereco.numero}" placeholder="Numero"
                                              required="true"
                                              mask="{regex:'[0-9]*'}">
                                     <f:facet name="prepend">
@@ -197,11 +188,19 @@
                                     </f:facet>
                                 </b:inputText>
                             </div>
+                            <div class="form-group col-md-3 col-sm-3">
+                                <b:selectOneMenu value="#{loginController.tipoPessoaCadastro}" required="true">
+                                    <f:selectItem itemLabel="(Tipo de Cadastro)" itemValue="0"/>
+                                    <f:selectItem itemLabel="Sou usuário" itemValue="1"/>
+                                    <f:selectItem itemLabel="Sou vendedor" itemValue="2"/>
+                                    <f:selectItem itemLabel="Sou administrador" itemValue="3"/>
+                                </b:selectOneMenu>
+                            </div>
                         </div>
 
                         <div class="col-md-12 col-sm-12" style="text-align: center;">
                             <div class="form-group col-md-3 col-sm-3 pull-right">
-                                <h:commandLink action="#{loginController.cadastrarNovoCliente()}"
+                                <h:commandLink action="#{loginController.cadastrar()}"
                                                styleClass="btn btn-primary"
                                                type="submit">Cadastrar</h:commandLink>
                                 <p class="message">Já possui um cadastro? <a href="#">Logar-se</a></p>
@@ -212,12 +211,14 @@
 
                     <h:form class="login-form">
 
-                        <div class="col-md-6 col-sm-6" style="text-align: center; padding: 20px; color: white;">
+                        <div class="col-md-6 col-sm-6"
+                             style="float:none; margin: auto; text-align: center; padding: 20px; color: white;">
                             <div class="panel-heading">
                                 <h3 class="panel-title">SAPITCHO</h3>
                             </div>
 
-                            <b:inputText value="#{loginController.cliente.email}" placeholder="Email" required="true"
+                            <b:inputText value="#{loginController.pessoa.email}" placeholder="Email"
+                                         required="true"
                                          mask="email">
                                 <f:facet name="prepend">
                                     <b:iconAwesome name="envelope"/>
@@ -226,7 +227,7 @@
 
                             <br/>
 
-                            <b:inputSecret value="#{loginController.cliente.senha}" placeholder="Senha">
+                            <b:inputSecret value="#{loginController.pessoa.senha}" placeholder="Senha">
                                 <f:facet name="prepend">
                                     <b:iconAwesome name="key"/>
                                 </f:facet>
@@ -234,8 +235,8 @@
 
                             <br/>
 
-                            <b:selectOneMenu value="" required="true">
-                                <f:selectItem itemLabel="(Tipo de login)" itemValue=""/>
+                            <b:selectOneMenu value="#{loginController.tipoPessoaLogin}" required="true">
+                                <f:selectItem itemLabel="(Tipo de login)" itemValue="0"/>
                                 <f:selectItem itemLabel="Sou usuário" itemValue="1"/>
                                 <f:selectItem itemLabel="Sou vendedor" itemValue="2"/>
                                 <f:selectItem itemLabel="Sou administrador" itemValue="3"/>
@@ -246,7 +247,7 @@
 
                             <div style="text-align: center;">
                                 <h:commandLink styleClass="btn btn-primary" value="Entrar"
-                                               action="#{loginController.logarCliente()}"/>
+                                               action="#{loginController.logar()}"/>
 
                                 <br/>
                                 <br/>

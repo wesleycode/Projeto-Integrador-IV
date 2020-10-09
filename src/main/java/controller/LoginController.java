@@ -1,45 +1,79 @@
 package controller;
 
 import model.bo.*;
-import model.entities.Carrinho;
-import model.entities.Cidade;
-import model.entities.Cliente;
-import model.entities.Estado;
+import model.entities.*;
 import net.bootsfaces.utils.FacesMessages;
+
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Named
 @SessionScoped
 public class LoginController implements Serializable {
 
-    private Cliente cliente;
+    private Pessoa pessoa;
+    private int tipoPessoaLogin;
+    private int tipoPessoaCadastro;
 
-    // Construtor //
+    public int getTipoPessoaLogin() {
+        return tipoPessoaLogin;
+    }
+
+    public void setTipoPessoaLogin(int tipoPessoaLogin) {
+        this.tipoPessoaLogin = tipoPessoaLogin;
+    }
+
+    public int getTipoPessoaCadastro() {
+        return tipoPessoaCadastro;
+    }
+
+    public void setTipoPessoaCadastro(int tipoPessoaCadastro) {
+        this.tipoPessoaCadastro = tipoPessoaCadastro;
+    }
+
     public LoginController() {
-        cliente = new Cliente();
+        pessoa = new Pessoa();
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
-    public String logarCliente() {
-        if (new ClienteBO().logar(cliente).equals("OK")) {
-            FacesMessages.info("Logado com sucesso", "detail message");
-            return "/index.xhtml?faces-redirect=true";
-        } else {
-            FacesMessages.info("Usuário e/ou senha inválidos", "detail message");
-            return "";
+    public String logar() {
+        switch (getTipoPessoaLogin()) {
+            case 0:
+                FacesMessages.info("Selecione um tipo de login!");
+            case 1:
+                return logarCliente();
+            case 2:
+                return logarVendedor();
+            case 3:
+                return logarAdministrador();
+            default:
+                return null;
+        }
+    }
+
+    public void cadastrar() {
+        switch (getTipoPessoaCadastro()) {
+            case 0:
+                FacesMessages.info("Selecione um tipo de Cadastro!");
+            case 1:
+                cadastrarNovoCliente();
+                break;
+            case 2:
+                cadastrarNovoVendedor();
+                break;
+            case 3:
+                cadastrarNovoAdministrador();
+                break;
         }
     }
 
@@ -63,7 +97,7 @@ public class LoginController implements Serializable {
 
     public String deslogar() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        cliente = null;
+        pessoa = null;
         return irParaIndex();
     }
 
@@ -71,14 +105,10 @@ public class LoginController implements Serializable {
         return "/index.xhtml?faces-redirect=true";
     }
 
-    public void cadastrarNovoCliente() {
-
-        // Sempre ao CADASTRAR um novo cliente o status dele é ativo por padrão //
-        cliente.setAtivo(true);
-
+    private void cadastrarUsuario() {
         // Grava o endereco //
         try {
-            if (new EnderecoBO().criar(cliente.getEndereco())) {
+            if (new EnderecoBO().criar(pessoa.getEndereco())) {
                 FacesMessages.info("Endereco cadastrado com sucesso");
             } else {
                 FacesMessages.error("Erro ao cadastrar endereço do usuario");
@@ -86,10 +116,9 @@ public class LoginController implements Serializable {
         } catch (Exception e) {
             FacesMessages.error("Erro: " + e.getMessage());
         }
-
         // Grava o cliente //
         try {
-            if (new ClienteBO().criar(cliente)) {
+            if (new PessoaBO().criar(pessoa)) {
                 FacesMessages.info("Usuário Cadastrado com sucesso");
             } else {
                 FacesMessages.error("Erro ao cadastrar usuário");
@@ -97,7 +126,61 @@ public class LoginController implements Serializable {
         } catch (Exception e) {
             FacesMessages.error("Erro: " + e.getMessage());
         }
+    }
 
+    private void cadastrarNovoCliente() {
+        // Sempre ao CADASTRAR um novo cliente o status dele é ativo por padrão //
+        pessoa.setAtivo(true);
+        pessoa.setTipoUsuario(1);
+        cadastrarUsuario();
+    }
+
+    private void cadastrarNovoVendedor() {
+        // Sempre ao CADASTRAR um novo vendedor o status dele é ativo por padrão //
+        pessoa.setAtivo(true);
+        pessoa.setTipoUsuario(2);
+        cadastrarUsuario();
+    }
+
+    private void cadastrarNovoAdministrador() {
+        // Sempre ao CADASTRAR um novo vendedor o status dele é ativo por padrão //
+        pessoa.setAtivo(true);
+        pessoa.setTipoUsuario(3);
+        cadastrarUsuario();
+    }
+
+
+    private String logarAdministrador() {
+        pessoa.setTipoUsuario(3);
+        if (new PessoaBO().logarPessoa(pessoa).equals("OK")) {
+            FacesMessages.info("Logado com sucesso");
+            return "/index.xhtml?faces-redirect=true";
+        } else {
+            FacesMessages.info("Usuário e/ou senha inválidos");
+            return "";
+        }
+    }
+
+    private String logarVendedor() {
+        pessoa.setTipoUsuario(2);
+        if (new PessoaBO().logarPessoa(pessoa).equals("OK")) {
+            FacesMessages.info("Logado com sucesso", "detail message");
+            return "/index.xhtml?faces-redirect=true";
+        } else {
+            FacesMessages.info("Usuário e/ou senha inválidos");
+            return "";
+        }
+    }
+
+    private String logarCliente() {
+        pessoa.setTipoUsuario(1);
+        if (new PessoaBO().logarPessoa(pessoa).equals("OK")) {
+            FacesMessages.info("Logado com sucesso", "detail message");
+            return "/index.xhtml?faces-redirect=true";
+        } else {
+            FacesMessages.info("Usuário e/ou senha inválidos");
+            return "";
+        }
     }
 
 }

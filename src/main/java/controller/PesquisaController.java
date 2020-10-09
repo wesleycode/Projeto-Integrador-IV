@@ -1,14 +1,11 @@
 package controller;
 
 import model.bo.ProdutoBO;
-import model.dao.GenericDao;
-import model.entities.Cliente;
 import model.entities.Produto;
 
 import javax.faces.bean.RequestScoped;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.List;
 
 @Named

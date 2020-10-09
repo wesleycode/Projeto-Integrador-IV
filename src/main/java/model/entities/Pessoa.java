@@ -4,9 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "TipoPessoa")
-public abstract class Pessoa implements EntityBase {
+public class Pessoa implements EntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,11 +14,16 @@ public abstract class Pessoa implements EntityBase {
     private String cpf;
     private String email;
     private String senha;
+    private int tipoUsuario;
 
     private Date dataNascimento;
     @ManyToOne
     private Endereco endereco;
     private boolean ativo;
+
+    public int getTipoUsuario() { return tipoUsuario; }
+
+    public void setTipoUsuario(int tipoUsuario) { this.tipoUsuario = tipoUsuario; }
 
     public long getId() {
         return id;

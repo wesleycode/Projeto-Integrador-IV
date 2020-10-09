@@ -47,13 +47,5 @@ public class Estado implements EntityBase {
     public void setUf(String uf) {
         this.uf = uf;
     }
-
-    @Override
-    public String toString() {
-        return "Estado{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", uf='" + uf + '\'' +
-                '}';
-    }
+    
 }

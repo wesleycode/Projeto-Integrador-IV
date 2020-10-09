@@ -15,8 +15,7 @@ public class Avaliacao implements EntityBase {
     @ManyToOne
     private Produto produto;
     @ManyToOne
-    private Cliente cliente;
-
+    private Pessoa pessoa;
 
     @Override
     public long getId() {
@@ -27,20 +26,20 @@ public class Avaliacao implements EntityBase {
         this.id = id;
     }
 
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
     public Produto getProduto() {
         return produto;
     }
 
     public void setProduto(Produto produto) {
         this.produto = produto;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 
     public String getComentario() {

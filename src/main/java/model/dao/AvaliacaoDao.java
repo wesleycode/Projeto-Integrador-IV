@@ -2,7 +2,6 @@ package model.dao;
 
 import connections.ConnectionFactory;
 import model.entities.Avaliacao;
-import model.entities.Cliente;
 
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -25,8 +24,8 @@ public class AvaliacaoDao extends GenericDao<Avaliacao>{
     public boolean isAvaliacaoExisteNoBancoDeDados(Avaliacao avaliacaofeita) throws Exception {
         try {
             return entityManager.createQuery(
-                    "SELECT c FROM Avaliacao c where c.cliente = :cliente and c.produto = :produto", Avaliacao.class)
-                    .setParameter("cliente", avaliacaofeita.getCliente())
+                    "SELECT c FROM Avaliacao c where c.pessoa = :pessoa and c.produto = :produto", Avaliacao.class)
+                    .setParameter("pessoa", avaliacaofeita.getPessoa())
                     .setParameter("produto", avaliacaofeita.getProduto())
                     .getResultList().size() > 0;
         } catch (Exception e) {

@@ -5,7 +5,6 @@ import model.entities.Cidade;
 
 import java.util.List;
 import model.dao.GenericDao;
-import model.entities.Cliente;
 import model.entities.Estado;
 
 public class CidadeBO implements GenericBO<Cidade>{

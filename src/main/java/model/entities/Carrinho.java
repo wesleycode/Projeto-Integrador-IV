@@ -12,16 +12,16 @@ public class Carrinho implements EntityBase {
     private long quantidade;
     
     @ManyToOne
-    private Cliente cliente;
+    private Pessoa cliente;
 
-    public Cliente getCliente() {
+    public Pessoa getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(Pessoa cliente) {
         this.cliente = cliente;
     }
-    
+
     public long getId() {
         return id;
     }

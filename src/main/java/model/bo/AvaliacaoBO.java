@@ -60,8 +60,8 @@ public class AvaliacaoBO implements GenericBO<Avaliacao>{
 
     @Override
     public boolean valida(Avaliacao o) throws Exception {
-        if (o.getCliente().equals(null)){
-            throw new Exception("Avaliação sem Cliente definido!");
+        if (o.getPessoa().equals(null)){
+            throw new Exception("Avaliação sem Pessoa definido!");
         }
         if (o.getProduto().equals(null)){
             throw new Exception("Avaliação sem Produto definido!");
