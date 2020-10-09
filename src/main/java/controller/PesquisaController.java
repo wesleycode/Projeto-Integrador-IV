@@ -1,81 +1,107 @@
 package controller;
 
+import model.bo.CidadeBO;
+import model.bo.EstadoBO;
 import model.bo.ProdutoBO;
+import model.dao.EstadoDao;
+import model.dao.GenericDao;
+import model.entities.Cidade;
+
+import model.entities.Estado;
 import model.entities.Produto;
 
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import java.awt.event.ActionEvent;
 import java.io.Serializable;
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Named
-@RequestScoped
+@ViewScoped
 public class PesquisaController implements Serializable {
 
-    private List<Produto> todosProdutos;
-    private List<Produto> produtosAtuais;
-    private List<Integer> botoesPesquisa;
+    private List<Estado> todosProdutos;
+    private Estado produto;
+
+    private int totaldepag = 5;
+    private int pagatual = 1;
+    private int countpage;
 
     public PesquisaController() {
-        try {
-            todosProdutos = new ProdutoBO().listarTodos();
-            /* esse listar varia de acordo com os filtros escolhidos, EX: apenas Notebooks*/
 
-            for (int x = 0; x < 15; x++) {//Lembrando o 15 é o total de produtos que serão mostrados por pag
-                produtosAtuais.set(x, todosProdutos.get(x));
-            }//inicio start pag 1
-
-            for (int x = 0; x < 9; x++) {//de acordo com o total de numero de botoes que vai ter na pag
-                botoesPesquisa.set(x, x);
-            }
-        } catch (Exception e) {
-            System.out.println("Deu ruim chefia :(");
-        }
-        /*
-         * Ao ir para pagina web de pesquisa ele já efetua o contrutor e já efetua o set dos valores ai
-         *
-         * Cada uma das Div de Produtos no site vai ter seu valores baseados nesses valores de produtoAtuais
-         * */
     }
 
-    public List<Produto> getTodosProdutos() {
+    public List<Estado> getTodosProdutos() throws Exception{
+        try {
+            this.todosProdutos = new EstadoDao().listarEstadoEntre(pagatual,totaldepag);
+            return todosProdutos;
+        } catch (Exception e) {
+            System.out.println("Deu ruim get TododsProduto");
+        }
         return todosProdutos;
     }
 
-    public void setTodosProdutos(List<Produto> todosProdutos) {
+    public void setTodosProdutos(List<Estado> todosProdutos) {
         this.todosProdutos = todosProdutos;
     }
 
-    public List<Produto> getProdutosAtuais() {
-        return produtosAtuais;
+    public int getTotaldepag() {
+        return totaldepag;
     }
 
-    public void setProdutosAtuais(List<Produto> produtosAtuais) {
-        this.produtosAtuais = produtosAtuais;
+    public void setTotaldepag(int totaldepag) {
+        this.totaldepag = totaldepag;
     }
 
-    public List<Integer> getBotoesPesquisa() {
-        return botoesPesquisa;
+    public int getPagatual() {
+        return pagatual;
     }
 
-    public void setBotoesPesquisa(List<Integer> botoesPesquisa) {
-        this.botoesPesquisa = botoesPesquisa;
+    public void setPagatual(int pagatual) {
+        this.pagatual = pagatual;
     }
 
-    public void MudarPag(int numeroDaPagAtual) {
-        for (int x = 0; x < 15; x++) {
-            produtosAtuais.set(x, todosProdutos.get(x + (15 * (numeroDaPagAtual - 1))));
-            //atualização dos Produtos por pagina
+
+    public void nextPag() throws Exception {
+        System.out.println("Next");
+        if(pagatual == getCountpage()){
+            pagatual = 1;
+        }else {
+            pagatual++;
         }
-
-        //Mudar Botões
-        int y = -4;
-        for (int x = 0; x < 9; x++) {
-            botoesPesquisa.set(x, numeroDaPagAtual - y);
-            y++;
-            //atualiza os valores dos botoes da pag
+    }
+    public void previusPag() throws Exception {
+        if(pagatual <= 1){
+            pagatual = getCountpage();
+        }else {
+            pagatual--;
         }
-
     }
 
+    public Estado getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Estado produto) {
+        this.produto = produto;
+    }
+
+    public int getCountpage() throws Exception {
+        try {
+            EstadoBO estadoBO = new EstadoBO();
+            countpage = (int) Math.ceil(estadoBO.listarTodos().size()/(double)totaldepag);
+            return countpage;
+
+        } catch (Exception e) {
+            System.out.println("Deu ruim get Countpage :(");
+        }
+        return countpage;
+    }
+
+    public void setCountpage(int countpage) {
+        this.countpage = countpage;
+    }
 }
