@@ -1,12 +1,12 @@
 package model.bo;
 
+import model.dao.ProdutoDao;
 import model.entities.Produto;
 import model.dao.GenericDao;
+
 import java.util.List;
 
-public class ProdutoBO implements GenericBO<Produto>{
-
-    private GenericDao<Produto> genericDAO;
+public class ProdutoBO implements GenericBO<Produto> {
 
     public ProdutoBO() {
 
@@ -14,54 +14,55 @@ public class ProdutoBO implements GenericBO<Produto>{
 
     @Override
     public boolean criar(Produto o) throws Exception {
-        if(valida(o)){
-        genericDAO = new GenericDao<>();
-        return genericDAO.salvar(o);}return false;
+        if (valida(o)) {
+            return new GenericDao<Produto>().salvar(o);
+        }
+        return false;
     }
 
     @Override
     public boolean deletar(Produto o) throws Exception {
-        if(validaId(o.getId())){
-        genericDAO = new GenericDao<>();
-        return genericDAO.deletar(Produto.class, o.getId());}return false;
+        if (validaId(o.getId())) {
+            return new GenericDao<Produto>().deletar(Produto.class, o.getId());
+        }
+        return false;
     }
 
     @Override
     public boolean alterar(Produto o) throws Exception {
-        if (valida(o)){
-        genericDAO = new GenericDao<>();
-        return genericDAO.alterar(o);}return false;
+        if (valida(o)) {
+            return new GenericDao<Produto>().alterar(o);
+        }
+        return false;
     }
 
     @Override
     public List<Produto> listarTodos() throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.listarTodos(Produto.class);
+        return new GenericDao<Produto>().listarTodos(Produto.class);
     }
 
     @Override
     public Produto getById(int id) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.getById(Produto.class,id);
+        return new GenericDao<Produto>().getById(Produto.class, id);
     }
 
     @Override
     public boolean valida(Produto o) throws Exception {
-        if(o.getCategoria().getId()<0){
+        if (o.getCategoria().getId() < 0) {
             throw new Exception("Categoria de Produto nulo");
-        }else if(o.getDescricao().equals("")){
+        } else if (o.getDescricao().equals("")) {
             throw new Exception("Falta de descrição");
         }
         /*else if(o.getFormaPagamento().getId()<0){
             throw new Exception("Forma de Pagamento de produto nulo");
         } //não sei como vamos usar essa classe ainda então vou manter em comentário*/
-        else if(o.getFornecedor().getId()<0){
+        else if (o.getFornecedor().getId() < 0) {
             throw new Exception("Fornecedor de Produto nulo");
-        }else if(o.getMarca().getId()<0){
+        } else if (o.getMarcaProduto().getId() < 0) {
             throw new Exception("Marca de Produto nulo");
-        }else if(o.getNome().equals("")){
+        } else if (o.getNome().equals("")) {
             throw new Exception("Nome do Produto nulo");
-        }else if(o.getPreco()<0){
+        } else if (o.getPreco() < 0) {
             throw new Exception("Preço não Permitido");
         }
         /*else if(o.getTipoentrega().getId()<0){
@@ -72,10 +73,14 @@ public class ProdutoBO implements GenericBO<Produto>{
 
     @Override
     public boolean validaId(long id) throws Exception {
-        if (id < 0){
+        if (id < 0) {
             throw new Exception("Id nulo");
         }
         return true;
+    }
+
+    public List<Produto> listarProdutosEntre(int paginaAtual, int totalDePaginas) throws Exception {
+        return new ProdutoDao().listarProdutosEntre(paginaAtual,totalDePaginas);
     }
 
 }

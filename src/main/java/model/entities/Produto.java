@@ -10,19 +10,18 @@ public class Produto implements EntityBase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nome;
-    private long preco;
+    private float preco;
     private String descricao;
     private boolean emEstoque;
-    @OneToOne
-    private FormaPagamento formaPagamento;
+
     @ManyToOne
     private MarcaProduto marcaProduto;
-    @ManyToOne
-    private TipoEntrega tipoentrega;
     @ManyToOne
     private Fornecedor fornecedor;
     @ManyToOne
     private Categoria categoria;
+    @ManyToOne
+    private FotoProduto fotoProduto;
 
     @Override
     public long getId() {
@@ -41,11 +40,11 @@ public class Produto implements EntityBase {
         this.nome = nome;
     }
 
-    public long getPreco() {
+    public float getPreco() {
         return preco;
     }
 
-    public void setPreco(long preco) {
+    public void setPreco(float preco) {
         this.preco = preco;
     }
 
@@ -65,28 +64,12 @@ public class Produto implements EntityBase {
         this.emEstoque = emEstoque;
     }
 
-    public FormaPagamento getFormaPagamento() {
-        return formaPagamento;
-    }
-
-    public void setFormaPagamento(FormaPagamento formaPagamento) {
-        this.formaPagamento = formaPagamento;
-    }
-
-    public MarcaProduto getMarca() {
+    public MarcaProduto getMarcaProduto() {
         return marcaProduto;
     }
 
-    public void setMarca(MarcaProduto marca) {
-        this.marcaProduto = marca;
-    }
-
-    public TipoEntrega getTipoentrega() {
-        return tipoentrega;
-    }
-
-    public void setTipoentrega(TipoEntrega tipoentrega) {
-        this.tipoentrega = tipoentrega;
+    public void setMarcaProduto(MarcaProduto marcaProduto) {
+        this.marcaProduto = marcaProduto;
     }
 
     public Fornecedor getFornecedor() {
@@ -105,8 +88,19 @@ public class Produto implements EntityBase {
         this.categoria = categoria;
     }
 
-    public Produto() {
+    public FotoProduto getFotoProduto() {
+        return fotoProduto;
+    }
 
+    public void setFotoProduto(FotoProduto fotoProduto) {
+        this.fotoProduto = fotoProduto;
+    }
+
+    public Produto() {
+        marcaProduto = new MarcaProduto();
+        fornecedor = new Fornecedor();
+        categoria = new Categoria();
+        fotoProduto = new FotoProduto();
     }
 
 }

@@ -10,9 +10,6 @@ public class FotoProduto implements EntityBase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String foto;
-    
-    @ManyToOne
-    private Produto produto;
 
     @Override
     public long getId() {
@@ -29,14 +26,6 @@ public class FotoProduto implements EntityBase {
 
     public void setFoto(String foto) {
         this.foto = foto;
-    }
-
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
     }
 
     public FotoProduto() {

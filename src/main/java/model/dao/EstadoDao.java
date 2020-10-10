@@ -24,19 +24,5 @@ public class EstadoDao extends GenericDao<Estado> {
             getEntityManager().close();
         }
     }
-    public List<Estado> listarEstadoEntre(int page, int pagSize) throws Exception {
-        long start = (page-1)*pagSize;
-        try {
-            return getEntityManager().createQuery("SELECT e FROM Estado e where e.id >= :st order by e.nome")
-                    .setMaxResults(pagSize)
-                    .setParameter("st", start)
-                    .getResultList();
-
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        } finally {
-            getEntityManager().close();
-        }
-    }
 
 }

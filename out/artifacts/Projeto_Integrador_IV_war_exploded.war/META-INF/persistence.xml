@@ -8,7 +8,6 @@
     <class>model.entities.Carrinho</class>
     <class>model.entities.Categoria</class>
     <class>model.entities.Cidade</class>
-    <class>model.entities.Cliente</class>
     <class>model.entities.Endereco</class>
     <class>model.entities.Estado</class>
     <class>model.entities.FormaPagamento</class>
