@@ -20,7 +20,7 @@ public class IndexController implements Serializable {
     private List<Produto> todosProdutosList;
     private Produto produto;
 
-    private int totalDePaginas = 8;
+    private int totalDePaginas = 4;
     private int paginaAtual = 1;
     private int contadorDePaginas;
 
@@ -95,5 +95,7 @@ public class IndexController implements Serializable {
             throw new Exception("Erro ao retornar o numero do contador de paginas: " + e.getMessage());
         }
     }
-
+    public String irParaPesquisaProdutos() {
+        return "pesquisaProdutos?faces-redirect=true";
+    }
 }

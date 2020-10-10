@@ -50,6 +50,7 @@
                                     <button class="btn btn-secondary dropdown-toggle" type="button"
                                             data-toggle="dropdown">Produtos
                                         <span class="caret"></span></button>
+
                                     <ul class="dropdown-menu" style="text-align: center;">
                                         <li>
                                             <a href="servicos.html">
@@ -78,9 +79,11 @@
                                 <h:panelGroup styleClass="form-inline my-lg-0">
                                     <h:form>
                                         <input class="form-control mr-sm-2" style="min-width: 600px" type="search"
-                                                     placeholder="Procurar" aria-label="Search"/>
+                                                     placeholder="Procurar" aria-label="Search" value="#{pesquisaController.pesquisa}"/>
                                         <h:commandLink class="btn my-2 my-sm-0 mx-1" type="submit"
-                                                       style="background: #0069d9;">
+                                                       style="background: #0069d9;" action="#{indexController.irParaPesquisaProdutos()}"
+
+                                        >
                                             <i class="fas fa-search" style="color: white;"/>
                                         </h:commandLink>
                                     </h:form>
