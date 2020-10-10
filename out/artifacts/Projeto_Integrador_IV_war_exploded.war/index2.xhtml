@@ -73,7 +73,7 @@
                         <h:commandButton id="botao2" value="Anterior">
                             <f:ajax render="tabela" listener="#{indexController.paginaAnterior}"/>
                         </h:commandButton>
-                        <pre>Page #{indexController.paginaAtual} of #{indexController.contadorDePaginas}</pre>
+                        <h:outputText value="Página #{indexController.paginaAtual} de #{indexController.contadorDePaginas}"/>
                     </div>
 
                 </div>
