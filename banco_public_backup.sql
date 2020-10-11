@@ -5645,6 +5645,18 @@ INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (11, 'One Power
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (12, 'Raptor', 'Raptor.com');
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (13, 'Corsair', 'Corsair.com');
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (14, 'WD', 'wd.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (15, 'Cooler Master', ' Cooler-Master.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (16, 'Gamdias', 'Gamdias.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (17, 'Rise Mode', 'RiseMode.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (18, 'DeepCool', 'DeepCool.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (19, 'DARKFLASH', 'DARKFLASH.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (20, 'Bluecase', 'Bluecase.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (21, 'AOC', 'AOC.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (22, 'PCTOP', 'PCTOP.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (23, 'Lg', 'lg.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (24, 'ACER', 'ACER.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (25, 'Agon', 'Agon.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (26, 'Samsung', 'Samsung.com');
 
 INSERT INTO public.fotoproduto (id, foto) VALUES (1, 'memorias/memoria-hyperx-fury-8gb');
 INSERT INTO public.fotoproduto (id, foto) VALUES (2, 'memorias/memoria-adata-xpg-spectrix-d41-rgb-8gb-3000mhz');
@@ -5677,7 +5689,27 @@ INSERT INTO public.fotoproduto (id, foto) VALUES (28, 'fontes/fonte-raptor-600w-
 INSERT INTO public.fotoproduto (id, foto) VALUES (29, 'fontes/Hardware  Fontes  Linha 600 W');
 INSERT INTO public.fotoproduto (id, foto) VALUES (30, 'fontes/Fonte EVGA 400W');
 INSERT INTO public.fotoproduto (id, foto) VALUES (31, 'fontes/Fonte Corsair 750W 80 Plus Bronze Semi Modular');
-
+INSERT INTO public.fotoproduto (id, foto) VALUES (32, 'coolers/Cooler Master AMD');
+INSERT INTO public.fotoproduto (id, foto) VALUES (33, 'coolers/kit-3-cooler-fan-gamdias-360mm-rgb');
+INSERT INTO public.fotoproduto (id, foto) VALUES (34, 'coolers/fonte-cooler-master-mwe-white-v2-550w-fonte-cooler-master');
+INSERT INTO public.fotoproduto (id, foto) VALUES (35, 'coolers/kit-cooler-fan-rise-mode-rgb-aura');
+INSERT INTO public.fotoproduto (id, foto) VALUES (36, 'coolers/water-cooler-deepcool-gammaxx-l240t-blu');
+INSERT INTO public.fotoproduto (id, foto) VALUES (37, 'coolers/fonte-cooler-master-mwe-white-v2-450w-80-plus-standart');
+INSERT INTO public.fotoproduto (id, foto) VALUES (38, 'coolers/Cooler Processador Cooler Master Hyper');
+INSERT INTO public.fotoproduto (id, foto) VALUES (39, 'coolers/aigo-darkflash-talon-rgb3');
+INSERT INTO public.fotoproduto (id, foto) VALUES (40, 'coolers/cooler-para-processador-bluecase-led-amd-intel');
+INSERT INTO public.fotoproduto (id, foto) VALUES (41, 'coolers/cooler-fan-deepcool-xfan');
+INSERT INTO public.fotoproduto (id, foto) VALUES (42, 'monitores/MONITOR ACER 19.5');
+INSERT INTO public.fotoproduto (id, foto) VALUES (43, 'monitores/Monitor AOC LED');
+INSERT INTO public.fotoproduto (id, foto) VALUES (44, 'monitores/Monitor Gamer AOC 31.5 Pol');
+INSERT INTO public.fotoproduto (id, foto) VALUES (45, 'monitores/Monitor Gamer AOC Hero 24');
+INSERT INTO public.fotoproduto (id, foto) VALUES (46, 'monitores/Monitor Gamer LG');
+INSERT INTO public.fotoproduto (id, foto) VALUES (47, 'monitores/Monitor LED 18,5');
+INSERT INTO public.fotoproduto (id, foto) VALUES (48, 'monitores/Monitor LED 19');
+INSERT INTO public.fotoproduto (id, foto) VALUES (49, 'monitores/Monitor LED 21,5');
+INSERT INTO public.fotoproduto (id, foto) VALUES (50, 'monitores/Monitor Led 24');
+INSERT INTO public.fotoproduto (id, foto) VALUES (51, 'monitores/Monitor LED 29 IPS');
+INSERT INTO public.fotoproduto (id, foto) VALUES (52, 'monitores/Monitor V19B LED');
 
 
 INSERT INTO public.marcaproduto (id, nome) VALUES (1, 'Hyper X');
@@ -5694,6 +5726,18 @@ INSERT INTO public.marcaproduto (id, nome) VALUES (11, 'EVGA');
 INSERT INTO public.marcaproduto (id, nome) VALUES (12, 'One Power');
 INSERT INTO public.marcaproduto (id, nome) VALUES (13, 'Raptor');
 INSERT INTO public.marcaproduto (id, nome) VALUES (14, 'Corsair');
+INSERT INTO public.marcaproduto (id, nome) VALUES (15, 'Cooler Master');
+INSERT INTO public.marcaproduto (id, nome) VALUES (16, 'Gamdias');
+INSERT INTO public.marcaproduto (id, nome) VALUES (17, 'Rise Mode');
+INSERT INTO public.marcaproduto (id, nome) VALUES (18, 'DeepCool');
+INSERT INTO public.marcaproduto (id, nome) VALUES (19, 'DARKFLASH');
+INSERT INTO public.marcaproduto (id, nome) VALUES (20, 'Bluecase');
+INSERT INTO public.marcaproduto (id, nome) VALUES (21, 'AOC');
+INSERT INTO public.marcaproduto (id, nome) VALUES (22, 'PCTOP');
+INSERT INTO public.marcaproduto (id, nome) VALUES (23, 'Lg');
+INSERT INTO public.marcaproduto (id, nome) VALUES (24, 'ACER');
+INSERT INTO public.marcaproduto (id, nome) VALUES (25, 'Agon');
+INSERT INTO public.marcaproduto (id, nome) VALUES (26, 'Samsung');
 
 
 INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (1, 'Campina da Barra', '81250-280', 'Casa', 1170, 'Rua Malva', 2806);
@@ -5712,7 +5756,6 @@ INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id,
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (6, '8GB, 2666Mhz, DDR4, CL19, Preto', true, 'Memoria V2', 282.24, 1, 4, 6, 4);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (7, '4GB, 1333MHz, DDR3, Notebook, CL9', true, 'Memoria', 288.12, 1, 5, 7, 5);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (8, '8GB, 2666Mhz, DDR4, CL16, Branco', true, 'Memoria Gammix D30', 305.76, 1, 2, 8, 2);
-
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (9, 'i3, Cache 6MB, 3.6GHz, 4.2GHz Max Turbo, Coffee Lake, Intel', true, 'processador - intel i3', 539.20, 6, 4, 9, 6);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (10, 'i3, Cache 6MB, 3.6GHz, 4.2GHz Max Turbo, lga1151, Intel', true, 'processador i3', 499.99, 6, 4, 10, 6);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (11, 'i3, Cache 6MB, 3.6GHz, 4.2GHz Max Turbo, lga1151, Intel UHD Graphics 630', true, 'processador intel i3', 520.16, 6, 4, 11, 6);
@@ -5721,14 +5764,12 @@ INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id,
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (14, 'Intel Core i5, Coffee Lake, Cache 9MB, 2.9GHz (4.1GHz Max Turbo), LGA 1151, Sem Vídeo', true, 'processador intel core-i5 cache-9mb 1ghz max turbo', 1142.32, 4, 4, 14, 6);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (15, 'Intel Core i7-9400F Coffee Lake, Cache 9MB, 2.9GHz (4.1GHz Max Turbo), LGA 1151, Sem Vídeo', true, 'processador intel core i7 cache 9mb 2 9ghz 4 1ghz max-turbo', 1084.33, 6, 4, 15, 6);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (16, 'processador-intel-core-i7-10700-290ghz-470ghz-turbo-10', true, 'processador intel core i7 290ghz 470ghz turbo 10', 2390.11, 6, 4, 16, 6);
-
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (17, 'HD WD Blue, 1TB, 3.5, SATA', true, 'HD WD Blue, 1TB', 239.11, 8, 14, 17, 8);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (18, 'A Seagate traz mais de 20 anos de desempenho robusto e confiabilidade aos HDDs Seagate BarraCuda de 3,5 polegadas.', true, 'HD Seagate BarraCuda, 1TB', 349.11, 7, 4, 18, 7);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (19, 'Seagate, 2TB, 7200RM, SATA', true, 'HD SEAGATE 2TB 3.5" 7200RPM SATA III 6GB/S', 530.50, 7, 4, 19, 7);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (20, 'HD Seagate BarraCuda, 1TB, 2.5, SATA', true, 'HD Seagate BarraCuda, 1TB, 2.5, SATA', 530.90, 7, 4, 20, 7);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (21, 'HD Interno, 1TB, SATA3, Digital 3.5', true, 'HD Interno 1TB SATA', 2390.11, 7, 4, 21, 7);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (22, 'HD WD Interno 1TB SATA3 Western Digital 3.5', true, 'HD WD Interno 1TB SATA3 Western Digital 3.5', 2390.11, 8, 4, 22, 8);
-
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (23, 'FONTE, TGT, TOMAHAWK, 500W, PRETO', true, 'FONTE TGT TOMAHAWK 500W PRETO', 159.11, 13, 8, 23, 9);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (24, 'Fonte, 200W, Fortrek', true, 'Fonte 200W Fortrek', 66.52, 13, 9, 24, 10);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (25, 'Fonte, EVGA, 400W, Preto', true, 'Fonte EVGA 400W', 258.85, 13, 10, 25, 11);
@@ -5738,7 +5779,27 @@ INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id,
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (29, 'Fonte, Corsair, 650W, 80 Plus, White ', true, 'Fonte Corsair 650W 80 Plus White ', 499.99, 13, 13, 29, 14);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (30, 'Fonte, EVGA, 400W, Preto', true, 'Fonte EVGA 400W', 258.71, 13, 10, 30, 11);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (31, 'Fonte, Corsair, 750W, 80 Plus Bronze, Semi Modular', true, 'Fonte Corsair 750W 80 Plus Bronze Semi Modular', 799.95, 13, 13, 31, 14);
-
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (32, 'Processador Cooler, Master AMD/Intel Hyper, Preto', true, 'Processador Cooler Master AMD/ Intel Hyper', 165.10, 8, 15, 32, 15);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (33, 'Kit 3 Cooler FAN Gamdias, 360mm, RGB', true, 'Kit 3 Cooler FAN Gamdias', 169.91, 8, 16, 33, 16);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (34, 'Fonte Cooler, Master MWE, White V2 550W, 80 Plus, Standart', true, 'Fonte Cooler Master MWE White', 429.00, 8, 15, 34, 15);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (35, 'Kit, Cooler, FAN Rise Mode, RGB Aura, 3x120mm', true, 'Kit Cooler FAN Rise Mode RGB Aura', 169.99, 8, 17, 35, 17);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (36, 'Water Cooler, DeepCool Gammaxx, L240T Blue, 120mm, LED Azul ', true, 'Water Cooler DeepCool Gammaxx L240T Blue', 379.80, 8, 18, 36, 18);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (37, 'Fonte Cooler, Master MWE, White, V2 450W, 80 Plus Standart ', true, 'Fonte Cooler Master MWE White', 399.20, 8, 15, 37, 15);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (38, 'Cooler Master Hyper, 212 LED, AMD/Intel', true, 'Cooler Processador Cooler Master Hyper', 169.00, 8, 15, 38, 15);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (39, 'COOLER, PROCESSADOR AIGO DARKFLASH TALON, RGB, 120MM, LED, AMD/Intel', true, 'COOLER DARKFLASHl', 169.90, 19, 19, 39, 19);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (40, 'Cooler para Processador Bluecase, LED, AMD/Intel', true, 'Cooler LED AMD/Intel', 64.71, 8, 20, 40, 20);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (41, 'Cooler, FAN Deepcool, XFan 120, 120mm, Preto', true, 'Cooler FAN Deepcool XFan', 29.99, 8, 18, 41, 18);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (42, 'Monitor, AOC, LED 21.5, Widescreen, Full HD, HDMI/VGA, Preto', true, 'Monitor AOC LED 21.5', 644.44, 9, 21, 42, 21);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (43, 'Monitor, Gamer, AOC, Hero 24, 144Hz, IPS 1ms, AMD, FreeSync, 24G2, Preto', true, 'Monitor Gamer AOC Hero', 1670.25, 9, 21, 43, 21);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (44, 'Monitor, LED 19, PCTOP, Wide, VGA/HDMI, Vesa, Preto', true, 'Monitor LED 19" PCTOP Wide VGA/HDMI', 395.50, 9, 22, 44, 22);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (45, 'Monitor, LED 29, IPS ultrawide, 1ms, 75Hz, Pro Gamer, Preto', true, 'Monitor LED 29 IPS', 1580.00, 9, 23, 45, 23);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (46, 'MONITOR, ACER, 19.5, LED, WIDESCREEN, HDMI, PRETO', true, 'MONITOR ACER 19.5 LED', 519.02, 9, 24, 46, 24);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (47, 'Monitor, LED 21,5, Widescreen, Full HD, Preto', true, 'Monitor LED 21,5" Widescreen Full HD', 609.00, 9, 24, 47, 24);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (48, 'Monitor, V19B, LED, HP, 18.5, Preto', true, 'Monitor V19B LED HP', 519.00, 9, 4, 48, 4);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (49, 'Monitor, Gamer, LG, 25UM58G-P.AWZ, 25, LED IPS, Full HD, HDMI, 75Hz, 1ms, Preto', true, 'Monitor Gamer LG LED', 949.05, 9, 23, 49, 23);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (50, 'Monitor, LED, 18,5, widescreen, Aoc, CX 1 UN', true, 'Monitor LED 18,5 Aoc', 445.24, 9, 21, 50, 21);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (51, 'Monitor, Gamer, AOC, 31.5, Pol. Curvo, Full HD 165Hz 1ms Widescreen Agon', true, 'Monitor Gamer AOC Curvo Full HD Agon', 1999.00, 9, 25, 51, 25);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (52, 'Monitor, Led 24, Full Hd, Preto Curvo', true, 'Monitor 24 Full Hd Preto Curvo', 879.00, 9, 26, 51, 26);
 
 
 
