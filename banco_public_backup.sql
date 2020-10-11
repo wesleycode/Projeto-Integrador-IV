@@ -5638,32 +5638,46 @@ INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (4, 'HP', 'hp.c
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (5, 'Kingston', 'kingston.com');
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (6, 'Intel', 'Intel.com');
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (7, 'Seagate', 'Seagate.com');
-INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (8, 'WD', 'WD.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (8, 'TOMAHAWK ', 'TOMAHAWK.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (9, 'Fortrek', 'Fortrek.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (10, 'EVGA', 'EVGA.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (11, 'One Power', 'one-Power.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (12, 'Raptor', 'Raptor.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (13, 'Corsair', 'Corsair.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (14, 'WD', 'wd.com');
 
+INSERT INTO public.fotoproduto (id, foto) VALUES (1, 'memorias/memoria-hyperx-fury-8gb');
+INSERT INTO public.fotoproduto (id, foto) VALUES (2, 'memorias/memoria-adata-xpg-spectrix-d41-rgb-8gb-3000mhz');
+INSERT INTO public.fotoproduto (id, foto) VALUES (3, 'memorias/50747_index_gg');
+INSERT INTO public.fotoproduto (id, foto) VALUES (4, 'memorias/50782_index_gg');
+INSERT INTO public.fotoproduto (id, foto) VALUES (5, 'memorias/84471_index_gg');
+INSERT INTO public.fotoproduto (id, foto) VALUES (6, 'memorias/memoria-hp-v2-8gb-2666mhz-ddr4');
+INSERT INTO public.fotoproduto (id, foto) VALUES (7, 'memorias/memoria-kingston-4gb-1333mhz-ddr3-');
+INSERT INTO public.fotoproduto (id, foto) VALUES (8, 'memorias/memoria-xpg-gammix-d30-8gb');
+INSERT INTO public.fotoproduto (id, foto) VALUES (9, 'processadores/processador - intel i3');
+INSERT INTO public.fotoproduto (id, foto) VALUES (10, 'processadores/processador i3');
+INSERT INTO public.fotoproduto (id, foto) VALUES (11, 'processadores/processador intel i3');
+INSERT INTO public.fotoproduto (id, foto) VALUES (12, 'processadores/processador intel i7');
+INSERT INTO public.fotoproduto (id, foto) VALUES (13, 'processadores/processador-intel-core-i5-9400f-cache-9mb-2-9ghz-4-1ghz-max-turbo');
+INSERT INTO public.fotoproduto (id, foto) VALUES (14, 'processadores/processador-intel-core-i7');
+INSERT INTO public.fotoproduto (id, foto) VALUES (15, 'processadores/processador-intel-core-i7-360ghz-490ghz-max-turbo-9-geracao-8-core-8-thread-');
+INSERT INTO public.fotoproduto (id, foto) VALUES (16, 'processadores/processador-intel-core-i7-10700-290ghz-470ghz-turbo-10');
+INSERT INTO public.fotoproduto (id, foto) VALUES (17, 'hds/HD Interno PC 1TB Western Digital 7200 RPM');
+INSERT INTO public.fotoproduto (id, foto) VALUES (18, 'hds/HD SEAGATE 2TB 3.5 7200RPM SATA III 6GBS');
+INSERT INTO public.fotoproduto (id, foto) VALUES (19, 'hds/HD Seagate BarraCuda, 1TB, 2.5, Notebook, SATA');
+INSERT INTO public.fotoproduto (id, foto) VALUES (20, 'hds/HD Seagate BarraCuda, 1TB, 3.5, SATA');
+INSERT INTO public.fotoproduto (id, foto) VALUES (21, 'hds/HD Seagate Surveillance SkyHawk, 2TB');
+INSERT INTO public.fotoproduto (id, foto) VALUES (22, 'hds/HD WD Blue, 1TB, 3.5, SATA - WD10EZEX');
+INSERT INTO public.fotoproduto (id, foto) VALUES (23, 'fontes/FONTE TGT TOMAHAWK 500W PRETO');
+INSERT INTO public.fotoproduto (id, foto) VALUES (24, 'fontes/Fonte 200W, Fortrek');
+INSERT INTO public.fotoproduto (id, foto) VALUES (25, 'fontes/Hardware  Fontes  Linha 400 W');
+INSERT INTO public.fotoproduto (id, foto) VALUES (26, 'fontes/Fonte One Power 600W');
+INSERT INTO public.fotoproduto (id, foto) VALUES (27, 'fontes/fonte-raptor-500w-80-plus-bronze');
+INSERT INTO public.fotoproduto (id, foto) VALUES (28, 'fontes/fonte-raptor-600w-80-plus');
+INSERT INTO public.fotoproduto (id, foto) VALUES (29, 'fontes/Hardware  Fontes  Linha 600 W');
+INSERT INTO public.fotoproduto (id, foto) VALUES (30, 'fontes/Fonte EVGA 400W');
+INSERT INTO public.fotoproduto (id, foto) VALUES (31, 'fontes/Fonte Corsair 750W 80 Plus Bronze Semi Modular');
 
-
-INSERT INTO public.fotoproduto (id, foto) VALUES (1, 'memoria-hyperx-fury-8gb');
-INSERT INTO public.fotoproduto (id, foto) VALUES (2, 'memoria-adata-xpg-spectrix-d41-rgb-8gb-3000mhz');
-INSERT INTO public.fotoproduto (id, foto) VALUES (3, '50747_index_gg');
-INSERT INTO public.fotoproduto (id, foto) VALUES (4, '50782_index_gg');
-INSERT INTO public.fotoproduto (id, foto) VALUES (5, '84471_index_gg');
-INSERT INTO public.fotoproduto (id, foto) VALUES (6, 'memoria-hp-v2-8gb-2666mhz-ddr4');
-INSERT INTO public.fotoproduto (id, foto) VALUES (7, 'memoria-kingston-4gb-1333mhz-ddr3-');
-INSERT INTO public.fotoproduto (id, foto) VALUES (8, 'memoria-xpg-gammix-d30-8gb');
-INSERT INTO public.fotoproduto (id, foto) VALUES (9, 'processador - intel i3');
-INSERT INTO public.fotoproduto (id, foto) VALUES (10, 'processador i3');
-INSERT INTO public.fotoproduto (id, foto) VALUES (11, 'processador intel i3');
-INSERT INTO public.fotoproduto (id, foto) VALUES (12, 'processador intel i7');
-INSERT INTO public.fotoproduto (id, foto) VALUES (13, 'processador-intel-core-i5-9400f-cache-9mb-2-9ghz-4-1ghz-max-turbo');
-INSERT INTO public.fotoproduto (id, foto) VALUES (14, 'processador-intel-core-i7');
-INSERT INTO public.fotoproduto (id, foto) VALUES (15, 'processador-intel-core-i7-360ghz-490ghz-max-turbo-9-geracao-8-core-8-thread-');
-INSERT INTO public.fotoproduto (id, foto) VALUES (16, 'processador-intel-core-i7-10700-290ghz-470ghz-turbo-10');
-INSERT INTO public.fotoproduto (id, foto) VALUES (17, 'HD Interno PC 1TB Western Digital 7200 RPM');
-INSERT INTO public.fotoproduto (id, foto) VALUES (18, 'HD SEAGATE 2TB 3.5 7200RPM SATA III 6GBS');
-INSERT INTO public.fotoproduto (id, foto) VALUES (19, 'HD Seagate BarraCuda, 1TB, 2.5, Notebook, SATA');
-INSERT INTO public.fotoproduto (id, foto) VALUES (20, 'HD Seagate BarraCuda, 1TB, 3.5, SATA');
-INSERT INTO public.fotoproduto (id, foto) VALUES (21, 'HD Seagate Surveillance SkyHawk, 2TB');
-INSERT INTO public.fotoproduto (id, foto) VALUES (22, 'HD WD Blue, 1TB, 3.5, SATA - WD10EZEX');
 
 
 INSERT INTO public.marcaproduto (id, nome) VALUES (1, 'Hyper X');
@@ -5674,6 +5688,12 @@ INSERT INTO public.marcaproduto (id, nome) VALUES (5, 'Kingston');
 INSERT INTO public.marcaproduto (id, nome) VALUES (6, 'Intel');
 INSERT INTO public.marcaproduto (id, nome) VALUES (7, 'Seagate');
 INSERT INTO public.marcaproduto (id, nome) VALUES (8, 'WD');
+INSERT INTO public.marcaproduto (id, nome) VALUES (9, 'TOMAHAWK');
+INSERT INTO public.marcaproduto (id, nome) VALUES (10, 'Fortrek');
+INSERT INTO public.marcaproduto (id, nome) VALUES (11, 'EVGA');
+INSERT INTO public.marcaproduto (id, nome) VALUES (12, 'One Power');
+INSERT INTO public.marcaproduto (id, nome) VALUES (13, 'Raptor');
+INSERT INTO public.marcaproduto (id, nome) VALUES (14, 'Corsair');
 
 
 INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (1, 'Campina da Barra', '81250-280', 'Casa', 1170, 'Rua Malva', 2806);
@@ -5693,19 +5713,34 @@ INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id,
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (7, '4GB, 1333MHz, DDR3, Notebook, CL9', true, 'Memoria', 288.12, 1, 5, 7, 5);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (8, '8GB, 2666Mhz, DDR4, CL16, Branco', true, 'Memoria Gammix D30', 305.76, 1, 2, 8, 2);
 
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (8, 'i3, Cache 6MB, 3.6GHz, 4.2GHz Max Turbo, Coffee Lake, Intel', true, 'processador - intel i3', 539.20, 6, 4, 9, 6);
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (8, 'i3, Cache 6MB, 3.6GHz, 4.2GHz Max Turbo, lga1151, Intel', true, 'processador i3', 499.99, 6, 4, 10, 6);
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (8, 'i3, Cache 6MB, 3.6GHz, 4.2GHz Max Turbo, lga1151, Intel UHD Graphics 630', true, 'processador intel i3', 520.16, 6, 4, 11, 6);
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (8, 'Intel Core i7, LGA 1151, Coffee Lake Refresh, Cache 12MB, 3.6GHz', true, 'processador intel i7', 2409.20, 6, 4, 12, 6);
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (8, 'Intel Core i7-9700, Coffee Lake, Cache 12MB, 3.0GHz (4.7GHz Max Turbo), LGA 1151', true, 'processador-intel-core-i7', 2009.30, 6, 4, 13, 6);
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (8, 'Intel Core i5, Coffee Lake, Cache 9MB, 2.9GHz (4.1GHz Max Turbo), LGA 1151, Sem Vídeo', true, 'processador intel core-i5 cache-9mb 1ghz max turbo', 1142.32, 4, 4, 14, 6);
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (8, 'Intel Core i7-9400F Coffee Lake, Cache 9MB, 2.9GHz (4.1GHz Max Turbo), LGA 1151, Sem Vídeo', true, 'processador intel core i7 cache 9mb 2 9ghz 4 1ghz max-turbo', 1084.33, 6, 4, 15, 6);
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (8, 'processador-intel-core-i7-10700-290ghz-470ghz-turbo-10', true, 'processador intel core i7 290ghz 470ghz turbo 10', 2390.11, 6, 4, 16, 6);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (9, 'i3, Cache 6MB, 3.6GHz, 4.2GHz Max Turbo, Coffee Lake, Intel', true, 'processador - intel i3', 539.20, 6, 4, 9, 6);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (10, 'i3, Cache 6MB, 3.6GHz, 4.2GHz Max Turbo, lga1151, Intel', true, 'processador i3', 499.99, 6, 4, 10, 6);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (11, 'i3, Cache 6MB, 3.6GHz, 4.2GHz Max Turbo, lga1151, Intel UHD Graphics 630', true, 'processador intel i3', 520.16, 6, 4, 11, 6);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (12, 'Intel Core i7, LGA 1151, Coffee Lake Refresh, Cache 12MB, 3.6GHz', true, 'processador intel i7', 2409.20, 6, 4, 12, 6);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (13, 'Intel Core i7-9700, Coffee Lake, Cache 12MB, 3.0GHz (4.7GHz Max Turbo), LGA 1151', true, 'processador-intel-core-i7', 2009.30, 6, 4, 13, 6);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (14, 'Intel Core i5, Coffee Lake, Cache 9MB, 2.9GHz (4.1GHz Max Turbo), LGA 1151, Sem Vídeo', true, 'processador intel core-i5 cache-9mb 1ghz max turbo', 1142.32, 4, 4, 14, 6);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (15, 'Intel Core i7-9400F Coffee Lake, Cache 9MB, 2.9GHz (4.1GHz Max Turbo), LGA 1151, Sem Vídeo', true, 'processador intel core i7 cache 9mb 2 9ghz 4 1ghz max-turbo', 1084.33, 6, 4, 15, 6);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (16, 'processador-intel-core-i7-10700-290ghz-470ghz-turbo-10', true, 'processador intel core i7 290ghz 470ghz turbo 10', 2390.11, 6, 4, 16, 6);
 
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (8, 'HD WD Blue, 1TB, 3.5, SATA', true, 'HD WD Blue, 1TB', 239.11, 8, 4, 17, 8);
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (8, 'A Seagate traz mais de 20 anos de desempenho robusto e confiabilidade aos HDDs Seagate BarraCuda de 3,5 polegadas.', true, 'HD Seagate BarraCuda, 1TB', 349.11, 7, 4, 18, 7);
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (8, 'Seagate, 2TB, 7200RM, SATA', true, 'HD SEAGATE 2TB 3.5" 7200RPM SATA III 6GB/S', 530.50, 7, 4, 19, 7);
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (8, 'HD Seagate BarraCuda, 1TB, 2.5, SATA', true, 'HD Seagate BarraCuda, 1TB, 2.5, SATA', 530.90, 7, 4, 20, 7);
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (8, 'HD Interno, 1TB, SATA3, Digital 3.5', true, 'HD Interno 1TB SATA', 2390.11, 7, 4, 21, 7);
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (8, 'HD WD Interno 1TB SATA3 Western Digital 3.5', true, 'HD WD Interno 1TB SATA3 Western Digital 3.5', 2390.11, 8, 4, 22, 8);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (17, 'HD WD Blue, 1TB, 3.5, SATA', true, 'HD WD Blue, 1TB', 239.11, 8, 14, 17, 8);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (18, 'A Seagate traz mais de 20 anos de desempenho robusto e confiabilidade aos HDDs Seagate BarraCuda de 3,5 polegadas.', true, 'HD Seagate BarraCuda, 1TB', 349.11, 7, 4, 18, 7);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (19, 'Seagate, 2TB, 7200RM, SATA', true, 'HD SEAGATE 2TB 3.5" 7200RPM SATA III 6GB/S', 530.50, 7, 4, 19, 7);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (20, 'HD Seagate BarraCuda, 1TB, 2.5, SATA', true, 'HD Seagate BarraCuda, 1TB, 2.5, SATA', 530.90, 7, 4, 20, 7);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (21, 'HD Interno, 1TB, SATA3, Digital 3.5', true, 'HD Interno 1TB SATA', 2390.11, 7, 4, 21, 7);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (22, 'HD WD Interno 1TB SATA3 Western Digital 3.5', true, 'HD WD Interno 1TB SATA3 Western Digital 3.5', 2390.11, 8, 4, 22, 8);
+
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (23, 'FONTE, TGT, TOMAHAWK, 500W, PRETO', true, 'FONTE TGT TOMAHAWK 500W PRETO', 159.11, 13, 8, 23, 9);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (24, 'Fonte, 200W, Fortrek', true, 'Fonte 200W Fortrek', 66.52, 13, 9, 24, 10);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (25, 'Fonte, EVGA, 400W, Preto', true, 'Fonte EVGA 400W', 258.85, 13, 10, 25, 11);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (26, 'Fonte, One Power, 600W, Preto', true, 'Fonte One Power 600W', 229.20, 13, 11, 26, 12);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (27, 'Fonte, Raptor, 500W, 80 Plus Bronze, Preto', true, 'Fonte Raptor, 500W, 80 Plus Bronze', 269.00, 13, 12, 27, 13);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (28, 'Fonte, Raptor, 600W, 80 Plus Bronze, Preto', true, 'Fonte Raptor, 600W, 80 Plus Bronze', 299.99, 13, 12, 28, 13);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (29, 'Fonte, Corsair, 650W, 80 Plus, White ', true, 'Fonte Corsair 650W 80 Plus White ', 499.99, 13, 13, 29, 14);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (30, 'Fonte, EVGA, 400W, Preto', true, 'Fonte EVGA 400W', 258.71, 13, 10, 30, 11);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (31, 'Fonte, Corsair, 750W, 80 Plus Bronze, Semi Modular', true, 'Fonte Corsair 750W 80 Plus Bronze Semi Modular', 799.95, 13, 13, 31, 14);
+
+
+
+
+
 
