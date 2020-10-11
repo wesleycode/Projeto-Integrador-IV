@@ -80,6 +80,9 @@
                             <h:outputText value="Página #{indexController.paginaAtual} de #{indexController.contadorDePaginas}"/>
                         </div>
                     </h:panelGrid>
+                    <h:selectOneMenu value="#{pesquisaController.categoriaselecionada}" >
+                        <f:selectItems Value="#{pesquisaController.categoriasList.categoria}"/>
+                    </h:selectOneMenu>
 
                 </div>
 

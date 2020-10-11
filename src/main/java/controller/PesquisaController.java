@@ -2,10 +2,7 @@ package controller;
 
 
 import model.bo.*;
-import model.entities.Categoria;
-import model.entities.Cidade;
-import model.entities.Estado;
-import model.entities.Pessoa;
+import model.entities.*;
 import net.bootsfaces.utils.FacesMessages;
 
 import javax.enterprise.context.SessionScoped;
@@ -19,6 +16,7 @@ import java.util.List;
 public class PesquisaController implements Serializable {
     private String pesquisa;
     private Categoria categoriaselecionada;
+    private Produto produtoselecionado;
     private List<Categoria>categoriasList;
     private List<String>filtros;
 
