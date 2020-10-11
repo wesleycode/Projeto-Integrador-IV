@@ -5657,6 +5657,14 @@ INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (23, 'Lg', 'lg.
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (24, 'ACER', 'ACER.com');
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (25, 'Agon', 'Agon.com');
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (26, 'Samsung', 'Samsung.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (27, 'asus', 'asus.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (28, 'Creative', 'Creative.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (29, 'GV', 'GV.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (30, 'Gigabyte', 'Gigabyte.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (31, 'Galax', 'Galax.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (32, 'MSI', 'MSI.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (32, 'PowerColor', 'PowerColor.com');
+
 
 INSERT INTO public.fotoproduto (id, foto) VALUES (1, 'memorias/memoria-hyperx-fury-8gb');
 INSERT INTO public.fotoproduto (id, foto) VALUES (2, 'memorias/memoria-adata-xpg-spectrix-d41-rgb-8gb-3000mhz');
@@ -5710,6 +5718,29 @@ INSERT INTO public.fotoproduto (id, foto) VALUES (49, 'monitores/Monitor LED 21,
 INSERT INTO public.fotoproduto (id, foto) VALUES (50, 'monitores/Monitor Led 24');
 INSERT INTO public.fotoproduto (id, foto) VALUES (51, 'monitores/Monitor LED 29 IPS');
 INSERT INTO public.fotoproduto (id, foto) VALUES (52, 'monitores/Monitor V19B LED');
+INSERT INTO public.fotoproduto (id, foto) VALUES (53, 'placa de som/Placa de Som HyperX Amp USB Virtual');
+INSERT INTO public.fotoproduto (id, foto) VALUES (54, 'placa de som/placa-de-som-asus-strix-soar-pcie-canal');
+INSERT INTO public.fotoproduto (id, foto) VALUES (55, 'placa de som/Placa de Som GV');
+INSERT INTO public.fotoproduto (id, foto) VALUES (56, 'placa de som/Placa de Som Creative');
+INSERT INTO public.fotoproduto (id, foto) VALUES (57, 'placa de som/placa-de-som-creative-sound-blaster');
+INSERT INTO public.fotoproduto (id, foto) VALUES (58, 'placa de som/placa-de-som-asus-xonar-ae-pci-express');
+INSERT INTO public.fotoproduto (id, foto) VALUES (59, 'placa de som/Placa de Som Creative SO sound');
+INSERT INTO public.fotoproduto (id, foto) VALUES (60, 'placa de som/placa-de-som-creative-audigy');
+INSERT INTO public.fotoproduto (id, foto) VALUES (61, 'placa de video/placa-de-video-evga-nvidia-6_gg');
+INSERT INTO public.fotoproduto (id, foto) VALUES (62, 'placa de video/95459_1520954069_index_gg');
+INSERT INTO public.fotoproduto (id, foto) VALUES (63, 'placa de video/placa-de-video-gigabyte-amd-radeon-rx');
+INSERT INTO public.fotoproduto (id, foto) VALUES (64, 'placa de video/placa-de-video-galax-nvidia-geforce-gtx-1650-ex-plus');
+INSERT INTO public.fotoproduto (id, foto) VALUES (65, 'placa de video/94740_1517839009_index_gg');
+INSERT INTO public.fotoproduto (id, foto) VALUES (66, 'placa de video/placa-de-video-powercolor-amd-radeon-rx-550-4gb-ddr5');
+INSERT INTO public.fotoproduto (id, foto) VALUES (67, 'placa de video/placa-de-video-gigabyte-nvidia-geforce-gtx-1650-d6-4g');
+INSERT INTO public.fotoproduto (id, foto) VALUES (68, 'perifericos/95566_1522950995_index_gg');
+INSERT INTO public.fotoproduto (id, foto) VALUES (69, 'perifericos/mouse-gamer-hyperx-pulsefire-raid-rgb');
+INSERT INTO public.fotoproduto (id, foto) VALUES (70, 'perifericos/91743_1502463217_gg');
+INSERT INTO public.fotoproduto (id, foto) VALUES (71, 'perifericos/mousepad-gamer-hyperx-fury-ultra-rgb');
+INSERT INTO public.fotoproduto (id, foto) VALUES (72, 'perifericos/98067_2_1535052372_gg');
+INSERT INTO public.fotoproduto (id, foto) VALUES (73, 'perifericos/97700_3_1533215372_gg');
+INSERT INTO public.fotoproduto (id, foto) VALUES (74, 'perifericos/89334_1522951354_index_gg');
+INSERT INTO public.fotoproduto (id, foto) VALUES (75, 'perifericos/98068_1535054657_gg');
 
 
 INSERT INTO public.marcaproduto (id, nome) VALUES (1, 'Hyper X');
@@ -5738,6 +5769,13 @@ INSERT INTO public.marcaproduto (id, nome) VALUES (23, 'Lg');
 INSERT INTO public.marcaproduto (id, nome) VALUES (24, 'ACER');
 INSERT INTO public.marcaproduto (id, nome) VALUES (25, 'Agon');
 INSERT INTO public.marcaproduto (id, nome) VALUES (26, 'Samsung');
+INSERT INTO public.marcaproduto (id, nome) VALUES (27, 'asus');
+INSERT INTO public.marcaproduto (id, nome) VALUES (28, 'creative');
+INSERT INTO public.marcaproduto (id, nome) VALUES (29, 'GV');
+INSERT INTO public.marcaproduto (id, nome) VALUES (30, 'Gigabyte');
+INSERT INTO public.marcaproduto (id, nome) VALUES (31, 'Galax');
+INSERT INTO public.marcaproduto (id, nome) VALUES (32, 'Msi');
+INSERT INTO public.marcaproduto (id, nome) VALUES (33, 'PowerColor');
 
 
 INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (1, 'Campina da Barra', '81250-280', 'Casa', 1170, 'Rua Malva', 2806);
@@ -5799,9 +5837,28 @@ INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id,
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (49, 'Monitor, Gamer, LG, 25UM58G-P.AWZ, 25, LED IPS, Full HD, HDMI, 75Hz, 1ms, Preto', true, 'Monitor Gamer LG LED', 949.05, 9, 23, 49, 23);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (50, 'Monitor, LED, 18,5, widescreen, Aoc, CX 1 UN', true, 'Monitor LED 18,5 Aoc', 445.24, 9, 21, 50, 21);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (51, 'Monitor, Gamer, AOC, 31.5, Pol. Curvo, Full HD 165Hz 1ms Widescreen Agon', true, 'Monitor Gamer AOC Curvo Full HD Agon', 1999.00, 9, 25, 51, 25);
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (52, 'Monitor, Led 24, Full Hd, Preto Curvo', true, 'Monitor 24 Full Hd Preto Curvo', 879.00, 9, 26, 51, 26);
-
-
-
-
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (52, 'Monitor, Led 24, Full Hd, Preto Curvo', true, 'Monitor 24 Full Hd Preto Curvo', 879.00, 9, 26, 52, 26);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (53, 'Placa de Som, HyperX, Amp, USB Virtual 7.1, Surround Sound', true, 'Placa de Som HyperX', 270.00, 6, 1, 53, 1);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (54, 'Placa de Som, Asus, Strix Soar, PCIe, Canal 7.1', true, 'Placa de Som Asus', 729.90, 6, 27, 54, 27);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (55, 'Placa de Som, GV, Brasil PCI-Express', true, 'Placa de Som GV PCI-Express', 138.00, 6, 29, 55, 29);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (56, 'Placa de Som, Creative, Labs, Sound Blaster, Z PCIe', true, 'Placa de Som Creative Labs', 949.00, 6, 28, 56, 28);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (57, 'Placa de Som, Creative, Sound Blaster Z, PCI-E, 5.1 Canais, Vermelha', true, 'Placa de Som Creative Sound Blaster', 904.90, 6, 28, 57, 28);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (58, 'Placa de Som, Asus, Xonar AE, PCI Express, 7.1 Canais', true, 'Placa de Som Asus Xonar ae', 512.50, 6, 27, 58, 27);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (59, 'Placa de Som, Creative, Labs SO, Sound Blaster Audigy Rx', true, 'Placa de Som Creative Labs SO', 718.12, 6, 28, 59, 28);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (60, 'Placa de Som, Creative, Audigy FX, PCIe, 5.1 Canais', true, 'Placa de Som Creative Audigy FX', 470.60, 6, 28, 60, 28);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (61, 'Placa de Vídeo, EVGA, NVIDIA GeForce GTX 1660, SC Ultra Gaming, 6GB, GDDR5', true, 'Placa de Vídeo EVGA NVIDIA GeForce', 1709.60, 5, 10, 61, 11);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (62, 'Placa de Vídeo, Asus, NVIDIA GeForce GTX 1050, Ti OC Cerberus, 4GB, GDDR5, CERBERUS', true, 'Placa de Vídeo Asus NVIDIA GeForce GTX 1050', 1054.40, 5, 27, 62, 27);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (63, 'Placa de Vídeo, Gigabyte, AMD Radeon, RX 580 Gaming, 8GB, GDDR5, REV 2.0', true, 'Placa de Vídeo Gigabyte AMD Radeon RX 580', 1892.80, 5, 30, 63, 30);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (64, 'Placa de Vídeo, Galax, NVIDIA GeForce, GTX 1650, EX Plus 1-Click OC, 4GB, GDDR6', true, 'Placa de Vídeo Galax NVIDIA GeForce GTX 1650', 1298.00, 5, 31, 64, 31);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (65, 'Placa de Vídeo, MSI, AMD Radeon, RX 570, Armor 8G OC, GDDR5', true, 'Placa de Vídeo MSI AMD Radeon RX 570', 1400.00, 5, 32, 65, 32);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (66, 'Placa de Vídeo, PowerColor, AMD Radeon, RX 550, 4GB, DDR5', true, 'Placa de Vídeo PowerColor AMD Radeon', 670.90, 5, 33, 66, 33);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (67, 'Placa de Vídeo, Gigabyte, NVIDIA, GeForce GTX 1650, D6, 4G, GDDR6 ', true, 'Placa de Vídeo Gigabyte NVIDIA GeForce GTX 1650', 999.90, 5, 30, 67, 30);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (68, 'Mouse Gamer, HyperX, Pulsefire, Surge RGB, 16000 DPI', true, 'Mouse Gamer HyperX Pulsefire Surge RGB', 389.90, 12, 1, 68, 1);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (69, 'Mouse Gamer, HyperX, Pulsefire, Raid RGB, 16000 DPI', true, 'Mouse Gamer HyperX Pulsefire Raid RGB', 398.70, 12, 1, 69, 1);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (70, 'Mousepad Gamer, HyperX, Fury S, Control, Médio 360x300mm ', true, 'Mousepad Gamer HyperX Fury S', 99.90, 12, 1, 70, 1);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (71, 'Mousepad Gamer, HyperX Fury Ultra, RGB, 360x300mm ', true, 'Mousepad Gamer HyperX Fury Ultra', 399.90, 12, 1, 71, 1);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (72, 'Mousepad Gamer, HyperX Fury S Speed, Pequeno, 290x240mm', true, 'Mousepad Gamer HyperX', 69.90, 12, 1, 72, 1);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (73, 'Mouse Gamer, HyperX, Pulsefire, FPS PRO, RGB, 16000dpi', true, 'Mouse Gamer, HyperX Pulsefire', 420.00, 12, 1, 73, 1);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (74, 'Mouse Gamer, HyperX, Pulsefire, FPS, 3200dpi', true, 'Mouse Gamer HyperX Pulsefire FPS', 170.90, 12, 1, 74, 1);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (75, 'Mousepad Gamer, HyperX, Fury S Speed, Médio, 360x300mm', true, 'Mousepad Gamer HyperX Fury S Speed', 99.99, 12, 1, 75, 1);
 
