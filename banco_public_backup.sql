@@ -5663,7 +5663,11 @@ INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (29, 'GV', 'GV.
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (30, 'Gigabyte', 'Gigabyte.com');
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (31, 'Galax', 'Galax.com');
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (32, 'MSI', 'MSI.com');
-INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (32, 'PowerColor', 'PowerColor.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (33, 'PowerColor', 'PowerColor.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (34, 'Aorus', 'Aorus.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (35, 'Norton', 'Norton.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (36, 'Kaspersky', 'Kaspersky.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (37, 'PNY', 'PNY.com');
 
 
 INSERT INTO public.fotoproduto (id, foto) VALUES (1, 'memorias/memoria-hyperx-fury-8gb');
@@ -5741,7 +5745,24 @@ INSERT INTO public.fotoproduto (id, foto) VALUES (72, 'perifericos/98067_2_15350
 INSERT INTO public.fotoproduto (id, foto) VALUES (73, 'perifericos/97700_3_1533215372_gg');
 INSERT INTO public.fotoproduto (id, foto) VALUES (74, 'perifericos/89334_1522951354_index_gg');
 INSERT INTO public.fotoproduto (id, foto) VALUES (75, 'perifericos/98068_1535054657_gg');
-
+INSERT INTO public.fotoproduto (id, foto) VALUES (76, 'placa mae/pl');
+INSERT INTO public.fotoproduto (id, foto) VALUES (77, 'placa mae/placa-mae-gigabyte-b365-m');
+INSERT INTO public.fotoproduto (id, foto) VALUES (78, 'placa mae/placa-mae-gigabyte-ga-h110m-s2h-in');
+INSERT INTO public.fotoproduto (id, foto) VALUES (79, 'placa mae/96739_1526662538_index_gg');
+INSERT INTO public.fotoproduto (id, foto) VALUES (80, 'placa mae/placa-mae-gigabyte-para-intel-lga-1151-mat');
+INSERT INTO public.fotoproduto (id, foto) VALUES (81, 'placa mae/placa-mae-msi-h310m-pro-vdh-plus-p-intel-lga-115');
+INSERT INTO public.fotoproduto (id, foto) VALUES (82, 'placa mae/placa-mae-gigabyte-para-intel-lga-1151-atx');
+INSERT INTO public.fotoproduto (id, foto) VALUES (83, 'placa mae/placa-mae-asus-para-amd-am4-matx-prime');
+INSERT INTO public.fotoproduto (id, foto) VALUES (84, 'softwares/norton-antivirus-security-deluxe-3-0-para-3');
+INSERT INTO public.fotoproduto (id, foto) VALUES (85, 'softwares/100800_1552057375_index_gg');
+INSERT INTO public.fotoproduto (id, foto) VALUES (86, 'softwares/norton-antivirus-360-premium-nd-75gb');
+INSERT INTO public.fotoproduto (id, foto) VALUES (87, 'ssds/85197_index_gg');
+INSERT INTO public.fotoproduto (id, foto) VALUES (88, 'ssds/ssd-gigabyte-240gb-sata-');
+INSERT INTO public.fotoproduto (id, foto) VALUES (89, 'ssds/ssd-pny-cs900-240gb-sata-leitura');
+INSERT INTO public.fotoproduto (id, foto) VALUES (90, 'ssds/ssd-hp-ex900-500gb-m-2');
+INSERT INTO public.fotoproduto (id, foto) VALUES (91, 'ssds/ssd-hp-s700-250gb-sata-leituras-55');
+INSERT INTO public.fotoproduto (id, foto) VALUES (92, 'ssds/ssd-pny-cs900-120gb-sata-leitura-515mb-');
+INSERT INTO public.fotoproduto (id, foto) VALUES (93, 'ssds/ssd-pny-cs900-480gb-sata-2-5-leitu');
 
 INSERT INTO public.marcaproduto (id, nome) VALUES (1, 'Hyper X');
 INSERT INTO public.marcaproduto (id, nome) VALUES (2, 'XPG');
@@ -5776,6 +5797,10 @@ INSERT INTO public.marcaproduto (id, nome) VALUES (30, 'Gigabyte');
 INSERT INTO public.marcaproduto (id, nome) VALUES (31, 'Galax');
 INSERT INTO public.marcaproduto (id, nome) VALUES (32, 'Msi');
 INSERT INTO public.marcaproduto (id, nome) VALUES (33, 'PowerColor');
+INSERT INTO public.marcaproduto (id, nome) VALUES (34, 'Aorus');
+INSERT INTO public.marcaproduto (id, nome) VALUES (35, 'Norton');
+INSERT INTO public.marcaproduto (id, nome) VALUES (36, 'Kaspersky');
+INSERT INTO public.marcaproduto (id, nome) VALUES (37, 'PNY');
 
 
 INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (1, 'Campina da Barra', '81250-280', 'Casa', 1170, 'Rua Malva', 2806);
@@ -5794,13 +5819,13 @@ INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id,
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (6, '8GB, 2666Mhz, DDR4, CL19, Preto', true, 'Memoria V2', 282.24, 1, 4, 6, 4);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (7, '4GB, 1333MHz, DDR3, Notebook, CL9', true, 'Memoria', 288.12, 1, 5, 7, 5);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (8, '8GB, 2666Mhz, DDR4, CL16, Branco', true, 'Memoria Gammix D30', 305.76, 1, 2, 8, 2);
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (9, 'i3, Cache 6MB, 3.6GHz, 4.2GHz Max Turbo, Coffee Lake, Intel', true, 'processador - intel i3', 539.20, 6, 4, 9, 6);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (9, 'i3, Cache 6MB, 3.6GHz, 4.2GHz Max Turbo, Coffee Lake, Intel', true, 'processador intel i3', 539.20, 6, 4, 9, 6);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (10, 'i3, Cache 6MB, 3.6GHz, 4.2GHz Max Turbo, lga1151, Intel', true, 'processador i3', 499.99, 6, 4, 10, 6);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (11, 'i3, Cache 6MB, 3.6GHz, 4.2GHz Max Turbo, lga1151, Intel UHD Graphics 630', true, 'processador intel i3', 520.16, 6, 4, 11, 6);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (12, 'Intel Core i7, LGA 1151, Coffee Lake Refresh, Cache 12MB, 3.6GHz', true, 'processador intel i7', 2409.20, 6, 4, 12, 6);
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (13, 'Intel Core i7-9700, Coffee Lake, Cache 12MB, 3.0GHz (4.7GHz Max Turbo), LGA 1151', true, 'processador-intel-core-i7', 2009.30, 6, 4, 13, 6);
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (14, 'Intel Core i5, Coffee Lake, Cache 9MB, 2.9GHz (4.1GHz Max Turbo), LGA 1151, Sem VÃ­deo', true, 'processador intel core-i5 cache-9mb 1ghz max turbo', 1142.32, 4, 4, 14, 6);
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (15, 'Intel Core i7-9400F Coffee Lake, Cache 9MB, 2.9GHz (4.1GHz Max Turbo), LGA 1151, Sem VÃ­deo', true, 'processador intel core i7 cache 9mb 2 9ghz 4 1ghz max-turbo', 1084.33, 6, 4, 15, 6);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (13, 'Intel Core i7-9700, Coffee Lake, Cache 12MB, 3.0GHz (4.7GHz Max Turbo), LGA 1151', true, 'processador intel core i7', 2009.30, 6, 4, 13, 6);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (14, 'Intel Core i5, Coffee Lake, Cache 9MB, 2.9GHz (4.1GHz Max Turbo), LGA 1151, Sem VÃ­deo', true, 'processador intel core i5 cache 9mb 1ghz max turbo', 1142.32, 4, 4, 14, 6);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (15, 'Intel Core i7-9400F Coffee Lake, Cache 9MB, 2.9GHz (4.1GHz Max Turbo), LGA 1151', true, 'processador intel core i7 cache 9mb 2 9ghz 4 1ghz max turbo', 1084.33, 6, 4, 15, 6);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (16, 'processador-intel-core-i7-10700-290ghz-470ghz-turbo-10', true, 'processador intel core i7 290ghz 470ghz turbo 10', 2390.11, 6, 4, 16, 6);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (17, 'HD WD Blue, 1TB, 3.5, SATA', true, 'HD WD Blue, 1TB', 239.11, 8, 14, 17, 8);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (18, 'A Seagate traz mais de 20 anos de desempenho robusto e confiabilidade aos HDDs Seagate BarraCuda de 3,5 polegadas.', true, 'HD Seagate BarraCuda, 1TB', 349.11, 7, 4, 18, 7);
@@ -5812,8 +5837,8 @@ INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id,
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (24, 'Fonte, 200W, Fortrek', true, 'Fonte 200W Fortrek', 66.52, 13, 9, 24, 10);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (25, 'Fonte, EVGA, 400W, Preto', true, 'Fonte EVGA 400W', 258.85, 13, 10, 25, 11);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (26, 'Fonte, One Power, 600W, Preto', true, 'Fonte One Power 600W', 229.20, 13, 11, 26, 12);
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (27, 'Fonte, Raptor, 500W, 80 Plus Bronze, Preto', true, 'Fonte Raptor, 500W, 80 Plus Bronze', 269.00, 13, 12, 27, 13);
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (28, 'Fonte, Raptor, 600W, 80 Plus Bronze, Preto', true, 'Fonte Raptor, 600W, 80 Plus Bronze', 299.99, 13, 12, 28, 13);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (27, 'Fonte, Raptor, 500W, 80 Plus Bronze, Preto', true, 'Fonte Raptor 500W, 80 Plus Bronze', 269.00, 13, 12, 27, 13);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (28, 'Fonte, Raptor, 600W, 80 Plus Bronze, Preto', true, 'Fonte Raptor 600W, 80 Plus Bronze', 299.99, 13, 12, 28, 13);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (29, 'Fonte, Corsair, 650W, 80 Plus, White ', true, 'Fonte Corsair 650W 80 Plus White ', 499.99, 13, 13, 29, 14);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (30, 'Fonte, EVGA, 400W, Preto', true, 'Fonte EVGA 400W', 258.71, 13, 10, 30, 11);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (31, 'Fonte, Corsair, 750W, 80 Plus Bronze, Semi Modular', true, 'Fonte Corsair 750W 80 Plus Bronze Semi Modular', 799.95, 13, 13, 31, 14);
@@ -5824,7 +5849,7 @@ INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id,
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (36, 'Water Cooler, DeepCool Gammaxx, L240T Blue, 120mm, LED Azul ', true, 'Water Cooler DeepCool Gammaxx L240T Blue', 379.80, 8, 18, 36, 18);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (37, 'Fonte Cooler, Master MWE, White, V2 450W, 80 Plus Standart ', true, 'Fonte Cooler Master MWE White', 399.20, 8, 15, 37, 15);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (38, 'Cooler Master Hyper, 212 LED, AMD/Intel', true, 'Cooler Processador Cooler Master Hyper', 169.00, 8, 15, 38, 15);
-INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (39, 'COOLER, PROCESSADOR AIGO DARKFLASH TALON, RGB, 120MM, LED, AMD/Intel', true, 'COOLER DARKFLASHl', 169.90, 19, 19, 39, 19);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (39, 'COOLER, PROCESSADOR AIGO DARKFLASH TALON, RGB, 120MM, LED, AMD Intel', true, 'COOLER DARKFLASHl', 169.90, 19, 19, 39, 19);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (40, 'Cooler para Processador Bluecase, LED, AMD/Intel', true, 'Cooler LED AMD/Intel', 64.71, 8, 20, 40, 20);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (41, 'Cooler, FAN Deepcool, XFan 120, 120mm, Preto', true, 'Cooler FAN Deepcool XFan', 29.99, 8, 18, 41, 18);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (42, 'Monitor, AOC, LED 21.5, Widescreen, Full HD, HDMI/VGA, Preto', true, 'Monitor AOC LED 21.5', 644.44, 9, 21, 42, 21);
@@ -5861,4 +5886,21 @@ INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id,
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (73, 'Mouse Gamer, HyperX, Pulsefire, FPS PRO, RGB, 16000dpi', true, 'Mouse Gamer, HyperX Pulsefire', 420.00, 12, 1, 73, 1);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (74, 'Mouse Gamer, HyperX, Pulsefire, FPS, 3200dpi', true, 'Mouse Gamer HyperX Pulsefire FPS', 170.90, 12, 1, 74, 1);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (75, 'Mousepad Gamer, HyperX, Fury S Speed, Médio, 360x300mm', true, 'Mousepad Gamer HyperX Fury S Speed', 99.99, 12, 1, 75, 1);
-
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (76, 'Placa-Mãe, Gigabyte, B450M Gaming, AMD AM4, mATX, DDR4', true, 'Placa-Mãe Gigabyte B450M Gaming', 799.99, 7, 30, 76, 30);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (77, 'Placa-Mãe, Gigabyte, Aorus B365, M Aorus Elite, Intel LGA 1151, mATX, DDR4', true, 'Placa-Mãe Gigabyte Aorus B365', 999.99, 34, 30, 77, 34);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (78, 'Placa-Mãe, Gigabyte, GA-H110M-S2H, Intel, LGA1151, Micro ATX, DDR3', true, 'Placa-Mãe Gigabyte GA-H110M-S2H', 399.99, 30, 30, 78, 30);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (79, 'Placa-Mãe, Asus, TUF B360M-Plus Gaming/BR, Intel, LGA 1151, mATX, DDR4', true, 'Placa-Mãe Asus TUF B360M-Plus Gaming', 699.99, 7, 27, 79, 27);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (80, 'Placa-Mãe, Gigabyte, Z390 M Gaming, Intel LGA 1151, mATX, DDR4', true, 'Placa-Mãe Gigabyte Z390 M Gaming', 1299.99, 7, 30, 80, 30);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (81, 'Placa-Mãe, MSI, H310M Pro-VDH Plus p/ Intel, LGA 1151, m-ATX, DDR4', true, 'Placa-Mãe MSI H310M Pro-VDH Plus para Intel', 459.99, 7, 32, 81, 32);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (82, 'Placa-Mãe, Gigabyte Aorus B450, Aorus Elite, AMD ATX, DDR4', true, 'Placa-Mãe Gigabyte Aorus B450 Aorus Elite', 999.99, 7, 34, 82, 34);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (83, 'placa-Mãe, Asus, Prime B450M, Gaming/BR, AMD AM4, mATX, DDR4', true, 'placa-Mãe, Asus, Prime, B450M Gaming/BR, AMD AM4, mATX, DDR4', 699.99, 7, 27, 83, 27);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (84, 'Norton, Antivirus Security Plus, 3 Dispositivos', true, 'Norton Antivirus Security Plus para 3 Dispositivos', 39.99, 11, 35, 84, 35);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (85, 'Kaspersky, Antivírus 2019, 3 PCs', true, 'Kaspersky Antivírus 2019 3 PCs', 49.99, 11, 36, 85, 36);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (86, 'Norton, Antivirus 360 Premium, ND 75GB para 10 Dispositivos', true, 'Norton, Antivirus 360 Premium ND 75GB para 10 Dispositivos ', 159.99, 11, 35, 86, 35);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (87, 'SSD, Kingston, A400, 240GB, SATA, Leitura 500MB/s, Gravação 350MB/s', true, 'SSD Kingston A400 240GB', 359.99, 3, 5, 87, 5);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (88, 'SSD, Gigabyte, 240GB, SATA, Leitura 500MB/s, Gravação 420MB/s', true, 'SSD Gigabyte 240GB', 459.99, 3, 30, 88, 30);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (89, 'SSD, PNY, CS900, 240GB, SATA, Leitura: 535MB/s e Gravações: 500MB/s', true, 'SSD PNY CS900, 240GB', 249.99, 3, 37, 89, 37);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (90, 'SSD, HP, EX900, 500GB, M.2, PCIe NVMe, Leituras: 2100Mb/s e Gravações: 1500Mb/s', true, 'SSD HP EX900, 500GB', 558.99, 3, 4, 90, 4);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (91, 'SSD, HP, S700, 250GB, SATA, Leituras: 555Mb/s e Gravações: 515Mb/s', true, 'SSD HP S700, 250GB', 279.99, 3, 4, 91, 4);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (92, 'SSD, PNY, CS900, 120GB SATA, Leitura 515MB/s, Gravação 490MB/s', true, 'SSD PNY CS900 120GB', 154.99, 3, 37, 92, 37);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (93, 'SSD, PNY, CS900, 480GB, SATA 2.5, Leituras: 550MB/s e Gravações: 500MB/s', true, 'SSD PNY CS900, 480GB', 341.99, 3, 37, 93, 37);
