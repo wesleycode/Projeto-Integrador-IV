@@ -113,13 +113,30 @@ INSERT INTO public.fotoproduto (id, foto) VALUES (90, 'ssds/ssd-hp-ex900-500gb-m
 INSERT INTO public.fotoproduto (id, foto) VALUES (91, 'ssds/ssd-hp-s700-250gb-sata-leituras-55');
 INSERT INTO public.fotoproduto (id, foto) VALUES (92, 'ssds/ssd-pny-cs900-120gb-sata-leitura-515mb-');
 INSERT INTO public.fotoproduto (id, foto) VALUES (93, 'ssds/ssd-pny-cs900-480gb-sata-2-5-leitu');
+INSERT INTO public.fotoproduto (id, foto) VALUES (94, 'notebooks/notebook-acer-aspire-3-intel-core-i5-4gb');
+INSERT INTO public.fotoproduto (id, foto) VALUES (95, 'notebooks/97917_1_1533828149_gg');
+INSERT INTO public.fotoproduto (id, foto) VALUES (96, 'notebooks/100213_1549970111_index_gg');
+INSERT INTO public.fotoproduto (id, foto) VALUES (97, 'notebooks/notebook-lenovo-ultrafino-ideapad-s145-intel-core-i7-8565u-8gb');
+INSERT INTO public.fotoproduto (id, foto) VALUES (98, 'notebooks/notebook-lenovo-b330572982484_gg');
+INSERT INTO public.fotoproduto (id, foto) VALUES (99, 'notebooks/notebook-acer-aspire-3-intel-core-i5-8250u-8gb');
+INSERT INTO public.fotoproduto (id, foto) VALUES (100, 'notebooks/notebook-asus-laptop-intel-core-i5');
+INSERT INTO public.fotoproduto (id, foto) VALUES (101, 'notebooks/notebook-vaio-fe14-intel-core-i5');
+INSERT INTO public.fotoproduto (id, foto) VALUES (102, 'notebooks/notebook-vaio-fe15-intel');
+INSERT INTO public.fotoproduto (id, foto) VALUES (103, 'notebooks/97958_1534164081_gg');
+INSERT INTO public.fotoproduto (id, foto) VALUES (104, 'notebooks/chromebook-acer-intel-celeron-n4000-4gb-32gb');
+INSERT INTO public.fotoproduto (id, foto) VALUES (105, 'notebooks/notebook-asus-laptop-intel-celeron');
+INSERT INTO public.fotoproduto (id, foto) VALUES (106, 'notebooks/notebook-vaio-fe14-intel-core-i7-10510u-8gb');
+INSERT INTO public.fotoproduto (id, foto) VALUES (107, 'notebooks/notebook-lenovo-thinkpad-e14-intel-core-i7');
+INSERT INTO public.fotoproduto (id, foto) VALUES (108, 'notebooks/notebook-lenovo-ideapad-s145-intel-core');
+INSERT INTO public.fotoproduto (id, foto) VALUES (109, 'notebooks/notebook-lenovo-ideapad-s145-intel-core-i5-8265u-8gb-ssd');
+INSERT INTO public.fotoproduto (id, foto) VALUES (110, 'notebooks/notebook-asus-laptop-intel-core-i5-6200u-8gb');
+INSERT INTO public.fotoproduto (id, foto) VALUES (111, 'notebooks/notebook-asus-laptop-intel-core-i3-6100u');
 
 
 INSERT INTO public.tipoentrega (id, tipoentrega) VALUES (1, 'Retirar na loja');
 INSERT INTO public.tipoentrega (id, tipoentrega) VALUES (2, 'Motoboy');
 INSERT INTO public.tipoentrega (id, tipoentrega) VALUES (4, 'Transportadora Sapitcho');
 INSERT INTO public.tipoentrega (id, tipoentrega) VALUES (3, 'Correios');
-
 
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (1, 'Hyper X', 'hyperx.com');
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (2, 'XPG', 'xgp.com');
@@ -133,8 +150,8 @@ INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (9, 'Fortrek', 
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (10, 'EVGA', 'EVGA.com');
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (11, 'One Power', 'one-Power.com');
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (12, 'Raptor', 'Raptor.com');
-INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (13, 'Corsair', 'Corsair.com');
-INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (14, 'WD', 'wd.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (13, 'LENOVO', 'LENOVO.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (14, 'WD', 'WD.com');
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (15, 'Cooler Master', ' Cooler-Master.com');
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (16, 'Gamdias', 'Gamdias.com');
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (17, 'Rise Mode', 'RiseMode.com');
@@ -158,6 +175,8 @@ INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (34, 'Aorus', '
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (35, 'Norton', 'Norton.com');
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (36, 'Kaspersky', 'Kaspersky.com');
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (37, 'PNY', 'PNY.com');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (38, 'VAIO', 'VAIO.com');
+
 
 
 INSERT INTO public.formapagamento (id, formapagamento) VALUES (1, 'Débito Automático');
@@ -201,6 +220,8 @@ INSERT INTO public.marcaproduto (id, nome) VALUES (33, 'AORUS');
 INSERT INTO public.marcaproduto (id, nome) VALUES (34, 'NORTON');
 INSERT INTO public.marcaproduto (id, nome) VALUES (35, 'KASPERSKY');
 INSERT INTO public.marcaproduto (id, nome) VALUES (36, 'PNY');
+INSERT INTO public.marcaproduto (id, nome) VALUES (37, 'LENOVO');
+INSERT INTO public.marcaproduto (id, nome) VALUES (38, 'VAIO');
 
 
 INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (1, true, '000.000.000-00', '1998-05-24', 'kako.araujo.24@gmail.com', 'WESLEY DE ARAUJO EVANGELISTA', '00000000', '(41) 0000-0000', 1, 1);
@@ -300,3 +321,22 @@ INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id,
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (18, 'HD Seagate 3polegadas 1TB', true, 'HD Seagate BarraCuda, 1TB', 349.11, 2, 4, 18, 7);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (13, 'Coffee Lake, Cache 12MB, 3.0GHz (4.7GHz Max Turbo), LGA 1151', true, 'Intel Core i7-9700', 2009.3, 4, 4, 14, 6);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (14, 'Coffee Lake, Cache 9MB, 2.9GHz (4.1GHz Max Turbo), LGA 1151, Sem Video', true, 'Intel Core i5-8400', 1142.32, 4, 4, 13, 6);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (94, 'Notebook, Acer, Aspire 3, Intel Core i5-6300U, 4GB, 1TB, Windows 10', true, 'Notebook Acer Aspire', 3742.32, 10, 24, 94, 24);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (95, 'Notebook, LG Gram, Intel Core i7-8550U, 8GB, SSD 256GB, Windows 10 Home, 15.6, Titânio', true, 'Notebook LG Gram Intel Core i7', 6122.44, 10, 23, 95, 23);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (96, 'Chromebook, Plus Samsung, Touchscreen, Intel Celeron 3965Y, 4GB, 32GB, Chrome OS', true, 'Chromebook Plus Samsung Touchscreen', 2600.90, 10, 26, 96, 25);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (97, 'Notebook, Lenovo Ultrafino Ideapad S145 Intel Core i7-8565U , 8GB, 1TB, NVIDIA GeForce MX110, Windows 10, 15.6, Prata', true, 'Notebook Lenovo Ultrafino', 4710.80, 10, 13, 97, 37);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (98, 'Notebook, Lenovo, Intel Core i3-7020U, 4GB, 500GB, Windows 10 Pro, 15.6', true, 'Notebook Lenovo Intel Core i3', 4010.55, 10, 13, 98, 37);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (99, 'Notebook, Acer, Aspire 3, Intel Core i5-8250U, 8GB, SSD 512GB, Endless OS, 15.6, Azul', true, 'Notebook Acer Aspire 3 i5', 3999.99, 10, 24, 99, 24);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (100, 'Notebook, Asus Vivobook, Intel Core i5-6200U, 8GB, 1TB, Windows 10 Home, 15.6, Cinza Escuro', true, 'Notebook Asus Vivobook', 3520.32, 10, 27, 100, 27);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (101, 'Notebook, Vaio, Intel Core i5-10210U, 8GB, SSD 256GB, Windows 10 Home, 14.0, Cinza Escuro', true, 'Notebook Vaio i5', 4202.32, 10, 38, 101, 38);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (102, 'Notebook, Vaio, Intel Core i5-10210U, 8GB, 1TB, Windows 10 Home, 15.6, Cinza Escuro', true, 'Notebook Vaio i5', 4442.02, 10, 38, 102, 38);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (103, 'Notebook Vaio, C14, Intel Core i7-6500U, 8GB, SSD 256GB, Windows 10 Home, 14', true, 'Notebook Vaio C14', 5192.44, 10, 38, 103, 38);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (104, 'Chromebook, Acer, Intel Celeron N4000, 4GB, 32GB, Chrome OS, 11.6', true, 'Chromebook Acer Intel Celeron N4000', 1882.32, 10, 24, 104, 24);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (105, 'Notebook,Asus, Intel Celeron N4000, 4GB, 500GB, Windows 10 Home, 15.6, Cinza', true, 'Notebook Asus Intel Celeron N4000', 2890.10, 10, 27, 105, 27);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (106, 'Notebook, Vaio, Intel Core i7-10510U, 8GB, 1TB, Windows 10 Home, 14, Chumbo Escuro', true, 'Notebook Vaio Intel Core i7', 5002.42, 10, 38, 106, 38);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (107, 'Notebook, Lenovo, Intel Core i7-10510U, 8GB, SSD 256GB, Windows 10 Pro, 14', true, 'Notebook Lenovo ThinkPad Intel Core i7', 7422.80, 10, 13, 107, 37);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (108, 'Notebook, Lenovo, Ideapad S145 Intel Core i5-8265U, 8GB, SSD 256GB, NVIDIA MX110 2GB, Windows 10, 15.6, Prata', true, 'Notebook Lenovo Ideapad', 4052.32, 10, 13, 108, 37);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (109, 'Notebook, Lenovo, Ideapad S145 Intel Core i5-8265U, 16GB, SSD 256GB, NVIDIA MX110 2GB, Windows 10, 15.6, Prata', true, 'Notebook Lenovo Ideapad i5', 6142.32, 10, 13, 109, 37);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (110, 'Notebook, Asus, Intel Core i5-6200U, 8GB, SSD 256GB, Windows 10 Home, 15.6´, Cinza Escuro', true, 'Notebook Asus Intel Core i5', 4009.20, 20, 27, 110, 27);
+INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (111, 'Notebook, Asus, VivoBook X543 Intel Core i3-6100U, 4GB, 1TB, Windows 10 Home, 15.6, Cinza', true, 'Notebook Asus VivoBook X543', 3142.32, 10, 27, 111, 27);
+
