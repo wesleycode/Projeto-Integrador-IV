@@ -101,9 +101,7 @@ public class LoginController implements Serializable {
         return irParaIndex();
     }
 
-    public String irParaIndex() {
-        return "/index.xhtml?faces-redirect=true";
-    }
+    public String irParaIndex() { return "index.xhtml?faces-redirect=true"; }
 
     private void cadastrarUsuario() {
         // Grava o endereco //

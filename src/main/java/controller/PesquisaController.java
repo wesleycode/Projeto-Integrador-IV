@@ -14,17 +14,16 @@ import java.util.List;
 @Named
 @SessionScoped
 public class PesquisaController implements Serializable {
+
     private String pesquisa;
     private Categoria categoriaselecionada;
     private Produto produtoselecionado;
-    private List<Categoria>categoriasList;
-    private List<String>filtros;
+    private List<Categoria> categoriasList;
+    private List<String> filtros;
 
-
-
-    public void selecionarCategoria(){
+    public void selecionarCategoria() {
         int idcatg = (int) categoriaselecionada.getId();
-        switch (idcatg){
+        switch (idcatg) {
 
             case 0://Memoria Ram
                 filtros.clear();
@@ -114,16 +113,14 @@ public class PesquisaController implements Serializable {
                 filtros.clear();
                 break;
 
-                //mano so digo uma coisa
+            //mano so digo uma coisa
             //13 categorias sendo filtros especificos pra cada
             // quem vai preencher sa poha com produtos é vc!!!
 
         }
     }
 
-    public List<Categoria> getCategoriasList() throws Exception {
-        return new CategoriaBO().listarTodos();
-    }
+    public List<Categoria> getCategoriasList() throws Exception { return new CategoriaBO().listarTodos(); }
 
     public void setCategoriasList(List<Categoria> categoriasList) {
         this.categoriasList = categoriasList;
@@ -141,9 +138,7 @@ public class PesquisaController implements Serializable {
         return categoriaselecionada;
     }
 
-    public void setCategoriaselecionada(Categoria categoriaselecionada) {
-        this.categoriaselecionada = categoriaselecionada;
-    }
+    public void setCategoriaselecionada(Categoria categoriaselecionada) { this.categoriaselecionada = categoriaselecionada; }
 
     public List<String> getFiltros() {
         return filtros;

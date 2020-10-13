@@ -20,40 +20,12 @@ public class IndexController implements Serializable {
     private List<Produto> todosProdutosList;
     private Produto produto;
 
-    private int totalDePaginas = 4;
-    private int paginaAtual = 1;
-    private int contadorDePaginas;
-
     public void setTodosProdutosList(List<Produto> todosProdutosList) {
         this.todosProdutosList = todosProdutosList;
     }
 
     public Produto getProduto() {
         return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
-
-    public int getTotalDePaginas() {
-        return totalDePaginas;
-    }
-
-    public void setTotalDePaginas(int totalDePaginas) {
-        this.totalDePaginas = totalDePaginas;
-    }
-
-    public int getPaginaAtual() {
-        return paginaAtual;
-    }
-
-    public void setPaginaAtual(int paginaAtual) {
-        this.paginaAtual = paginaAtual;
-    }
-
-    public void setContadorDePaginas(int contadorDePaginas) {
-        this.contadorDePaginas = contadorDePaginas;
     }
 
     public IndexController() {
@@ -66,36 +38,16 @@ public class IndexController implements Serializable {
 
     public List<Produto> getTodosProdutosList() throws Exception {
         try {
-            return new ProdutoBO().listarProdutosEntre(paginaAtual, totalDePaginas);
+            return new ProdutoBO().listarTodos();
         } catch (Exception e) {
             throw new Exception("Erro ao retornar a list de produtos: " + e.getMessage());
         }
     }
 
-    public void proximaPagina() throws Exception {
-        if (paginaAtual == getContadorDePaginas()) {
-            paginaAtual = 1;
-        } else {
-            paginaAtual++;
-        }
-    }
-
-    public void paginaAnterior() throws Exception {
-        if (paginaAtual <= 1) {
-            paginaAtual = getContadorDePaginas();
-        } else {
-            paginaAtual--;
-        }
-    }
-
-    public int getContadorDePaginas() throws Exception {
-        try {
-            return (int) Math.ceil(new ProdutoBO().listarTodos().size() / (double) totalDePaginas);
-        } catch (Exception e) {
-            throw new Exception("Erro ao retornar o numero do contador de paginas: " + e.getMessage());
-        }
-    }
     public String irParaPesquisaProdutos() {
         return "pesquisaProdutos?faces-redirect=true";
     }
+
+    public String irParaUsuarios() { return "cadastroLogin?faces-redirect=true"; }
+
 }

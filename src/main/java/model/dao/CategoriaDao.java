@@ -12,7 +12,7 @@ public class CategoriaDao  extends GenericDao<Categoria>{
         entityManager = new ConnectionFactory().getConnection();
     }
 
-    public Categoria listarACategoriaPorNome(String nome) throws Exception {
+    public Categoria getCategoriasPorNome(String nome) throws Exception {
         try {
             List<Categoria> categ = entityManager.createQuery("SELECT a FROM Categoria a where a.categoria = :nome")
                     .setParameter("nome",nome)

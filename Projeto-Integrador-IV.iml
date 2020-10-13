@@ -40,5 +40,6 @@
     <orderEntry type="library" name="Hibernate _Postgres" level="project" />
     <orderEntry type="library" name="BootsFaces-OSP" level="project" />
     <orderEntry type="library" name="primefaces-8.0" level="project" />
+    <orderEntry type="library" name="all-themes-1.0.10" level="project" />
   </component>
 </module>
