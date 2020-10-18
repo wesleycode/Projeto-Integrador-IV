@@ -7,7 +7,7 @@ import model.dao.EstadoDao;
 import model.entities.Estado;
 import model.entities.Produto;
 import utilities.Moeda;
-
+import javax.faces.event.ActionEvent;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -39,9 +39,21 @@ public class IndexController implements Serializable {
             throw new Exception("Erro ao retornar a list de produtos: " + e.getMessage());
         }
     }
+    public String irParaPoliticas() {
+        return "politicas?faces-redirect=true";
+    }
+
+    public String irParaFornecedores() {
+        return "fornecedores?faces-redirect=true";
+    }
+
+    public String irParaSobrenos() {
+        return "sobrenos?faces-redirect=true";
+    }
 
     public String getRedirecionamentoParaCadastro() {
         return "cadastroLogin?faces-redirect=true";
     }
+
 
 }

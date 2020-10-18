@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <!-- JQUERY -->
+    <h:outputScript library="js" name="jquery-3.5.1.js"/>
+    <!-- BOOTSTRAP -->
+    <h:outputScript library="js" name="bootstrap.min.js"/>
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    <!-- FONTAWESOME -->
+    <h:outputScript library="js" name="all.js"/>
+    <h:outputStylesheet library="css" name="all.css"/>
+    <h:outputStylesheet library="css" name="fontawesome.css"/>
+    <!-- STYLESHEET -->
+    <h:outputStylesheet library="css" name="indexStyle.css"/>
+    <!-- SCRIPT -->
+    <script type="application/javascript">
+        $(function () {
+            $("#navbar").load("navbar.xhtml");
+            $("#footer").load("footer.xhtml");
+        });
+    </script>
+</h:head>
+
+<h:body>
+
+    <!-- Navbar -->
+    <div id="navbar"></div>
+    <!-- Conteudo da página fica aqui!!! -->
+
+    <div class="conteudo">
+
+        <div class="row">
+            <div class="leftcolumn">
+                <div class="card">
+                    <h1>Sobre nós</h1>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;Somos uma empresa de vendas voltada a computadores e hardwares com várias parcerias
+                        com dezenas de fornecedores para maior variáveis tipos de produtos ofertados em nossas lojas.</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;O site sapitcho veio da necessidade de nossa empresa ter contato com os clientes via online com site de compras,
+                        assim podendo suprir as  necessidades dos mesmo.</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;Sendo possível com a equipe de desenvolvimento do site dos alunos acadêmicos da unifacear, felipe fillus e wesley de araujo.</p>
+                </div>
+            </div>
+            <div class="rightcolumn">
+
+                <div class="card">
+                    <h:form>
+                        <h3>Fornecedores</h3>
+                        <h:commandLink value="Fornecedores" styleClass="btn btn-primary" action="#{indexController.irParaFornecedores}">
+                        </h:commandLink>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer"></div>
+
+</h:body>
+
+</html>
