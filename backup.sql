@@ -179,7 +179,7 @@ INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (25, 'Agon', 'h
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (26, 'Samsung', 'https://www.samsung.com/br/');
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (27, 'asus', 'https://www.asus.com/br/');
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (28, 'Creative', 'https://www.kabum.com.br/');
-INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (29, 'GV', 'http://www.gvbrasil.com.br/comprar/placas/som');
+INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (29, 'GV', 'http://www.gvbrasil.com.br/');
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (30, 'Gigabyte', 'https://www.gigabyte.com/');
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (31, 'Galax', 'https://www.kabum.com.br/');
 INSERT INTO public.fornecedor (id, fornecedor, hyperlink) VALUES (32, 'MSI', 'https://www.msi.com/');

@@ -38,7 +38,7 @@
         <div class="row">
             <div class="leftcolumn">
                 <div class="card">
-                    <h1>Políticas de Privacidade</h1>
+                    <h1 align="center">Políticas de Privacidade</h1>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;A Sapitcho tem o compromisso com a transparência, a privacidade e a segurança dos dados de seus clientes durante todo o processo de interação com nosso site, aplicativo e lojas físicas. Para que entendam melhor quais informações coletamos e como as utilizamos, armazenamos ou excluímos, detalhamos a seguir nossa Política de Privacidade.</p>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;Os dados cadastrais dos clientes não são divulgados para terceiros, exceto quando necessários para o processo de entrega, para cobrança ou participação em promoções solicitadas pelos clientes. Seus dados pessoais são peça fundamental para que o pedido chegue em segurança na sua casa, de acordo com o prazo de entrega estipulado.</p>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;A fim de facilitar o entendimento da nossa Política de Privacidade, apresentamos um resumo:</p>
@@ -98,13 +98,14 @@
             </div>
             <div class="rightcolumn">
 
-                <div class="card">
+                <div class="card" align="center">
                     <h:form>
                     <h3>Continue com</h3>
-                    <h:commandButton value="Fornecedores" styleClass="btn btn-primary">
+                    <h:commandButton value="Fornecedores" styleClass="btn btn-primary" action="#{indexController.irParaFornecedores}">
                     </h:commandButton>
-
-                    <h:commandButton value="Sobre nós" styleClass="btn btn-primary">
+                    <br/>
+                        <br/>
+                    <h:commandButton value="Sobre nós" styleClass="btn btn-primary" action="#{indexController.irParaSobrenos}">
                     </h:commandButton>
                     </h:form>
                 </div>

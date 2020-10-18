@@ -1,7 +1,11 @@
 package model.dao;
 
+import connections.ConnectionFactory;
 import model.entities.Categoria;
+import model.entities.Pessoa;
 import model.entities.Produto;
+
+import javax.persistence.EntityManager;
 import java.util.List;
 
 public class ProdutoDao extends GenericDao<Produto> {

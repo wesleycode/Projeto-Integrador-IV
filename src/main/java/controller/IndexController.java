@@ -39,6 +39,8 @@ public class IndexController implements Serializable {
             throw new Exception("Erro ao retornar a list de produtos: " + e.getMessage());
         }
     }
+
+
     public String irParaPoliticas() {
         return "politicas?faces-redirect=true";
     }
