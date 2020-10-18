@@ -41,6 +41,13 @@ public class IndexController implements Serializable {
     }
 
 
+    public String irDiretocomovendedor() {
+        return "painelvendedor?faces-redirect=true";
+    }
+
+
+
+
     public String irParaPoliticas() {
         return "politicas?faces-redirect=true";
     }
