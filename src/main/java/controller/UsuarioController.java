@@ -28,7 +28,7 @@ public class UsuarioController implements Serializable {
 
         try {
             System.out.println("Entrou no try");
-            new GenericDao<Pessoa>().salvar(pessoa);
+            new GenericDao<Pessoa>().salvarOuAlterar(pessoa);
             System.out.println("Passou do try");
         } catch (Exception e) {
             System.out.println("Entrou no catch");

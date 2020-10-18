@@ -15,7 +15,7 @@ public class EnderecoBO implements GenericBO<Endereco> {
     @Override
     public boolean criar(Endereco o) throws Exception {
         if (valida(o)) {
-            return new GenericDao<>().salvar(o);
+            return new GenericDao<>().salvarOuAlterar(o);
         }
         return false;
     }
@@ -31,7 +31,7 @@ public class EnderecoBO implements GenericBO<Endereco> {
     @Override
     public boolean alterar(Endereco o) throws Exception {
         if (valida(o)) {
-            return new GenericDao<>().alterar(o);
+            return new GenericDao<>().salvarOuAlterar(o);
         }
         return false;
     }

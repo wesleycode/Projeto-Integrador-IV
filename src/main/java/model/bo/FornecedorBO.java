@@ -23,7 +23,7 @@ public class FornecedorBO implements GenericBO<Fornecedor>{
     public boolean criar(Fornecedor o) throws Exception {
         if (valida(o)) {
             genericDAO = new GenericDao<>();
-            return genericDAO.salvar(o);
+            return genericDAO.salvarOuAlterar(o);
         }return false;
     }
 
@@ -39,7 +39,7 @@ public class FornecedorBO implements GenericBO<Fornecedor>{
     public boolean alterar(Fornecedor o) throws Exception {
         if (valida(o)) {
             genericDAO = new GenericDao<>();
-            return genericDAO.alterar(o);
+            return genericDAO.salvarOuAlterar(o);
         }return false;
     }
 

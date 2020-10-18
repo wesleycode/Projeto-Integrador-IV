@@ -1,38 +1,23 @@
 package model.dao;
 
-import connections.ConnectionFactory;
-import model.entities.Estado;
+import model.entities.Categoria;
 import model.entities.Produto;
-
-import javax.persistence.EntityManager;
 import java.util.List;
 
 public class ProdutoDao extends GenericDao<Produto> {
 
-    private EntityManager entityManager;
-
-    public ProdutoDao(){
-        entityManager = new ConnectionFactory().getConnection();
-    }
-    /*
-    public List<Avaliacao> listarAvaliacaoPorNota() throws Exception {
+    public List<Produto> listarPorCategoria(Categoria categoria) throws Exception {
         try {
-            return entityManager.createQuery("SELECT a FROM Avaliacao a order by a.nota asc ").getResultList();
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        } finally {
-            entityManager.close();
-        }
-    }
-     */
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("SELECT p FROM Produto p ");
+            stringBuilder.append("JOIN Categoria c ");
+            stringBuilder.append("ON p.categoria = c.id ");
+            stringBuilder.append("WHERE c.id = :idCategoria");
 
-    public List<Produto> listarProdutosEntre(int page, int pagSize) throws Exception {
-        long start = (page-1)*pagSize;
-        try {
-            return getEntityManager().createQuery("SELECT p FROM Produto p where p.id >= :st order by p.nome")
-                    .setMaxResults(pagSize)
-                    .setParameter("st", start)
+            return getEntityManager().createQuery(stringBuilder.toString())
+                    .setParameter("idCategoria", categoria.getId())
                     .getResultList();
+
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         } finally {

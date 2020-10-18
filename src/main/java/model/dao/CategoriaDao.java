@@ -2,6 +2,7 @@ package model.dao;
 
 import connections.ConnectionFactory;
 import model.entities.Categoria;
+import model.entities.Produto;
 
 import java.util.List;
 import javax.persistence.EntityManager;

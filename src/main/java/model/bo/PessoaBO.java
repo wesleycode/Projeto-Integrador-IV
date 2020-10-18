@@ -4,20 +4,15 @@ import model.dao.PessoaDao;
 import model.entities.Pessoa;
 
 import java.util.List;
+
 import model.dao.GenericDao;
 
-public class PessoaBO implements GenericBO<Pessoa>{
-
-   private GenericDao<Pessoa> genericDAO;
-
-    public PessoaBO() {
-
-    }
+public class PessoaBO implements GenericBO<Pessoa> {
 
     @Override
     public boolean criar(Pessoa o) throws Exception {
         if (valida(o)) {
-            return new GenericDao<>().salvar(o);
+            return new GenericDao<>().salvarOuAlterar(o);
         }
         return false;
     }
@@ -33,7 +28,7 @@ public class PessoaBO implements GenericBO<Pessoa>{
     @Override
     public boolean alterar(Pessoa o) throws Exception {
         if (valida(o)) {
-            return new GenericDao<Pessoa>().alterar(o);
+            return new GenericDao<Pessoa>().salvarOuAlterar(o);
         }
         return false;
     }
@@ -45,22 +40,22 @@ public class PessoaBO implements GenericBO<Pessoa>{
 
     @Override
     public Pessoa getById(int id) throws Exception {
-        return new GenericDao<Pessoa>().getById(Pessoa.class,id);
+        return new GenericDao<Pessoa>().getById(Pessoa.class, id);
     }
 
     @Override
     public boolean valida(Pessoa o) throws Exception {
-        if (o.getCpf().equals("")){
+        if (o.getCpf().equals("")) {
             throw new Exception("CPF nulo");
-        }else if(o.getEmail().equals("")){
+        } else if (o.getEmail().equals("")) {
             throw new Exception("email nulo");
-        }else if (o.getEndereco().getId()<0){
+        } else if (o.getEndereco().getId() < 0) {
             throw new Exception("Endereço nulo");
-        }else if (o.getNome().equals("")){
+        } else if (o.getNome().equals("")) {
             throw new Exception("nome nulo");
-        }else if (o.getSenha().equals("")){
+        } else if (o.getSenha().equals("")) {
             throw new Exception("Senha nulo");
-        }else if (o.getTelefone().equals("")){
+        } else if (o.getTelefone().equals("")) {
             throw new Exception("Telefone nulo");
         }
 
@@ -69,7 +64,7 @@ public class PessoaBO implements GenericBO<Pessoa>{
 
     @Override
     public boolean validaId(long id) throws Exception {
-        if (id < 0){
+        if (id < 0) {
             throw new Exception("Id nulo");
         }
         return true;

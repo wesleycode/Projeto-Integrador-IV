@@ -6,7 +6,6 @@ import model.entities.*;
 import net.bootsfaces.utils.FacesMessages;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
@@ -15,14 +14,13 @@ import java.util.List;
 @SessionScoped
 public class PesquisaController implements Serializable {
 
-    private String pesquisa;
-    private Categoria categoriaselecionada;
+    private String inputPesquisa;
+    private Categoria categoriaSelecionada;
     private Produto produtoselecionado;
-    private List<Categoria> categoriasList;
     private List<String> filtros;
 
     public void selecionarCategoria() {
-        int idcatg = (int) categoriaselecionada.getId();
+        int idcatg = (int) categoriaSelecionada.getId();
         switch (idcatg) {
 
             case 0://Memoria Ram
@@ -120,25 +118,25 @@ public class PesquisaController implements Serializable {
         }
     }
 
-    public List<Categoria> getCategoriasList() throws Exception { return new CategoriaBO().listarTodos(); }
-
-    public void setCategoriasList(List<Categoria> categoriasList) {
-        this.categoriasList = categoriasList;
+    public String getInputPesquisa() {
+        return inputPesquisa;
     }
 
-    public String getPesquisa() {
-        return pesquisa;
+    public void setInputPesquisa(String inputPesquisa) {
+        this.inputPesquisa = inputPesquisa;
     }
 
-    public void setPesquisa(String pesquisa) {
-        this.pesquisa = pesquisa;
+    public Categoria getCategoriaSelecionada() { return categoriaSelecionada; }
+
+    public void setCategoriaSelecionada(Categoria categoriaSelecionada) { this.categoriaSelecionada = categoriaSelecionada; }
+
+    public Produto getProdutoselecionado() {
+        return produtoselecionado;
     }
 
-    public Categoria getCategoriaselecionada() {
-        return categoriaselecionada;
+    public void setProdutoselecionado(Produto produtoselecionado) {
+        this.produtoselecionado = produtoselecionado;
     }
-
-    public void setCategoriaselecionada(Categoria categoriaselecionada) { this.categoriaselecionada = categoriaselecionada; }
 
     public List<String> getFiltros() {
         return filtros;
@@ -147,4 +145,34 @@ public class PesquisaController implements Serializable {
     public void setFiltros(List<String> filtros) {
         this.filtros = filtros;
     }
+
+    public String irParaPesquisaProdutos() {
+        System.out.println("CATEGORIA SELECIONADA: " + categoriaSelecionada.getCategoria());
+        System.out.println("VALOR DO INPUT: " + inputPesquisa);
+        //listarTodosOsProdutosPorCategoria();
+        return "filtrarProdutos?faces-redirect=true";
+    }
+
+    public List<Produto> getListaDeTodosOsProdutosPorCategoria() {
+        try {
+            return new ProdutoBO().listarPorCategoria(categoriaSelecionada);
+        } catch (Exception e) {
+            FacesMessages.error("Erro: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public List<Categoria> getListaDeTodasAsCategorias() {
+        try {
+            return new CategoriaBO().listarTodos();
+        } catch (Exception e) {
+            FacesMessages.error("Erro: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public PesquisaController() {
+        this.categoriaSelecionada = new Categoria();
+    }
+
 }

@@ -16,7 +16,7 @@ public class MarcaProdutoBO implements GenericBO<MarcaProduto> {
     @Override
     public boolean criar(MarcaProduto o) throws Exception {
         if (valida(o)) {
-            return new GenericDao<MarcaProduto>().salvar(o);
+            return new GenericDao<MarcaProduto>().salvarOuAlterar(o);
         }
         return false;
     }
@@ -32,7 +32,7 @@ public class MarcaProdutoBO implements GenericBO<MarcaProduto> {
     @Override
     public boolean alterar(MarcaProduto o) throws Exception {
         if (valida(o)) {
-            return new GenericDao<MarcaProduto>().alterar(o);
+            return new GenericDao<MarcaProduto>().salvarOuAlterar(o);
         }
         return false;
     }

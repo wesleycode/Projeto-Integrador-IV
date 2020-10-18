@@ -56,11 +56,12 @@
                                                   value="#{produto.marcaProduto.nome}"/>
                                     <br/>
                                     <b>
-                                        <h:outputText class="card-text text-primary" value="R$ #{produto.preco}"/>
+                                        <h:outputText class="card-text text-primary"
+                                                      value="#{produtoController.getFormatarPreco(produto)}"/>
                                     </b>
                                     <br/>
                                     <h:outputText class="text-success"
-                                                  value=" ou 10x de R$ #{indexController.getPrecoFormatado10x(produto)}">
+                                                  value=" ou 10x de R$ #{produtoController.getPrecoFormatado10x(produto)}">
                                         <f:convertNumber currencyCode="R$" type="currency"/>
                                     </h:outputText>
                                     <br/>
@@ -98,13 +99,6 @@
         </div>
 
     </div>
-
-    <!--    <h:outputText value="Email"/>-->
-    <!--    <h:form>-->
-    <!--        <h:commandButton action="#{controllerUsuarioBean.irParaPagina2()}" value="Ir Para a próxima página"/>-->
-    <!--        <br/>-->
-    <!--        <h:commandButton value="Criar Usuario" action="#{controllerUsuarioBean.criarUsuario()}"/>-->
-    <!--    </h:form>-->
 
     <!-- Footer -->
     <div id="footer"></div>

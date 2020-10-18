@@ -6,13 +6,14 @@ import model.entities.Categoria;
 import java.util.List;
 
 import model.dao.GenericDao;
+import model.entities.Produto;
 
 public class CategoriaBO implements GenericBO<Categoria> {
 
     @Override
     public boolean criar(Categoria o) throws Exception {
         if (valida(o)) {
-            return new GenericDao<Categoria>().salvar(o);
+            return new GenericDao<Categoria>().salvarOuAlterar(o);
         }
         return false;
     }
@@ -28,7 +29,7 @@ public class CategoriaBO implements GenericBO<Categoria> {
     @Override
     public boolean alterar(Categoria o) throws Exception {
         if (valida(o)) {
-            return new GenericDao<>().alterar(o);
+            return new GenericDao<>().salvarOuAlterar(o);
         }
         return false;
     }

@@ -32,10 +32,6 @@ public class IndexController implements Serializable {
 
     }
 
-    public String getPrecoFormatado10x(Produto produto) {
-        return Moeda.converterLongParaDinheiroStringPadraoBrasil((long) (produto.getPreco() / 10));
-    }
-
     public List<Produto> getTodosProdutosList() throws Exception {
         try {
             return new ProdutoBO().listarTodos();
@@ -44,10 +40,8 @@ public class IndexController implements Serializable {
         }
     }
 
-    public String irParaPesquisaProdutos() {
-        return "pesquisaProdutos?faces-redirect=true";
+    public String getRedirecionamentoParaCadastro() {
+        return "cadastroLogin?faces-redirect=true";
     }
-
-    public String irParaUsuarios() { return "cadastroLogin?faces-redirect=true"; }
 
 }

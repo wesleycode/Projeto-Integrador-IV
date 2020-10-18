@@ -18,7 +18,7 @@ public class PedidoBO implements GenericBO<Pedido> {
     public boolean criar(Pedido o) throws Exception {
         if (valida(o)) {
             genericDAO = new GenericDao<>();
-            return genericDAO.salvar(o);
+            return genericDAO.salvarOuAlterar(o);
         }
         return false;
     }
@@ -36,7 +36,7 @@ public class PedidoBO implements GenericBO<Pedido> {
     public boolean alterar(Pedido o) throws Exception {
         if (valida(o)) {
             genericDAO = new GenericDao<>();
-            return genericDAO.alterar(o);
+            return genericDAO.salvarOuAlterar(o);
         }
         return false;
     }

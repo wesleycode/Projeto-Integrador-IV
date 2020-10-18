@@ -16,7 +16,7 @@ public class FotoProdutoBO implements GenericBO<FotoProduto> {
     @Override
     public boolean criar(FotoProduto o) throws Exception {
         if (valida(o)) {
-            return new GenericDao<FotoProduto>().salvar(o);
+            return new GenericDao<FotoProduto>().salvarOuAlterar(o);
         }
         return false;
     }
@@ -32,7 +32,7 @@ public class FotoProdutoBO implements GenericBO<FotoProduto> {
     @Override
     public boolean alterar(FotoProduto o) throws Exception {
         if (valida(o)) {
-            return new GenericDao<FotoProduto>().alterar(o);
+            return new GenericDao<FotoProduto>().salvarOuAlterar(o);
         }
         return false;
     }

@@ -1,6 +1,7 @@
 package model.bo;
 
 import model.dao.ProdutoDao;
+import model.entities.Categoria;
 import model.entities.Produto;
 import model.dao.GenericDao;
 
@@ -15,7 +16,7 @@ public class ProdutoBO implements GenericBO<Produto> {
     @Override
     public boolean criar(Produto o) throws Exception {
         if (valida(o)) {
-            return new GenericDao<Produto>().salvar(o);
+            return new GenericDao<Produto>().salvarOuAlterar(o);
         }
         return false;
     }
@@ -31,7 +32,7 @@ public class ProdutoBO implements GenericBO<Produto> {
     @Override
     public boolean alterar(Produto o) throws Exception {
         if (valida(o)) {
-            return new GenericDao<Produto>().alterar(o);
+            return new GenericDao<Produto>().salvarOuAlterar(o);
         }
         return false;
     }
@@ -79,8 +80,11 @@ public class ProdutoBO implements GenericBO<Produto> {
         return true;
     }
 
-    public List<Produto> listarProdutosEntre(int paginaAtual, int totalDePaginas) throws Exception {
-        return new ProdutoDao().listarProdutosEntre(paginaAtual,totalDePaginas);
+    public List<Produto> listarPorCategoria(Categoria categoria) throws Exception {
+        if (categoria != null) {
+            return new ProdutoDao().listarPorCategoria(categoria);
+        }
+        return null;
     }
 
 }

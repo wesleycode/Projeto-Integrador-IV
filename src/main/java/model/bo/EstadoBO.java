@@ -22,7 +22,7 @@ public class EstadoBO implements GenericBO<Estado>{
     public boolean criar(Estado o) throws Exception {
         if (valida(o)) {
             genericDAO = new GenericDao<>();
-            return genericDAO.salvar(o);
+            return genericDAO.salvarOuAlterar(o);
         }return false;
     }
 
@@ -38,7 +38,7 @@ public class EstadoBO implements GenericBO<Estado>{
     public boolean alterar(Estado o) throws Exception {
         if (valida(o)) {
             genericDAO = new GenericDao<>();
-            return genericDAO.alterar(o);
+            return genericDAO.salvarOuAlterar(o);
         }return false;
     }
 

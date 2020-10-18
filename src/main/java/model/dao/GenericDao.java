@@ -6,6 +6,8 @@ import model.entities.EntityBase;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 
 public class GenericDao<T extends EntityBase> {
@@ -20,21 +22,7 @@ public class GenericDao<T extends EntityBase> {
         entityManager = new ConnectionFactory().getConnection();
     }
 
-    public boolean salvar(T t) throws Exception {
-        try {
-            entityManager.getTransaction().begin();
-            entityManager.persist(t);
-            entityManager.getTransaction().commit();
-            return true;
-        } catch (Exception e) {
-            entityManager.getTransaction().rollback();
-            throw new Exception("Erro ao salvar objeto da classe [" + t.getClass().getName() + "]");
-        } finally {
-            entityManager.close();
-        }
-    }
-
-    public boolean alterar(T t) throws Exception {
+    public boolean salvarOuAlterar(T t) throws Exception {
         try {
             entityManager.getTransaction().begin();
             entityManager.merge(t);
@@ -42,7 +30,7 @@ public class GenericDao<T extends EntityBase> {
             return true;
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
-            throw new Exception("Erro ao alterar objeto da classe [" + t.getClass().getName() + "]");
+            throw new Exception("Erro ao salvar objeto da classe [" + t.getClass().getName() + "]");
         } finally {
             entityManager.close();
         }
@@ -65,8 +53,7 @@ public class GenericDao<T extends EntityBase> {
 
     public List<T> listarTodos(Class<T> type) throws Exception {
         try {
-            CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-            CriteriaQuery<T> query = builder.createQuery(type);
+            CriteriaQuery<T> query = entityManager.getCriteriaBuilder().createQuery(type);
             query.from(type);
             return entityManager.createQuery(query).getResultList();
         } catch (Exception e) {

@@ -17,7 +17,7 @@ public class TipoEntregaBO implements GenericBO<TipoEntrega>{
     public boolean criar(TipoEntrega o) throws Exception {
         if (valida(o)) {
             genericDAO = new GenericDao<>();
-            return genericDAO.salvar(o);
+            return genericDAO.salvarOuAlterar(o);
         }return false;
     }
 
@@ -32,7 +32,7 @@ public class TipoEntregaBO implements GenericBO<TipoEntrega>{
     public boolean alterar(TipoEntrega o) throws Exception {
         if (valida(o)){
         genericDAO = new GenericDao<>();
-        return genericDAO.alterar(o);}return false;
+        return genericDAO.salvarOuAlterar(o);}return false;
     }
 
     @Override
