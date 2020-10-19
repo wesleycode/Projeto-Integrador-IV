@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <!-- JQUERY -->
+    <h:outputScript library="js" name="jquery-3.5.1.js"/>
+    <!-- BOOTSTRAP -->
+    <h:outputScript library="js" name="bootstrap.min.js"/>
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    <!-- FONTAWESOME -->
+    <h:outputScript library="js" name="all.js"/>
+    <h:outputStylesheet library="css" name="all.css"/>
+    <h:outputStylesheet library="css" name="fontawesome.css"/>
+    <!-- STYLESHEET -->
+    <h:outputStylesheet library="css" name="indexStyle.css"/>
+    <!-- SCRIPT -->
+    <script type="application/javascript">
+        $(function () {
+            $("#navbar").load("navbar.xhtml");
+            $("#footer").load("footer.xhtml");
+        });
+    </script>
+</h:head>
+
+<h:body>
+
+    <!-- Navbar -->
+    <div id="navbar"></div>
+    <!-- Conteudo da página fica aqui!!! -->
+
+    <div class="conteudo">
+
+        <div class="row">
+            <div class="leftcolumn">
+                <div class="card" align="center" id="cardcadastro">
+                    <b:messages autoUpdate="true" showDetail="true"/>
+                    <h3>Cadastrar Fornecedor</h3>
+                    <h:form>
+                        <b:inputText value="#{cadastrarFornecedorController.fornecedor.fornecedor}" placeholder="Nome Fornecedor"
+                                         required="true"
+                                         mask="{regex:'[a-zA-Z ]*'}">
+                        </b:inputText>
+                            <br/>
+                        <b:inputText value="#{cadastrarFornecedorController.fornecedor.hyperlink}" placeholder="Link Web Fornecedor"
+                                     required="true">
+                        </b:inputText>
+                            <div style="text-align: center;">
+                                <h:commandLink styleClass="btn btn-primary" value="Cadastrar Fornecedor"
+                                               action="#{cadastrarFornecedorController.cadastrarFornecedor}"/>
+
+                            </div>
+                            <br/>
+                            <br/>
+                            <div style="text-align: center;">
+                                <h:commandLink styleClass="btn btn-primary" value="Voltar"
+                                               action="#{cadastrarFornecedorController.irParaPainelVendedor}"></h:commandLink>
+
+                            </div>
+                            <h3>Lista Dos fornecedores Existente:</h3>
+                            <ul class="align-self-baseline">
+                                <p:dataGrid var="fornecedor" value="#{cadastrarFornecedorController.todasFornecedorList}" columns="2">
+                                    <li><h:outputLabel>Fornecedor: #{fornecedor.fornecedor}</h:outputLabel>
+                                    <br/><h:outputLabel>Link: #{fornecedor.hyperlink}</h:outputLabel>
+                                    </li>
+                                </p:dataGrid>
+                            </ul>
+
+                    </h:form>
+                </div>
+            </div>
+
+            <div class="rightcolumn">
+
+                <div class="card" align="center">
+                    <h3>Vendedor</h3>
+                    <h:outputLabel>Nome Vendedor</h:outputLabel>
+                    <h:outputLabel>Email Vendedor</h:outputLabel>
+                    <h:form>
+                        <h:commandButton value="Sair Login" styleClass="btn btn-primary" action="#{cadastrarFornecedorController.irParaIndex}">
+                            <!--Deve possuir o logoff-->
+                        </h:commandButton>
+
+                    </h:form>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer"></div>
+
+</h:body>
+
+</html><!-- ta no inicio tem nada -->

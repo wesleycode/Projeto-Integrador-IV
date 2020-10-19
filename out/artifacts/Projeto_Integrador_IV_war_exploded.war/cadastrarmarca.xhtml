@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
@@ -38,32 +39,29 @@
         <div class="row">
             <div class="leftcolumn">
                 <div class="card" align="center">
-                    <h:messages></h:messages>
-                    <h3>Opções De Vendedor</h3>
+                    <b:messages autoUpdate="true" showDetail="true"/>
+                    <h3>Cadastrar Marca</h3>
                     <h:form>
-                        <br/>
-                        <br/>
-                        <h:commandButton value="  Cadastrar uma Marca " styleClass="btn btn-primary" action="#{painelVendedorController.irParaCadastrarCategoria}">
-                        </h:commandButton>
-                        <br/>
-                        <br/>
-                        <h:commandButton value="Cadastrar um Fornecedor" styleClass="btn btn-primary" action="#{painelVendedorController.irParaCadastarFornecedor}">
-                        </h:commandButton>
-                        <br/>
-                        <br/>
-                        <h:commandButton value="Cadastrar um Produto" styleClass="btn btn-primary">
-                        </h:commandButton>
-                        <br/>
-                        <br/>
-                        <h:commandButton value="Modificar um Produto" styleClass="btn btn-primary">
-                        </h:commandButton>
-                        <br/>
-                        <br/>
-                        <h:commandButton value="IZASSSS" styleClass="btn btn-primary">
-                        </h:commandButton>
+                            <b:inputText value="#{cadastrarMarcaController.marcaProduto.nome}" placeholder="Nome Marca"
+                                         required="true"
+                                         mask="{regex:'[a-zA-Z ]*'}">
+                            </b:inputText>
+                            <div style="text-align: center;">
+                                <h:commandLink styleClass="btn btn-primary" value="Cadastrar Marca Produto" action="#{cadastrarMarcaController.cadastrarMarcaProduto}">
+                                </h:commandLink>
+
+                            </div>
+                            <br/>
+                            <br/>
+                            <div style="text-align: center;">
+                                <h:commandLink styleClass="btn btn-primary" value="Voltar"
+                                               action="#{cadastrarMarcaController.irParaPainelVendedor}"/>
+
+                            </div>
                     </h:form>
                 </div>
             </div>
+
             <div class="rightcolumn">
 
                 <div class="card" align="center">
@@ -71,11 +69,21 @@
                     <h:outputLabel>Nome Vendedor</h:outputLabel>
                     <h:outputLabel>Email Vendedor</h:outputLabel>
                     <h:form>
-                        <h:commandButton value="Sair Login" styleClass="btn btn-primary">
+                        <h:commandButton value="Sair Login" styleClass="btn btn-primary" action="#{cadastrarMarcaController.irParaIndex}">
+                            <!--Deve possuir o logoff-->
                         </h:commandButton>
 
                     </h:form>
                 </div>
+                <div class="card" id="cardmarca">
+                    <h3>Lista de Marca</h3>
+                    <ul class="align-self-baseline">
+                    <p:dataGrid var="marca" value="#{cadastrarMarcaController.todasMarcaProdutoList}" columns="1">
+                        <li><h:outputLabel>Marca: #{marca.nome}</h:outputLabel></li>
+                    </p:dataGrid>
+                    </ul>
+                </div>
+
             </div>
         </div>
 
