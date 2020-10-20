@@ -7,6 +7,7 @@ import model.dao.EstadoDao;
 import model.entities.Estado;
 import model.entities.Produto;
 import utilities.Moeda;
+
 import javax.faces.event.ActionEvent;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -41,12 +42,7 @@ public class IndexController implements Serializable {
     }
 
 
-    public String irDiretocomovendedor() {
-        return "painelvendedor?faces-redirect=true";
-    }
-
-
-
+    public String irDiretocomovendedor() { return "painelVendedor?faces-redirect=true"; }
 
     public String irParaPoliticas() {
         return "politicas?faces-redirect=true";

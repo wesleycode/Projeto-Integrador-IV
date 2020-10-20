@@ -2,15 +2,13 @@ package controller;
 
 import model.bo.ProdutoBO;
 import model.entities.Produto;
-import utilities.Moeda;
 
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.List;
 
 @Named
-@ViewScoped
+@SessionScoped
 public class produtoController implements Serializable {
 
     public produtoController() {
@@ -18,11 +16,11 @@ public class produtoController implements Serializable {
     }
 
     public String getFormatarPreco(Produto produto) {
-        return Moeda.converterLongParaDinheiroStringPadraoBrasil((long) (produto.getPreco()));
+        return ProdutoBO.getPrecoFormatado(produto.getPreco());
     }
 
     public String getPrecoFormatado10x(Produto produto) {
-        return Moeda.converterLongParaDinheiroStringPadraoBrasil((long) (produto.getPreco() / 10));
+        return ProdutoBO.getPrecoParceladoEm10Vezes(produto.getPreco());
     }
 
 }

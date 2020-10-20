@@ -4,6 +4,7 @@ import model.dao.ProdutoDao;
 import model.entities.Categoria;
 import model.entities.Produto;
 import model.dao.GenericDao;
+import utilities.Moeda;
 
 import java.util.List;
 
@@ -78,6 +79,14 @@ public class ProdutoBO implements GenericBO<Produto> {
             throw new Exception("Id nulo");
         }
         return true;
+    }
+
+    public static String getPrecoParceladoEm10Vezes(float preco) {
+        return Moeda.converterLongParaDinheiroStringPadraoBrasil((long) (preco / 10));
+    }
+
+    public static String getPrecoFormatado(float preco) {
+        return Moeda.converterLongParaDinheiroStringPadraoBrasil((long) (preco));
     }
 
     public List<Produto> listarPorCategoria(Categoria categoria) throws Exception {

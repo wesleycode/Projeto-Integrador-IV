@@ -1,17 +1,10 @@
 package model.bo;
 
-import model.dao.MarcaProdutoDao;
 import model.entities.MarcaProduto;
-
 import java.util.List;
-
 import model.dao.GenericDao;
 
 public class MarcaProdutoBO implements GenericBO<MarcaProduto> {
-
-    public MarcaProduto listarMarcaPorNome(String nome) throws Exception {
-        return new MarcaProdutoDao().listarMarcaPorNome(nome);
-    }
 
     @Override
     public boolean criar(MarcaProduto o) throws Exception {

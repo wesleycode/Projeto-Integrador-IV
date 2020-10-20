@@ -18,7 +18,22 @@ INSERT INTO public.categoria (id, categoria) VALUES (12, 'Periféricos');
 INSERT INTO public.categoria (id, categoria) VALUES (13, 'Fontes');
 
 INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (1, 'Campina da Barra', '81250-280', 'Casa', 1170, 'Rua Malva', 2806);
-INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (2, 'Nao faco ideia', '00000-000', 'Casa', 0, 'Rua Carinha Que Mora Logo Ali', 2806);
+INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (2, 'Fazenda Velha', '83720-210', 'Casa', 174, 'Rua São Judas Tadeu', 2806);
+INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (3, 'Fazenda Velha', '83703-410', 'Casa', 601, 'R. Alexandre Wisocki', 2806);
+INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (4, 'Fazenda Velha', '83703-320', 'Casa', 401, 'R. Antônio Cândido Nascimento', 2806);
+INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (5, 'Fazenda Velha', '83703-340', 'Casa', 390, 'R. Jose Huttner', 2806);
+INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (6, 'Fazenda Velha', '83703-410', 'Casa', 462, 'R. José Huttner', 2806);
+INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (7, 'Iguaçu', '83701-627', 'Edifício',309, 'R. Rio de Janeiro', 2806);
+INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (8, 'Iguaçu', '83701-250', 'Casa', 1207, 'Av. Brasil', 2806);
+INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (9, 'Iguaçu', '83701-205', 'Casa', 460, 'R. Espírito Santo', 2806);
+INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (10, 'Iguaçu', '83701-210', 'Casa', 147, 'R. Fernando de Noronha', 2806);
+INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (11, 'Iguaçu', '83701-010', 'Casa', 158, 'R. Paraíba', 2806);
+INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (12, 'Capela Velha', '83706-190', 'Casa', 1130, 'R. Tucano', 2806);
+INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (13, 'Capela Velha', '83706-220', 'Casa', 735, 'R. Tesoureiro', 2806);
+INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (14, 'Capela Velha', '83706-070', 'Casa', 1068, 'R. Maracanā', 2806);
+INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (15, 'Capela Velha', '83706-270', 'Casa', 1285, 'R. Pomba', 2806);
+INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (16, 'Capela Velha', '83706-060', 'Casa', 1280, 'Rua Pinguim', 2806);
+INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (17, 'Capela Velha', '83706-160', 'Casa', 1142, 'R. Arapongas', 2806);
 
 INSERT INTO public.fotoproduto (id, foto) VALUES (1, 'memorias/memoria-hyperx-fury-8gb');
 INSERT INTO public.fotoproduto (id, foto) VALUES (2, 'memorias/memoria-adata-xpg-spectrix-d41-rgb-8gb-3000mhz');
@@ -236,12 +251,23 @@ INSERT INTO public.marcaproduto (id, nome) VALUES (36, 'PNY');
 INSERT INTO public.marcaproduto (id, nome) VALUES (37, 'LENOVO');
 INSERT INTO public.marcaproduto (id, nome) VALUES (38, 'VAIO');
 
-
-INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (1, true, '000.000.000-00', '1998-05-24', 'kako.araujo.24@gmail.com', 'WESLEY DE ARAUJO EVANGELISTA', '00000000', '(41) 0000-0000', 1, 1);
-INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (2, true, '000.000.000-00', '2001-02-12', 'felipefillus@gmail.com', 'Felipe Fillus', 'fillus', '(41) 4444-4444', 3, 2);
-
-
-
+INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (1, true, '006.001.590-00', '1998-05-24', 'kako.araujo.24@gmail.com', 'WESLEY DE ARAUJO EVANGELISTA', '00000000', '(41) 0000-0000', 1, 1);
+INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (2, true, '014.952.890-60', '2001-02-12', 'felipefillus10@gmail.com', 'Felipe fillus', 'aaa', '(41) 4444-4444', 3, 2);
+INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (3, true, '575.013.220-07', '2001-02-12', 'lucasmateus@gmail.com', 'Lucas Matheus', 'aaa', '(41) 4444-4445', 3, 3);
+INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (4, true, '019.096.120-14', '2001-02-12', 'jonathana@gmail.com', 'jonathan', 'aaa', '(41) 4444-4446', 3, 4);
+INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (5, true, '746.722.490-77', '2001-02-12', 'matedarcin@gmail.com', 'Mateus Garcin', 'aaa', '(41) 4444-4446', 3, 5);
+INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (6, true, '757.075.110-83', '2001-02-12', 'luanagonzaga@gmail.com', 'Luana Gonzaga', 'aaa', '(41) 4444-4447', 3, 6);
+INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (7, true, '638.264.340-80', '2001-02-12', 'mariasouza@gmail.com', 'Maria de souza', 'aaa', '(41) 4444-4448', 3, 7);
+INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (8, true, '753.618.120-56', '2001-02-12', 'Alex12@gmail.com', 'Alex', 'aaa', '(41) 4444-4449', 3, 8);
+INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (9, true, '302.817.770-63', '2001-02-12', 'robertorocha@gmail.com', 'Roberto Rocha', 'aaa', '(41) 4444-4450', 3, 9);
+INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (10, true, '700.911.770-57', '2001-02-12', 'carlasir@gmail.com', 'Carla Silveira', 'aaa', '(41) 4444-4451', 3, 10);
+INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (11, true, '563.004.750-77', '2001-02-12', 'felipesouza@gmail.com', 'Felipe de souza', 'aaa', '(41) 4444-4452', 3, 11);
+INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (12, true, '128.083.630-01', '2001-02-12', 'gabrielandrade@gmail.com', 'Gabriel de andrade', 'aaa', '(41) 4444-4453', 3, 12);
+INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (13, true, '891.132.170-20', '2001-02-12', 'miltonmilton@gmail.com', 'Milton o Milton', 'aaa', '(41) 4444-4454', 3, 13);
+INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (14, true, '890.934.310-99', '2001-02-12', 'daniel10@gmail.com', 'Daniel cordel', 'aaa', '(41) 4444-4455', 3, 14);
+INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (15, true, '384.485.350-22', '2001-02-12', 'daiane@gmail.com', 'Daiane', 'aaa', '(41) 4444-4456', 3, 15);
+INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (16, true, '735.903.210-59', '2001-02-12', 'janaina1@gmail.com', 'Janaina', 'aaa', '(41) 4444-4457', 3, 16);
+INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (17, true, '738.415.250-08', '2001-02-12', 'rodrigocorsair@gmail.com', 'Rodrigo Cosair', 'aaa', '(41) 4444-4458', 3, 17);
 
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (1, '8GB, 2666MHz, DDR4, CL16, Preto', true, 'Memoria Fury', 329.29, 1, 1, 1, 1);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (2, '8GB, 2666MHz, DDR4, CL16, Preto', true, 'Memoria Spetrix D41', 323.41, 1, 2, 2, 2);
@@ -367,3 +393,45 @@ INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id,
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (122, 'Notebook, Acer, AMD Ryzen 5 3500, 8GB, 1TB, SSD 128GB, Windows 10', true, 'Notebook Acer AMD Ryzen 5', 4809.50, 10, 24, 122, 23);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (123, 'Notebook, Acer, Aspire 3 Intel Core i3-1005G1, 8GB, 1TB, Windows 10 Home, 15.6', true, 'Notebook Acer Aspire 3 Intel Core i3', 3542.32, 10, 24, 123, 23);
 INSERT INTO public.produto (id, descricao, emestoque, nome, preco, categoria_id, fornecedor_id, fotoproduto_id, marcaproduto_id) VALUES (124, 'Notebook, Vaio, FE15 Intel Core i5-10210U, 8GB, SSD 512GB, Windows 10 Home, 15.6, Chumbo Escuro', true, 'Notebook Vaio FE15 Intel Core i5', 5222.22, 10, 38, 124, 38);
+
+
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(1,'melhor produto que já comprei','2020-10-22',5,3,20);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(2,'bem ok, pensei que era melhor','2020-10-11',3,3,55);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(3,'muito ruim, não funciona nada,veio de forma deplorável','2020-09-15',1,3,3);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(5,'melhor que isso, apenas todos os outros, simplesmente horrível','2020-09-08',2,4,86);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(6,'ok','2020-10-11',4,4,109);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(7,'recomendo','2020-10-10',5,5,109);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(8,'recomendadíssimo','2020-09-02',4,6,109);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(9,'muito bom como o previsto','2020-09-06',4,6,87);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(10,'não é bom, n recomendo!','2020-10-08',3,7,20);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(11,'mediano apenas','2020-10-10',3,7,78);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(12,'melhor que a maioria, recomendo','2020-08-22',4,8,102);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(13,'acima das minhas expectativas','2020-09-11',5,8,20);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(14,'melhor produto','2020-10-10',5,9,120);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(15,'mediano, muito mediano','2020-10-13',5,9,20);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(16,'isso valeu meu dinheiro','2020-10-12',5,9,2);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(17,'recomendo','2020-10-10',4,9,98);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(18,'valeu meu investimento','2020-10-10',4,10,80);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(19,'tem muita coisa melhor, n recomendo','2020-10-22',2,10,109);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(20,'menos interessante do que pensei ):','2020-10-26',2,10,38);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(21,'sem comentários','2020-10-23',1,11,100);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(22,'minha nota fala por si só','2020-10-10',1,11,110);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(23,'bom','2020-10-10',3,11,20);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(24,'bem ok viu','2020-10-10',3,11,58);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(25,'aaaaaaah muito ruim','2020-10-19',1,12,100);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(26,'tudo isso!','2020-10-10',4,12,109);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(27,'quem é que vai ser louco de comprar isso?','2020-10-10',3,12,119);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(28,'recomendo','2020-10-09',4,12,92);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(29,'bem mediano','2020-10-14',3,12,9);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(30,'era melhor ter ido ver o pelé','2020-10-18',2,13,103);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(31,'RECOMENDO!','2020-10-20',5,13,44);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(32,'MUITO RUIM, PÉSSIMO, NEM FUNCIONA SA ****','2020-10-01',5,13,108);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(33,'beleza, funcionou que uma maravilha','2020-10-10',4,14,109);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(34,'D:','2020-09-10',3,14,108);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(35,'isso não valeu meu investimento','2020-10-10',2,14,30);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(36,'melhor que muitos, recomendo','2020-10-10',4,14,122);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(37,'dale que é bom','2020-10-15',4,15,25);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(38,'demorou chegar mas valeu a espera, recomendo a todos','10-10-2020',4,15,8);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(39,'só faltou ser bom de resto ok','2020-10-10',3,15,120);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(40,'bem ok','2020-10-10',3,16,120);
+INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(41,'recomendo a todos','2020-10-10',5,17,3);

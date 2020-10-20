@@ -1,14 +1,8 @@
 package controller;
 
-import model.bo.CategoriaBO;
-import model.bo.EnderecoBO;
 import model.bo.MarcaProdutoBO;
-import model.bo.ProdutoBO;
-import model.entities.Categoria;
 import model.entities.MarcaProduto;
-import model.entities.Produto;
 import net.bootsfaces.utils.FacesMessages;
-import utilities.Moeda;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -18,11 +12,11 @@ import java.util.List;
 @Named
 @ViewScoped
 public class CadastrarMarcaController implements Serializable {
+
     private MarcaProduto marca;
-    private List<MarcaProduto>marcalist;
+    private List<MarcaProduto> marcalist;
 
-
-    public CadastrarMarcaController(){
+    public CadastrarMarcaController() {
         marca = new MarcaProduto();
     }
 
@@ -43,15 +37,16 @@ public class CadastrarMarcaController implements Serializable {
     }
 
     public String irParaPainelVendedor() {
-        return "painelvendedor?faces-redirect=true";
+        return "painelVendedor?faces-redirect=true";
     }
+
     public String irParaIndex() {
         return "index?faces-redirect=true";
     }
 
     public void cadastrarMarcaProduto() {
         try {
-            if (new MarcaProdutoBO().criar(marca)){
+            if (new MarcaProdutoBO().criar(marca)) {
                 FacesMessages.info("MarcaProduto cadastrada com sucesso");
             }
         } catch (Exception e) {

@@ -56,7 +56,7 @@
                                                   value="#{produto.marcaProduto.nome}"/>
                                     <br/>
                                     <b>
-                                        <h:outputText class="card-text text-primary" value="R$ #{produto.preco}"/>
+                                        <h:outputText class="card-text text-primary" value="#{produtoController.getFormatarPreco(produto)}"/>
                                     </b>
                                     <br/>
                                     <h:outputText class="text-success"

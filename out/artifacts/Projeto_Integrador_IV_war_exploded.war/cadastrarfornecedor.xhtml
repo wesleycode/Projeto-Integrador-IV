@@ -42,34 +42,37 @@
                     <b:messages autoUpdate="true" showDetail="true"/>
                     <h3>Cadastrar Fornecedor</h3>
                     <h:form>
-                        <b:inputText value="#{cadastrarFornecedorController.fornecedor.fornecedor}" placeholder="Nome Fornecedor"
-                                         required="true"
-                                         mask="{regex:'[a-zA-Z ]*'}">
+                        <b:inputText value="#{cadastrarFornecedorController.fornecedor.fornecedor}"
+                                     placeholder="Nome Fornecedor"
+                                     required="true"
+                                     mask="{regex:'[a-zA-Z ]*'}">
                         </b:inputText>
-                            <br/>
-                        <b:inputText value="#{cadastrarFornecedorController.fornecedor.hyperlink}" placeholder="Link Web Fornecedor"
+                        <br/>
+                        <b:inputText value="#{cadastrarFornecedorController.fornecedor.hyperlink}"
+                                     placeholder="Link Web Fornecedor"
                                      required="true">
                         </b:inputText>
-                            <div style="text-align: center;">
-                                <h:commandLink styleClass="btn btn-primary" value="Cadastrar Fornecedor"
-                                               action="#{cadastrarFornecedorController.cadastrarFornecedor}"/>
+                        <div style="text-align: center;">
+                            <h:commandLink styleClass="btn btn-primary" value="Cadastrar Fornecedor"
+                                           action="#{cadastrarFornecedorController.cadastrarFornecedor}"/>
 
-                            </div>
-                            <br/>
-                            <br/>
-                            <div style="text-align: center;">
-                                <h:commandLink styleClass="btn btn-primary" value="Voltar"
-                                               action="#{cadastrarFornecedorController.irParaPainelVendedor}"></h:commandLink>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div style="text-align: center;">
+                            <h:commandLink styleClass="btn btn-primary" value="Voltar"
+                                           action="#{cadastrarFornecedorController.irParaPainelVendedor}"/>
 
-                            </div>
-                            <h3>Lista Dos fornecedores Existente:</h3>
-                            <ul class="align-self-baseline">
-                                <p:dataGrid var="fornecedor" value="#{cadastrarFornecedorController.todasFornecedorList}" columns="2">
-                                    <li><h:outputLabel>Fornecedor: #{fornecedor.fornecedor}</h:outputLabel>
+                        </div>
+                        <h3>Lista Dos fornecedores Existente:</h3>
+                        <ul class="align-self-baseline">
+                            <p:dataGrid var="fornecedor" value="#{cadastrarFornecedorController.todasFornecedorList}"
+                                        columns="2">
+                                <li><h:outputLabel>Fornecedor: #{fornecedor.fornecedor}</h:outputLabel>
                                     <br/><h:outputLabel>Link: #{fornecedor.hyperlink}</h:outputLabel>
-                                    </li>
-                                </p:dataGrid>
-                            </ul>
+                                </li>
+                            </p:dataGrid>
+                        </ul>
 
                     </h:form>
                 </div>
@@ -82,7 +85,8 @@
                     <h:outputLabel>Nome Vendedor</h:outputLabel>
                     <h:outputLabel>Email Vendedor</h:outputLabel>
                     <h:form>
-                        <h:commandButton value="Sair Login" styleClass="btn btn-primary" action="#{cadastrarFornecedorController.irParaIndex}">
+                        <h:commandButton value="Sair Login" styleClass="btn btn-primary"
+                                         action="#{cadastrarFornecedorController.irParaIndex}">
                             <!--Deve possuir o logoff-->
                         </h:commandButton>
 

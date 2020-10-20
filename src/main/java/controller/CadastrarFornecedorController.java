@@ -14,11 +14,11 @@ import java.util.List;
 @Named
 @ViewScoped
 public class CadastrarFornecedorController implements Serializable {
+
     private Fornecedor fornecedor;
-    private List<Fornecedor>fornecedorlist;
+    private List<Fornecedor> fornecedorlist;
 
-
-    public CadastrarFornecedorController(){
+    public CadastrarFornecedorController() {
         fornecedor = new Fornecedor();
     }
 
@@ -35,16 +35,16 @@ public class CadastrarFornecedorController implements Serializable {
     }
 
     public String irParaPainelVendedor() {
-        return "painelvendedor?faces-redirect=true";
+        return "painelVendedor?faces-redirect=true";
     }
+
     public String irParaIndex() {
         return "index?faces-redirect=true";
     }
 
     public void cadastrarFornecedor() {
-
         try {
-            if (new FornecedorBO().criar(getFornecedor())){
+            if (new FornecedorBO().criar(getFornecedor())) {
                 FacesMessages.info("Fornecedor cadastrado com sucesso");
             }
         } catch (Exception e) {

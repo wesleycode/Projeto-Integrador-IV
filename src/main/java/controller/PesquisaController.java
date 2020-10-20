@@ -130,22 +130,6 @@ public class PesquisaController implements Serializable {
 
     public void setCategoriaSelecionada(Categoria categoriaSelecionada) { this.categoriaSelecionada = categoriaSelecionada; }
 
-    public Produto getProdutoselecionado() {
-        return produtoselecionado;
-    }
-
-    public void setProdutoselecionado(Produto produtoselecionado) {
-        this.produtoselecionado = produtoselecionado;
-    }
-
-    public List<String> getFiltros() {
-        return filtros;
-    }
-
-    public void setFiltros(List<String> filtros) {
-        this.filtros = filtros;
-    }
-
     public String irParaPesquisaProdutos() {
         System.out.println("CATEGORIA SELECIONADA: " + categoriaSelecionada.getCategoria());
         System.out.println("VALOR DO INPUT: " + inputPesquisa);
