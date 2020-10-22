@@ -20,4 +20,8 @@ public class PainelVendedorController implements Serializable {
         return "cadastrarFornecedor?faces-redirect=true";
     }
 
+    public String irParaCadastarProduto() {
+        return "cadastrarProduto?faces-redirect=true";
+    }
+
 }

@@ -59,11 +59,15 @@
                         </div>
                         <br/>
                         <br/>
+                    </h:form>
+                    <h:form>
                         <div style="text-align: center;">
                             <h:commandLink styleClass="btn btn-primary" value="Voltar"
                                            action="#{cadastrarFornecedorController.irParaPainelVendedor}"/>
 
                         </div>
+                    </h:form>
+                    <h:form>
                         <h3>Lista Dos fornecedores Existente:</h3>
                         <ul class="align-self-baseline">
                             <p:dataGrid var="fornecedor" value="#{cadastrarFornecedorController.todasFornecedorList}"
@@ -102,4 +106,4 @@
 
 </h:body>
 
-</html><!-- ta no inicio tem nada -->
+</html>

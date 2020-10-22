@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <!-- JQUERY -->
+    <h:outputScript library="js" name="jquery-3.5.1.js"/>
+    <!-- BOOTSTRAP -->
+    <h:outputScript library="js" name="bootstrap.min.js"/>
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    <!-- FONTAWESOME -->
+    <h:outputScript library="js" name="all.js"/>
+    <h:outputStylesheet library="css" name="all.css"/>
+    <h:outputStylesheet library="css" name="fontawesome.css"/>
+    <!-- STYLESHEET -->
+    <h:outputStylesheet library="css" name="indexStyle.css"/>
+    <!-- SCRIPT -->
+    <script type="application/javascript">
+        $(function () {
+            $("#navbar").load("navbar.xhtml");
+            $("#footer").load("footer.xhtml");
+        });
+    </script>
+</h:head>
+
+<h:body>
+
+    <!-- Navbar -->
+    <div id="navbar"></div>
+    <!-- Conteudo da página fica aqui!!! -->
+
+    <div class="conteudo">
+
+        <div class="row">
+            <div class="leftcolumn">
+                <div class="card" align="center" id="cardcadastro">
+                    <b:messages autoUpdate="true" showDetail="true"/>
+                    <h3>Cadastrar Produto</h3>
+                    <h:form>
+                        <b:inputText value="#{cadastrarProdutoController.produto.nome}"
+                                     placeholder="Título do Produto"
+                                     required="true">
+                        </b:inputText>
+                        <br/>
+                        <p:inputTextarea rows="10" cols="100" minQueryLength="4" placeholder="Comentário" value="#{cadastrarProdutoController.produto.descricao}">
+                        </p:inputTextarea>
+                        <div class="col-md-12 col-sm-12">
+                            <b:selectOneMenu value="#{cadastrarProdutoController.produto.fornecedor}"
+                                             ajax="true"
+                                             process="@this" update="@next @next:@next">
+                                <f:selectItem value="#{null}" itemLabel="Selecione um fornecedor"/>
+                                <f:selectItems value="#{cadastrarProdutoController.fornecedorList}" var="fornecedor"
+                                               itemValue="#{fornecedor}" itemLabel="#{fornecedor.fornecedor}"/>
+                            </b:selectOneMenu>
+                        </div>
+                        <div class="col-md-12 col-sm-12">
+                            <b:selectOneMenu value="#{cadastrarProdutoController.produto.categoria}"
+                                             ajax="true"
+                                             process="@this" update="@next @next:@next">
+                                <f:selectItem value="#{null}" itemLabel="Selecione uma Categoria"/>
+                                <f:selectItems value="#{cadastrarProdutoController.categoriaList}" var="categoria"
+                                               itemValue="#{categoria}" itemLabel="#{categoria.categoria}"/>
+                            </b:selectOneMenu>
+                        </div>
+                        <div class="col-md-12 col-sm-12">
+                            <b:selectOneMenu value="#{cadastrarProdutoController.produto.marcaProduto}"
+                                             ajax="true"
+                                             process="@this" update="@next @next:@next">
+                                <f:selectItem value="#{null}" itemLabel="Selecione uma Marca"/>
+                                <f:selectItems value="#{cadastrarProdutoController.marcalist}" var="marcaProduto"
+                                               itemValue="#{marcaProduto}" itemLabel="#{marcaProduto.nome}"/>
+                            </b:selectOneMenu>
+                        </div>
+                        <p:inputNumber value="#{cadastrarProdutoController.produto.preco}" placeholder="Preço" minValue="0" maxValue="1000000" decimalPlaces="2">
+                        </p:inputNumber>
+                        <br/>
+                        <br/>
+                        <div class="col-md-12 col-sm-12">
+                            <p:fileUpload value="#{cadastrarProdutoController.file}" mode="simple" skinSimple="true"
+                                          accept="image/jpg" auto="true"
+                            />
+                            <br />
+                            <p:commandButton value="Imagem do Produto" ajax="false" action="#{cadastrarProdutoController.upload}" disabled="true" />
+
+                        </div>
+                        <br/>
+                        <div style="text-align: center;">
+                            <h:commandLink styleClass="btn btn-primary" value="Cadastrar Produto"
+                                           action="#{cadastrarProdutoController.cadastrarMarcaProduto}"/>
+                        </div>
+                        <br/>
+
+                    </h:form>
+                    <h:form>
+                        <div style="text-align: center;">
+                            <h:commandLink styleClass="btn btn-primary" value="Voltar"
+                                           action="#{cadastrarProdutoController.irParaPainelVendedor}"/>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+
+            <div class="rightcolumn">
+
+                <div class="card" align="center">
+                    <h3>Vendedor</h3>
+                    <h:outputLabel>Nome Vendedor</h:outputLabel>
+                    <h:outputLabel>Email Vendedor</h:outputLabel>
+                    <h:form>
+                        <h:commandButton value="Sair Login" styleClass="btn btn-primary"
+                                         action="#{cadastrarProdutoController.irParaIndex}">
+                            <!--Deve possuir o logoff-->
+                        </h:commandButton>
+
+                    </h:form>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer"></div>
+
+</h:body>
+
+</html>
