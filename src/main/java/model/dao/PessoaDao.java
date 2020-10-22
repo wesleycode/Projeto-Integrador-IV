@@ -16,7 +16,7 @@ public class PessoaDao extends GenericDao<Pessoa> {
     public boolean isPessoaExisteNoBancoDeDados(Pessoa pessoa) throws Exception {
         try {
             return entityManager.createQuery(
-                    "SELECT p FROM Pessoa p WHERE p.email = :email AND p.senha = :senha AND p.tipoUsuario = :tipo", Pessoa.class)
+                    "SELECT p FROM Pessoa p WHERE p.email = :email AND p.senha = :senha AND p.tipoUsuario >= :tipo", Pessoa.class)
                     .setParameter("email", pessoa.getEmail())
                     .setParameter("senha", pessoa.getSenha())
                     .setParameter("tipo", pessoa.getTipoUsuario())
@@ -33,6 +33,15 @@ public class PessoaDao extends GenericDao<Pessoa> {
         try {
             return (Pessoa) entityManager.createQuery("from Pessoa p where p.nome = :name")
                     .setParameter("name", name).getSingleResult();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+    public Pessoa getByEmailandsenha(String email, String senha) throws Exception {
+        try {
+            return (Pessoa) entityManager.createQuery("from Pessoa p where p.email = :email AND p.senha = :senha")
+                    .setParameter("email", email)
+                    .setParameter("senha",senha).getSingleResult();
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }

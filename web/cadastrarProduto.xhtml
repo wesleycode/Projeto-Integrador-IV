@@ -110,10 +110,12 @@
                 <div class="card" align="center">
                     <h3>Vendedor</h3>
                     <h:outputLabel>Nome Vendedor</h:outputLabel>
+                    <h:outputLabel>#{loginController.pessoa.nome}</h:outputLabel>
                     <h:outputLabel>Email Vendedor</h:outputLabel>
+                    <h:outputLabel>#{loginController.pessoa.email}</h:outputLabel>
                     <h:form>
                         <h:commandButton value="Sair Login" styleClass="btn btn-primary"
-                                         action="#{cadastrarProdutoController.irParaIndex}">
+                                         action="#{loginController.deslogar}">
                             <!--Deve possuir o logoff-->
                         </h:commandButton>
 

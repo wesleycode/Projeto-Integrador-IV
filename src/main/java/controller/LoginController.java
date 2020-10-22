@@ -150,7 +150,14 @@ public class LoginController implements Serializable {
 
     private String logarAdministrador() {
         pessoa.setTipoUsuario(3);
+
         if (new PessoaBO().logarPessoa(pessoa).equals("OK")) {
+            try {
+                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(),pessoa.getSenha());
+            } catch (Exception e) {
+                FacesMessages.error("Erro ao logar: " + e.getMessage());
+                return "";
+            }
             FacesMessages.info("Logado com sucesso");
             return "/index.xhtml?faces-redirect=true";
         } else {
@@ -162,8 +169,14 @@ public class LoginController implements Serializable {
     private String logarVendedor() {
         pessoa.setTipoUsuario(2);
         if (new PessoaBO().logarPessoa(pessoa).equals("OK")) {
+            try {
+                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(),pessoa.getSenha());
+            } catch (Exception e) {
+                FacesMessages.error("Erro ao logar: " + e.getMessage());
+                return "";
+            }
             FacesMessages.info("Logado com sucesso", "detail message");
-            return "/index.xhtml?faces-redirect=true";
+            return "/painelVendedor?faces-redirect=true";
         } else {
             FacesMessages.info("Usuário e/ou senha inválidos");
             return "";
@@ -173,6 +186,12 @@ public class LoginController implements Serializable {
     private String logarCliente() {
         pessoa.setTipoUsuario(1);
         if (new PessoaBO().logarPessoa(pessoa).equals("OK")) {
+            try {
+                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(),pessoa.getSenha());
+            } catch (Exception e) {
+                FacesMessages.error("Erro ao logar: " + e.getMessage());
+                return "";
+            }
             FacesMessages.info("Logado com sucesso", "detail message");
             return "/index.xhtml?faces-redirect=true";
         } else {
