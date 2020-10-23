@@ -4,7 +4,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:b="http://bootsfaces.net/ui"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
@@ -39,55 +38,34 @@
         <div class="row">
             <div class="leftcolumn">
                 <div class="card" align="center">
-                    <b:messages autoUpdate="true" showDetail="true"/>
-                    <h3>Cadastrar Marca</h3>
+                    <h:messages/>
+                    <h3>Opções De Administrador</h3>
                     <h:form>
-                            <b:inputText value="#{cadastrarMarcaController.marcaProduto.nome}" placeholder="Nome Marca"
-                                         required="true"
-                                         mask="{regex:'[a-zA-Z ]*'}">
-                            </b:inputText>
-                            <div style="text-align: center;">
-                                <h:commandLink styleClass="btn btn-primary" value="Cadastrar Marca Produto" action="#{cadastrarMarcaController.cadastrarMarcaProduto}">
-                                </h:commandLink>
-
-                            </div>
-                            <br/>
-                            <br/>
-                    </h:form>
-                    <h:form>
-                            <div style="text-align: center;">
-                                <h:commandLink styleClass="btn btn-primary" value="Voltar"
-                                               action="#{cadastrarMarcaController.irParaPainelVendedor}"/>
-
-                            </div>
+                        <br/>
+                        <br/>
+                        <h:commandButton value="  Cadastrar um  Usuário" styleClass="btn btn-primary">
+                        </h:commandButton>
+                        <br/>
+                        <br/>
+                        <h:commandButton value="Modificar Usuário" styleClass="btn btn-primary">
+                        </h:commandButton>
                     </h:form>
                 </div>
             </div>
-
             <div class="rightcolumn">
 
                 <div class="card" align="center">
-                    <h3>Vendedor</h3>
-                    <h:outputLabel>Nome Vendedor</h:outputLabel>
+                    <h3>Administrador</h3>
+                    <h:outputLabel>Nome Administrador</h:outputLabel>
                     <h:outputLabel>#{loginController.pessoa.nome}</h:outputLabel>
-                    <h:outputLabel>Email Vendedor</h:outputLabel>
+                    <h:outputLabel>Email Administrador</h:outputLabel>
                     <h:outputLabel>#{loginController.pessoa.email}</h:outputLabel>
                     <h:form>
                         <h:commandButton value="Sair Login" styleClass="btn btn-primary" action="#{loginController.deslogar}">
-                            <!--Deve possuir o logoff-->
                         </h:commandButton>
 
                     </h:form>
                 </div>
-                <div class="card" id="cardmarca">
-                    <h3>Lista de Marca</h3>
-                    <ul class="align-self-baseline">
-                    <p:dataGrid var="marca" value="#{cadastrarMarcaController.todasMarcaProdutoList}" columns="1">
-                        <li><h:outputLabel>Marca: #{marca.nome}</h:outputLabel></li>
-                    </p:dataGrid>
-                    </ul>
-                </div>
-
             </div>
         </div>
 

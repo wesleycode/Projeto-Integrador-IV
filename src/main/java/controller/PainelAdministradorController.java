@@ -9,6 +9,7 @@ import model.entities.Estado;
 import model.entities.Pessoa;
 import net.bootsfaces.utils.FacesMessages;
 
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -121,7 +122,7 @@ public class PainelAdministradorController implements Serializable {
 
         if (new PessoaBO().logarPessoa(pessoa).equals("OK")) {
             try {
-                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(), pessoa.getSenha());
+                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(),pessoa.getSenha());
             } catch (Exception e) {
                 FacesMessages.error("Erro ao logar: " + e.getMessage());
                 return "";
@@ -138,7 +139,7 @@ public class PainelAdministradorController implements Serializable {
         pessoa.setTipoUsuario(2);
         if (new PessoaBO().logarPessoa(pessoa).equals("OK")) {
             try {
-                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(), pessoa.getSenha());
+                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(),pessoa.getSenha());
             } catch (Exception e) {
                 FacesMessages.error("Erro ao logar: " + e.getMessage());
                 return "";
@@ -155,7 +156,7 @@ public class PainelAdministradorController implements Serializable {
         pessoa.setTipoUsuario(1);
         if (new PessoaBO().logarPessoa(pessoa).equals("OK")) {
             try {
-                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(), pessoa.getSenha());
+                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(),pessoa.getSenha());
             } catch (Exception e) {
                 FacesMessages.error("Erro ao logar: " + e.getMessage());
                 return "";

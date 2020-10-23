@@ -16,7 +16,7 @@ public class PessoaDao extends GenericDao<Pessoa> {
     public boolean isPessoaExisteNoBancoDeDados(Pessoa pessoa) throws Exception {
         try {
             return entityManager.createQuery(
-                    "SELECT p FROM Pessoa p WHERE p.email = :email AND p.senha = :senha AND p.tipoUsuario = :tipo", Pessoa.class)
+                    "SELECT p FROM Pessoa p WHERE p.email = :email AND p.senha = :senha AND p.tipoUsuario >= :tipo", Pessoa.class)
                     .setParameter("email", pessoa.getEmail())
                     .setParameter("senha", pessoa.getSenha())
                     .setParameter("tipo", pessoa.getTipoUsuario())
