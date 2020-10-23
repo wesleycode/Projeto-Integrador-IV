@@ -38,4 +38,14 @@ public class PessoaDao extends GenericDao<Pessoa> {
         }
     }
 
+    public Pessoa getByEmailandsenha(String email, String senha) throws Exception {
+        try {
+            return (Pessoa) entityManager.createQuery("from Pessoa p where p.email = :email AND p.senha = :senha")
+                    .setParameter("email", email)
+                    .setParameter("senha",senha).getSingleResult();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
 }

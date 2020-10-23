@@ -82,4 +82,8 @@ public class PessoaBO implements GenericBO<Pessoa> {
         }
     }
 
+    public Pessoa getByEmailandsenha(String email, String senha) throws Exception {
+        return new PessoaDao().getByEmailandsenha(email,senha);
+    }
+
 }

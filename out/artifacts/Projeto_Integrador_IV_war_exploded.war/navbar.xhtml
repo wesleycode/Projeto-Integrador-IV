@@ -17,78 +17,126 @@
     <h:outputStylesheet library="css" name="all.css"/>
     <h:outputStylesheet library="css" name="fontawesome.css"/>
     <!-- STYLESHEET -->
-    <h:outputStylesheet library="css" name="navbarStyle.css"/>
+    <style type="text/css">
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            margin-top: 12px;
+            margin-right: 10px;
+            margin-left: 10px;
+            float: left;
+        }
+
+        .btn {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .icon {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 10px 12px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #007bff;
+        }
+
+        .icon:hover:not(.active) {
+            background-color: #007bff;
+        }
+
+        .marca {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .comboCategoria {
+            display: block;
+            text-align: center;
+            padding: 10px 12px;
+            text-decoration: none;
+        }
+
+        .active {
+            background-color: #000000;
+        }
+    </style>
 </h:head>
 <!-- Finaliza head -->
 
 <!-- Inicia Body -->
 <h:body>
 
-    <div class="navbar navbar-dark bg-dark navbar-expand-lg my-auto">
-        <div style="text-align: center; padding: 20px; border-radius: 10px;" class="btn-secondary">
-            <a class="logo text-light" href="index.xhtml">SAPITCHO</a>
-        </div>
-        <h:commandButton class="navbar-toggler" type="button" data-toggle="collapse"
-                         data-target="#navbarSupportedContent"
-                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        </h:commandButton>
-
-        <div id="navbarSupportedContent" class="mt-4 mb-4 navbar-collapse collapse">
-            <ul class="navbar-nav mr-3 ml-3 mx-auto ">
-                <li class="nav-item">
-                    <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarCollapse">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item nav-link">
-                                <a class="nav-link" href="servicos.html">Serviços</a>
-                            </li>
-                            <li class="nav-item nav-link">
-                                <a class="nav-link" href="contato.html">Contato</a>
-                            </li>
-                            <li class="nav-item nav-link">
-                                <h:form>
-                                    <b:selectOneMenu value="#{pesquisaController.categoriaSelecionada}"
-                                                     ajax="true"
-                                                     process="@this">
-                                        <f:selectItem value="#{null}" itemLabel="Categorias"/>
-                                        <f:selectItems value="#{pesquisaController.getListaDeTodasAsCategorias()}"
-                                                       var="categoria"
-                                                       itemValue="#{categoria}" itemLabel="#{categoria.categoria}"/>
-                                    </b:selectOneMenu>
-                                </h:form>
-                            </li>
-                            <li class="nav-item nav-link">
-                                <h:panelGroup styleClass="form-inline my-lg-0">
-                                    <h:form>
-                                        <!-- Input de texto -->
-                                        <h:inputText class="form-control mr-sm-2" style="min-width: 600px" type="search"
-                                                     placeholder="Procurar" aria-label="Search"
-                                                     value="#{pesquisaController.inputPesquisa}"/>
-                                        <!-- Botão para mudar de pagina -->
-                                        <h:commandLink class="btn my-2 my-sm-0 mx-1" type="submit"
-                                                       style="background: #0069d9;"
-                                                       action="#{pesquisaController.irParaPesquisaProdutos()}">
-                                            <i class="fas fa-search" style="color: white;"/>
-                                        </h:commandLink>
-                                    </h:form>
-                                    <h:panelGrid id="btnUsuario" class="mx-2" style="color: white;">
-                                        <h:form>
-                                            <h:commandLink action="#{indexController.getRedirecionamentoParaCadastro()}">
-                                                <i class="fas fa-user-circle fa-2x"/>
-                                            </h:commandLink>
-                                        </h:form>
-                                    </h:panelGrid>
-
-                                    <h:commandLink href="#" class="mx-1" style="color: white">
-                                        <i class="fas fa-shopping-cart fa-2x"/>
-                                    </h:commandLink>
-                                </h:panelGroup>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
+    <ul>
+        <li>
+            <label class="marca">Sapitcho</label>
+        </li>
+        <li>
+            <h:form>
+                <h:commandLink styleClass="btn" action="#{indexController.getRedirecionamentoParaIndex()}">INICIO</h:commandLink>
+            </h:form>
+        </li>
+        <li><a href="#servico" class="btn">Serviços</a></li>
+        <li><a href="#contato" class="btn">Contato</a></li>
+        <li style="float:right">
+            <h:panelGrid id="btnCarrinho" style="color: white;">
+                <h:form>
+                    <h:commandLink styleClass="icon"
+                                   action="#{indexController.getRedirecionamentoParaCadastro()}">
+                        <i class="fas fa-shopping-cart fa-2x"/>
+                    </h:commandLink>
+                </h:form>
+            </h:panelGrid>
+        </li>
+        <li style="float:right">
+            <h:panelGrid id="btnUsuario" style="color: white;">
+                <h:form>
+                    <h:commandLink styleClass="icon"
+                                   action="#{indexController.getRedirecionamentoParaCadastro()}">
+                        <i class="fas fa-user-circle fa-2x"/>
+                    </h:commandLink>
+                </h:form>
+            </h:panelGrid>
+        </li>
+        <li style="float:right">
+            <h:form>
+                <h:commandLink styleClass="btn"
+                               style="background: #4e555b;"
+                               action="#{pesquisaController.irParaPesquisaProdutos()}">
+                    <label>Pesquisar</label>
+                </h:commandLink>
+            </h:form>
+        </li>
+        <li style="float:right">
+            <h:form styleClass="comboCategoria">
+                <b:selectOneMenu value="#{pesquisaController.categoriaSelecionada}"
+                                 ajax="true"
+                                 process="@this">
+                    <f:selectItem value="#{null}" itemLabel="Categorias"/>
+                    <f:selectItems value="#{pesquisaController.getListaDeTodasAsCategorias()}"
+                                   var="categoria"
+                                   itemValue="#{categoria}" itemLabel="#{categoria.categoria}"/>
+                </b:selectOneMenu>
+            </h:form>
+        </li>
+    </ul>
 
 </h:body>
 <!-- Finaliza body -->

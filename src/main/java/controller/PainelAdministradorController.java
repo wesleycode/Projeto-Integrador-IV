@@ -1,19 +1,22 @@
 package controller;
 
-import model.bo.*;
-import model.entities.*;
+import model.bo.CidadeBO;
+import model.bo.EnderecoBO;
+import model.bo.EstadoBO;
+import model.bo.PessoaBO;
+import model.entities.Cidade;
+import model.entities.Estado;
+import model.entities.Pessoa;
 import net.bootsfaces.utils.FacesMessages;
 
-import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
 @Named
-@SessionScoped
-public class LoginController implements Serializable {
-
+@ViewScoped
+public class PainelAdministradorController implements Serializable {
     private Pessoa pessoa;
     private int tipoPessoaLogin;
     private int tipoPessoaCadastro;
@@ -34,10 +37,6 @@ public class LoginController implements Serializable {
         this.tipoPessoaCadastro = tipoPessoaCadastro;
     }
 
-    public LoginController() {
-        pessoa = new Pessoa();
-    }
-
     public Pessoa getPessoa() {
         return pessoa;
     }
@@ -46,35 +45,12 @@ public class LoginController implements Serializable {
         this.pessoa = pessoa;
     }
 
-    public String logar() {
-        switch (getTipoPessoaLogin()) {
-            case 0:
-                FacesMessages.info("Selecione um tipo de login!");
-            case 1:
-                return logarCliente();
-            case 2:
-                return logarVendedor();
-            case 3:
-                return logarAdministrador();
-            default:
-                return null;
-        }
+    public PainelAdministradorController() {
+        pessoa = new Pessoa();
     }
 
-    public void cadastrar() {
-        switch (getTipoPessoaCadastro()) {
-            case 0:
-                FacesMessages.info("Selecione um tipo de Cadastro!");
-            case 1:
-                cadastrarNovoCliente();
-                break;
-            case 2:
-                cadastrarNovoVendedor();
-                break;
-            case 3:
-                cadastrarNovoAdministrador();
-                break;
-        }
+    public String irParaCadastarusuário() {
+        return "cadastrarusuarioViaAdm?faces-redirect=true";
     }
 
     public List<Estado> listarTodosOsEstados() {
@@ -94,14 +70,6 @@ public class LoginController implements Serializable {
             return null;
         }
     }
-
-    public String deslogar() {
-        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        pessoa = null;
-        return irParaIndex();
-    }
-
-    public String irParaIndex() { return "index.xhtml?faces-redirect=true"; }
 
     private void cadastrarUsuario() {
         // Grava o endereco //
@@ -153,7 +121,7 @@ public class LoginController implements Serializable {
 
         if (new PessoaBO().logarPessoa(pessoa).equals("OK")) {
             try {
-                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(),pessoa.getSenha());
+                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(), pessoa.getSenha());
             } catch (Exception e) {
                 FacesMessages.error("Erro ao logar: " + e.getMessage());
                 return "";
@@ -170,7 +138,7 @@ public class LoginController implements Serializable {
         pessoa.setTipoUsuario(2);
         if (new PessoaBO().logarPessoa(pessoa).equals("OK")) {
             try {
-                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(),pessoa.getSenha());
+                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(), pessoa.getSenha());
             } catch (Exception e) {
                 FacesMessages.error("Erro ao logar: " + e.getMessage());
                 return "";
@@ -187,7 +155,7 @@ public class LoginController implements Serializable {
         pessoa.setTipoUsuario(1);
         if (new PessoaBO().logarPessoa(pessoa).equals("OK")) {
             try {
-                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(),pessoa.getSenha());
+                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(), pessoa.getSenha());
             } catch (Exception e) {
                 FacesMessages.error("Erro ao logar: " + e.getMessage());
                 return "";
@@ -199,5 +167,4 @@ public class LoginController implements Serializable {
             return "";
         }
     }
-
 }
