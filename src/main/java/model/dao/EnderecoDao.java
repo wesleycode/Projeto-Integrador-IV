@@ -12,15 +12,15 @@ public class EnderecoDao extends GenericDao<Endereco>{
         entityManager = new ConnectionFactory().getConnection();
     }
 
-    /*
-    public List<Avaliacao> listarAvaliacaoPorNota() throws Exception {
+    public Endereco listarultimoendereco() throws Exception {
         try {
-            return entityManager.createQuery("SELECT a FROM Avaliacao a order by a.nota asc ").getResultList();
+            List<Endereco> enderecos = entityManager.createQuery("SELECT a FROM Endereco a order by a.id desc ").setMaxResults(1).getResultList();
+            return enderecos.get(0);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         } finally {
             entityManager.close();
         }
     }
-     */
+
 }

@@ -19,16 +19,7 @@ import java.util.List;
 @ViewScoped
 public class PainelAdministradorController implements Serializable {
     private Pessoa pessoa;
-    private int tipoPessoaLogin;
     private int tipoPessoaCadastro;
-
-    public int getTipoPessoaLogin() {
-        return tipoPessoaLogin;
-    }
-
-    public void setTipoPessoaLogin(int tipoPessoaLogin) {
-        this.tipoPessoaLogin = tipoPessoaLogin;
-    }
 
     public int getTipoPessoaCadastro() {
         return tipoPessoaCadastro;
@@ -72,100 +63,70 @@ public class PainelAdministradorController implements Serializable {
         }
     }
 
-    private void cadastrarUsuario() {
-        // Grava o endereco //
-        try {
-            if (new EnderecoBO().criar(pessoa.getEndereco())) {
-                FacesMessages.info("Endereco cadastrado com sucesso");
-            } else {
-                FacesMessages.error("Erro ao cadastrar endereço do usuario");
-            }
-        } catch (Exception e) {
-            FacesMessages.error("Erro: " + e.getMessage());
+    public void cadastrar(){
+        switch (getTipoPessoaCadastro()) {
+            case 1:
+                cadastrarNovoCliente();
+                break;
+            case 2:
+                cadastrarNovoVendedor();
+                break;
+            case 3:
+                cadastrarNovoAdministrador();
+                break;
+            default:
+                FacesMessages.info("Selecione um tipo de login!");
+                break;
         }
-        // Grava o cliente //
-        try {
-            if (new PessoaBO().criar(pessoa)) {
-                FacesMessages.info("Usuário Cadastrado com sucesso");
-            } else {
-                FacesMessages.error("Erro ao cadastrar usuário");
+    }
+
+    private void cadastrarUsuario() {
+
+        if(pessoa.getEndereco().getCidade().getId() < 0){
+            FacesMessages.error("Informe a Cidade");
+        }else if(pessoa.getEndereco().getCidade().getEstado().getId() < 0){
+            FacesMessages.error("Informe o Estado");
+        }else {
+            try {
+                pessoa.setEndereco(new EnderecoBO().listarultimoendereco());
+                if (new EnderecoBO().criar(pessoa.getEndereco())) {
+                    FacesMessages.info("Endereco cadastrado com sucesso");
+                } else {
+                    FacesMessages.error("Erro ao cadastrar endereço do usuario");
+                }
+            } catch (Exception e) {
+                FacesMessages.error("Erro: " + e.getMessage());
             }
-        } catch (Exception e) {
-            FacesMessages.error("Erro: " + e.getMessage());
+            // Grava o cliente //
+            try {
+                System.out.println("Endereço ID: "+pessoa.getEndereco().getId());
+                if (new PessoaBO().criar(pessoa)) {
+                    FacesMessages.info("Usuário Cadastrado com sucesso");
+                } else {
+                    FacesMessages.error("Erro ao cadastrar usuário");
+                }
+            } catch (Exception e) {
+                FacesMessages.error("Erro: " + e.getMessage());
+            }
         }
     }
 
     private void cadastrarNovoCliente() {
-        // Sempre ao CADASTRAR um novo cliente o status dele é ativo por padrão //
         pessoa.setAtivo(true);
         pessoa.setTipoUsuario(1);
         cadastrarUsuario();
     }
 
     private void cadastrarNovoVendedor() {
-        // Sempre ao CADASTRAR um novo vendedor o status dele é ativo por padrão //
         pessoa.setAtivo(true);
         pessoa.setTipoUsuario(2);
         cadastrarUsuario();
     }
 
     private void cadastrarNovoAdministrador() {
-        // Sempre ao CADASTRAR um novo vendedor o status dele é ativo por padrão //
         pessoa.setAtivo(true);
         pessoa.setTipoUsuario(3);
         cadastrarUsuario();
     }
 
-
-    private String logarAdministrador() {
-        pessoa.setTipoUsuario(3);
-
-        if (new PessoaBO().logarPessoa(pessoa).equals("OK")) {
-            try {
-                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(),pessoa.getSenha());
-            } catch (Exception e) {
-                FacesMessages.error("Erro ao logar: " + e.getMessage());
-                return "";
-            }
-            FacesMessages.info("Logado com sucesso");
-            return "/painelADM.xhtml?faces-redirect=true";
-        } else {
-            FacesMessages.info("Usuário e/ou senha inválidos");
-            return "";
-        }
-    }
-
-    private String logarVendedor() {
-        pessoa.setTipoUsuario(2);
-        if (new PessoaBO().logarPessoa(pessoa).equals("OK")) {
-            try {
-                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(),pessoa.getSenha());
-            } catch (Exception e) {
-                FacesMessages.error("Erro ao logar: " + e.getMessage());
-                return "";
-            }
-            FacesMessages.info("Logado com sucesso", "detail message");
-            return "/painelVendedor?faces-redirect=true";
-        } else {
-            FacesMessages.info("Usuário e/ou senha inválidos");
-            return "";
-        }
-    }
-
-    private String logarCliente() {
-        pessoa.setTipoUsuario(1);
-        if (new PessoaBO().logarPessoa(pessoa).equals("OK")) {
-            try {
-                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(),pessoa.getSenha());
-            } catch (Exception e) {
-                FacesMessages.error("Erro ao logar: " + e.getMessage());
-                return "";
-            }
-            FacesMessages.info("Logado com sucesso", "detail message");
-            return "/index.xhtml?faces-redirect=true";
-        } else {
-            FacesMessages.info("Usuário e/ou senha inválidos");
-            return "";
-        }
-    }
 }

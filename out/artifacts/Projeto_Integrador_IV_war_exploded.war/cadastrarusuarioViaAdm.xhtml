@@ -59,7 +59,7 @@
                                 </div>
 
                                 <div class="form-group col-md-6 col-sm-6">
-                                    <b:inputText value="#{painelVendedorController.pessoa.nome}" placeholder="Nome"
+                                    <b:inputText value="#{painelAdministradorController.pessoa.nome}" placeholder="Nome"
                                                  required="true"
                                                  mask="{regex:'[a-zA-Z ]*'}">
                                         <f:facet name="prepend">
@@ -69,7 +69,7 @@
                                 </div>
 
                                 <div class="form-group col-md-6 col-sm-6">
-                                    <b:inputText value="#{painelVendedorController.pessoa.email}" placeholder="Email"
+                                    <b:inputText value="#{painelAdministradorController.pessoa.email}" placeholder="Email"
                                                  required="true"
                                                  mask="email">
                                         <f:facet name="prepend">
@@ -79,7 +79,7 @@
                                 </div>
 
                                 <div class="form-group col-md-6 col-sm-6">
-                                    <b:inputText value="#{painelVendedorController.pessoa.telefone}" placeholder="Telefone"
+                                    <b:inputText value="#{painelAdministradorController.pessoa.telefone}" placeholder="Telefone"
                                                  required="true"
                                                  mask="(99) 9999-9999">
                                         <f:facet name="prepend">
@@ -89,7 +89,7 @@
                                 </div>
 
                                 <div class="form-group col-md-6 col-sm-6">
-                                    <b:inputText value="#{painelVendedorController.pessoa.dataNascimento}"
+                                    <b:inputText value="#{painelAdministradorController.pessoa.dataNascimento}"
                                                  mask="dd/mm/yyyy" placeholder="Data de Nascimento" required="true">
                                         <!--                        <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>-->
                                         <f:converter converterId="dateConverter"/>
@@ -100,7 +100,7 @@
                                 </div>
 
                                 <div class="form-group col-md-6 col-sm-6">
-                                    <b:inputSecret value="#{painelVendedorController.pessoa.senha}" placeholder="Senha"
+                                    <b:inputSecret value="#{painelAdministradorController.pessoa.senha}" placeholder="Senha"
                                                    required="true"
                                                    mask="{regex:'[a-zA-Z0-9]*'}">
                                         <f:facet name="prepend">
@@ -110,7 +110,7 @@
                                 </div>
 
                                 <div class="form-group col-md-6 col-sm-6">
-                                    <b:inputText value="#{painelVendedorController.pessoa.cpf}" placeholder="Cpf"
+                                    <b:inputText value="#{painelAdministradorController.pessoa.cpf}" placeholder="Cpf"
                                                  required="true"
                                                  mask="999.999.999-99">
                                         <f:facet name="prepend">
@@ -120,7 +120,7 @@
                                 </div>
 
                                 <div class="form-group col-md-12 col-sm-12">
-                                    <b:inputText value="#{painelVendedorController.pessoa.endereco.rua}" placeholder="Rua"
+                                    <b:inputText value="#{painelAdministradorController.pessoa.endereco.rua}" placeholder="Rua"
                                                  required="true"
                                                  mask="{regex:'[a-zA-Z ]*'}">
                                         <f:facet name="prepend">
@@ -130,11 +130,11 @@
                                 </div>
 
                                 <div class="form-group col-md-6 col-sm-6">
-                                    <b:selectOneMenu value="#{painelVendedorController.pessoa.endereco.cidade.estado}"
+                                    <b:selectOneMenu value="#{painelAdministradorController.pessoa.endereco.cidade.estado}"
                                                      ajax="true"
                                                      process="@this" update="@next @next:@next">
                                         <f:selectItem value="#{null}" itemLabel="Selecione um estado"/>
-                                        <f:selectItems value="#{painelVendedorController.listarTodosOsEstados()}" var="estado"
+                                        <f:selectItems value="#{painelAdministradorController.listarTodosOsEstados()}" var="estado"
                                                        itemValue="#{estado}" itemLabel="#{estado.nome}"/>
                                         <f:ajax event="change" execute="@this" render="cidadesSelect"/>
                                     </b:selectOneMenu>
@@ -142,11 +142,11 @@
 
                                 <div class="form-group col-md-6 col-sm-6">
                                     <b:selectOneMenu id="cidadesSelect"
-                                                     value="#{painelVendedorController.pessoa.endereco.cidade}" ajax="true"
+                                                     value="#{painelAdministradorController.pessoa.endereco.cidade}" ajax="true"
                                                      process="@this" update="@next @next:@next">
                                         <f:selectItem value="#{null}" itemLabel="Selecione uma cidade"/>
                                         <f:selectItems
-                                                value="#{painelVendedorController.listarTodosAsCidadesPorEstado(loginController.pessoa.endereco.cidade.estado)}"
+                                                value="#{painelAdministradorController.listarTodosAsCidadesPorEstado(loginController.pessoa.endereco.cidade.estado)}"
                                                 var="cidade"
                                                 itemValue="#{cidade}" itemLabel="#{cidade.nome}"/>
                                     </b:selectOneMenu>
@@ -159,7 +159,7 @@
                             </div>
                             <div class="col-md-12 col-sm-12" id="deceased">
                                 <div class="form-group col-md-3 col-sm-3">
-                                    <b:inputText value="#{painelVendedorController.pessoa.endereco.bairro}" placeholder="Bairro"
+                                    <b:inputText value="#{painelAdministradorController.pessoa.endereco.bairro}" placeholder="Bairro"
                                                  required="true"
                                                  mask="{regex:'[a-zA-Z ]*'}">
                                         <f:facet name="prepend">
@@ -168,7 +168,7 @@
                                     </b:inputText>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-3">
-                                    <b:inputText value="#{painelVendedorController.pessoa.endereco.cep}" placeholder="Cep"
+                                    <b:inputText value="#{painelAdministradorController.pessoa.endereco.cep}" placeholder="Cep"
                                                  required="true"
                                                  mask="99999-999">
                                         <f:facet name="prepend">
@@ -177,7 +177,7 @@
                                     </b:inputText>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-3">
-                                    <b:inputText value="#{painelVendedorController.pessoa.endereco.complemento}"
+                                    <b:inputText value="#{painelAdministradorController.pessoa.endereco.complemento}"
                                                  placeholder="Complemento"
                                                  required="true"
                                                  mask="{regex:'[a-zA-Z ]*'}">
@@ -187,7 +187,7 @@
                                     </b:inputText>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-3">
-                                    <b:inputText value="#{painelVendedorController.pessoa.endereco.numero}" placeholder="Numero"
+                                    <b:inputText value="#{painelAdministradorController.pessoa.endereco.numero}" placeholder="Numero"
                                                  required="true"
                                                  mask="{regex:'[0-9]*'}">
                                         <f:facet name="prepend">
@@ -196,7 +196,7 @@
                                     </b:inputText>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-3">
-                                    <b:selectOneMenu value="#{painelVendedorController.tipoPessoaCadastro}" required="true">
+                                    <b:selectOneMenu value="#{painelAdministradorController.tipoPessoaCadastro}" required="true">
                                         <f:selectItem itemLabel="(Tipo de Cadastro)" itemValue="0"/>
                                         <f:selectItem itemLabel="Sou usuário" itemValue="1"/>
                                         <f:selectItem itemLabel="Sou vendedor" itemValue="2"/>
@@ -207,7 +207,7 @@
 
                             <div class="col-md-12 col-sm-12" style="text-align: center;">
                                 <div class="form-group col-md-3 col-sm-3 pull-right">
-                                    <h:commandLink action="#{painelVendedorController.cadastrar()}"
+                                    <h:commandLink action="#{painelAdministradorController.cadastrar()}"
                                                    styleClass="btn btn-primary"
                                                    type="submit">Cadastrar</h:commandLink>
                                 </div>
@@ -238,15 +238,12 @@
                 <div class="card" id="cardmarca">
                     <h3>Lista de Marca</h3>
                     <ul class="align-self-baseline">
-<<<<<<< HEAD
                         <p:dataGrid var="marca" value="#{cadastrarMarcaController.todasMarcaProdutoList}" columns="1">
                             <li><h:outputLabel>Marca: #{marca.nome}</h:outputLabel></li>
                         </p:dataGrid>
-=======
                     <p:dataGrid var="marca" value="#{cadastrarMarcaController.todasMarcaProdutoList}" columns="1">
                         <li><h:outputLabel>Marca: #{marca.nome}</h:outputLabel></li>
                     </p:dataGrid>
->>>>>>> da101fa187a9527d083acfeeffc86992baaccfa9
                     </ul>
                 </div>
 
@@ -258,9 +255,4 @@
     <div id="footer"></div>
 
 </h:body>
-
-<<<<<<< HEAD
-</html><!-- ta no inicio tem nada -->
-=======
-</html><!-- ta no inicio tem nada -->
->>>>>>> da101fa187a9527d083acfeeffc86992baaccfa9
+</html>

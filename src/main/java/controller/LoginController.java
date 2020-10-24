@@ -13,10 +13,8 @@ import java.util.List;
 @Named
 @SessionScoped
 public class LoginController implements Serializable {
-
     private Pessoa pessoa;
     private int tipoPessoaLogin;
-    private int tipoPessoaCadastro;
 
     public int getTipoPessoaLogin() {
         return tipoPessoaLogin;
@@ -26,16 +24,9 @@ public class LoginController implements Serializable {
         this.tipoPessoaLogin = tipoPessoaLogin;
     }
 
-    public int getTipoPessoaCadastro() {
-        return tipoPessoaCadastro;
-    }
-
-    public void setTipoPessoaCadastro(int tipoPessoaCadastro) {
-        this.tipoPessoaCadastro = tipoPessoaCadastro;
-    }
-
     public LoginController() {
         pessoa = new Pessoa();
+        pessoa.getEndereco().setCidade(new Cidade());
     }
 
     public Pessoa getPessoa() {
@@ -44,37 +35,6 @@ public class LoginController implements Serializable {
 
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
-    }
-
-    public String logar() {
-        switch (getTipoPessoaLogin()) {
-            case 0:
-                FacesMessages.info("Selecione um tipo de login!");
-            case 1:
-                return logarCliente();
-            case 2:
-                return logarVendedor();
-            case 3:
-                return logarAdministrador();
-            default:
-                return null;
-        }
-    }
-
-    public void cadastrar() {
-        switch (getTipoPessoaCadastro()) {
-            case 0:
-                FacesMessages.info("Selecione um tipo de Cadastro!");
-            case 1:
-                cadastrarNovoCliente();
-                break;
-            case 2:
-                cadastrarNovoVendedor();
-                break;
-            case 3:
-                cadastrarNovoAdministrador();
-                break;
-        }
     }
 
     public List<Estado> listarTodosOsEstados() {
@@ -100,53 +60,20 @@ public class LoginController implements Serializable {
         pessoa = null;
         return irParaIndex();
     }
-
-    public String irParaIndex() { return "index.xhtml?faces-redirect=true"; }
-
-    private void cadastrarUsuario() {
-        // Grava o endereco //
-        try {
-            if (new EnderecoBO().criar(pessoa.getEndereco())) {
-                FacesMessages.info("Endereco cadastrado com sucesso");
-            } else {
-                FacesMessages.error("Erro ao cadastrar endereço do usuario");
-            }
-        } catch (Exception e) {
-            FacesMessages.error("Erro: " + e.getMessage());
-        }
-        // Grava o cliente //
-        try {
-            if (new PessoaBO().criar(pessoa)) {
-                FacesMessages.info("Usuário Cadastrado com sucesso");
-            } else {
-                FacesMessages.error("Erro ao cadastrar usuário");
-            }
-        } catch (Exception e) {
-            FacesMessages.error("Erro: " + e.getMessage());
+    public String logar() {
+        switch (getTipoPessoaLogin()) {
+            case 0:
+                FacesMessages.info("Selecione um tipo de login!");
+            case 1:
+                return logarCliente();
+            case 2:
+                return logarVendedor();
+            case 3:
+                return logarAdministrador();
+            default:
+                return null;
         }
     }
-
-    private void cadastrarNovoCliente() {
-        // Sempre ao CADASTRAR um novo cliente o status dele é ativo por padrão //
-        pessoa.setAtivo(true);
-        pessoa.setTipoUsuario(1);
-        cadastrarUsuario();
-    }
-
-    private void cadastrarNovoVendedor() {
-        // Sempre ao CADASTRAR um novo vendedor o status dele é ativo por padrão //
-        pessoa.setAtivo(true);
-        pessoa.setTipoUsuario(2);
-        cadastrarUsuario();
-    }
-
-    private void cadastrarNovoAdministrador() {
-        // Sempre ao CADASTRAR um novo vendedor o status dele é ativo por padrão //
-        pessoa.setAtivo(true);
-        pessoa.setTipoUsuario(3);
-        cadastrarUsuario();
-    }
-
 
     private String logarAdministrador() {
         pessoa.setTipoUsuario(3);
@@ -199,5 +126,41 @@ public class LoginController implements Serializable {
             return "";
         }
     }
+
+    public String irParaIndex() { return "index.xhtml?faces-redirect=true"; }
+
+    public void cadastrarUsuario() {
+        pessoa.setAtivo(true);
+        pessoa.setTipoUsuario(1);
+        if(pessoa.getEndereco().getCidade().getId() < 0){
+            FacesMessages.error("Informe a Cidade");
+        }else if(pessoa.getEndereco().getCidade().getEstado().getId() < 0){
+            FacesMessages.error("Informe o Estado");
+        }else {
+            try {
+                pessoa.setEndereco(new EnderecoBO().listarultimoendereco());
+                if (new EnderecoBO().criar(pessoa.getEndereco())) {
+                    FacesMessages.info("Endereco cadastrado com sucesso");
+                } else {
+                    FacesMessages.error("Erro ao cadastrar endereço do usuario");
+                }
+            } catch (Exception e) {
+                FacesMessages.error("Erro: " + e.getMessage());
+            }
+            // Grava o cliente //
+            try {
+                System.out.println("Endereço ID: "+pessoa.getEndereco().getId());
+                if (new PessoaBO().criar(pessoa)) {
+                    FacesMessages.info("Usuário Cadastrado com sucesso");
+                } else {
+                    FacesMessages.error("Erro ao cadastrar usuário");
+                }
+            } catch (Exception e) {
+                FacesMessages.error("Erro: " + e.getMessage());
+            }
+        }
+    }
+
+
 
 }

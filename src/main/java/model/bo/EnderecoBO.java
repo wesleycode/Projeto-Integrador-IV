@@ -1,5 +1,6 @@
 package model.bo;
 
+import model.dao.EnderecoDao;
 import model.entities.Endereco;
 
 import java.util.List;
@@ -62,6 +63,9 @@ public class EnderecoBO implements GenericBO<Endereco> {
             throw new Exception("Bairro nulo");
         }
         return true;
+    }
+    public Endereco listarultimoendereco() throws Exception {
+        return new EnderecoDao().listarultimoendereco();
     }
 
     @Override
