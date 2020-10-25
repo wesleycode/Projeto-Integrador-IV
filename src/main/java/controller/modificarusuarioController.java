@@ -4,13 +4,14 @@ import model.bo.PessoaBO;
 import model.entities.Pessoa;
 import net.bootsfaces.utils.FacesMessages;
 
+import javax.faces.bean.SessionScoped;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
 @Named
-@ViewScoped
+@SessionScoped
 public class modificarusuarioController implements Serializable {
     private Pessoa pessoa;
     private List<Pessoa>listpessoa;
@@ -25,6 +26,7 @@ public class modificarusuarioController implements Serializable {
 
     public modificarusuarioController() {
         pessoa = new Pessoa();
+        pessoa.setNome("");
         listpessoa = listarPessoas();
     }
 
@@ -40,19 +42,14 @@ public class modificarusuarioController implements Serializable {
             return null;
         }
     }
-    private List<Pessoa> listarPessoasEspecifica(){
+    public void listarPessoasEspecifica(){
+        System.out.println("QQQQQQQQQQQQ" + pessoa.getNome());
         try{
-            return new PessoaBO().listarPessoasPorNomeEspecifico(pessoa.getNome());
+            listpessoa = new PessoaBO().listarPessoasPorNomeEspecifico(pessoa.getNome());
         } catch (Exception e) {
             FacesMessages.error("Erro: " + e.getMessage());
-            return null;
+            listpessoa = null;
         }
-    }
-    public List<Pessoa> listarPessoasViaNome(String nome){
-        if(nome == ""){
-            return listarPessoas();
-        }else return listarPessoasEspecifica();
-
     }
     public void setAtivoOuDesativo(Pessoa p1){
         System.out.println("esta entrando aqui?");
@@ -67,6 +64,7 @@ public class modificarusuarioController implements Serializable {
         } catch (Exception e) {
             FacesMessages.error("Erro: " + e.getMessage());
         }
+        return;
     }
 
     public void setListpessoa(List<Pessoa> listpessoa) {

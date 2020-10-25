@@ -43,9 +43,9 @@ public class PessoaDao extends GenericDao<Pessoa> {
     }
     public List<Pessoa> listarPessoasPorNomeEspecifico(String nome) throws Exception {
         try {
+            nome = "SELECT p FROM Pessoa p where p.nome like '%"+nome+"%'";
             return entityManager.createQuery(
-                    "SELECT p FROM Pessoa p where p.nome like '%'+:nome+'%'")
-                    .setParameter("nome",nome)
+                    nome)
                     .getResultList();
         } catch (Exception e) {
             entityManager.getTransaction().rollback();

@@ -39,28 +39,36 @@
         <div class="row">
             <div class="leftcolumn">
                     <div class="card" id="card">
-                        <h:form>
-                            <b:inputText value="#{modificarusuarioController.pessoa.nome}" placeholder="Nome">
-                            </b:inputText>
-                            <h:commandLink styleClass="btn btn-primary"
-                                           type="submit">Pesquisar Por nome
-                                <f:ajax render="card" listener="#{modificarusuarioController.listarPessoasViaNome(modificarusuarioController.pessoa.nome)}"/>
-                            </h:commandLink>
-
-                            <h3>Lista Dos Usuários Existente:</h3>
-                            <p:dataGrid value="#{modificarusuarioController.listpessoa}"
-                                        var="pessoa" columns="2"
-                                        layout="grid"
-                                        rows="8" paginator="true" id="cars" paginatorPosition="bottom"
-                                        paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {NextPageLink}">
-                                <li><h:outputLabel>Nome: #{pessoa.nome}</h:outputLabel>
-                                    <br/><h:outputLabel>CPF: #{pessoa.cpf}</h:outputLabel>
-                                    <br/><h:outputLabel>Email: #{pessoa.email}</h:outputLabel>
-                                    <br/><h:outputLabel>Ativo: #{pessoa.ativo}</h:outputLabel>
-                                    <br/><p:commandButton type="button" value="Alterar Atividade" action="#{modificarusuarioController.ativoOuDesativo(pessoa)}"/>
-                                    <p:commandButton type="button" value="Modificar Pessoa"/>
-                                </li>
-                            </p:dataGrid>
+                        <h:form id="form">
+                            <b:inputText value="#{modificarusuarioController.pessoa.nome}" placeholder="Nome"/>
+                            <h:commandButton styleClass="btn btn-primary"
+                                           value="Pesquisar Por nome">
+                                <f:ajax render="painel" listener="#{modificarusuarioController.listarPessoasEspecifica}"/>
+                            </h:commandButton >
+                            <p:panel header="Lista Dos Usuários Existente" id="painel">
+                                <p:dataGrid value="#{modificarusuarioController.listpessoa}"
+                                            var="pessoa" columns="2"
+                                            layout="grid"
+                                            rows="8" paginator="true" id="cars" paginatorPosition="bottom"
+                                            paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {NextPageLink}">
+                                    <p:column>
+                                        <h:outputLabel>Nome: #{pessoa.nome}</h:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <h:outputLabel>CPF: #{pessoa.cpf}</h:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <h:outputLabel>Email: #{pessoa.email}</h:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <h:outputLabel> Ativo: #{pessoa.ativo}</h:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:commandButton type="button" value="Alterar Atividade" action="#{modificarusuarioController.ativoOuDesativo(pessoa)}"/>
+                                        <p:commandButton type="button" value="Modificar Pessoa"/>
+                                    </p:column>
+                                </p:dataGrid>
+                            </p:panel>
 
                         </h:form>
                     </div>
@@ -78,7 +86,6 @@
                                          action="#{loginController.deslogar}">
                             <!--Deve possuir o logoff-->
                         </h:commandButton>
-
                     </h:form>
                 </div>
 

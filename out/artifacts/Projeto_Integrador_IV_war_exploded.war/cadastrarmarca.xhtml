@@ -62,6 +62,16 @@
                             </div>
                     </h:form>
                 </div>
+                <h:form>
+                    <div class="card" id="cardmarca" align="center">
+                        <h3>Lista de Marca</h3>
+                            <p:dataGrid var="marca" value="#{cadastrarMarcaController.todasMarcaProdutoList}" columns="4" layout="grid"
+                                        rows="8" paginator="true" id="cars" paginatorPosition="bottom"
+                                        paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {NextPageLink}">
+                                <li><h:outputLabel>Marca: #{marca.nome}</h:outputLabel></li>
+                            </p:dataGrid>
+                    </div>
+                </h:form>
             </div>
 
             <div class="rightcolumn">
@@ -78,14 +88,6 @@
                         </h:commandButton>
 
                     </h:form>
-                </div>
-                <div class="card" id="cardmarca">
-                    <h3>Lista de Marca</h3>
-                    <ul class="align-self-baseline">
-                    <p:dataGrid var="marca" value="#{cadastrarMarcaController.todasMarcaProdutoList}" columns="1">
-                        <li><h:outputLabel>Marca: #{marca.nome}</h:outputLabel></li>
-                    </p:dataGrid>
-                    </ul>
                 </div>
 
             </div>
