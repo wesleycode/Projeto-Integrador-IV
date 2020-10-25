@@ -69,11 +69,17 @@ public class PessoaBO implements GenericBO<Pessoa> {
         }
         return true;
     }
+    public List<Pessoa> listarPessoasPorNomeEspecifico(String nome) throws Exception {
+        return new PessoaDao().listarPessoasPorNomeEspecifico(nome);
+    }
     public Pessoa getByEmailandsenha(String email, String senha) throws Exception {
      return new PessoaDao().getByEmailandsenha(email,senha);
     }
     public Pessoa getByCPF(String email, String senha) throws Exception {
         return new PessoaDao().getByEmailandsenha(email,senha);
+    }
+    public List<Pessoa> listarPessoasPorNome() throws Exception {
+        return new PessoaDao().listarPessoasPorNome();
     }
 
     public String logarPessoa(Pessoa pessoa) {

@@ -81,15 +81,20 @@
                         <br/>
                         <br/>
                         <div class="col-md-12 col-sm-12">
-                            <p:fileUpload value="#{cadastrarProdutoController.file}" mode="simple" skinSimple="true"
-                                          accept="image/jpg" auto="true"
+                            <p:outputLabel value="Foto Produto" />
+                            <p:fileUpload fileUploadListener="#{cadastrarProdutoController.upload}"
+                                          mode ="simple"
+                                          allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+                                          sizeLimit="10000"
+                                          dragDropSupport="true"
+                                          description="Selecione a Imagem"
+                                          required="true"
                             />
-                            <br />
-                            <p:commandButton value="Imagem do Produto" ajax="false" action="#{cadastrarProdutoController.upload}" disabled="true" />
-
+                                <br/>
                         </div>
                         <br/>
-                        <div style="text-align: center;">
+                        <br/>
+                        <div style="text-align: center;" class="col-md-12 col-sm-12">
                             <h:commandLink styleClass="btn btn-primary" value="Cadastrar Produto"
                                            action="#{cadastrarProdutoController.cadastrarMarcaProduto}"/>
                         </div>

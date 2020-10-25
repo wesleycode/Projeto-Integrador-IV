@@ -13,6 +13,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Named
@@ -105,53 +106,66 @@ public class CadastrarProdutoController implements Serializable {
         return "index?faces-redirect=true";
     }
 
-    public void cadastrarFoto(FileUploadEvent event){
-        System.out.println("Entra?");
+    public void upload(FileUploadEvent event) {
+        System.out.println("11111111111111");
+        produto.getFotoProduto().setFoto(getFileName(event.getFile().getFileName()));
+        System.out.println("2222222222");
+        FacesMessage msg = new FacesMessage("Sucesso! foi carregado.");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        // Do what you want with the file
         try {
-        FotoProduto foto = new FotoProduto();
-        foto.setFoto(this.retornardiretorio(produto.getCategoria().getCategoria()) + event.getFile().getFileName());
-        File file1 = new File("resources/img/"+this.retornardiretorio(produto.getCategoria().getCategoria()), event.getFile().getFileName());
-        System.out.println("aaaaaaaaaaaaaaaa");
-        OutputStream out = new FileOutputStream(file1);
-        out.write(getFile().getContent());
-        out.close();
-        System.out.println("bbbbbbbbbbbbbbbbbb");
-        if (new FotoProdutoBO().criar(foto)) {
-            produto.setFotoProduto(foto);
-            FacesMessages.info("Foto Produto cadastrado com sucesso");
+            copyFile(produto.getFotoProduto().getFoto(), event.getFile().getInputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        } catch (Exception e) {
-            FacesMessages.error("Erro Ao cadastrar Foto:" + e.getMessage());
+
+    }
+
+    public void copyFile(String fileName, InputStream in) {
+        try {
+            // write the inputStream to a FileOutputStream
+            OutputStream out = new FileOutputStream(new File("web/resources/img/"+this.retornardiretorio(produto.getCategoria().getCategoria())
+                    + fileName));
+            int read = 0;
+            byte[] bytes = new byte[1024];
+
+            while ((read = in.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
+            }
+
+            in.close();
+            out.flush();
+            out.close();
+
+            System.out.println("Novo arquivo criado '"+fileName+"'!");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
-    public void savefoto() throws IOException {
-        System.out.println("111111");
-        FotoProduto foto = new FotoProduto();
-        String filename = FilenameUtils.getName(file.getFileName());
-        System.out.println("2222222");
-        InputStream input = file.getInputStream();
-        OutputStream output = new FileOutputStream(new File("resources/img/"+this.retornardiretorio(produto.getCategoria().getCategoria()), filename));
-        foto.setFoto(this.retornardiretorio(produto.getCategoria().getCategoria()) + filename);
-        System.out.println("3333333");
-        try {
-            IOUtils.copy(input, output);
-            System.out.println("4444444444");
-            if (new FotoProdutoBO().criar(foto)) {
-                produto.setFotoProduto(foto);
-                FacesMessages.info("Foto Produto cadastrado com sucesso");
-            }
-        }catch (Exception e) {
-            FacesMessages.error("Erro Ao cadastrar Foto:" + e.getMessage());
-        } finally {
-            IOUtils.closeQuietly(input);
-            IOUtils.closeQuietly(output);
-        }
+    public String getFileName(String nomeArquivo) {
+        String data = "yyyy-MM-dd";
+        String hora = "HH-mm-ss-SSS";
+        String data1, hora1;
+
+        java.util.Date agora = new java.util.Date();
+        SimpleDateFormat formata = new SimpleDateFormat(data);
+        data1 = formata.format(agora);
+        formata = new SimpleDateFormat(hora);
+        hora1 = formata.format(agora);
+        return data1 + "-" + hora1+"."+getExtensao(nomeArquivo);
+    }
+    public String getExtensao(String nomeArquivo)
+    {
+        int posicaoPonto = nomeArquivo.lastIndexOf(".");
+        int tamanhoString = nomeArquivo.length();
+        return nomeArquivo.substring(posicaoPonto + 1, tamanhoString);
     }
 
     public void cadastrarMarcaProduto(){
         try {
-            savefoto();
-            System.out.println("555555555");
+
+            System.out.println("555555555 : "+produto.getFotoProduto().getFoto());
+            System.out.println("!!!!!!!!!!!!");
             produto.setEmEstoque(true);
 
             if (new ProdutoBO().criar(produto)) {
@@ -159,12 +173,6 @@ public class CadastrarProdutoController implements Serializable {
             }
         } catch (Exception e) {
             FacesMessages.error("Erro Final:" + e.getMessage());
-        }
-    }
-    public void upload() {
-        if (file != null) {
-            FacesMessage message = new FacesMessage("Imagem:", file.getFileName() + " recebida.");
-            FacesContext.getCurrentInstance().addMessage(null, message);
         }
     }
 

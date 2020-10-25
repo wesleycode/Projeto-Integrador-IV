@@ -4,6 +4,7 @@ import connections.ConnectionFactory;
 import model.entities.Pessoa;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class PessoaDao extends GenericDao<Pessoa> {
 
@@ -21,6 +22,31 @@ public class PessoaDao extends GenericDao<Pessoa> {
                     .setParameter("senha", pessoa.getSenha())
                     .setParameter("tipo", pessoa.getTipoUsuario())
                     .getResultList().size() > 0;
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw new Exception(e.getMessage());
+        } finally {
+            entityManager.close();
+        }
+    }
+    public List<Pessoa> listarPessoasPorNome() throws Exception {
+        try {
+            return entityManager.createQuery(
+                    "SELECT p FROM Pessoa p order by p.nome")
+                    .getResultList();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw new Exception(e.getMessage());
+        } finally {
+            entityManager.close();
+        }
+    }
+    public List<Pessoa> listarPessoasPorNomeEspecifico(String nome) throws Exception {
+        try {
+            return entityManager.createQuery(
+                    "SELECT p FROM Pessoa p where p.nome like '%'+:nome+'%'")
+                    .setParameter("nome",nome)
+                    .getResultList();
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
             throw new Exception(e.getMessage());

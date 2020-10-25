@@ -45,6 +45,11 @@ public class PainelAdministradorController implements Serializable {
         return "cadastrarusuarioViaAdm?faces-redirect=true";
     }
 
+    public String irParaModificarUsusario() {
+        return "modificarusuario?faces-redirect=true";
+    }
+
+
     public List<Estado> listarTodosOsEstados() {
         try {
             return new EstadoBO().listarTodos();
