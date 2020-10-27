@@ -1,7 +1,10 @@
 package controller;
 
 import model.bo.MarcaProdutoBO;
+import model.bo.PessoaBO;
 import model.entities.MarcaProduto;
+import model.entities.Pessoa;
+import model.entities.Produto;
 import net.bootsfaces.utils.FacesMessages;
 
 import javax.faces.view.ViewScoped;
@@ -12,12 +15,20 @@ import java.util.List;
 @Named
 @ViewScoped
 public class CadastrarMarcaController implements Serializable {
-
     private MarcaProduto marca;
     private List<MarcaProduto> marcalist;
 
     public CadastrarMarcaController() {
         marca = new MarcaProduto();
+    }
+
+
+    public MarcaProduto getMarca() {
+        return marca;
+    }
+
+    public void setMarca(MarcaProduto marca) {
+        this.marca = marca;
     }
 
     public List<MarcaProduto> getMarcalist() {

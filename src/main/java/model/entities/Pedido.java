@@ -16,7 +16,16 @@ public class Pedido implements EntityBase {
     private Pessoa pessoa;
     @ManyToOne
     private Endereco endereco;
+    @ManyToOne
+    private FormaPagamento formaPagamento;
 
+    public FormaPagamento getFormaPagamento() {
+        return formaPagamento;
+    }
+
+    public void setFormaPagamento(FormaPagamento formaPagamento) {
+        this.formaPagamento = formaPagamento;
+    }
 
     public Endereco getEndereco() {
         return endereco;

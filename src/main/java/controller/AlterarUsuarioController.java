@@ -1,20 +1,37 @@
 package controller;
 
+import model.bo.MarcaProdutoBO;
 import model.bo.PessoaBO;
+import model.entities.MarcaProduto;
 import model.entities.Pessoa;
 import net.bootsfaces.utils.FacesMessages;
+import net.bootsfaces.utils.FacesMessages;
 
-import javax.faces.bean.SessionScoped;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
 @Named
 @SessionScoped
-public class modificarusuarioController implements Serializable {
+public class AlterarUsuarioController implements Serializable {
     private Pessoa pessoa;
+    private String nome1;
     private List<Pessoa>listpessoa;
+
+    public AlterarUsuarioController() {
+        pessoa = new Pessoa();
+        pessoa.setNome("");
+        listpessoa = listarPessoas();
+    }
+
+    public String getNome1() {
+        return nome1;
+    }
+
+    public void setNome1(String nome1) {
+        this.nome1 = nome1;
+    }
 
     public Pessoa getPessoa() {
         return pessoa;
@@ -22,12 +39,6 @@ public class modificarusuarioController implements Serializable {
 
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
-    }
-
-    public modificarusuarioController() {
-        pessoa = new Pessoa();
-        pessoa.setNome("");
-        listpessoa = listarPessoas();
     }
 
     public List<Pessoa> getListpessoa() {
@@ -42,23 +53,24 @@ public class modificarusuarioController implements Serializable {
             return null;
         }
     }
-    public void listarPessoasEspecifica(){
-        System.out.println("QQQQQQQQQQQQ" + pessoa.getNome());
+    public void listarPessoasEspecifica(String a){
+        System.out.println("QQQQQQQQQQQQ" + a);
         try{
-            listpessoa = new PessoaBO().listarPessoasPorNomeEspecifico(pessoa.getNome());
+            listpessoa = new PessoaBO().listarPessoasPorNomeEspecifico(a);
         } catch (Exception e) {
             FacesMessages.error("Erro: " + e.getMessage());
             listpessoa = null;
         }
     }
-    public void setAtivoOuDesativo(Pessoa p1){
+    public void isAtivoOuDesativo(int id){
         System.out.println("esta entrando aqui?");
-        if(p1.isAtivo()){
-            p1.setAtivo(false);
-        }else{
-            p1.setAtivo(true);
-        }
         try{
+            Pessoa p1 = new PessoaBO().getById(id);
+            if(p1.isAtivo()){
+                p1.setAtivo(false);
+            }else{
+                p1.setAtivo(true);
+            }
             new PessoaBO().alterar(p1);
             FacesMessages.info("A pessoa Foi Alterada");
         } catch (Exception e) {
@@ -70,6 +82,7 @@ public class modificarusuarioController implements Serializable {
     public void setListpessoa(List<Pessoa> listpessoa) {
         this.listpessoa = listpessoa;
     }
+
 
 
 }

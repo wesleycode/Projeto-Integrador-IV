@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <!-- JQUERY -->
+    <h:outputScript library="js" name="jquery-3.5.1.js"/>
+    <!-- BOOTSTRAP -->
+    <h:outputScript library="js" name="bootstrap.min.js"/>
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    <!-- FONTAWESOME -->
+    <h:outputScript library="js" name="all.js"/>
+    <h:outputStylesheet library="css" name="all.css"/>
+    <h:outputStylesheet library="css" name="fontawesome.css"/>
+    <!-- STYLESHEET -->
+    <h:outputStylesheet library="css" name="indexStyle.css"/>
+    <!-- SCRIPT -->
+    <script type="application/javascript">
+        $(function () {
+            $("#navbar").load("navbar.xhtml");
+            $("#footer").load("footer.xhtml");
+        });
+    </script>
+</h:head>
+
+<h:body>
+
+    <!-- Navbar -->
+    <div id="navbar"></div>
+    <!-- Conteudo da página fica aqui!!! -->
+
+    <div class="conteudo">
+
+        <div class="row">
+            <div class="leftcolumn">
+                <div class="card" align="center" id="cardcadastro">
+                    <p:panel header="Itens Do Carrinho" id="painel">
+                        <p:dataGrid value="#{loginController.itensCarrinhos}"
+                                    var="itens" columns="1"
+                                    layout="grid"
+                                    rows="8" paginator="true" id="cars" paginatorPosition="bottom"
+                                    paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {NextPageLink}">
+                            <p:column>
+                                <h:outputLabel>Produto: #{itens.produto.nome}</h:outputLabel>
+                            </p:column>
+                            <p:column>
+                                <h:outputLabel>Valor: #{itens.valor}</h:outputLabel>
+                            </p:column>
+                            <p:column>
+                                <h:outputLabel>Quantidade: </h:outputLabel>
+                                <p:spinner id="minMax" value="#{itens.quantidade}" min="0" max="100" />
+                            </p:column>
+                            <p:column>
+                                <p:commandButton type="button" value="Remover Item"/>
+                            </p:column>
+                            <hr/>
+                        </p:dataGrid>
+                    </p:panel>
+                </div>
+                <div class="card">
+                    <div class="card" align="center">
+                        <h3>Carrinho Opções</h3>
+                        <h:form>
+                            <div class="form-group col-md-6 col-sm-6">
+                                <h:outputLabel>Escolha forma de Pagamento:</h:outputLabel>
+                                <b:selectOneMenu
+                                        value="#{loginController.pedido.formaPagamento}" ajax="true"
+                                        process="@this">
+                                    <f:selectItem value="#{null}" itemLabel="Forma Pagamento"/>
+                                    <f:selectItems
+                                            value="#{loginController.formaPagamentoList}"
+                                            var="formaPagame"
+                                            itemValue="#{formaPagame}" itemLabel="#{formaPagame.formapagamento}"/>
+                                </b:selectOneMenu>
+                                <hr/>
+                                <h3>Endereço de Entrega</h3>
+                                <div class="form-group col-md-6 col-sm-6">
+                                    <b:inputText value="#{loginController.endereco.rua}" placeholder="Rua"
+                                                 required="true"
+                                                 mask="{regex:'[a-zA-Z ]*'}">
+                                        <f:facet name="prepend">
+                                            <b:iconAwesome name="map-marker-alt"/>
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+
+                                <div class="form-group col-md-6 col-sm-6">
+                                    <b:selectOneMenu value="#{loginController.endereco.cidade.estado}"
+                                                     ajax="true"
+                                                     process="@this" update="@next @next:@next">
+                                        <f:selectItem value="#{null}" itemLabel="#{loginController.pessoa.endereco.cidade.estado.nome}"/>
+                                        <f:selectItems value="#{painelAdministradorController.listarTodosOsEstados()}" var="estado"
+                                                       itemValue="#{estado}" itemLabel="#{estado.nome}"/>
+                                        <f:ajax event="change" execute="@this" render="cidadesSelect"/>
+                                    </b:selectOneMenu>
+                                </div>
+
+                                <div class="form-group col-md-6 col-sm-6">
+                                    <b:selectOneMenu id="cidadesSelect"
+                                                     value="#{loginController.endereco.cidade}" ajax="true"
+                                                     process="@this" update="@next @next:@next">
+                                        <f:selectItem value="#{null}" itemLabel="#{loginController.pessoa.endereco.cidade.nome}"/>
+                                        <f:selectItems
+                                                value="#{painelAdministradorController.listarTodosAsCidadesPorEstado(loginController.pessoa.endereco.cidade.estado)}"
+                                                var="cidade"
+                                                itemValue="#{cidade}" itemLabel="#{cidade.nome}"/>
+                                    </b:selectOneMenu>
+                                </div>
+
+                                <div class="form-group col-md-6 col-sm-6">
+                                    <span class="help-block">Onde vamos entregar seu produto?</span>
+                                </div>
+
+                            </div>
+                            <div class="col-md-12 col-sm-12" id="deceased">
+                                <div class="form-group col-md-3 col-sm-3">
+                                    <b:inputText value="#{painelAdministradorController.pessoa.endereco.bairro}" placeholder="Bairro"
+                                                 required="true"
+                                                 mask="{regex:'[a-zA-Z ]*'}">
+                                        <f:facet name="prepend">
+                                            <b:iconAwesome name="map-marker-alt"/>
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-3">
+                                    <b:inputText value="#{loginController.endereco.cep}" placeholder="Cep"
+                                                 required="true"
+                                                 mask="99999-999">
+                                        <f:facet name="prepend">
+                                            <b:iconAwesome name="map-marker-alt"/>
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-3">
+                                    <b:inputText value="#{loginController.endereco.complemento}"
+                                                 placeholder="Complemento"
+                                                 required="true"
+                                                 mask="{regex:'[a-zA-Z ]*'}">
+                                        <f:facet name="prepend">
+                                            <b:iconAwesome name="map-marker-alt"/>
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-3">
+                                    <b:inputText value="#{loginController.endereco.numero}" placeholder="Numero"
+                                                 required="true"
+                                                 mask="{regex:'[0-9]*'}">
+                                        <f:facet name="prepend">
+                                            <b:iconAwesome name="map-marker-alt"/>
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-3">
+                                    <h:outputLabel>Valor Total: #{loginController.carrinho.valorTotal}</h:outputLabel>
+                                </div>
+
+                                <hr/>
+                                <h:commandLink value="Políticas de Compra">
+                                </h:commandLink>
+                                <hr/>
+                                <h:commandButton value="Comprar" styleClass="btn btn-primary">
+                                </h:commandButton>
+                            </div>
+
+
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rightcolumn">
+
+                <div class="card" align="center">
+                    <h3>Carrinho do Usuário</h3>
+                    <h:outputLabel>Nome Comprador</h:outputLabel>
+                    <h:outputLabel>#{loginController.pessoa.nome}</h:outputLabel>
+                    <h:outputLabel>Email Comprador</h:outputLabel>
+                    <h:outputLabel>#{loginController.pessoa.email}</h:outputLabel>
+                    <h:form>
+                        <h:commandButton value="Sair Login" styleClass="btn btn-primary"
+                                         action="#{loginController.deslogar}">
+                            <!--Deve possuir o logoff-->
+                        </h:commandButton>
+                        <h:commandButton value="Meus Pedidos" styleClass="btn btn-primary">
+                        </h:commandButton>
+
+                    </h:form>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer"></div>
+
+</h:body>
+
+</html>
