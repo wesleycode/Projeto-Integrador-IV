@@ -8,6 +8,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Named
@@ -35,6 +36,7 @@ public class LoginController implements Serializable {
         endereco = new Endereco();
         pedido = new Pedido();
         pessoa.getEndereco().setCidade(new Cidade());
+        itensCarrinhos = new ArrayList<>();
         formaPagamentoList = listarTodasFormasDePagamento();
     }
 
@@ -178,7 +180,7 @@ public class LoginController implements Serializable {
     }
 
     public String irParaIndex() { return "index.xhtml?faces-redirect=true"; }
-
+    public String irParatermoCompra() { return "termodecompra.xhtml?faces-redirect=true"; }
 
     public void cadastrarUsuario() {
         pessoa.setAtivo(true);
@@ -217,6 +219,7 @@ public class LoginController implements Serializable {
         if(pessoa.getId() <= 0){//se não estiver logado
             return "cadastroLogin.xhtml?faces-redirect=true";
         }
+        atualizarDadosCarrinho();
         //não coloquei direto pq n quero passar o ID
         endereco.setCidade(pessoa.getEndereco().getCidade());
         endereco.setBairro(pessoa.getEndereco().getBairro());
@@ -224,7 +227,6 @@ public class LoginController implements Serializable {
         endereco.setComplemento(pessoa.getEndereco().getComplemento());
         endereco.setNumero(pessoa.getEndereco().getNumero());
         endereco.setRua(pessoa.getEndereco().getRua());
-
         return "carrinho.xhtml?faces-redirect=true";}
 
 
@@ -251,7 +253,9 @@ public class LoginController implements Serializable {
         carrinho.setQuantidade(0);//reset
         carrinho.setValorTotal(0);//reset
         int x;
-        for(x=0;x > itensCarrinhos.size();x++){
+        System.out.println("Aqui ta chegando");
+        System.out.println(itensCarrinhos.size() + " = tamanho");
+        for(x=0;x < itensCarrinhos.size();x++){
             carrinho.setValorTotal(carrinho.getValorTotal()+itensCarrinhos.get(x).getValor());
             carrinho.setQuantidade(carrinho.getQuantidade() + itensCarrinhos.get(x).getQuantidade());
         }
@@ -259,7 +263,7 @@ public class LoginController implements Serializable {
     public void addQauntidadeIten(ItensCarrinho itensCarrinho){
         //Em teoria a quantidade Ja vai por automatico então sem passagem por parametro
         int x;
-        for(x=0;x > itensCarrinhos.size();x++){
+        for(x=0;x < itensCarrinhos.size();x++){
             if(itensCarrinho == itensCarrinhos.get(x)){
                 itensCarrinhos.get(x).setValor(itensCarrinhos.get(x).getQuantidade() * itensCarrinhos.get(x).getQuantidade());
             }
@@ -269,7 +273,7 @@ public class LoginController implements Serializable {
     }
     public void removecarrinho(ItensCarrinho itensCarrinho){
         int x;
-        for(x=0;x > itensCarrinhos.size();x++){
+        for(x=0;x < itensCarrinhos.size();x++){
             if(itensCarrinho == itensCarrinhos.get(x)){
                 itensCarrinhos.remove(x);
             }

@@ -64,9 +64,9 @@
                 </div>
                 <div class="card">
                     <div class="card" align="center">
-                        <h3>Carrinho Opções</h3>
+                        <h3>Carrinho Compra</h3>
                         <h:form>
-                            <div class="form-group col-md-6 col-sm-6">
+                            <div class="form-group col-md-12 col-sm-12">
                                 <h:outputLabel>Escolha forma de Pagamento:</h:outputLabel>
                                 <b:selectOneMenu
                                         value="#{loginController.pedido.formaPagamento}" ajax="true"
@@ -79,7 +79,7 @@
                                 </b:selectOneMenu>
                                 <hr/>
                                 <h3>Endereço de Entrega</h3>
-                                <div class="form-group col-md-6 col-sm-6">
+                                <div class="form-group col-md-12 col-sm-12">
                                     <b:inputText value="#{loginController.endereco.rua}" placeholder="Rua"
                                                  required="true"
                                                  mask="{regex:'[a-zA-Z ]*'}">
@@ -89,7 +89,7 @@
                                     </b:inputText>
                                 </div>
 
-                                <div class="form-group col-md-6 col-sm-6">
+                                <div class="form-group col-md-12 col-sm-12">
                                     <b:selectOneMenu value="#{loginController.endereco.cidade.estado}"
                                                      ajax="true"
                                                      process="@this" update="@next @next:@next">
@@ -100,7 +100,7 @@
                                     </b:selectOneMenu>
                                 </div>
 
-                                <div class="form-group col-md-6 col-sm-6">
+                                <div class="form-group col-md-12 col-sm-12">
                                     <b:selectOneMenu id="cidadesSelect"
                                                      value="#{loginController.endereco.cidade}" ajax="true"
                                                      process="@this" update="@next @next:@next">
@@ -112,13 +112,14 @@
                                     </b:selectOneMenu>
                                 </div>
 
-                                <div class="form-group col-md-6 col-sm-6">
-                                    <span class="help-block">Onde vamos entregar seu produto?</span>
+                                <div class="form-group col-md-12 col-sm-12">
+                                    <h3><span>Onde vamos entregar seu produto?</span></h3>
                                 </div>
 
                             </div>
-                            <div class="col-md-12 col-sm-12" id="deceased">
-                                <div class="form-group col-md-3 col-sm-3">
+                            <div class="form-group col-md-12 col-sm-12" id="de">
+                                <hr/>
+                                <div class="form-group col-md-12 col-sm-12">
                                     <b:inputText value="#{painelAdministradorController.pessoa.endereco.bairro}" placeholder="Bairro"
                                                  required="true"
                                                  mask="{regex:'[a-zA-Z ]*'}">
@@ -127,7 +128,7 @@
                                         </f:facet>
                                     </b:inputText>
                                 </div>
-                                <div class="form-group col-md-3 col-sm-3">
+                                <div class="form-group col-md-12 col-sm-12">
                                     <b:inputText value="#{loginController.endereco.cep}" placeholder="Cep"
                                                  required="true"
                                                  mask="99999-999">
@@ -136,7 +137,7 @@
                                         </f:facet>
                                     </b:inputText>
                                 </div>
-                                <div class="form-group col-md-3 col-sm-3">
+                                <div class="form-group col-md-12 col-sm-12">
                                     <b:inputText value="#{loginController.endereco.complemento}"
                                                  placeholder="Complemento"
                                                  required="true"
@@ -146,7 +147,7 @@
                                         </f:facet>
                                     </b:inputText>
                                 </div>
-                                <div class="form-group col-md-3 col-sm-3">
+                                <div class="form-group col-md-12 col-sm-12">
                                     <b:inputText value="#{loginController.endereco.numero}" placeholder="Numero"
                                                  required="true"
                                                  mask="{regex:'[0-9]*'}">
@@ -155,12 +156,12 @@
                                         </f:facet>
                                     </b:inputText>
                                 </div>
-                                <div class="form-group col-md-3 col-sm-3">
+                                <div class="form-group col-md-12 col-sm-12">
                                     <h:outputLabel>Valor Total: #{loginController.carrinho.valorTotal}</h:outputLabel>
                                 </div>
 
                                 <hr/>
-                                <h:commandLink value="Políticas de Compra">
+                                <h:commandLink value="Políticas de Compra" action="#{loginController.irParatermoCompra}">
                                 </h:commandLink>
                                 <hr/>
                                 <h:commandButton value="Comprar" styleClass="btn btn-primary">
