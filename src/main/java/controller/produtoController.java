@@ -1,7 +1,10 @@
 package controller;
 
+import model.bo.AvaliacaoBO;
 import model.bo.CategoriaBO;
 import model.bo.ProdutoBO;
+import model.dao.ProdutoDao;
+import model.entities.Avaliacao;
 import model.entities.Categoria;
 import model.entities.Produto;
 import net.bootsfaces.utils.FacesMessages;
@@ -20,7 +23,16 @@ public class produtoController implements Serializable {
     private List<Produto> listaTodosOsProdutos;
     private Categoria categoriaSelecionada;
     private List<Categoria> listaTodasAsCategorias;
+    private List<Avaliacao> avaliacaoList;
     private String filtertext;
+
+    public List<Avaliacao> getAvaliacaoList() {
+        return avaliacaoList;
+    }
+
+    public void setAvaliacaoList(List<Avaliacao> avaliacaoList) {
+        this.avaliacaoList = avaliacaoList;
+    }
 
     public String getFiltertext() {
         return filtertext;
@@ -68,6 +80,13 @@ public class produtoController implements Serializable {
         listaTodosOsProdutos = preencherTabela();
         listaTodasAsCategorias = listarTodasAsCategorias();
         filtertext = "";
+
+        try {
+            produtoSelecionado = new ProdutoDao().listarOProdutoAqui();
+            avaliacaoList = this.listarAvaliacaoDeProdutoSelecionado();
+        } catch (Exception e) {
+            FacesMessages.error("Erro: " + e.getMessage());//Remover isso quando for atribuir os produtos corretamente com o metodo na DAO
+        }
     }
 
     public String getFormatarPreco(Produto produto) {
@@ -106,6 +125,35 @@ public class produtoController implements Serializable {
         } catch (Exception e) {
             FacesMessages.error("Erro: " + e.getMessage());
         }
+    }
+    public List<Avaliacao> listarAvaliacaoDeProdutoSelecionado() {
+        try {
+            return new AvaliacaoBO().listarAvaliacaoPorProduto(produtoSelecionado);
+        } catch (Exception e) {
+            FacesMessages.error("Erro ao selecionar avaliações: " + e.getMessage());
+            return null;
+        }
+    }
+    public String retornartiponota(Avaliacao avaliacao){
+        switch (avaliacao.getNota()){
+            case 1:
+                return "Muito Ruim";
+            case 2:
+                return  "Ruim";
+            case 3:
+                return "Ok";
+            case 4:
+                return "Bom";
+            case 5:
+                return "Muito Bom";
+            default:
+                return "Não identificado";
+        }
+    }
+    public String irParaProdudoselecionado() {
+
+        avaliacaoList = this.listarAvaliacaoDeProdutoSelecionado();
+        return "produtoselecionado?faces-redirect=true";
     }
 
 }

@@ -28,4 +28,5 @@ public class IndexController implements Serializable {
 
     public String irParaIndex() { return "index?faces-redirect=true"; }
 
+
 }

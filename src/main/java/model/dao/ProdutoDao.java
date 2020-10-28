@@ -1,6 +1,7 @@
 package model.dao;
 
 import connections.ConnectionFactory;
+import model.entities.Avaliacao;
 import model.entities.Categoria;
 import model.entities.Pessoa;
 import model.entities.Produto;
@@ -10,6 +11,11 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 public class ProdutoDao extends GenericDao<Produto> {
+
+    private EntityManager entityManager;
+    public  ProdutoDao(){
+        entityManager = new ConnectionFactory().getConnection();
+    }
 
     public List<Produto> listarPorCategoria(long categoriaId) throws Exception {
         try {
@@ -64,4 +70,16 @@ public class ProdutoDao extends GenericDao<Produto> {
         }
     }
 
+    //remover metodo futuramente
+    public Produto listarOProdutoAqui() throws Exception {
+        try {
+            List<Produto> list = entityManager.createQuery("SELECT a FROM Produto a where a.id = 109")
+                    .getResultList();
+            return list.get(0);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            entityManager.close();
+        }
+    }
 }

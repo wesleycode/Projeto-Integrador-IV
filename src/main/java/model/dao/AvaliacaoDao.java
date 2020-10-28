@@ -2,6 +2,7 @@ package model.dao;
 
 import connections.ConnectionFactory;
 import model.entities.Avaliacao;
+import model.entities.Produto;
 
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -15,6 +16,17 @@ public class AvaliacaoDao extends GenericDao<Avaliacao>{
     public List<Avaliacao> listarAvaliacaoPorNota() throws Exception {
         try {
             return entityManager.createQuery("SELECT a FROM Avaliacao a order by a.nota asc ").getResultList();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            entityManager.close();
+        }
+    }
+    public List<Avaliacao> listarAvaliacaoPorProduto(Produto produto) throws Exception {
+        try {
+            return entityManager.createQuery("SELECT a FROM Avaliacao a where a.produto = :produto")
+                    .setParameter("produto",produto)
+                    .getResultList();
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         } finally {

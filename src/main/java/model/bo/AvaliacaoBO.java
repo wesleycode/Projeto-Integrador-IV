@@ -3,6 +3,7 @@ package model.bo;
 import model.dao.AvaliacaoDao;
 import model.dao.GenericDao;
 import model.entities.Avaliacao;
+import model.entities.Produto;
 
 import java.util.List;
 
@@ -85,4 +86,7 @@ public class AvaliacaoBO implements GenericBO<Avaliacao> {
         return avaliacaoDao.listarAvaliacaoPorNota();
     }
 
+    public List<Avaliacao> listarAvaliacaoPorProduto(Produto produto) throws Exception {
+        return new AvaliacaoDao().listarAvaliacaoPorProduto(produto);
+    }
 }

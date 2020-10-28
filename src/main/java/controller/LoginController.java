@@ -19,6 +19,7 @@ public class LoginController implements Serializable {
     private Carrinho carrinho;
     private List<ItensCarrinho> itensCarrinhos;
     private List<FormaPagamento> formaPagamentoList;
+    private Avaliacao avaliacaoUsuario;
     private Endereco endereco;
     private int tipoPessoaLogin;
     private Pedido pedido;
@@ -33,6 +34,7 @@ public class LoginController implements Serializable {
 
     public LoginController() {
         pessoa = new Pessoa();
+        avaliacaoUsuario = new Avaliacao();
         carrinho = new Carrinho();
         endereco = new Endereco();
         pedido = new Pedido();
@@ -88,6 +90,14 @@ public class LoginController implements Serializable {
 
     public void setCarrinho(Carrinho carrinho) {
         this.carrinho = carrinho;
+    }
+
+    public Avaliacao getAvaliacaoUsuario() {
+        return avaliacaoUsuario;
+    }
+
+    public void setAvaliacaoUsuario(Avaliacao avaliacaoUsuario) {
+        this.avaliacaoUsuario = avaliacaoUsuario;
     }
 
     public List<Estado> listarTodosOsEstados() {
@@ -343,5 +353,12 @@ public class LoginController implements Serializable {
         FacesMessages.info("Pedido Cadastrado com sucesso");
     }
 
+    public void criarAvaliacao(){
+        try {
+            new AvaliacaoBO().criar(avaliacaoUsuario);//cadastrar pacialmente pedido
+        } catch (Exception e) {
+            FacesMessages.error("Erro ao cadastrar Avaliacao: " + e.getMessage());
+        }
+    }
 
 }
