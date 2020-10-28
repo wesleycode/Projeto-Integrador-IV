@@ -43,7 +43,7 @@ public class FormaPagamentoBO implements GenericBO<FormaPagamento> {
     }
 
     @Override
-    public FormaPagamento getById(int id) throws Exception {
+    public FormaPagamento getById(long id) throws Exception {
         return new GenericDao<FormaPagamento>().getById(FormaPagamento.class, id);
     }
 

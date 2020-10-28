@@ -36,7 +36,7 @@ public class MarcaProdutoBO implements GenericBO<MarcaProduto> {
     }
 
     @Override
-    public MarcaProduto getById(int id) throws Exception {
+    public MarcaProduto getById(long id) throws Exception {
         return new GenericDao<MarcaProduto>().getById(MarcaProduto.class, id);
     }
 

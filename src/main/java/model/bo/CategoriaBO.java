@@ -40,7 +40,7 @@ public class CategoriaBO implements GenericBO<Categoria> {
     }
 
     @Override
-    public Categoria getById(int id) throws Exception {
+    public Categoria getById(long id) throws Exception {
         return new GenericDao<Categoria>().getById(Categoria.class, id);
     }
 

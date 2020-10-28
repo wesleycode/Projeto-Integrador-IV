@@ -43,7 +43,7 @@ public class FotoProdutoBO implements GenericBO<FotoProduto> {
     }
 
     @Override
-    public FotoProduto getById(int id) throws Exception {
+    public FotoProduto getById(long id) throws Exception {
         return new GenericDao<FotoProduto>().getById(FotoProduto.class, id);
     }
 

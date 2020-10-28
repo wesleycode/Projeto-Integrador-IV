@@ -50,7 +50,7 @@ public class FornecedorBO implements GenericBO<Fornecedor>{
     }
 
     @Override
-    public Fornecedor getById(int id) throws Exception {
+    public Fornecedor getById(long id) throws Exception {
         genericDAO = new GenericDao<>();
         return genericDAO.getById(Fornecedor.class,id);
     }

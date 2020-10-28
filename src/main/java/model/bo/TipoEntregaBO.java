@@ -42,7 +42,7 @@ public class TipoEntregaBO implements GenericBO<TipoEntrega>{
     }
 
     @Override
-    public TipoEntrega getById(int id) throws Exception {
+    public TipoEntrega getById(long id) throws Exception {
         genericDAO = new GenericDao<>();
         return genericDAO.getById(TipoEntrega.class,id);
     }

@@ -4,13 +4,14 @@ import connections.ConnectionFactory;
 import model.entities.Categoria;
 import model.entities.Pessoa;
 import model.entities.Produto;
+import utilities.Strings;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
 public class ProdutoDao extends GenericDao<Produto> {
 
-    public List<Produto> listarPorCategoria(Categoria categoria) throws Exception {
+    public List<Produto> listarPorCategoria(long categoriaId) throws Exception {
         try {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("SELECT p FROM Produto p ");
@@ -19,9 +20,43 @@ public class ProdutoDao extends GenericDao<Produto> {
             stringBuilder.append("WHERE c.id = :idCategoria");
 
             return getEntityManager().createQuery(stringBuilder.toString())
-                    .setParameter("idCategoria", categoria.getId())
+                    .setParameter("idCategoria", categoriaId)
                     .getResultList();
 
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            getEntityManager().close();
+        }
+    }
+
+    public List<Produto> listarPorCategoriaComLike(String valor, long id) throws Exception {
+
+        StringBuilder stringBuilder = new StringBuilder();
+        String valores[] = valor.toLowerCase().split("\\s+");
+
+        stringBuilder.append("SELECT p FROM Produto p ");
+        stringBuilder.append("JOIN Categoria c ");
+        stringBuilder.append("ON p.categoria = c.id ");
+        stringBuilder.append("WHERE (c.id = :idCategoria) ");
+        stringBuilder.append("AND (");
+        for (int x = 0; x < valores.length; x++) {
+            stringBuilder.append("lower(p.nome) LIKE '%");
+            stringBuilder.append(valores[x]);
+            stringBuilder.append("%' ");
+            stringBuilder.append("OR lower(p.descricao) LIKE '%");
+            stringBuilder.append(valores[x]);
+            if (x != valores.length - 1) {
+                stringBuilder.append("%' OR ");
+            } else {
+                stringBuilder.append("%')");
+            }
+        }
+
+        try {
+            return getEntityManager().createQuery(stringBuilder.toString())
+                    .setParameter("idCategoria", id)
+                    .getResultList();
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         } finally {

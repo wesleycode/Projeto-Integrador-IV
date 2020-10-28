@@ -22,10 +22,10 @@ public class IndexController implements Serializable {
         return "sobrenos?faces-redirect=true";
     }
 
-    public String getRedirecionamentoParaCadastro() {
+    public String irParaCadastro() {
         return "cadastroLogin?faces-redirect=true";
     }
 
-    public String getRedirecionamentoParaIndex() { return "index?faces-redirect=true"; }
+    public String irParaIndex() { return "index?faces-redirect=true"; }
 
 }

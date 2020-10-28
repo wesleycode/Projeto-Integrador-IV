@@ -4,7 +4,9 @@ import model.dao.ProdutoDao;
 import model.entities.Categoria;
 import model.entities.Produto;
 import model.dao.GenericDao;
+import net.bootsfaces.utils.FacesMessages;
 import utilities.Moeda;
+
 import java.util.List;
 
 public class ProdutoBO implements GenericBO<Produto> {
@@ -43,7 +45,7 @@ public class ProdutoBO implements GenericBO<Produto> {
     }
 
     @Override
-    public Produto getById(int id) throws Exception {
+    public Produto getById(long id) throws Exception {
         return new GenericDao<Produto>().getById(Produto.class, id);
     }
 
@@ -81,11 +83,29 @@ public class ProdutoBO implements GenericBO<Produto> {
         return Moeda.converterLongParaDinheiroStringPadraoBrasil((long) (preco));
     }
 
-    public List<Produto> listarPorCategoria(Categoria categoria) throws Exception {
-        if (categoria.getCategoria() != null) {
-            return new ProdutoDao().listarPorCategoria(categoria);
+    public List<Produto> listarPorCategoria(long categoriaId,String valor) throws Exception {
+        if (valor == null) {
+            return new ProdutoDao().listarPorCategoria(categoriaId);
         } else {
-            return listarTodos();
+            return listarPorCategoriaComLike(categoriaId,valor);
         }
     }
+
+    private List<Produto> listarPorCategoriaComLike(long id,String valor) throws Exception {
+        return (valor != null) ? new ProdutoDao().listarPorCategoriaComLike(valor,id) : null;
+    }
+
+    public List<Produto> listarProdutos(Categoria categoria , String valor) throws Exception {
+        if ((categoria.getId() != 0 && categoria.getCategoria() != null) || (valor != null)) {
+            return listarPorCategoria(categoria.getId(), valor);
+        } else {
+            try {
+                return new ProdutoBO().listarTodos();
+            } catch (Exception e) {
+                FacesMessages.error("Erro: " + e.getMessage());
+                return null;
+            }
+        }
+    }
+
 }

@@ -14,9 +14,10 @@ import java.util.List;
 @Named
 @SessionScoped
 public class LoginController implements Serializable {
+
     private Pessoa pessoa;
     private Carrinho carrinho;
-    private List<ItensCarrinho>itensCarrinhos;
+    private List<ItensCarrinho> itensCarrinhos;
     private List<FormaPagamento> formaPagamentoList;
     private Endereco endereco;
     private int tipoPessoaLogin;
@@ -112,6 +113,7 @@ public class LoginController implements Serializable {
         pessoa = null;
         return irParaIndex();
     }
+
     public String logar() {
         switch (getTipoPessoaLogin()) {
             case 0:
@@ -132,7 +134,7 @@ public class LoginController implements Serializable {
 
         if (new PessoaBO().logarPessoa(pessoa).equals("OK")) {
             try {
-                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(),pessoa.getSenha());
+                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(), pessoa.getSenha());
             } catch (Exception e) {
                 FacesMessages.error("Erro ao logar: " + e.getMessage());
                 return "";
@@ -149,7 +151,7 @@ public class LoginController implements Serializable {
         pessoa.setTipoUsuario(2);
         if (new PessoaBO().logarPessoa(pessoa).equals("OK")) {
             try {
-                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(),pessoa.getSenha());
+                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(), pessoa.getSenha());
             } catch (Exception e) {
                 FacesMessages.error("Erro ao logar: " + e.getMessage());
                 return "";
@@ -166,7 +168,7 @@ public class LoginController implements Serializable {
         pessoa.setTipoUsuario(1);
         if (new PessoaBO().logarPessoa(pessoa).equals("OK")) {
             try {
-                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(),pessoa.getSenha());
+                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(), pessoa.getSenha());
             } catch (Exception e) {
                 FacesMessages.error("Erro ao logar: " + e.getMessage());
                 return "";
@@ -179,17 +181,22 @@ public class LoginController implements Serializable {
         }
     }
 
-    public String irParaIndex() { return "index.xhtml?faces-redirect=true"; }
-    public String irParatermoCompra() { return "termodecompra.xhtml?faces-redirect=true"; }
+    public String irParaIndex() {
+        return "index.xhtml?faces-redirect=true";
+    }
+
+    public String irParatermoCompra() {
+        return "termodecompra.xhtml?faces-redirect=true";
+    }
 
     public void cadastrarUsuario() {
         pessoa.setAtivo(true);
         pessoa.setTipoUsuario(1);
-        if(pessoa.getEndereco().getCidade().getId() < 0){
+        if (pessoa.getEndereco().getCidade().getId() < 0) {
             FacesMessages.error("Informe a Cidade");
-        }else if(pessoa.getEndereco().getCidade().getEstado().getId() < 0){
+        } else if (pessoa.getEndereco().getCidade().getEstado().getId() < 0) {
             FacesMessages.error("Informe o Estado");
-        }else {
+        } else {
             try {
                 pessoa.setEndereco(new EnderecoBO().listarultimoendereco());
                 if (new EnderecoBO().criar(pessoa.getEndereco())) {
@@ -202,7 +209,7 @@ public class LoginController implements Serializable {
             }
             // Grava o cliente //
             try {
-                System.out.println("Endereço ID: "+pessoa.getEndereco().getId());
+                System.out.println("Endereço ID: " + pessoa.getEndereco().getId());
                 if (new PessoaBO().criar(pessoa)) {
                     FacesMessages.info("Usuário Cadastrado com sucesso");
                 } else {
@@ -216,7 +223,7 @@ public class LoginController implements Serializable {
 
     //Carrinho
     public String irParaCarrinho() {
-        if(pessoa.getId() <= 0){//se não estiver logado
+        if (pessoa.getId() <= 0) {//se não estiver logado
             return "cadastroLogin.xhtml?faces-redirect=true";
         }
         atualizarDadosCarrinho();
@@ -227,7 +234,8 @@ public class LoginController implements Serializable {
         endereco.setComplemento(pessoa.getEndereco().getComplemento());
         endereco.setNumero(pessoa.getEndereco().getNumero());
         endereco.setRua(pessoa.getEndereco().getRua());
-        return "carrinho.xhtml?faces-redirect=true";}
+        return "carrinho.xhtml?faces-redirect=true";
+    }
 
 
     public List<FormaPagamento> listarTodasFormasDePagamento() {
@@ -238,7 +246,8 @@ public class LoginController implements Serializable {
             return null;
         }
     }
-    public void addcarrinho(Produto produto){
+
+    public void addcarrinho(Produto produto) {
         ItensCarrinho itensCarrinho = new ItensCarrinho();
         itensCarrinho.setProduto(produto);
         itensCarrinho.setCarrinho(carrinho);
@@ -249,49 +258,53 @@ public class LoginController implements Serializable {
         atualizarDadosCarrinho();
         FacesMessages.info("Item adicionado ao carrinho!");
     }
-    public void atualizarDadosCarrinho(){
+
+    public void atualizarDadosCarrinho() {
         carrinho.setQuantidade(0);//reset
         carrinho.setValorTotal(0);//reset
         int x;
         System.out.println("Aqui ta chegando");
         System.out.println(itensCarrinhos.size() + " = tamanho");
-        for(x=0;x < itensCarrinhos.size();x++){
-            carrinho.setValorTotal(carrinho.getValorTotal()+itensCarrinhos.get(x).getValor());
+        for (x = 0; x < itensCarrinhos.size(); x++) {
+            carrinho.setValorTotal(carrinho.getValorTotal() + itensCarrinhos.get(x).getValor());
             carrinho.setQuantidade(carrinho.getQuantidade() + itensCarrinhos.get(x).getQuantidade());
         }
     }
-    public void addQauntidadeIten(ItensCarrinho itensCarrinho){
+
+    public void addQauntidadeIten(ItensCarrinho itensCarrinho) {
         //Em teoria a quantidade Ja vai por automatico então sem passagem por parametro
         int x;
-        for(x=0;x < itensCarrinhos.size();x++){
-            if(itensCarrinho == itensCarrinhos.get(x)){
+        for (x = 0; x < itensCarrinhos.size(); x++) {
+            if (itensCarrinho == itensCarrinhos.get(x)) {
                 itensCarrinhos.get(x).setValor(itensCarrinhos.get(x).getQuantidade() * itensCarrinhos.get(x).getQuantidade());
             }
         }
         atualizarDadosCarrinho();
         FacesMessages.info("Item removido do carrinho!");
     }
-    public void removecarrinho(ItensCarrinho itensCarrinho){
+
+    public void removecarrinho(ItensCarrinho itensCarrinho) {
         int x;
-        for(x=0;x < itensCarrinhos.size();x++){
-            if(itensCarrinho == itensCarrinhos.get(x)){
+        for (x = 0; x < itensCarrinhos.size(); x++) {
+            if (itensCarrinho == itensCarrinhos.get(x)) {
                 itensCarrinhos.remove(x);
             }
         }
         atualizarDadosCarrinho();
         FacesMessages.info("Item removido do carrinho!");
     }
-    public void cadastrarcomprar(){
+
+    public void cadastrarcomprar() {
         try {
-            if(endereco.getRua() == pessoa.getEndereco().getRua()
+            if (endereco.getRua() == pessoa.getEndereco().getRua()
                     && endereco.getNumero() == pessoa.getEndereco().getNumero()
                     && endereco.getBairro() == pessoa.getEndereco().getBairro()
-                    && endereco.getCep() == pessoa.getEndereco().getCep()){
+                    && endereco.getCep() == pessoa.getEndereco().getCep()) {
                 endereco = pessoa.getEndereco();
                 //Enfin se tu olhar o xhtml o select deixa a cidade e estado null
                 //por isos essa verificação, Sim isso é uma puta gambiara n nego
                 //Mas se funciona Ta valendo.
-            }else if(endereco != pessoa.getEndereco()){//caso o usuario escolha outro endereço
+            } else if (endereco != pessoa.getEndereco()) {//caso o usuario escolha outro endereço
                 new EnderecoBO().criar(endereco);//endereço de Entrega
             }
         } catch (Exception e) {
@@ -305,7 +318,7 @@ public class LoginController implements Serializable {
             FacesMessages.error("Erro ao cadastrar Pedido: " + e.getMessage());
         }
         int x;
-        for(x=0;x > itensCarrinhos.size();x++){
+        for (x = 0; x > itensCarrinhos.size(); x++) {
             try {
                 ItensPedido itensPedido = new ItensPedido();
 

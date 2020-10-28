@@ -1,6 +1,7 @@
 package model.entities;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @DiscriminatorValue(value = "Categoria")
@@ -30,5 +31,24 @@ public class Categoria implements EntityBase {
 
     public Categoria() {
 
+    }
+
+    public Categoria(long id, String categoria) {
+        this.id = id;
+        this.categoria = categoria;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Categoria categoria1 = (Categoria) o;
+        return id == categoria1.id &&
+                Objects.equals(categoria, categoria1.categoria);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, categoria);
     }
 }

@@ -191,10 +191,10 @@
                         </div>
 
                         <div class="col-md-12 col-sm-12" style="text-align: center;">
-                                <h:commandLink action="#{loginController.cadastrarUsuario}"
-                                               styleClass="btn btn-primary"
-                                               type="submit">Cadastrar</h:commandLink>
-                                <p class="message">Já possui um cadastro? <a href="#">Logar-se</a></p>
+                            <h:commandLink action="#{loginController.cadastrarUsuario}"
+                                           styleClass="btn btn-primary"
+                                           type="submit">Cadastrar</h:commandLink>
+                            <p class="message">Já possui um cadastro? <a href="#">Logar-se</a></p>
                         </div>
 
                     </h:form>
@@ -247,14 +247,16 @@
                             <br/>
                             <br/>
 
-                            <h:form>
-                                <h:commandButton styleClass="btn btn-warning" value="Voltar ao inicio"
-                                               action="#{loginController.irParaIndex}"/>
-                            </h:form>
-
                         </div>
 
                     </h:form>
+
+                    <div style="text-align: center;">
+                        <h:form>
+                            <h:commandButton styleClass="btn btn-warning" value="Voltar ao inicio"
+                                             action="#{loginController.irParaIndex}"/>
+                        </h:form>
+                    </div>
 
                 </div>
 

@@ -43,7 +43,7 @@ public class EnderecoBO implements GenericBO<Endereco> {
     }
 
     @Override
-    public Endereco getById(int id) throws Exception {
+    public Endereco getById(long id) throws Exception {
         return new GenericDao<Endereco>().getById(Endereco.class, id);
     }
 

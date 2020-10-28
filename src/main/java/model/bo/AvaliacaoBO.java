@@ -54,7 +54,7 @@ public class AvaliacaoBO implements GenericBO<Avaliacao> {
     }
 
     @Override
-    public Avaliacao getById(int id) throws Exception {
+    public Avaliacao getById(long id) throws Exception {
         genericDAO = new GenericDao<>();
         return genericDAO.getById(Avaliacao.class, id);
     }

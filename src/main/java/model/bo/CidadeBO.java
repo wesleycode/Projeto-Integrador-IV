@@ -44,7 +44,7 @@ public class CidadeBO implements GenericBO<Cidade> {
     }
 
     @Override
-    public Cidade getById(int id) throws Exception {
+    public Cidade getById(long id) throws Exception {
         return new GenericDao<Cidade>().getById(Cidade.class, id);
     }
 

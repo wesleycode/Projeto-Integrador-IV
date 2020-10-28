@@ -53,7 +53,7 @@ public class CarrinhoBO implements GenericBO<Carrinho> {
     }
 
     @Override
-    public Carrinho getById(int id) throws Exception {
+    public Carrinho getById(long id) throws Exception {
         return new GenericDao<Carrinho>().getById(Carrinho.class, id);
     }
 

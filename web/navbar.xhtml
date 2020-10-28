@@ -90,7 +90,7 @@
         </li>
         <li>
             <h:form>
-                <h:commandLink styleClass="btn" action="#{indexController.getRedirecionamentoParaIndex()}">INICIO</h:commandLink>
+                <h:commandLink styleClass="btn" action="#{indexController.irParaIndex()}">INICIO</h:commandLink>
             </h:form>
         </li>
         <li><a href="#servico" class="btn">Serviços</a></li>
@@ -99,7 +99,7 @@
             <h:panelGrid id="btnCarrinho" style="color: white;">
                 <h:form>
                     <h:commandLink styleClass="icon"
-                                   action="#{loginController.irParaCarrinho}">
+                                   action="#{loginController.irParaCarrinho()}">
                         <i class="fas fa-shopping-cart fa-2x"/>
                     </h:commandLink>
                 </h:form>
@@ -109,32 +109,11 @@
             <h:panelGrid id="btnUsuario" style="color: white;">
                 <h:form>
                     <h:commandLink styleClass="icon"
-                                   action="#{indexController.getRedirecionamentoParaCadastro()}">
+                                   action="#{indexController.irParaCadastro()}">
                         <i class="fas fa-user-circle fa-2x"/>
                     </h:commandLink>
                 </h:form>
             </h:panelGrid>
-        </li>
-        <li style="float:right">
-            <h:form>
-                <h:commandLink styleClass="btn"
-                               style="background: #4e555b;"
-                               action="#{pesquisaController.irParaPesquisaProdutos()}">
-                    <label>Pesquisar</label>
-                </h:commandLink>
-            </h:form>
-        </li>
-        <li style="float:right">
-            <h:form styleClass="comboCategoria">
-                <b:selectOneMenu value="#{pesquisaController.categoriaSelecionada}"
-                                 ajax="true"
-                                 process="@this">
-                    <f:selectItem value="#{null}" itemLabel="Categorias"/>
-                    <f:selectItems value="#{pesquisaController.getListaDeTodasAsCategorias()}"
-                                   var="categoria"
-                                   itemValue="#{categoria}" itemLabel="#{categoria.categoria}"/>
-                </b:selectOneMenu>
-            </h:form>
         </li>
     </ul>
 

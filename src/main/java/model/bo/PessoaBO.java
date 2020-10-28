@@ -39,7 +39,7 @@ public class PessoaBO implements GenericBO<Pessoa> {
     }
 
     @Override
-    public Pessoa getById(int id) throws Exception {
+    public Pessoa getById(long id) throws Exception {
         return new GenericDao<Pessoa>().getById(Pessoa.class, id);
     }
 

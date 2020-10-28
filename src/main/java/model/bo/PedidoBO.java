@@ -48,9 +48,8 @@ public class PedidoBO implements GenericBO<Pedido> {
     }
 
     @Override
-    public Pedido getById(int id) throws Exception {
-        genericDAO = new GenericDao<>();
-        return genericDAO.getById(Pedido.class, id);
+    public Pedido getById(long id) throws Exception {
+        return new GenericDao<Pedido>().getById(Pedido.class, id);
     }
 
     @Override

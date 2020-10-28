@@ -49,7 +49,7 @@ public class EstadoBO implements GenericBO<Estado>{
     }
 
     @Override
-    public Estado getById(int id) throws Exception {
+    public Estado getById(long id) throws Exception {
         genericDAO = new GenericDao<>();
         return genericDAO.getById(Estado.class,id);
     }
