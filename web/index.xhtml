@@ -52,13 +52,15 @@
                                                    itemLabel="#{categoria.categoria}" itemValue="#{categoria}"/>
                                 </b:selectOneMenu>
                             </h:panelGrid>
-                            <h:commandButton value="Pesquisar" action="#{produtoController.filtrarProdutos()}" process="@form" update="@form :form"/>
+                            <h:commandButton value="Pesquisar" action="#{produtoController.filtrarProdutos()}"
+                                             process="@form" update="@form :form"/>
                         </h:form>
 
                         <br/>
 
                         <h:form>
-                            <h:commandButton value="Mostrar tudo" action="#{produtoController.resetarTabela()}" process="@form" update="@form :form"/>
+                            <h:commandButton value="Mostrar tudo" action="#{produtoController.resetarTabela()}"
+                                             process="@form" update="@form :form"/>
                         </h:form>
 
                     </p:panel>
@@ -91,10 +93,10 @@
                                         <f:convertNumber currencyCode="R$" type="currency"/>
                                     </h:outputText>
                                     <br/>
-                                    <p:commandButton type="button" value="Comprar"/>
+                                    <p:commandLink type="button" styleClass="btn btn-primary" value="Comprar" action="#{produtoController.adicionarProdutoNoCarrinho(produto)}"/>
                                     <br/>
                                     <br/>
-                                    <p:commandButton type="button" value="Ver Mais"/>
+                                    <p:commandLink type="button" styleClass="btn btn-primary" value="Ver Mais" action="#{produtoController.irParaDetalhesDeProduto(produto)}"/>
                                 </h:panelGrid>
                             </p:panel>
 
@@ -108,7 +110,7 @@
                     <h2>Sobre nós</h2>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;Somos uma empresa de vendas voltada a computadores e hardwares com várias parcerias com dezenas de fornecedores...</p>
                     <h:form>
-                        <h:commandLink value="Saiba mais" action="#{indexController.irParaSobrenos}">
+                        <h:commandLink value="Saiba mais" action="#{redirecionamentoController.irParaSobrenos}">
                         </h:commandLink>
                     </h:form>
                 </div>

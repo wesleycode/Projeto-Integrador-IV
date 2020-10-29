@@ -10,6 +10,7 @@ import model.entities.Produto;
 import net.bootsfaces.utils.FacesMessages;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,24 +24,13 @@ public class produtoController implements Serializable {
     private List<Produto> listaTodosOsProdutos;
     private Categoria categoriaSelecionada;
     private List<Categoria> listaTodasAsCategorias;
-    private List<Avaliacao> avaliacaoList;
     private String filtertext;
-
-    public List<Avaliacao> getAvaliacaoList() {
-        return avaliacaoList;
-    }
-
-    public void setAvaliacaoList(List<Avaliacao> avaliacaoList) {
-        this.avaliacaoList = avaliacaoList;
-    }
 
     public String getFiltertext() {
         return filtertext;
     }
 
-    public Produto getProdutoSelecionado() {
-        return produtoSelecionado;
-    }
+    public Produto getProdutoSelecionado() { return produtoSelecionado; }
 
     public List<Produto> getListaTodosOsProdutos() {
         return listaTodosOsProdutos;
@@ -80,22 +70,11 @@ public class produtoController implements Serializable {
         listaTodosOsProdutos = preencherTabela();
         listaTodasAsCategorias = listarTodasAsCategorias();
         filtertext = "";
-
-        try {
-            produtoSelecionado = new ProdutoDao().listarOProdutoAqui();
-            avaliacaoList = this.listarAvaliacaoDeProdutoSelecionado();
-        } catch (Exception e) {
-            FacesMessages.error("Erro: " + e.getMessage());//Remover isso quando for atribuir os produtos corretamente com o metodo na DAO
-        }
     }
 
-    public String getFormatarPreco(Produto produto) {
-        return ProdutoBO.getPrecoFormatado(produto.getPreco());
-    }
+    public String getFormatarPreco(Produto produto) { return ProdutoBO.getPrecoFormatado(produto.getPreco()); }
 
-    public String getPrecoFormatado10x(Produto produto) {
-        return ProdutoBO.getPrecoParceladoEm10Vezes(produto.getPreco());
-    }
+    public String getPrecoFormatado10x(Produto produto) { return ProdutoBO.getPrecoParceladoEm10Vezes(produto.getPreco()); }
 
     private List<Categoria> listarTodasAsCategorias() {
         try {
@@ -108,7 +87,7 @@ public class produtoController implements Serializable {
 
     private List<Produto> preencherTabela() {
         try {
-            return new ProdutoBO().listarProdutos(categoriaSelecionada,filtertext);
+            return new ProdutoBO().listarProdutos(categoriaSelecionada, filtertext);
         } catch (Exception e) {
             FacesMessages.error("Erro: " + e.getMessage());
             return null;
@@ -126,33 +105,14 @@ public class produtoController implements Serializable {
             FacesMessages.error("Erro: " + e.getMessage());
         }
     }
-    public List<Avaliacao> listarAvaliacaoDeProdutoSelecionado() {
-        try {
-            return new AvaliacaoBO().listarAvaliacaoPorProduto(produtoSelecionado);
-        } catch (Exception e) {
-            FacesMessages.error("Erro ao selecionar avaliações: " + e.getMessage());
-            return null;
-        }
-    }
-    public String retornartiponota(Avaliacao avaliacao){
-        switch (avaliacao.getNota()){
-            case 1:
-                return "Muito Ruim";
-            case 2:
-                return  "Ruim";
-            case 3:
-                return "Ok";
-            case 4:
-                return "Bom";
-            case 5:
-                return "Muito Bom";
-            default:
-                return "Não identificado";
-        }
-    }
-    public String irParaProdudoselecionado() {
 
-        avaliacaoList = this.listarAvaliacaoDeProdutoSelecionado();
+    public String irParaDetalhesDeProduto(Produto produto) {
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("produto", produto);
+        return "produtoselecionado?faces-redirect=true";
+    }
+
+    public String adicionarProdutoNoCarrinho(Produto produto) {
+        produtoSelecionado = produto;
         return "produtoselecionado?faces-redirect=true";
     }
 

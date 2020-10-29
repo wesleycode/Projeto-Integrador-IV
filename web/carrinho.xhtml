@@ -40,7 +40,7 @@
             <div class="leftcolumn">
                 <div class="card" align="center" id="cardcadastro">
                     <p:panel header="Itens Do Carrinho" id="painel">
-                        <p:dataGrid value="#{loginController.itensCarrinhos}"
+                        <p:dataGrid value="#{detalhesProdutoController.itensCarrinhoList}"
                                     var="itens" columns="1"
                                     layout="grid"
                                     rows="8" paginator="true" id="cars" paginatorPosition="bottom"
@@ -53,7 +53,7 @@
                             </p:column>
                             <p:column>
                                 <h:outputLabel>Quantidade: </h:outputLabel>
-                                <p:spinner id="minMax" value="#{itens.quantidade}" min="0" max="100" />
+                                <p:spinner id="minMax" value="#{itens.quantidade}" min="0" max="100"/>
                             </p:column>
                             <p:column>
                                 <p:commandButton type="button" value="Remover Item"/>
@@ -69,11 +69,11 @@
                             <div class="form-group col-md-12 col-sm-12">
                                 <h:outputLabel>Escolha forma de Pagamento:</h:outputLabel>
                                 <b:selectOneMenu
-                                        value="#{loginController.pedido.formaPagamento}" ajax="true"
+                                        value="#{detalhesProdutoController.pedido.formaPagamento}" ajax="true"
                                         process="@this">
                                     <f:selectItem value="#{null}" itemLabel="Forma Pagamento"/>
                                     <f:selectItems
-                                            value="#{loginController.formaPagamentoList}"
+                                            value="#{detalhesProdutoController.formaPagamentoList}"
                                             var="formaPagame"
                                             itemValue="#{formaPagame}" itemLabel="#{formaPagame.formapagamento}"/>
                                 </b:selectOneMenu>
@@ -93,8 +93,10 @@
                                     <b:selectOneMenu value="#{loginController.endereco.cidade.estado}"
                                                      ajax="true"
                                                      process="@this" update="@next @next:@next">
-                                        <f:selectItem value="#{null}" itemLabel="#{loginController.pessoa.endereco.cidade.estado.nome}"/>
-                                        <f:selectItems value="#{painelAdministradorController.listarTodosOsEstados()}" var="estado"
+                                        <f:selectItem value="#{null}"
+                                                      itemLabel="#{loginController.pessoa.endereco.cidade.estado.nome}"/>
+                                        <f:selectItems value="#{painelAdministradorController.listarTodosOsEstados()}"
+                                                       var="estado"
                                                        itemValue="#{estado}" itemLabel="#{estado.nome}"/>
                                         <f:ajax event="change" execute="@this" render="cidadesSelect"/>
                                     </b:selectOneMenu>
@@ -104,7 +106,8 @@
                                     <b:selectOneMenu id="cidadesSelect"
                                                      value="#{loginController.endereco.cidade}" ajax="true"
                                                      process="@this" update="@next @next:@next">
-                                        <f:selectItem value="#{null}" itemLabel="#{loginController.pessoa.endereco.cidade.nome}"/>
+                                        <f:selectItem value="#{null}"
+                                                      itemLabel="#{loginController.pessoa.endereco.cidade.nome}"/>
                                         <f:selectItems
                                                 value="#{painelAdministradorController.listarTodosAsCidadesPorEstado(loginController.pessoa.endereco.cidade.estado)}"
                                                 var="cidade"
@@ -120,7 +123,8 @@
                             <div class="form-group col-md-12 col-sm-12" id="de">
                                 <hr/>
                                 <div class="form-group col-md-12 col-sm-12">
-                                    <b:inputText value="#{painelAdministradorController.pessoa.endereco.bairro}" placeholder="Bairro"
+                                    <b:inputText value="#{painelAdministradorController.pessoa.endereco.bairro}"
+                                                 placeholder="Bairro"
                                                  required="true"
                                                  mask="{regex:'[a-zA-Z ]*'}">
                                         <f:facet name="prepend">
@@ -161,7 +165,8 @@
                                 </div>
 
                                 <hr/>
-                                <h:commandLink value="Políticas de Compra" action="#{loginController.irParatermoCompra}">
+                                <h:commandLink value="Políticas de Compra"
+                                               action="#{redirecionamentoController.irParaTermoCompra}">
                                 </h:commandLink>
                                 <hr/>
                                 <h:commandButton value="Comprar" styleClass="btn btn-primary">
@@ -184,12 +189,10 @@
                     <h:outputLabel>#{loginController.pessoa.email}</h:outputLabel>
                     <h:form>
                         <h:commandButton value="Sair Login" styleClass="btn btn-primary"
-                                         action="#{loginController.deslogar}">
-                            <!--Deve possuir o logoff-->
-                        </h:commandButton>
-                        <h:commandButton value="Meus Pedidos" styleClass="btn btn-primary">
-                        </h:commandButton>
-
+                                         action="#{loginController.deslogar}"/>
+                        <br/>
+                        <!--Deve possuir o logoff-->
+                        <h:commandButton value="Meus Pedidos" styleClass="btn btn-primary"/>
                     </h:form>
                 </div>
 

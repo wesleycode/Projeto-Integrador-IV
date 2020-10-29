@@ -60,7 +60,11 @@ public class ItensCarrinhoBO implements GenericBO<ItensCarrinho> {
     public boolean valida(ItensCarrinho o) throws Exception {
         if (o.getCarrinho().getId() < 0) {
             throw new Exception("Carrinho não encontrado");
-        } else if (o.getProduto().getId() < 0) {
+        }
+        if (o.getQuantidade() <= 0) {
+            throw new Exception("Selecione pelo menos um produto em sua quantidade");
+        }
+        if (o.getProduto().getId() < 0) {
             throw new Exception("Produto não encontrado");
         }
         return true;

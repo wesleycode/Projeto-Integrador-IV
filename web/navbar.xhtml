@@ -90,7 +90,7 @@
         </li>
         <li>
             <h:form>
-                <h:commandLink styleClass="btn" action="#{indexController.irParaIndex()}">INICIO</h:commandLink>
+                <h:commandLink styleClass="btn" action="#{redirecionamentoController.irParaIndex()}">INICIO</h:commandLink>
             </h:form>
         </li>
         <li><a href="#servico" class="btn">Serviços</a></li>
@@ -99,7 +99,7 @@
             <h:panelGrid id="btnCarrinho" style="color: white;">
                 <h:form>
                     <h:commandLink styleClass="icon"
-                                   action="#{loginController.irParaCarrinho()}">
+                                   action="#{detalhesProdutoController.irParaCarrinho()}">
                         <i class="fas fa-shopping-cart fa-2x"/>
                     </h:commandLink>
                 </h:form>
@@ -109,7 +109,7 @@
             <h:panelGrid id="btnUsuario" style="color: white;">
                 <h:form>
                     <h:commandLink styleClass="icon"
-                                   action="#{indexController.irParaCadastro()}">
+                                   action="#{redirecionamentoController.irParaCadastro()}">
                         <i class="fas fa-user-circle fa-2x"/>
                     </h:commandLink>
                 </h:form>
