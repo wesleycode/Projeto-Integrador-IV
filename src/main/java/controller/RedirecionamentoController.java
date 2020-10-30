@@ -30,5 +30,7 @@ public class RedirecionamentoController implements Serializable {
 
     public static String irParaCarrinho() { return "carrinho.xhtml?faces-redirect=true"; }
 
+    public static String irParaMeusPedidos() { return "meusPedidos.xhtml?faces-redirect=true"; }
 
+    public static String irParaContato() { return "contato.xhtml?faces-redirect=true"; }
 }

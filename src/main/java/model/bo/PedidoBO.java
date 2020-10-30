@@ -1,10 +1,12 @@
 package model.bo;
 
+import model.dao.PedidoDao;
 import model.entities.Pedido;
 
 import java.util.List;
 
 import model.dao.GenericDao;
+import model.entities.Pessoa;
 
 public class PedidoBO implements GenericBO<Pedido> {
 
@@ -73,6 +75,9 @@ public class PedidoBO implements GenericBO<Pedido> {
             throw new Exception("Id nulo");
         }
         return true;
+    }
+    public List<Pedido> listarpedidosDaPessoa(Pessoa pessoa) throws Exception {
+        return new PedidoDao().listarpedidosDaPessoa(pessoa);
     }
 
 }

@@ -435,3 +435,12 @@ INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_i
 INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(39,'só faltou ser bom de resto ok','2020-10-10',3,15,120);
 INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(40,'bem ok','2020-10-10',3,16,120);
 INSERT INTO public.avaliacao (id,comentario,datapostado,nota,pessoa_id,produto_id) Values(41,'recomendo a todos','2020-10-10',5,17,3);
+
+insert into public.pedido(id, endereco_id, formapagamento_id, pessoa_id, quantidade, valortotal)Values(1,2,2,2,4,230);
+insert into public.pedido(id, endereco_id, formapagamento_id, pessoa_id, quantidade, valortotal)Values(2,2,3,2,3,330);
+insert into public.pedido(id, endereco_id, formapagamento_id, pessoa_id, quantidade, valortotal)Values(3,2,2,2,8,700.35);
+
+INSERT INTO public.itenspedido(id,produto_id,pedido_id ,quantidade ,valor)VALUES(1,45,1,2,130);
+INSERT INTO public.itenspedido(id,produto_id,pedido_id ,quantidade ,valor)VALUES(2,76,1,2,100);
+INSERT INTO public.itenspedido(id,produto_id,pedido_id ,quantidade ,valor)VALUES(3,4,2,3,330);
+INSERT INTO public.itenspedido(id,produto_id,pedido_id ,quantidade ,valor)VALUES(4,1,3,8,700.35);

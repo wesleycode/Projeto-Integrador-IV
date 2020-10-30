@@ -1,6 +1,7 @@
 package controller;
 
 import model.bo.*;
+import model.dao.PedidoDao;
 import model.entities.*;
 import net.bootsfaces.utils.FacesMessages;
 
@@ -24,7 +25,16 @@ public class DetalhesProdutoController implements Serializable {
     private List<ItensCarrinho> itensCarrinhoList;
     private List<FormaPagamento> formaPagamentoList;
     private List<Avaliacao> avaliacaoList;
+    private List<Pedido> pedidoList;
     private int quantidadeItem;
+
+    public List<Pedido> getPedidoList() {
+        return pedidoList;
+    }
+
+    public void setPedidoList(List<Pedido> pedidoList) {
+        this.pedidoList = pedidoList;
+    }
 
     public int getQuantidadeItem() {
         return quantidadeItem;
@@ -116,27 +126,29 @@ public class DetalhesProdutoController implements Serializable {
         itensCarrinhoList = new ArrayList<>();
         formaPagamentoList = listarTodasFormasDePagamento();
         avaliacaoList = listarAvaliacaoDeProdutoSelecionado();
+        pedidoList = listarPedidodePessoa();
     }
 
+    public String irParaPedidos() {
+        return RedirecionamentoController.irParaMeusPedidos();
+    }
     public String irParaCarrinho() {
 
-        System.out.println("ENTROU NA FUNÇÃO");
-
-        System.out.println("ITENS CARRINHO LIST SIZE: " + itensCarrinhoList.size());
-
-        System.out.println("PESSOA: " + pessoa.getId());
-
-        if (pessoa.getId() > 0) {
-            atualizarDadosCarrinho();
-            //não coloquei direto pq n quero passar o ID
-            endereco.setCidade(pessoa.getEndereco().getCidade());
-            endereco.setBairro(pessoa.getEndereco().getBairro());
-            endereco.setCep(pessoa.getEndereco().getCep());
-            endereco.setComplemento(pessoa.getEndereco().getComplemento());
-            endereco.setNumero(pessoa.getEndereco().getNumero());
-            endereco.setRua(pessoa.getEndereco().getRua());
-            return RedirecionamentoController.irParaCarrinho();
-        } else {
+        try {
+            if (pessoa.getId() > 0) {
+                atualizarDadosCarrinho();
+                //não coloquei direto pq n quero passar o ID
+                endereco.setCidade(pessoa.getEndereco().getCidade());
+                endereco.setBairro(pessoa.getEndereco().getBairro());
+                endereco.setCep(pessoa.getEndereco().getCep());
+                endereco.setComplemento(pessoa.getEndereco().getComplemento());
+                endereco.setNumero(pessoa.getEndereco().getNumero());
+                endereco.setRua(pessoa.getEndereco().getRua());
+                return RedirecionamentoController.irParaCarrinho();
+            } else {
+                return RedirecionamentoController.irParaCadastro();
+            }
+        } catch (Exception e) {
             return RedirecionamentoController.irParaCadastro();
         }
 
@@ -145,6 +157,15 @@ public class DetalhesProdutoController implements Serializable {
     public List<FormaPagamento> listarTodasFormasDePagamento() {
         try {
             return new FormaPagamentoBO().listarTodos();
+        } catch (Exception e) {
+            FacesMessages.error("Erro ao listar Forma de Pagamento: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public List<Pedido> listarPedidodePessoa() {
+        try {
+            return new PedidoBO().listarpedidosDaPessoa(pessoa);
         } catch (Exception e) {
             FacesMessages.error("Erro ao listar Forma de Pagamento: " + e.getMessage());
             return null;
