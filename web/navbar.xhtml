@@ -93,8 +93,8 @@
                 <h:commandLink styleClass="btn" action="#{redirecionamentoController.irParaIndex()}">INICIO</h:commandLink>
             </h:form>
         </li>
-        <li><a href="#servico" class="btn">Serviços</a></li>
-        <li><a href="#ontato" class="btn">Contato</a></li>
+        <li><a href="servicos.xhtml" class="btn">Serviços</a></li>
+        <li><h:form><h:commandLink styleClass="btn" action="#{redirecionamentoController.irParaContato}" value="Contato"></h:commandLink></h:form></li>
         <li style="float:right">
             <h:panelGrid id="btnCarrinho" style="color: white;">
                 <h:form>

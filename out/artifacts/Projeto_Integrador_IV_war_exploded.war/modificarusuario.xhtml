@@ -38,17 +38,16 @@
 
         <div class="row">
             <div class="leftcolumn">
-                    <div class="card" id="card">
-                        <h:form id="form" prependId="false">
-                            <div class="form-group col-md-6 col-sm-6">
-                                <b:inputText placeholder="Nome Usuário"
-                                             mask="{regex:'[a-zA-Z ]*'}" id="textoinput" var="texto">
-                                </b:inputText>
-                            </div>
+                    <div class="card" id="card" align="center">
+                        <b:messages autoUpdate="true"/>
+                        <h:form id="textform">
+                            <p:inputText id="textInput" placeholder="Nome do usuário"
+                                         value="#{alterarUsuarioController.pessoaModificar.nome}"/>
                             <h:commandButton styleClass="btn btn-primary"
-                                           value="Pesquisar Por nome">
-                                <f:ajax render="painel" listener="#{alterarUsuarioController.listarPessoasEspecifica(texto)}"/>
+                                           value="Pesquisar Por nome" action="#{alterarUsuarioController.listarPessoasEspecifica}" process="@form" update="@form :form">
                             </h:commandButton >
+                        </h:form>
+                        <h:form id="form">
                             <p:panel header="Lista Dos Usuários Existente" id="painel">
                                 <p:dataGrid value="#{alterarUsuarioController.listpessoa}"
                                             var="pessoa" columns="2"
@@ -68,8 +67,9 @@
                                         <h:outputLabel> Ativo: #{pessoa.ativo}</h:outputLabel>
                                     </p:column>
                                     <p:column>
-                                        <p:commandButton type="button" value="Alterar Atividade" action="#{alterarUsuarioController.isAtivoOuDesativo(pessoa.id)}"/>
-                                        <p:commandButton type="button" value="Modificar Pessoa"/>
+                                        <p:commandLink type="button" value="Alterar Atividade" action="#{alterarUsuarioController.isAtivoOuDesativo(pessoa)}"
+                                                         process="@form" update="@form :form"/>
+                                        <p:commandLink type="button" value="Modificar Pessoa" action="#{alterarUsuarioController.irParaModificarUsuarioviaADM(pessoa)}"/>
                                     </p:column>
                                 </p:dataGrid>
                             </p:panel>

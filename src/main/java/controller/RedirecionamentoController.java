@@ -33,4 +33,10 @@ public class RedirecionamentoController implements Serializable {
     public static String irParaMeusPedidos() { return "meusPedidos.xhtml?faces-redirect=true"; }
 
     public static String irParaContato() { return "contato.xhtml?faces-redirect=true"; }
+
+    public static String irParaServicos() { return "servicos.xhtml?faces-redirect=true"; }
+
+    public static String irParaModificarusuario() { return "modificarusuario.xhtml?faces-redirect=true"; }
+
+    public static String irParaModificarusuarioViaAdm() { return "modificarusuarioViaAdm.xhtml?faces-redirect=true"; }
 }
