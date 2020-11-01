@@ -1,26 +1,20 @@
 package controller;
 
-import model.bo.AvaliacaoBO;
 import model.bo.CategoriaBO;
 import model.bo.ProdutoBO;
-import model.dao.ProdutoDao;
-import model.entities.Avaliacao;
 import model.entities.Categoria;
 import model.entities.Produto;
 import net.bootsfaces.utils.FacesMessages;
-
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Named
 @SessionScoped
 public class produtoController implements Serializable {
 
-    private Produto produtoSelecionado;
     private List<Produto> listaTodosOsProdutos;
     private Categoria categoriaSelecionada;
     private List<Categoria> listaTodasAsCategorias;
@@ -29,8 +23,6 @@ public class produtoController implements Serializable {
     public String getFiltertext() {
         return filtertext;
     }
-
-    public Produto getProdutoSelecionado() { return produtoSelecionado; }
 
     public List<Produto> getListaTodosOsProdutos() {
         return listaTodosOsProdutos;
@@ -48,10 +40,6 @@ public class produtoController implements Serializable {
         this.filtertext = filtertext;
     }
 
-    public void setProdutoSelecionado(Produto produtoSelecionado) {
-        this.produtoSelecionado = produtoSelecionado;
-    }
-
     public void setListaTodosOsProdutos(List<Produto> listaTodosOsProdutos) {
         this.listaTodosOsProdutos = listaTodosOsProdutos;
     }
@@ -66,15 +54,18 @@ public class produtoController implements Serializable {
 
     public produtoController() {
         categoriaSelecionada = new Categoria();
-        produtoSelecionado = new Produto();
         listaTodosOsProdutos = preencherTabela();
         listaTodasAsCategorias = listarTodasAsCategorias();
         filtertext = "";
     }
 
-    public String getFormatarPreco(Produto produto) { return ProdutoBO.getPrecoFormatado(produto.getPreco()); }
+    public String getFormatarPreco(Produto produto) {
+        return ProdutoBO.getPrecoFormatado(produto.getPreco());
+    }
 
-    public String getPrecoFormatado10x(Produto produto) { return ProdutoBO.getPrecoParceladoEm10Vezes(produto.getPreco()); }
+    public String getPrecoFormatado10x(Produto produto) {
+        return ProdutoBO.getPrecoParceladoEm10Vezes(produto.getPreco());
+    }
 
     private List<Categoria> listarTodasAsCategorias() {
         try {
@@ -108,12 +99,12 @@ public class produtoController implements Serializable {
 
     public String irParaDetalhesDeProduto(Produto produto) {
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("produto", produto);
-        return "produtoselecionado?faces-redirect=true";
+        return RedirecionamentoController.irParaProdutoSelecionado();
     }
 
-    public String adicionarProdutoNoCarrinho(Produto produto) {
-        produtoSelecionado = produto;
-        return "produtoselecionado?faces-redirect=true";
+    public String irDiretoParaCarrinho(Produto produto) {
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("produto", produto);
+        return RedirecionamentoController.irParaCarrinho();
     }
 
 }

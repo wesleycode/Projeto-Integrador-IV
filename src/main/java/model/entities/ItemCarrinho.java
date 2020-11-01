@@ -1,10 +1,11 @@
 package model.entities;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @DiscriminatorValue(value = "ItensCarrinho")
-public class ItensCarrinho implements EntityBase {
+public class ItemCarrinho implements EntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,7 +58,24 @@ public class ItensCarrinho implements EntityBase {
         this.quantidade = quantidade;
     }
 
-    public ItensCarrinho() {
+    public ItemCarrinho() {
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ItemCarrinho that = (ItemCarrinho) o;
+        return id == that.id &&
+                quantidade == that.quantidade &&
+                valor == that.valor &&
+                Objects.equals(produto, that.produto) &&
+                Objects.equals(Carrinho, that.Carrinho);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, quantidade, valor, produto, Carrinho);
     }
 }

@@ -76,11 +76,11 @@ public class ProdutoBO implements GenericBO<Produto> {
     }
 
     public static String getPrecoParceladoEm10Vezes(float preco) {
-        return Moeda.converterLongParaDinheiroStringPadraoBrasil((long) (preco / 10));
+        return Moeda.converterNumeroParaDinheiroPadraoBrasil((long) (preco / 10));
     }
 
     public static String getPrecoFormatado(float preco) {
-        return Moeda.converterLongParaDinheiroStringPadraoBrasil((long) (preco));
+        return Moeda.converterNumeroParaDinheiroPadraoBrasil((long) (preco));
     }
 
     public List<Produto> listarPorCategoria(long categoriaId,String valor) throws Exception {

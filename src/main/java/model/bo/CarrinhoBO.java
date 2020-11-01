@@ -2,19 +2,56 @@ package model.bo;
 
 import model.dao.GenericDao;
 import model.entities.Carrinho;
-import model.entities.ItensCarrinho;
+import model.entities.ItemCarrinho;
 
 import java.util.List;
 
 public class CarrinhoBO implements GenericBO<Carrinho> {
 
+    public double valorTotalComDesconto(double desconto, List<ItemCarrinho> itensDoCarrinho) {
+        try {
+            if ((desconto >= 0) && (desconto <= 100)) {
+                return ((100-desconto) * valorTotalDoCarrinho(itensDoCarrinho)) / 100;
+            } else {
+                throw new Exception("Desconto deve estar entre 0% e 100%");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
+
+    public double valorTotalComFrete(List<ItemCarrinho> itensDoCarrinho) {
+        return valorTotalDoCarrinho(itensDoCarrinho) * 1.02;
+    }
+
+    public double valorTotalCredito(List<ItemCarrinho> itensDoCarrinho) {
+        return valorTotalDoCarrinho(itensDoCarrinho) * 1.01;
+    }
+
+    public double valorTotalDebito(List<ItemCarrinho> itensDoCarrinho) {
+        return valorTotalDoCarrinho(itensDoCarrinho) * 0.9997;
+    }
+
+    public double valorTotalDoCarrinho(List<ItemCarrinho> itensDoCarrinho) {
+        double valor = 0;
+        for (ItemCarrinho item : itensDoCarrinho) {
+            if (item.getQuantidade() == 1) {
+                valor += item.getValor();
+            } else {
+                valor += item.getValor() * item.getQuantidade();
+            }
+        }
+        return valor;
+    }
+
     public Boolean atualizarInformacaoValorTotalEQauntidade(Carrinho carrinho) throws Exception {
         try {
             carrinho.setValorTotal(0);
             carrinho.setQuantidade(0);
-            for (ItensCarrinho itensCarrinho : new ItensCarrinhoBO().ListarItensCarrinhoDeCarrinho(carrinho)) {
-                carrinho.setQuantidade(carrinho.getQuantidade() + itensCarrinho.getQuantidade());
-                carrinho.setValorTotal(carrinho.getValorTotal() + itensCarrinho.getValor());
+            for (ItemCarrinho itemCarrinho : new ItensCarrinhoBO().ListarItensCarrinhoDeCarrinho(carrinho)) {
+                carrinho.setQuantidade(carrinho.getQuantidade() + itemCarrinho.getQuantidade());
+                carrinho.setValorTotal(carrinho.getValorTotal() + itemCarrinho.getValor());
             }
             return alterar(carrinho);
         } catch (Exception e) {

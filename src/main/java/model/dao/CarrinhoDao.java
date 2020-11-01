@@ -2,9 +2,7 @@ package model.dao;
 
 import connections.ConnectionFactory;
 import model.entities.Carrinho;
-import model.entities.ItensCarrinho;
 
-import java.util.List;
 import javax.persistence.EntityManager;
 
 public class CarrinhoDao extends GenericDao<Carrinho>{

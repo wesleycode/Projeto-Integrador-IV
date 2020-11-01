@@ -39,4 +39,7 @@ public class RedirecionamentoController implements Serializable {
     public static String irParaModificarusuario() { return "modificarusuario.xhtml?faces-redirect=true"; }
 
     public static String irParaModificarusuarioViaAdm() { return "modificarusuarioViaAdm.xhtml?faces-redirect=true"; }
+
+    public static String irParaProdutoSelecionado() { return "produtoselecionado?faces-redirect=true"; }
+
 }

@@ -93,10 +93,10 @@
                                         <f:convertNumber currencyCode="R$" type="currency"/>
                                     </h:outputText>
                                     <br/>
-                                    <p:commandLink type="button" styleClass="btn btn-primary" value="Comprar" action="#{produtoController.adicionarProdutoNoCarrinho(produto)}"/>
+                                    <p:commandLink type="button" styleClass="btn btn-warning" value="Comprar" action="#{carrinhoController.adicionarProdutoNoCarrinho(produto)}"/>
                                     <br/>
                                     <br/>
-                                    <p:commandLink type="button" styleClass="btn btn-primary" value="Ver Mais" action="#{produtoController.irParaDetalhesDeProduto(produto)}"/>
+                                    <p:commandLink type="button" styleClass="btn btn-danger" value="Detalhes" action="#{produtoController.irParaDetalhesDeProduto(produto)}"/>
                                 </h:panelGrid>
                             </p:panel>
 

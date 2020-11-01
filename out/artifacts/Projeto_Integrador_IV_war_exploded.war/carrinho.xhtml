@@ -39,143 +39,111 @@
         <div class="row">
             <div class="leftcolumn">
                 <div class="card" align="center" id="cardcadastro">
-                    <p:panel header="Itens Do Carrinho" id="painel">
-                        <p:dataGrid value="#{detalhesProdutoController.itensCarrinhoList}"
-                                    var="itens" columns="1"
+
+                    <h3>Seu carrinho de compras!</h3>
+                    <br/>
+                    <p:panel header="Produtos adicionados ao carrinho" id="painel">
+                        <p:dataGrid value="#{carrinhoController.itensCarrinhoList}"
+                                    var="item" columns="3"
                                     layout="grid"
-                                    rows="8" paginator="true" id="cars" paginatorPosition="bottom"
+                                    rows="8" paginator="true" paginatorPosition="bottom"
                                     paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {NextPageLink}">
-                            <p:column>
-                                <h:outputLabel>Produto: #{itens.produto.nome}</h:outputLabel>
-                            </p:column>
-                            <p:column>
-                                <h:outputLabel>Valor: #{itens.valor}</h:outputLabel>
-                            </p:column>
-                            <p:column>
-                                <h:outputLabel>Quantidade: </h:outputLabel>
-                                <p:spinner id="minMax" value="#{itens.quantidade}" min="0" max="100"/>
-                            </p:column>
-                            <p:column>
-                                <p:commandButton type="button" value="Remover Item"/>
-                            </p:column>
-                            <hr/>
+
+                            <p:panel header="Produto: #{item.produto.nome}" style="text-align:center">
+                                <h:panelGrid columns="1" style="width:100%">
+
+                                    <br/>
+                                    <p:graphicImage library="img" name="#{item.produto.fotoProduto.foto}.jpg"
+                                                    width="100"
+                                                    height="100"/>
+                                    <br/>
+                                    <h:outputLabel>Valor: R$#{item.valor}</h:outputLabel>
+                                    <br/>
+                                    <h:form>
+                                        <h:outputLabel>Quantidade: </h:outputLabel>
+                                        <br/>
+                                        <p:spinner value="#{item.quantidade}" min="1" max="10">
+                                            <p:ajax update="valoresForm" process="@this"/>
+                                        </p:spinner>
+                                        <br/>
+                                        <br/>
+                                        <h:commandLink styleClass="btn btn-danger" type="button"
+                                                       value="Remover Item"
+                                                       action="#{carrinhoController.removerItemDoCarrinho(item)}"/>
+                                    </h:form>
+                                    <br/>
+                                </h:panelGrid>
+                            </p:panel>
                         </p:dataGrid>
                     </p:panel>
-                </div>
-                <div class="card">
-                    <div class="card" align="center">
-                        <h3>Carrinho Compra</h3>
+                    <hr/>
+                    <p:panel header="Cupom de desconto o pagamento">
+                        <b:messages id="messages"
+                                    globalOnly="true"
+                                    autoUpdate="true"/>
                         <h:form>
-                            <div class="form-group col-md-12 col-sm-12">
-                                <h:outputLabel>Escolha forma de Pagamento:</h:outputLabel>
-                                <b:selectOneMenu
-                                        value="#{detalhesProdutoController.pedido.formaPagamento}" ajax="true"
-                                        process="@this">
-                                    <f:selectItem value="#{null}" itemLabel="Forma Pagamento"/>
-                                    <f:selectItems
-                                            value="#{detalhesProdutoController.formaPagamentoList}"
-                                            var="formaPagame"
-                                            itemValue="#{formaPagame}" itemLabel="#{formaPagame.formapagamento}"/>
-                                </b:selectOneMenu>
-                                <hr/>
-                                <h3>Endereço de Entrega</h3>
-                                <div class="form-group col-md-12 col-sm-12">
-                                    <b:inputText value="#{loginController.endereco.rua}" placeholder="Rua"
-                                                 required="true"
-                                                 mask="{regex:'[a-zA-Z ]*'}">
-                                        <f:facet name="prepend">
-                                            <b:iconAwesome name="map-marker-alt"/>
-                                        </f:facet>
-                                    </b:inputText>
-                                </div>
-
-                                <div class="form-group col-md-12 col-sm-12">
-                                    <b:selectOneMenu value="#{loginController.endereco.cidade.estado}"
-                                                     ajax="true"
-                                                     process="@this" update="@next @next:@next">
-                                        <f:selectItem value="#{null}"
-                                                      itemLabel="#{loginController.pessoa.endereco.cidade.estado.nome}"/>
-                                        <f:selectItems value="#{painelAdministradorController.listarTodosOsEstados()}"
-                                                       var="estado"
-                                                       itemValue="#{estado}" itemLabel="#{estado.nome}"/>
-                                        <f:ajax event="change" execute="@this" render="cidadesSelect"/>
-                                    </b:selectOneMenu>
-                                </div>
-
-                                <div class="form-group col-md-12 col-sm-12">
-                                    <b:selectOneMenu id="cidadesSelect"
-                                                     value="#{loginController.endereco.cidade}" ajax="true"
-                                                     process="@this" update="@next @next:@next">
-                                        <f:selectItem value="#{null}"
-                                                      itemLabel="#{loginController.pessoa.endereco.cidade.nome}"/>
-                                        <f:selectItems
-                                                value="#{painelAdministradorController.listarTodosAsCidadesPorEstado(loginController.pessoa.endereco.cidade.estado)}"
-                                                var="cidade"
-                                                itemValue="#{cidade}" itemLabel="#{cidade.nome}"/>
-                                    </b:selectOneMenu>
-                                </div>
-
-                                <div class="form-group col-md-12 col-sm-12">
-                                    <h3><span>Onde vamos entregar seu produto?</span></h3>
-                                </div>
-
-                            </div>
-                            <div class="form-group col-md-12 col-sm-12" id="de">
-                                <hr/>
-                                <div class="form-group col-md-12 col-sm-12">
-                                    <b:inputText value="#{painelAdministradorController.pessoa.endereco.bairro}"
-                                                 placeholder="Bairro"
-                                                 required="true"
-                                                 mask="{regex:'[a-zA-Z ]*'}">
-                                        <f:facet name="prepend">
-                                            <b:iconAwesome name="map-marker-alt"/>
-                                        </f:facet>
-                                    </b:inputText>
-                                </div>
-                                <div class="form-group col-md-12 col-sm-12">
-                                    <b:inputText value="#{loginController.endereco.cep}" placeholder="Cep"
-                                                 required="true"
-                                                 mask="99999-999">
-                                        <f:facet name="prepend">
-                                            <b:iconAwesome name="map-marker-alt"/>
-                                        </f:facet>
-                                    </b:inputText>
-                                </div>
-                                <div class="form-group col-md-12 col-sm-12">
-                                    <b:inputText value="#{loginController.endereco.complemento}"
-                                                 placeholder="Complemento"
-                                                 required="true"
-                                                 mask="{regex:'[a-zA-Z ]*'}">
-                                        <f:facet name="prepend">
-                                            <b:iconAwesome name="map-marker-alt"/>
-                                        </f:facet>
-                                    </b:inputText>
-                                </div>
-                                <div class="form-group col-md-12 col-sm-12">
-                                    <b:inputText value="#{loginController.endereco.numero}" placeholder="Numero"
-                                                 required="true"
-                                                 mask="{regex:'[0-9]*'}">
-                                        <f:facet name="prepend">
-                                            <b:iconAwesome name="map-marker-alt"/>
-                                        </f:facet>
-                                    </b:inputText>
-                                </div>
-                                <div class="form-group col-md-12 col-sm-12">
-                                    <h:outputLabel>Valor Total: #{loginController.carrinho.valorTotal}</h:outputLabel>
-                                </div>
-
-                                <hr/>
-                                <h:commandLink value="Políticas de Compra"
-                                               action="#{redirecionamentoController.irParaTermoCompra}">
-                                </h:commandLink>
-                                <hr/>
-                                <h:commandButton value="Comprar" styleClass="btn btn-primary">
-                                </h:commandButton>
-                            </div>
-
-
+                            <b:inputText value="#{carrinhoController.valorCupom}" placeholder="Digite seu código aqui."
+                                         required="true">
+                            </b:inputText>
+                            <b:commandLink styleClass="btn btn-primary" value="Aplicar Cupom"
+                                           action="#{carrinhoController.adicionarCupom()}">
+                                <p:ajax update="valoresForm" process="@this"/>
+                            </b:commandLink>
                         </h:form>
-                    </div>
+                    </p:panel>
+                    <hr/>
+                    <p:panel header="Sobre o pagamento">
+                        <h:form>
+                            <h:outputLabel>Escolha forma de Pagamento:</h:outputLabel>
+                            <b:selectOneMenu
+                                    value="#{detalhesProdutoController.pedido.formaPagamento}" ajax="true"
+                                    process="@this">
+                                <f:selectItem value="#{null}" itemLabel="Forma Pagamento"/>
+                                <f:selectItems
+                                        value="#{detalhesProdutoController.formaPagamentoList}"
+                                        var="formaPagame"
+                                        itemValue="#{formaPagame}" itemLabel="#{formaPagame.formapagamento}"/>
+                            </b:selectOneMenu>
+                        </h:form>
+                    </p:panel>
+                    <hr/>
+                    <p:panel header="Resumo">
+                        <h:form id="valoresForm">
+                            <b:dataTable value="">
+                                <f:facet name="header">
+                                    <tr>
+                                        <th>Valor Total + Frete</th>
+                                        <th>Valor Total + Desconto</th>
+                                        <th>Valor Total (Crédito em até 10x)</th>
+                                        <th>Valor Total (Boleto Bancário)</th>
+                                        <th>Valor Total</th>
+                                    </tr>
+                                </f:facet>
+                                <b:dataTableColumn value="#{carrinhoController.valorTotalComFrete()}"/>
+                                <b:dataTableColumn value="#{carrinhoController.valorTotalComDesconto()}"/>
+                                <b:dataTableColumn value="#{carrinhoController.valorTotalCredito()}"/>
+                                <b:dataTableColumn value="#{carrinhoController.valorTotalDebito()}"/>
+                                <b:dataTableColumn styleClass="alert-success" value="#{carrinhoController.valorTotalDoCarrinho()}"/>
+                            </b:dataTable>
+                        </h:form>
+                    </p:panel>
+                    <hr/>
+                    <p:panel header="Finalizar">
+                        <h:form>
+                            <br/>
+                            <h:commandLink value="Políticas de Compra"
+                                           action="#{redirecionamentoController.irParaTermoCompra}"/>
+                            <br/>
+                            <br/>
+                            <b:commandLink styleClass="btn btn-warning" value="Continuar Comprando"
+                                           action="#{redirecionamentoController.irParaIndex()}"/>
+                            <br/>
+                            <b:commandLink styleClass="btn btn-success" value="Finalizar Compra"
+                                           action="#{carrinhoController.comprarProduto()}"/>
+                            <br/>
+                        </h:form>
+                    </p:panel>
+
                 </div>
             </div>
 
@@ -191,7 +159,8 @@
                         <h:commandButton value="Sair Login" styleClass="btn btn-primary"
                                          action="#{loginController.deslogar}"/>
                         <br/>
-                        <h:commandButton value="Meus Pedidos" styleClass="btn btn-primary" action="#{detalhesProdutoController.irParaPedidos}"/>
+                        <!--Deve possuir o logoff-->
+                        <h:commandButton value="Meus Pedidos" styleClass="btn btn-primary"/>
                     </h:form>
                 </div>
 

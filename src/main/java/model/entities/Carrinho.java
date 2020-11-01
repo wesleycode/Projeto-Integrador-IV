@@ -8,7 +8,7 @@ public class Carrinho implements EntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private long valorTotal;
+    private double valorTotal;
     private long quantidade;
     
     @ManyToOne
@@ -38,11 +38,11 @@ public class Carrinho implements EntityBase {
         this.quantidade = quantidade;
     }
 
-    public long getValorTotal() {
+    public double getValorTotal() {
         return valorTotal;
     }
 
-    public void setValorTotal(long valorTotal) {
+    public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
     }
 

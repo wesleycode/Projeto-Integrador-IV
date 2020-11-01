@@ -90,16 +90,22 @@
         </li>
         <li>
             <h:form>
-                <h:commandLink styleClass="btn" action="#{redirecionamentoController.irParaIndex()}">INICIO</h:commandLink>
+                <h:commandLink styleClass="btn"
+                               action="#{redirecionamentoController.irParaIndex()}">INICIO</h:commandLink>
             </h:form>
         </li>
         <li><a href="servicos.xhtml" class="btn">Serviços</a></li>
-        <li><h:form><h:commandLink styleClass="btn" action="#{redirecionamentoController.irParaContato}" value="Contato"></h:commandLink></h:form></li>
+        <li>
+            <h:form>
+                <h:commandLink styleClass="btn" action="#{redirecionamentoController.irParaContato()}"
+                               value="Contato"/>
+            </h:form>
+        </li>
         <li style="float:right">
             <h:panelGrid id="btnCarrinho" style="color: white;">
                 <h:form>
                     <h:commandLink styleClass="icon"
-                                   action="#{detalhesProdutoController.irParaCarrinho()}">
+                                   action="#{redirecionamentoController.irParaCarrinho()}">
                         <i class="fas fa-shopping-cart fa-2x"/>
                     </h:commandLink>
                 </h:form>

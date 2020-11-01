@@ -13,13 +13,14 @@
     <class>model.entities.FormaPagamento</class>
     <class>model.entities.Fornecedor</class>
     <class>model.entities.FotoProduto</class>
-    <class>model.entities.ItensCarrinho</class>
+    <class>model.entities.ItemCarrinho</class>
     <class>model.entities.ItensPedido</class>
     <class>model.entities.MarcaProduto</class>
     <class>model.entities.Pedido</class>
     <class>model.entities.Pessoa</class>
     <class>model.entities.Produto</class>
     <class>model.entities.TipoEntrega</class>
+    <class>model.entities.Cupom</class>
     <!--  -->
     <properties>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
@@ -33,11 +34,11 @@
       <!-- DB Password -->
 
       <!-- DB Driver -->
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/postgres"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/banco"/>
       <!-- BD -->
       <property name="javax.persistence.jdbc.user" value="postgres"/>
       <!-- DB User -->
-      <property name="javax.persistence.jdbc.password" value="root"/>
+      <property name="javax.persistence.jdbc.password" value="postgres"/>
       <!-- DB Password -->
       <property name="hibernate.dialect" value="org.hibernate.dialect.PostgresPlusDialect"/>
       <!-- DB Dialect -->
