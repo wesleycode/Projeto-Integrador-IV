@@ -3,6 +3,7 @@ package controller;
 import model.bo.*;
 import model.entities.*;
 import net.bootsfaces.utils.FacesMessages;
+import utilities.Tempo;
 
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -87,9 +88,27 @@ public class DetalhesProdutoController implements Serializable {
         }
     }
 
+    public String irparacadastraravaliacao(){
+        if(pessoa == null){
+            return RedirecionamentoController.irParaCadastro();
+        }
+        return RedirecionamentoController.irParaCadastrarAvaliacao();
+    }
+
     public void criarAvaliacao() {
         try {
-            new AvaliacaoBO().criar(avaliacaoUsuario);//cadastrar parcialmente pedido
+            Avaliacao avaliacaoBusca = new AvaliacaoBO().listarAvaliaçaodeprodutoexiste(pessoa,produto);
+            avaliacaoUsuario.setDataPostado(Tempo.getDataAtualSql());
+            avaliacaoUsuario.setProduto(produto);
+            avaliacaoUsuario.setPessoa(pessoa);
+            if(avaliacaoBusca == new Avaliacao()){
+                new AvaliacaoBO().criar(avaliacaoUsuario);
+                FacesMessages.info("Avaliação realizada! agradecemos seu feedback!");
+            }else{
+                avaliacaoUsuario.setId(avaliacaoBusca.getId());
+                new AvaliacaoBO().alterar(avaliacaoUsuario);
+                FacesMessages.info("Avaliação realizada! agradecemos seu feedback!");
+            }
         } catch (Exception e) {
             FacesMessages.error("Erro ao cadastrar Avaliacao: " + e.getMessage());
         }

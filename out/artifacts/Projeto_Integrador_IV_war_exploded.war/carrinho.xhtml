@@ -83,7 +83,8 @@
                                     autoUpdate="true"/>
                         <h:form>
                             <b:inputText value="#{carrinhoController.valorCupom}" placeholder="Digite seu código aqui."
-                                         required="true">
+                                         required="true"
+                                         mask="{regex:'[a-zA-Z0-9]*'}">
                             </b:inputText>
                             <b:commandLink styleClass="btn btn-primary" value="Aplicar Cupom"
                                            action="#{carrinhoController.adicionarCupom()}">

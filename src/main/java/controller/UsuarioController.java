@@ -17,4 +17,4 @@ public class UsuarioController implements Serializable {
         return "page2?faces-redirect=true";
     }
 
-}
+}//Aqui jas uma parte do passado, o inicio de Tudo, pf faça silencio

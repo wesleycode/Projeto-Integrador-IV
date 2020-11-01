@@ -127,25 +127,25 @@
                                 </div>
 
                                 <div class="form-group col-md-6 col-sm-6">
-                                    <b:selectOneMenu value="#{alterarUsuarioController.pessoaModificar.endereco.cidade.estado}"
+                                    <b:selectOneMenu value="#{alterarUsuarioController.pessoaModificar.endereco.cidade.estado.id}"
                                                      ajax="true"
                                                      process="@this" update="@next @next:@next">
-                                        <f:selectItem value="#{null}" itemLabel="#{alterarUsuarioController.pessoaModificar.endereco.cidade.estado.nome}"/>
+                                        <f:selectItem itemvalue="#{alterarUsuarioController.pessoaModificar.endereco.cidade.estado.id}" itemLabel="#{alterarUsuarioController.pessoaModificar.endereco.cidade.estado.nome}"/>
                                         <f:selectItems value="#{alterarUsuarioController.estados}" var="estado"
-                                                       itemValue="#{estado}" itemLabel="#{estado.nome}"/>
+                                                       itemValue="#{estado.id}" itemLabel="#{estado.nome}"/>
                                         <f:ajax event="change" execute="@this" render="cidadesSelect"/>
                                     </b:selectOneMenu>
                                 </div>
 
                                 <div class="form-group col-md-6 col-sm-6">
                                     <b:selectOneMenu id="cidadesSelect"
-                                                     value="#{alterarUsuarioController.pessoaModificar.endereco.cidade}" ajax="true"
+                                                     value="#{alterarUsuarioController.pessoaModificar.endereco.cidade.id}" ajax="true"
                                                      process="@this" update="@next @next:@next">
-                                        <f:selectItem value="#{null}" itemLabel="#{alterarUsuarioController.pessoaModificar.endereco.cidade.nome}"/>
+                                        <f:selectItem itemValue="#{alterarUsuarioController.pessoaModificar.endereco.cidade.id}" itemLabel="#{alterarUsuarioController.pessoaModificar.endereco.cidade.nome}"/>
                                         <f:selectItems
                                                 value="#{alterarUsuarioController.cidades}"
                                                 var="cidade"
-                                                itemValue="#{cidade}" itemLabel="#{cidade.nome}"/>
+                                                itemValue="#{cidade.id}" itemLabel="#{cidade.nome}"/>
                                     </b:selectOneMenu>
                                 </div>
 
@@ -232,17 +232,6 @@
                         </h:commandButton>
 
                     </h:form>
-                </div>
-                <div class="card" id="cardmarca">
-                    <h3>Lista de Marca</h3>
-                    <ul class="align-self-baseline">
-                        <p:dataGrid var="marca" value="#{cadastrarMarcaController.todasMarcaProdutoList}" columns="1">
-                            <li><h:outputLabel>Marca: #{marca.nome}</h:outputLabel></li>
-                        </p:dataGrid>
-                    <p:dataGrid var="marca" value="#{cadastrarMarcaController.todasMarcaProdutoList}" columns="1">
-                        <li><h:outputLabel>Marca: #{marca.nome}</h:outputLabel></li>
-                    </p:dataGrid>
-                    </ul>
                 </div>
 
             </div>

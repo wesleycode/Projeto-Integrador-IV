@@ -22,7 +22,6 @@ public class AlterarUsuarioController implements Serializable {
     private List<Pessoa>listpessoa;
     private List<Estado>estados;
     private List<Cidade>cidades;
-    private Pessoa pessoadeFundo;
 
     public AlterarUsuarioController() {
         pessoaModificar = new Pessoa();
@@ -58,6 +57,7 @@ public class AlterarUsuarioController implements Serializable {
     }
 
     public List<Pessoa> listarPessoas(){
+
         try{
             return new PessoaBO().listarPessoasPorNome();
         } catch (Exception e) {
@@ -107,18 +107,17 @@ public class AlterarUsuarioController implements Serializable {
     }
     public void modificarPessoa(){
         try{
+            if(pessoaModificar.getTipoUsuario() == 0){
+                FacesMessages.error("Informe o Tipo de Usuário!");
+                return;
+            }
+            pessoaModificar.getEndereco().setCidade(new CidadeBO().getById(pessoaModificar.getEndereco().getCidade().getId()));
             new EnderecoBO().alterar(pessoaModificar.getEndereco());
             new PessoaBO().alterar(pessoaModificar);
             FacesMessages.info("A pessoa Foi Alterada");
         } catch (Exception e) {
-            try{
-                pessoaModificar.getEndereco().setCidade(pessoadeFundo.getEndereco().getCidade());
-                new EnderecoBO().alterar(pessoaModificar.getEndereco());
-                new PessoaBO().alterar(pessoaModificar);
-                FacesMessages.info("A pessoa Foi Alterada");
-            } catch (Exception d) {
-                FacesMessages.error("Erro: " + e.getMessage());
-            }
+            FacesMessages.error("Erro: " + e.getMessage());
+
         }
     }
 
@@ -128,7 +127,6 @@ public class AlterarUsuarioController implements Serializable {
 
     public String irParaModificarUsuarioviaADM(Pessoa p){
         pessoaModificar = p;
-        pessoadeFundo = pessoaModificar;
         estados = listarTodosOsEstados();
         cidades=listarTodosAsCidadesPorEstado(pessoaModificar.getEndereco().getCidade().getEstado());
         return RedirecionamentoController.irParaModificarusuarioViaAdm();

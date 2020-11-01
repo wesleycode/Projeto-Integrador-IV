@@ -67,30 +67,27 @@
                                 <f:convertNumber currencyCode="R$" type="currency"/>
                             </h:outputText>
                         </p:panel>
-                        <div class="card">
+                        <div class="card" align="left">
                             <p:panel header="Avaliações do Produto:">
                                 <p:dataGrid value="#{detalhesProdutoController.avaliacaoList}"
                                             var="avaliacao" columns="1"
                                             layout="grid"
                                             rows="8" paginator="true" id="cars" paginatorPosition="bottom"
                                             paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {NextPageLink}">
-                                    <p:column>
-                                        <h:outputLabel>Nome: #{avaliacao.pessoa.nome} </h:outputLabel>
-                                    </p:column>
-                                    <p:column>
-                                        <h:outputLabel> Nota #{detalhesProdutoController.getTipoDeNota(avaliacao)} </h:outputLabel>
-                                    </p:column>
-                                    <p:column>
-                                        <h:outputLabel> Comentário: #{avaliacao.comentario} </h:outputLabel>
-                                    </p:column>
-                                    <p:column>
-                                        <h:outputLabel> Data: #{avaliacao.dataPostado} </h:outputLabel>
-                                    </p:column>
+                                    <br/>
+                                    <h:outputLabel>Nome: #{avaliacao.pessoa.nome} </h:outputLabel>
+                                    <br/>
+                                    <h:outputLabel> Nota: #{detalhesProdutoController.getTipoDeNota(avaliacao)} </h:outputLabel>
+                                    <br/>
+                                    <h:outputLabel> Comentário: #{avaliacao.comentario} </h:outputLabel>
+                                    <br/>
+                                    <h:outputLabel> Data: #{avaliacao.dataPostado} </h:outputLabel>
+                                    <hr/>
                                 </p:dataGrid>
                                 <hr/>
                                 <h:form>
                                     <h3>Faça sua Avaliação aqui:</h3>
-                                    <p:commandButton value="Avaliar"/>
+                                    <p:commandButton value="Avaliar" action="#{detalhesProdutoController.irparacadastraravaliacao}"/>
                                 </h:form>
                             </p:panel>
                         </div>

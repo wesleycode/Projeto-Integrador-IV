@@ -38,7 +38,7 @@
 
         <div class="row">
             <div class="leftcolumn">
-                <div class="panel-body">
+                <div class="card">
 
                     <b:messages autoUpdate="true"/>
 
@@ -230,21 +230,10 @@
                     <h:outputLabel>#{loginController.pessoa.email}</h:outputLabel>
                     <h:form>
                         <h:commandButton value="Sair Login" styleClass="btn btn-primary" action="#{loginController.deslogar}">
-                            <!--Deve possuir o logoff-->
+
                         </h:commandButton>
 
                     </h:form>
-                </div>
-                <div class="card" id="cardmarca">
-                    <h3>Lista de Marca</h3>
-                    <ul class="align-self-baseline">
-                        <p:dataGrid var="marca" value="#{cadastrarMarcaController.todasMarcaProdutoList}" columns="1">
-                            <li><h:outputLabel>Marca: #{marca.nome}</h:outputLabel></li>
-                        </p:dataGrid>
-                    <p:dataGrid var="marca" value="#{cadastrarMarcaController.todasMarcaProdutoList}" columns="1">
-                        <li><h:outputLabel>Marca: #{marca.nome}</h:outputLabel></li>
-                    </p:dataGrid>
-                    </ul>
                 </div>
 
             </div>

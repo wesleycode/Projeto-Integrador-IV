@@ -42,4 +42,6 @@ public class RedirecionamentoController implements Serializable {
 
     public static String irParaProdutoSelecionado() { return "produtoselecionado?faces-redirect=true"; }
 
+    public static String irParaCadastrarAvaliacao() { return "cadastrarAvaliacao?faces-redirect=true"; }
+
 }

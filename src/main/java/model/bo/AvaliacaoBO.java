@@ -3,6 +3,7 @@ package model.bo;
 import model.dao.AvaliacaoDao;
 import model.dao.GenericDao;
 import model.entities.Avaliacao;
+import model.entities.Pessoa;
 import model.entities.Produto;
 
 import java.util.List;
@@ -28,6 +29,10 @@ public class AvaliacaoBO implements GenericBO<Avaliacao> {
             }
         }
         return false;
+    }
+    public Avaliacao listarAvaliaçaodeprodutoexiste(Pessoa p, Produto pr) throws Exception {
+        System.out.println("Entrar na DAO pela BO");
+        return new AvaliacaoDao().listarAvaliaçaodeprodutoexiste(p,pr);
     }
 
     @Override
