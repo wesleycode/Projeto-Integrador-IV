@@ -1,21 +1,21 @@
 package model.dao;
 
 import connections.ConnectionFactory;
-import model.entities.ItensPedido;
+import model.entities.ItemPedido;
 import model.entities.Produto;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 
-public class ItensPedidoDao extends GenericDao<ItensPedido>{
+public class ItensPedidoDao extends GenericDao<ItemPedido>{
     private EntityManager entityManager;
     public ItensPedidoDao(){
         entityManager = new ConnectionFactory().getConnection();
     }
 
-    public List<ItensPedido> listarItensPedidoDeProduto(Produto produto) throws Exception {
+    public List<ItemPedido> listarItensPedidoDeProduto(Produto produto) throws Exception {
         try {
-            return entityManager.createQuery("SELECT a FROM ItensPedido a where a.produto =:produto")
+            return entityManager.createQuery("SELECT a FROM ItemPedido a where a.produto =:produto")
                     .setParameter("produto",produto)
                     .getResultList();
         } catch (Exception e) {

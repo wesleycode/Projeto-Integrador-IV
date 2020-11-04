@@ -2,6 +2,7 @@ package model.dao;
 
 import connections.ConnectionFactory;
 import model.entities.EntityBase;
+import org.hibernate.Session;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -30,7 +31,8 @@ public class GenericDao<T extends EntityBase> {
             return true;
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
-            throw new Exception("Erro ao salvar objeto da classe [" + t.getClass().getName() + "]");
+            e.printStackTrace();
+            return false;
         } finally {
             entityManager.close();
         }
@@ -72,6 +74,55 @@ public class GenericDao<T extends EntityBase> {
         } finally {
             entityManager.close();
         }
+    }
+
+    public T getIdFromObject(Class<T> type, T o) throws Exception {
+        try {
+            return (T) entityManager.getEntityManagerFactory().getPersistenceUnitUtil().getIdentifier(type);
+        } catch (Exception e) {
+            throw new Exception("Erro ao pegar por id na classe [" + type.getName() + "]");
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    public long getLastId(Class<T> t) {
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("SELECT MAX(t.id) FROM ");
+        stringBuilder.append(t.getSimpleName());
+        stringBuilder.append(" t");
+
+        Object o = entityManager
+                .createQuery(stringBuilder
+                        .toString())
+                .getSingleResult();
+
+        if (o == null) {
+            return -1;
+        } else {
+            return (long) o;
+        }
+
+    }
+
+    public boolean truncateTable(Class<T> t) {
+        boolean rowsAffected = false;
+        try {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("TRUNCATE TABLE ");
+            stringBuilder.append(t.getSimpleName());
+            stringBuilder.append(" CASCADE");
+            entityManager.getTransaction().begin();
+            Session session = entityManager.unwrap(Session.class);
+            rowsAffected = session.createSQLQuery(stringBuilder.toString()).executeUpdate() > 0;
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+        } finally {
+            entityManager.close();
+        }
+        return rowsAffected;
     }
 
 }

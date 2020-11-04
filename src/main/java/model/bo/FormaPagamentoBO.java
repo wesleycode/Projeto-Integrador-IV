@@ -49,8 +49,11 @@ public class FormaPagamentoBO implements GenericBO<FormaPagamento> {
 
     @Override
     public boolean valida(FormaPagamento o) throws Exception {
-        if (o.getFormapagamento().equals("")) {
-            throw new Exception("Forma de Pagamento nulo");
+        if (o == null) {
+            throw new Exception("Forma de Pagamento nula");
+        }
+        if (o.getId() == 0) {
+            throw new Exception("Selecione pelo menos uma forma de pagamento!");
         }
         return true;
     }

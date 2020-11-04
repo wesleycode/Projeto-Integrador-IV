@@ -1,17 +1,11 @@
 package model.entities;
 
-import javax.persistence.*;
-
-@Entity
 public class Carrinho implements EntityBase {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private double valorTotal;
     private long quantidade;
-    
-    @ManyToOne
+
     private Pessoa cliente;
 
     public Pessoa getCliente() {

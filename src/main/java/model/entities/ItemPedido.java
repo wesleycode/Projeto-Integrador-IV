@@ -3,13 +3,13 @@ package model.entities;
 import javax.persistence.*;
 
 @Entity
-@DiscriminatorValue(value = "ItensPedido")
-public class ItensPedido implements EntityBase {
+public class ItemPedido implements EntityBase {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private long quantidade;
-    private long valor;
+    private double valor;
     @ManyToOne
     private Produto produto;
     @ManyToOne
@@ -20,11 +20,23 @@ public class ItensPedido implements EntityBase {
         return id;
     }
 
-    public long getValor() {
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(long quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public double getValor() {
         return valor;
     }
 
-    public void setValor(long valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
 
@@ -44,19 +56,7 @@ public class ItensPedido implements EntityBase {
         this.pedido = pedido;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(long quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public ItensPedido() {
+    public ItemPedido() {
 
     }
 

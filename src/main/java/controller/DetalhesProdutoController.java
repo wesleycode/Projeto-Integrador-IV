@@ -17,9 +17,7 @@ public class DetalhesProdutoController implements Serializable {
 
     private Produto produto;
     private Pessoa pessoa;
-    private Pedido pedido;
     private Avaliacao avaliacaoUsuario;
-    private List<FormaPagamento> formaPagamentoList;
     private List<Avaliacao> avaliacaoList;
 
     public Produto getProduto() {
@@ -38,14 +36,6 @@ public class DetalhesProdutoController implements Serializable {
         this.pessoa = pessoa;
     }
 
-    public Pedido getPedido() {
-        return pedido;
-    }
-
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
-    }
-
     public Avaliacao getAvaliacaoUsuario() {
         return avaliacaoUsuario;
     }
@@ -62,34 +52,15 @@ public class DetalhesProdutoController implements Serializable {
         this.avaliacaoList = avaliacaoList;
     }
 
-    public List<FormaPagamento> getFormaPagamentoList() {
-        return formaPagamentoList;
-    }
-
-    public void setFormaPagamentoList(List<FormaPagamento> formaPagamentoList) {
-        this.formaPagamentoList = formaPagamentoList;
-    }
-
     public DetalhesProdutoController() {
         produto = (Produto) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("produto");
         pessoa = (Pessoa) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pessoa");
         avaliacaoUsuario = new Avaliacao();
-        pedido = new Pedido();
-        formaPagamentoList = listarTodasFormasDePagamento();
         avaliacaoList = listarAvaliacaoDeProdutoSelecionado();
     }
 
-    public List<FormaPagamento> listarTodasFormasDePagamento() {
-        try {
-            return new FormaPagamentoBO().listarTodos();
-        } catch (Exception e) {
-            FacesMessages.error("Erro ao listar Forma de Pagamento: " + e.getMessage());
-            return null;
-        }
-    }
-
-    public String irparacadastraravaliacao(){
-        if(pessoa == null){
+    public String irparacadastraravaliacao() {
+        if (pessoa == null) {
             return RedirecionamentoController.irParaCadastro();
         }
         return RedirecionamentoController.irParaCadastrarAvaliacao();
@@ -97,18 +68,27 @@ public class DetalhesProdutoController implements Serializable {
 
     public void criarAvaliacao() {
         try {
-            Avaliacao avaliacaoBusca = new AvaliacaoBO().listarAvaliaçaodeprodutoexiste(pessoa,produto);
-            avaliacaoUsuario.setDataPostado(Tempo.getDataAtualSql());
-            avaliacaoUsuario.setProduto(produto);
-            avaliacaoUsuario.setPessoa(pessoa);
-            if(avaliacaoBusca == new Avaliacao()){
+
+            Avaliacao avaliacao = new AvaliacaoBO().isExisteAvaliacaoDesteProduto(pessoa, produto);
+
+            if (avaliacao == null) {
+                long idUltimaAvaliacao = new AvaliacaoBO().getLastId();
+                if (idUltimaAvaliacao == -1) {
+                    avaliacaoUsuario.setId(1);
+                } else {
+                    avaliacaoUsuario.setId(idUltimaAvaliacao + 1);
+                }
+                avaliacaoUsuario.setDataPostado(Tempo.getDataAtualSql());
+                avaliacaoUsuario.setProduto(produto);
+                avaliacaoUsuario.setPessoa(pessoa);
                 new AvaliacaoBO().criar(avaliacaoUsuario);
                 FacesMessages.info("Avaliação realizada! agradecemos seu feedback!");
-            }else{
-                avaliacaoUsuario.setId(avaliacaoBusca.getId());
+            } else {
+                avaliacaoUsuario.setId(avaliacao.getId());
                 new AvaliacaoBO().alterar(avaliacaoUsuario);
                 FacesMessages.info("Avaliação realizada! agradecemos seu feedback!");
             }
+
         } catch (Exception e) {
             FacesMessages.error("Erro ao cadastrar Avaliacao: " + e.getMessage());
         }
@@ -116,6 +96,9 @@ public class DetalhesProdutoController implements Serializable {
 
     private List<Avaliacao> listarAvaliacaoDeProdutoSelecionado() {
         try {
+
+            System.out.println("LISTANDO AVALIAÇÃO DO PRODUTO: " + produto.getNome());
+
             return new AvaliacaoBO().listarAvaliacaoPorProduto(produto);
         } catch (Exception e) {
             FacesMessages.error("Erro ao selecionar avaliações: " + e.getMessage());

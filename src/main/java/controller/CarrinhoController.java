@@ -1,7 +1,6 @@
 package controller;
 
-import model.bo.CarrinhoBO;
-import model.bo.CupomBO;
+import model.bo.*;
 import model.entities.*;
 import net.bootsfaces.utils.FacesMessages;
 import utilities.Moeda;
@@ -18,7 +17,6 @@ import java.util.List;
 public class CarrinhoController implements Serializable {
 
     private List<ItemCarrinho> itemCarrinhoList;
-    private Pedido pedido;
     private Pessoa pessoa;
     private Endereco endereco;
     private Carrinho carrinho;
@@ -26,6 +24,9 @@ public class CarrinhoController implements Serializable {
     private int quantidadeItem;
     private String valorCupom;
     private boolean cupomAdicionado;
+    private double valorTotalInicialCarrinho;
+    private List<FormaPagamento> formaPagamentoList;
+    private FormaPagamento formaPagamento;
 
     public String getValorCupom() {
         return valorCupom;
@@ -91,39 +92,116 @@ public class CarrinhoController implements Serializable {
         this.itemCarrinhoList = itemCarrinhoList;
     }
 
-    public Pedido getPedido() {
-        return pedido;
+    public List<FormaPagamento> getFormaPagamentoList() {
+        return formaPagamentoList;
     }
 
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
+    public void setFormaPagamentoList(List<FormaPagamento> formaPagamentoList) {
+        this.formaPagamentoList = formaPagamentoList;
+    }
+
+    public FormaPagamento getFormaPagamento() {
+        return formaPagamento;
+    }
+
+    public void setFormaPagamento(FormaPagamento formaPagamento) {
+        this.formaPagamento = formaPagamento;
     }
 
     public CarrinhoController() {
         cupomAdicionado = false;
         valorCupom = "";
+        formaPagamentoList = listarTodasFormasDePagamento();
         pessoa = new Pessoa();
         itemCarrinhoList = new ArrayList<>();
         itemCarrinho = new ItemCarrinho();
         quantidadeItem = 1;
-        pedido = new Pedido();
         endereco = new Endereco();
         carrinho = new Carrinho();
     }
 
     public void comprarProduto() {
-        System.out.println("-------------------");
+
         System.out.println("Comprando Produto...");
         System.out.println("-------------------");
+
+
+        try {
+
+            carrinho.setCliente(pessoa);
+            carrinho.setQuantidade(itemCarrinhoList.size());
+            carrinho.setValorTotal(new CarrinhoBO().valorTotalDoCarrinho(itemCarrinhoList));
+
+            System.out.println("-------------------");
+
+            if (new CarrinhoBO().valida(carrinho)) {
+
+                if (new FormaPagamentoBO().valida(formaPagamento)) {
+
+                    System.out.println("Forma de pagamento validada...");
+
+                    Pedido pedido = new Pedido();
+                    pedido.setPessoa(pessoa);
+                    pedido.setEndereco(pessoa.getEndereco());
+                    pedido.setFormaPagamento(formaPagamento);
+                    pedido.setValorTotal(carrinho.getValorTotal());
+                    pedido.setQuantidade(carrinho.getQuantidade());
+
+                    if (new PedidoBO().valida(pedido)) {
+
+                        long idUltimoPedidoNoBanco = new PedidoBO().getUltimoId();
+
+                        if (idUltimoPedidoNoBanco == -1) {
+                            pedido.setId(1);
+                        } else {
+                            pedido.setId(idUltimoPedidoNoBanco + 1);
+                        }
+
+                        System.out.println("Pedido Validado...");
+                        System.out.println("Salvando Pedido...");
+                        new PedidoBO().criar(pedido);
+                        System.out.println("Pedido Salvo...");
+
+                        for (ItemCarrinho itemCarrinho : itemCarrinhoList) {
+
+                            ItemPedido itemPedido = new ItemPedido();
+
+                            itemPedido.setPedido(pedido);
+                            itemPedido.setProduto(itemCarrinho.getProduto());
+                            itemPedido.setQuantidade(itemCarrinho.getQuantidade());
+                            itemPedido.setValor(itemCarrinho.getValor());
+
+                            System.out.println("-------------------");
+
+                            System.out.println("ITEM PEDIDO ID: " + itemPedido.getPedido().getId());
+                            System.out.println("ITEM PEDIDO PRODUTO ID: " + itemPedido.getProduto().getId());
+                            System.out.println("ITEM PEDIDO QUANTIDADE: " + itemPedido.getQuantidade());
+                            System.out.println("ITEM PEDIDO VALOR: " + itemPedido.getValor());
+
+                            System.out.println("-------------------");
+
+                            new ItemPedidoBO().criar(itemPedido);
+                            System.out.println("Item Pedido OK...");
+
+                        }
+                    }
+                }
+            }
+
+            FacesMessages.info("Compra Concluida com Sucesso!");
+
+        } catch (Exception e) {
+            System.out.println("ERRO EXCEPTION: " + e.getMessage());
+            FacesMessages.error("Erro ao efetuar compra: " + e.getMessage());
+        }
+
     }
 
     public void adicionarCupom() {
-
-        System.out.println("VALOR: " + valorCupom);
-
         if (!cupomAdicionado) {
             try {
                 if (new CupomBO().getByName(valorCupom.toUpperCase())) {
+                    valorTotalInicialCarrinho = itemCarrinho.getValor();
                     itemCarrinho.setValor((long) new CarrinhoBO()
                             .valorTotalComDesconto(2, itemCarrinhoList));
                     cupomAdicionado = true;
@@ -136,6 +214,16 @@ public class CarrinhoController implements Serializable {
             }
         } else {
             FacesMessages.error("Cupom ja foi adicionado!!");
+        }
+    }
+
+    public void removerCupom() {
+        if (cupomAdicionado) {
+            itemCarrinho.setValor(valorTotalInicialCarrinho);
+            cupomAdicionado = false;
+            FacesMessages.info("Cupom removido!");
+        } else {
+            FacesMessages.error("Nenhum cupom adicionado!");
         }
     }
 
@@ -205,25 +293,14 @@ public class CarrinhoController implements Serializable {
         return adicionarNoCarrinho((Produto) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("produto"));
     }
 
-//    public void addQuantidadeItem(ItensCarrinho itensCarrinho) {
-//        //Em teoria a quantidade Ja vai por automatico então sem passagem por parametro
-//        for (ItensCarrinho value : itensCarrinhoList) {
-//            if (itensCarrinho == value) {
-//                value.setValor(value.getQuantidade() * value.getQuantidade());
-//            }
-//        }
-//        //atualizarDadosCarrinho();
-//        FacesMessages.info("Item removido do carrinho!");
-//    }
-
-//    public void atualizarDadosCarrinho() {
-//        carrinho.setQuantidade(0);//reset
-//        carrinho.setValorTotal(0);//reset
-//        for (ItensCarrinho itensCarrinho : itensCarrinhoList) {
-//            carrinho.setValorTotal(carrinho.getValorTotal() + itensCarrinho.getValor());
-//            carrinho.setQuantidade(carrinho.getQuantidade() + itensCarrinho.getQuantidade());
-//        }
-//    }
+    public List<FormaPagamento> listarTodasFormasDePagamento() {
+        try {
+            return new FormaPagamentoBO().listarTodos();
+        } catch (Exception e) {
+            FacesMessages.error("Erro ao listar Forma de Pagamento: " + e.getMessage());
+            return null;
+        }
+    }
 
 //    public void cadastrarOuComprar() {
 //        try {

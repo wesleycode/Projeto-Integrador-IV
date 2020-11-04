@@ -76,8 +76,13 @@ public class PedidoBO implements GenericBO<Pedido> {
         }
         return true;
     }
+
     public List<Pedido> listarpedidosDaPessoa(Pessoa pessoa) throws Exception {
         return new PedidoDao().listarpedidosDaPessoa(pessoa);
+    }
+
+    public long getUltimoId() {
+        return new PedidoDao().getLastId(Pedido.class);
     }
 
 }

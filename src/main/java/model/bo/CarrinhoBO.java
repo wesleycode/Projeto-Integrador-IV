@@ -21,17 +21,11 @@ public class CarrinhoBO implements GenericBO<Carrinho> {
         }
     }
 
-    public double valorTotalComFrete(List<ItemCarrinho> itensDoCarrinho) {
-        return valorTotalDoCarrinho(itensDoCarrinho) * 1.02;
-    }
+    public double valorTotalComFrete(List<ItemCarrinho> itensDoCarrinho) { return valorTotalDoCarrinho(itensDoCarrinho) * 1.02; }
 
-    public double valorTotalCredito(List<ItemCarrinho> itensDoCarrinho) {
-        return valorTotalDoCarrinho(itensDoCarrinho) * 1.01;
-    }
+    public double valorTotalCredito(List<ItemCarrinho> itensDoCarrinho) { return valorTotalDoCarrinho(itensDoCarrinho) * 1.01; }
 
-    public double valorTotalDebito(List<ItemCarrinho> itensDoCarrinho) {
-        return valorTotalDoCarrinho(itensDoCarrinho) * 0.9997;
-    }
+    public double valorTotalDebito(List<ItemCarrinho> itensDoCarrinho) { return valorTotalDoCarrinho(itensDoCarrinho) * 0.9997; }
 
     public double valorTotalDoCarrinho(List<ItemCarrinho> itensDoCarrinho) {
         double valor = 0;
@@ -49,7 +43,7 @@ public class CarrinhoBO implements GenericBO<Carrinho> {
         try {
             carrinho.setValorTotal(0);
             carrinho.setQuantidade(0);
-            for (ItemCarrinho itemCarrinho : new ItensCarrinhoBO().ListarItensCarrinhoDeCarrinho(carrinho)) {
+            for (ItemCarrinho itemCarrinho : new ItemCarrinhoBO().ListarItensCarrinhoDeCarrinho(carrinho)) {
                 carrinho.setQuantidade(carrinho.getQuantidade() + itemCarrinho.getQuantidade());
                 carrinho.setValorTotal(carrinho.getValorTotal() + itemCarrinho.getValor());
             }
@@ -81,7 +75,6 @@ public class CarrinhoBO implements GenericBO<Carrinho> {
             return new GenericDao<>().salvarOuAlterar(o);
         }
         return false;
-
     }
 
     @Override
@@ -96,8 +89,17 @@ public class CarrinhoBO implements GenericBO<Carrinho> {
 
     @Override
     public boolean valida(Carrinho o) throws Exception {
-        if (o.getCliente().equals(null)) {
-            throw new Exception("Carrinho sem usuário");
+        if (o.getCliente().getId() < 1) {
+            throw new Exception("Antes de comprar voçê precisa logar-se");
+        }
+        if (o.getQuantidade() > 30) {
+            throw new Exception("Numero máximo de itens em um carrinho é 30!");
+        }
+        if (o.getValorTotal() <= 0) {
+            throw new Exception("Nenhum item em seu carrinho de compras!");
+        }
+        if (o.getCliente() == null) {
+            throw new Exception("Efetue o login antes de finalizar a compra!");
         }
         return true;
     }

@@ -8,27 +8,23 @@ import model.entities.Produto;
 import java.util.List;
 import javax.persistence.EntityManager;
 
-public class AvaliacaoDao extends GenericDao<Avaliacao>{
+public class AvaliacaoDao extends GenericDao<Avaliacao> {
+
     private EntityManager entityManager;
-    public AvaliacaoDao(){
+
+    public AvaliacaoDao() {
         entityManager = new ConnectionFactory().getConnection();
     }
 
-    public Avaliacao listarAvaliaçaodeprodutoexiste(Pessoa p,Produto pr) throws Exception {
+    public Avaliacao isExisteAvaliacaoDesteProduto(Pessoa p, Produto pr) throws Exception {
         try {
-            List<Avaliacao>avaliacaos = entityManager.createQuery("SELECT a FROM Avaliacao a where a.pessoa = :pessoa and a.produto = :produto")
-                    .setParameter("pessoa",p)
-                    .setParameter("produto",pr)
-                    .getResultList();
-            System.out.println("9999999999999");
-            if (avaliacaos.isEmpty()) {
-                return new Avaliacao();
-            }
-            System.out.println("10000000000000");
-            return avaliacaos.get(0);
+            return (Avaliacao) entityManager.createQuery("SELECT a FROM Avaliacao a WHERE a.pessoa = :pessoa AND a.produto = :produto")
+                    .setParameter("pessoa", p)
+                    .setParameter("produto", pr)
+                    .getSingleResult();
         } catch (Exception e) {
-            System.out.println("Deu ruim aqui!");
-            throw new Exception(e.getMessage());
+            System.out.println("RETORNOU NULL");
+            return null;
         } finally {
             entityManager.close();
         }
@@ -43,10 +39,11 @@ public class AvaliacaoDao extends GenericDao<Avaliacao>{
             entityManager.close();
         }
     }
+
     public List<Avaliacao> listarAvaliacaoPorProduto(Produto produto) throws Exception {
         try {
             return entityManager.createQuery("SELECT a FROM Avaliacao a where a.produto = :produto")
-                    .setParameter("produto",produto)
+                    .setParameter("produto", produto)
                     .getResultList();
         } catch (Exception e) {
             throw new Exception(e.getMessage());
@@ -54,6 +51,7 @@ public class AvaliacaoDao extends GenericDao<Avaliacao>{
             entityManager.close();
         }
     }
+
     public boolean isAvaliacaoExisteNoBancoDeDados(Avaliacao avaliacaofeita) throws Exception {
         try {
             return entityManager.createQuery(
@@ -61,6 +59,31 @@ public class AvaliacaoDao extends GenericDao<Avaliacao>{
                     .setParameter("pessoa", avaliacaofeita.getPessoa())
                     .setParameter("produto", avaliacaofeita.getProduto())
                     .getResultList().size() > 0;
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw new Exception(e.getMessage());
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    public long getIdFromObject(Avaliacao avaliacao) throws Exception {
+        try {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("SELECT c FROM Avaliacao c WHERE ");
+            stringBuilder.append("c.comentario = :comentario ");
+            stringBuilder.append("AND c.dataPostado = :datapostado ");
+            stringBuilder.append("AND c.nota = :nota ");
+            stringBuilder.append("AND c.pessoa = :pessoa ");
+            stringBuilder.append("AND c.produto = :produto ");
+
+            return entityManager.createQuery(stringBuilder.toString(), Avaliacao.class)
+                    .setParameter("comentario",avaliacao.getComentario())
+                    .setParameter("datapostado",avaliacao.getDataPostado())
+                    .setParameter("nota",avaliacao.getNota())
+                    .setParameter("pessoa", avaliacao.getPessoa())
+                    .setParameter("produto", avaliacao.getProduto())
+                    .getSingleResult().getId();
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
             throw new Exception(e.getMessage());

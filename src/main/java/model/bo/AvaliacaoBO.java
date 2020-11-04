@@ -30,9 +30,8 @@ public class AvaliacaoBO implements GenericBO<Avaliacao> {
         }
         return false;
     }
-    public Avaliacao listarAvaliaçaodeprodutoexiste(Pessoa p, Produto pr) throws Exception {
-        System.out.println("Entrar na DAO pela BO");
-        return new AvaliacaoDao().listarAvaliaçaodeprodutoexiste(p,pr);
+    public Avaliacao isExisteAvaliacaoDesteProduto(Pessoa p, Produto pr) throws Exception {
+        return new AvaliacaoDao().isExisteAvaliacaoDesteProduto(p,pr);
     }
 
     @Override
@@ -93,5 +92,13 @@ public class AvaliacaoBO implements GenericBO<Avaliacao> {
 
     public List<Avaliacao> listarAvaliacaoPorProduto(Produto produto) throws Exception {
         return new AvaliacaoDao().listarAvaliacaoPorProduto(produto);
+    }
+
+    public long getIdFromObject(Avaliacao avaliacao) throws Exception {
+        return new AvaliacaoDao().getIdFromObject(avaliacao);
+    }
+
+    public long getLastId() {
+        return new AvaliacaoDao().getLastId(Avaliacao.class);
     }
 }

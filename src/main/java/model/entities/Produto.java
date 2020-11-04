@@ -103,4 +103,15 @@ public class Produto implements EntityBase {
         fotoProduto = new FotoProduto();
     }
 
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "nome='" + nome + '\'' +
+                ", preco=" + preco +
+                ", descricao='" + descricao + '\'' +
+                ", marcaProduto=" + marcaProduto +
+                ", fornecedor=" + fornecedor +
+                ", categoria=" + categoria +
+                '}';
+    }
 }

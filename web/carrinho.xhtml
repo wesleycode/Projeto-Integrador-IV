@@ -43,6 +43,9 @@
                     <h3>Seu carrinho de compras!</h3>
                     <br/>
                     <p:panel header="Produtos adicionados ao carrinho" id="painel">
+                        <b:messages id="messages"
+                                    globalOnly="true"
+                                    autoUpdate="true"/>
                         <p:dataGrid value="#{carrinhoController.itensCarrinhoList}"
                                     var="item" columns="3"
                                     layout="grid"
@@ -78,32 +81,35 @@
                     </p:panel>
                     <hr/>
                     <p:panel header="Cupom de desconto o pagamento">
-                        <b:messages id="messages"
-                                    globalOnly="true"
-                                    autoUpdate="true"/>
-                        <h:form>
-                            <b:inputText value="#{carrinhoController.valorCupom}" placeholder="Digite seu código aqui."
+                        <b:form>
+                            <b:inputText id="valorCupomInput" value="#{carrinhoController.valorCupom}"
+                                         placeholder="Digite seu código aqui."
                                          required="true"
                                          mask="{regex:'[a-zA-Z0-9]*'}">
                             </b:inputText>
-                            <b:commandLink styleClass="btn btn-primary" value="Aplicar Cupom"
-                                           action="#{carrinhoController.adicionarCupom()}">
-                                <p:ajax update="valoresForm" process="@this"/>
-                            </b:commandLink>
-                        </h:form>
+                            <b:panelGrid columns="2">
+                                <b:commandLink styleClass="btn btn-danger" value="Remover Cupom"
+                                               action="#{carrinhoController.removerCupom()}" update="valoresForm">
+                                </b:commandLink>
+                                <b:commandLink styleClass="btn btn-primary" value="Aplicar Cupom"
+                                               action="#{carrinhoController.adicionarCupom()}" update="valoresForm">
+                                </b:commandLink>
+                            </b:panelGrid>
+                        </b:form>
                     </p:panel>
                     <hr/>
                     <p:panel header="Sobre o pagamento">
                         <h:form>
                             <h:outputLabel>Escolha forma de Pagamento:</h:outputLabel>
                             <b:selectOneMenu
-                                    value="#{detalhesProdutoController.pedido.formaPagamento}" ajax="true"
+                                    value="#{carrinhoController.formaPagamento}" ajax="true"
                                     process="@this">
                                 <f:selectItem value="#{null}" itemLabel="Forma Pagamento"/>
                                 <f:selectItems
-                                        value="#{detalhesProdutoController.formaPagamentoList}"
-                                        var="formaPagame"
-                                        itemValue="#{formaPagame}" itemLabel="#{formaPagame.formapagamento}"/>
+                                        value="#{carrinhoController.formaPagamentoList}"
+                                        var="formaDePagamento"
+                                        itemValue="#{formaDePagamento}"
+                                        itemLabel="#{formaDePagamento.formapagamento}"/>
                             </b:selectOneMenu>
                         </h:form>
                     </p:panel>
@@ -124,7 +130,8 @@
                                 <b:dataTableColumn value="#{carrinhoController.valorTotalComDesconto()}"/>
                                 <b:dataTableColumn value="#{carrinhoController.valorTotalCredito()}"/>
                                 <b:dataTableColumn value="#{carrinhoController.valorTotalDebito()}"/>
-                                <b:dataTableColumn styleClass="alert-success" value="#{carrinhoController.valorTotalDoCarrinho()}"/>
+                                <b:dataTableColumn styleClass="alert-success"
+                                                   value="#{carrinhoController.valorTotalDoCarrinho()}"/>
                             </b:dataTable>
                         </h:form>
                     </p:panel>
@@ -133,7 +140,7 @@
                         <h:form>
                             <br/>
                             <h:commandLink value="Políticas de Compra"
-                                           action="#{redirecionamentoController.irParaTermoCompra}"/>
+                                           action="#{redirecionamentoController.irParaTermoCompra()}"/>
                             <br/>
                             <br/>
                             <b:commandLink styleClass="btn btn-warning" value="Continuar Comprando"
