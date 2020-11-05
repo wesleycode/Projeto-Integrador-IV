@@ -44,4 +44,8 @@ public class RedirecionamentoController implements Serializable {
 
     public static String irParaCadastrarAvaliacao() { return "cadastrarAvaliacao?faces-redirect=true"; }
 
+    public String irParaPainelVendedor() {
+        return "painelVendedor?faces-redirect=true";
+    }
+
 }

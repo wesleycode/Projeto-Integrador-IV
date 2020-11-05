@@ -23,7 +23,7 @@ public class GenericDao<T extends EntityBase> {
         entityManager = new ConnectionFactory().getConnection();
     }
 
-    public boolean salvarOuAlterar(T t) throws Exception {
+    public boolean salvarOuAlterar(T t) {
         try {
             entityManager.getTransaction().begin();
             entityManager.merge(t);
@@ -31,6 +31,18 @@ public class GenericDao<T extends EntityBase> {
             return true;
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
+            e.printStackTrace();
+            return false;
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    public boolean contains(T t) {
+        try {
+            entityManager.getTransaction().begin();
+            return entityManager.contains(t);
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         } finally {

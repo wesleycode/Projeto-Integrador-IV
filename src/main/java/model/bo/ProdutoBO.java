@@ -95,6 +95,10 @@ public class ProdutoBO implements GenericBO<Produto> {
         return (valor != null) ? new ProdutoDao().listarPorCategoriaComLike(valor,id) : null;
     }
 
+    public long getLastId() {
+        return new GenericDao<Produto>().getLastId(Produto.class);
+    }
+
     public List<Produto> listarProdutos(Categoria categoria , String valor) throws Exception {
         if ((categoria.getId() != 0 && categoria.getCategoria() != null) || (valor != null)) {
             return listarPorCategoria(categoria.getId(), valor);

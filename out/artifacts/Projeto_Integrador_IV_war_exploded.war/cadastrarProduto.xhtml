@@ -39,15 +39,16 @@
         <div class="row">
             <div class="leftcolumn">
                 <div class="card" align="center" id="cardcadastro">
-                    <b:messages autoUpdate="true" showDetail="true"/>
+                    <b:messages autoUpdate="true" showDetail="true" globalOnly="true"/>
                     <h3>Cadastrar Produto</h3>
-                    <h:form>
+                    <h:form enctype="multipart/form-data">
                         <b:inputText value="#{cadastrarProdutoController.produto.nome}"
                                      placeholder="Título do Produto"
                                      required="true">
                         </b:inputText>
                         <br/>
-                        <p:inputTextarea rows="10" cols="100" minQueryLength="4" placeholder="Comentário" value="#{cadastrarProdutoController.produto.descricao}">
+                        <p:inputTextarea rows="10" cols="100" minQueryLength="4" placeholder="Comentário"
+                                         value="#{cadastrarProdutoController.produto.descricao}">
                         </p:inputTextarea>
                         <div class="col-md-12 col-sm-12">
                             <b:selectOneMenu value="#{cadastrarProdutoController.produto.fornecedor}"
@@ -76,27 +77,22 @@
                                                itemValue="#{marcaProduto}" itemLabel="#{marcaProduto.nome}"/>
                             </b:selectOneMenu>
                         </div>
-                        <p:inputNumber value="#{cadastrarProdutoController.produto.preco}" placeholder="Preço" minValue="0" maxValue="1000000" decimalPlaces="2">
+                        <p:inputNumber value="#{cadastrarProdutoController.produto.preco}" placeholder="Preço"
+                                       minValue="0" maxValue="1000000" decimalPlaces="2">
                         </p:inputNumber>
                         <br/>
                         <br/>
                         <div class="col-md-12 col-sm-12">
-                            <p:outputLabel value="Foto Produto" />
-                            <p:fileUpload fileUploadListener="#{cadastrarProdutoController.upload}"
-                                          mode ="simple"
-                                          allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-                                          sizeLimit="10000"
-                                          dragDropSupport="true"
-                                          description="Selecione a Imagem"
-                                          required="true"
-                            />
-                                <br/>
+                            <p:outputLabel value="Foto Produto"/>
+                            <h:inputFile value="#{cadastrarProdutoController.arquivo}" required="true"
+                                         requiredMessage="Uma imagem deve ser enviada!"/>
+                            <br/>
                         </div>
                         <br/>
                         <br/>
                         <div style="text-align: center;" class="col-md-12 col-sm-12">
                             <h:commandLink styleClass="btn btn-primary" value="Cadastrar Produto"
-                                           action="#{cadastrarProdutoController.cadastrarMarcaProduto}"/>
+                                           action="#{cadastrarProdutoController.cadastrarProduto()}"/>
                         </div>
                         <br/>
 
@@ -104,7 +100,7 @@
                     <h:form>
                         <div style="text-align: center;">
                             <h:commandLink styleClass="btn btn-primary" value="Voltar"
-                                           action="#{cadastrarProdutoController.irParaPainelVendedor}"/>
+                                           action="#{redirecionamentoController.irParaPainelVendedor}"/>
                         </div>
                     </h:form>
                 </div>

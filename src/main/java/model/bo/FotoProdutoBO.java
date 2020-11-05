@@ -5,6 +5,8 @@ import model.dao.MarcaProdutoDao;
 import model.entities.FotoProduto;
 import model.entities.MarcaProduto;
 
+import javax.servlet.http.Part;
+import java.io.InputStream;
 import java.util.List;
 
 public class FotoProdutoBO implements GenericBO<FotoProduto> {
@@ -59,6 +61,23 @@ public class FotoProdutoBO implements GenericBO<FotoProduto> {
     public boolean validaId(long id) throws Exception {
         if (id < 0) {
             throw new Exception("Id nulo");
+        }
+        return true;
+    }
+
+    public long getLastId() {
+        return new GenericDao<FotoProduto>().getLastId(FotoProduto.class);
+    }
+
+    public boolean valida(Part o) throws Exception {
+        if (o.getName().equals("")) {
+            throw new Exception("Link da foto nulo");
+        }
+        if (o.getSize() >= 10000000) {
+            throw new Exception("Imagem grande demais, adicione uma imagem MENOR que 10Mbs");
+        }
+        if (o.getContentType().equals("application/")) {
+
         }
         return true;
     }
