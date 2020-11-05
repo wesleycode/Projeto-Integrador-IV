@@ -35,14 +35,14 @@ INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_i
 INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (16, 'Capela Velha', '83706-060', 'Casa', 1280, 'Rua Pinguim', 2806);
 INSERT INTO public.endereco (id, bairro, cep, complemento, numero, rua, cidade_id) VALUES (17, 'Capela Velha', '83706-160', 'Casa', 1142, 'R. Arapongas', 2806);
 
-INSERT INTO public.fotoproduto (id, foto) VALUES (1, 'memorias/memoria-hyperx-fury-8gb');
-INSERT INTO public.fotoproduto (id, foto) VALUES (2, 'memorias/memoria-adata-xpg-spectrix-d41-rgb-8gb-3000mhz');
-INSERT INTO public.fotoproduto (id, foto) VALUES (3, 'memorias/50747_index_gg');
-INSERT INTO public.fotoproduto (id, foto) VALUES (4, 'memorias/50782_index_gg');
-INSERT INTO public.fotoproduto (id, foto) VALUES (5, 'memorias/84471_index_gg');
-INSERT INTO public.fotoproduto (id, foto) VALUES (6, 'memorias/memoria-hp-v2-8gb-2666mhz-ddr4');
-INSERT INTO public.fotoproduto (id, foto) VALUES (7, 'memorias/memoria-kingston-4gb-1333mhz-ddr3-');
-INSERT INTO public.fotoproduto (id, foto) VALUES (8, 'memorias/memoria-xpg-gammix-d30-8gb');
+INSERT INTO public.fotoproduto (id, foto) VALUES (1, 'memoriaram/memoria-hyperx-fury-8gb');
+INSERT INTO public.fotoproduto (id, foto) VALUES (2, 'memoriaram/memoria-adata-xpg-spectrix-d41-rgb-8gb-3000mhz');
+INSERT INTO public.fotoproduto (id, foto) VALUES (3, 'memoriaram/50747_index_gg');
+INSERT INTO public.fotoproduto (id, foto) VALUES (4, 'memoriaram/50782_index_gg');
+INSERT INTO public.fotoproduto (id, foto) VALUES (5, 'memoriaram/84471_index_gg');
+INSERT INTO public.fotoproduto (id, foto) VALUES (6, 'memoriaram/memoria-hp-v2-8gb-2666mhz-ddr4');
+INSERT INTO public.fotoproduto (id, foto) VALUES (7, 'memoriaram/memoria-kingston-4gb-1333mhz-ddr3-');
+INSERT INTO public.fotoproduto (id, foto) VALUES (8, 'memoriaram/memoria-xpg-gammix-d30-8gb');
 INSERT INTO public.fotoproduto (id, foto) VALUES (9, 'processadores/processador - intel i3');
 INSERT INTO public.fotoproduto (id, foto) VALUES (10, 'processadores/processador i3');
 INSERT INTO public.fotoproduto (id, foto) VALUES (11, 'processadores/processador intel i3');
@@ -252,7 +252,7 @@ INSERT INTO public.marcaproduto (id, nome) VALUES (37, 'LENOVO');
 INSERT INTO public.marcaproduto (id, nome) VALUES (38, 'VAIO');
 
 INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (1, true, '006.001.590-00', '1998-05-24', 'kako.araujo.24@gmail.com', 'WESLEY DE ARAUJO EVANGELISTA', '00000000', '(41) 0000-0000', 3, 1);
-INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (2, true, '014.952.890-60', '2001-02-12', 'felipefillus10@gmail.com', 'Felipe fillus', 'aaa', '(41) 4444-4444', 3, 2);
+INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (2, true, '014.952.890-60', '2001-02-12', 'felipefillus10@gmail.com', 'Felipe fillus', 'fillus', '(41) 4444-4444', 3, 2);
 INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (3, true, '575.013.220-07', '2001-02-12', 'lucasmateus@gmail.com', 'Lucas Matheus', 'aaa', '(41) 4444-4445', 1, 3);
 INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (4, true, '019.096.120-14', '2001-02-12', 'jonathana@gmail.com', 'jonathan', 'aaa', '(41) 4444-4446', 1, 4);
 INSERT INTO public.pessoa (id, ativo, cpf, datanascimento, email, nome, senha, telefone, tipousuario, endereco_id) VALUES (5, true, '746.722.490-77', '2001-02-12', 'matedarcin@gmail.com', 'Mateus Garcin', 'aaa', '(41) 4444-4446', 1, 5);

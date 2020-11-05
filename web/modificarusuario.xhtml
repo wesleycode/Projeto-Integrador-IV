@@ -54,23 +54,19 @@
                                             layout="grid"
                                             rows="8" paginator="true" id="cars" paginatorPosition="bottom"
                                             paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {NextPageLink}">
-                                    <p:column>
+                                    
                                         <h:outputLabel>Nome: #{pessoa.nome}</h:outputLabel>
-                                    </p:column>
-                                    <p:column>
+                                        <br/>
                                         <h:outputLabel>CPF: #{pessoa.cpf}</h:outputLabel>
-                                    </p:column>
-                                    <p:column>
+                                        <br/>
                                         <h:outputLabel>Email: #{pessoa.email}</h:outputLabel>
-                                    </p:column>
-                                    <p:column>
+                                        <br/>
                                         <h:outputLabel> Ativo: #{pessoa.ativo}</h:outputLabel>
-                                    </p:column>
-                                    <p:column>
+                                        <br/>
                                         <p:commandLink type="button" value="Alterar Atividade" action="#{alterarUsuarioController.isAtivoOuDesativo(pessoa)}"
-                                                         process="@form" update="@form :form"/>
+                                                         process="@form" update="@form :form"/>&nbsp;&nbsp;
                                         <p:commandLink type="button" value="Modificar Pessoa" action="#{alterarUsuarioController.irParaModificarUsuarioviaADM(pessoa)}"/>
-                                    </p:column>
+                                        <hr/>
                                 </p:dataGrid>
                             </p:panel>
 

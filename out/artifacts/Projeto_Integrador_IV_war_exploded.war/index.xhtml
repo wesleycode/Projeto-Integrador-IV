@@ -119,7 +119,19 @@
                 </div>
                 <div class="card">
                     <h3>Siga-nos</h3>
-                    <p>Some text..</p>
+                    <h:form>
+                        <h:commandLink styleClass="btn" action="#{redirecionamentoController.irParaContato()}"
+                                       value="Nossos Contatos"/>
+                    </h:form>
+                </div>
+                <div class="card">
+                    <b:messages autoUpdate="true" showDetail="true" globalOnly="true"/>
+                    <h3>Login</h3>
+                    <p>Você pode Cancelar seu Login demaneira tão fácil quanto começar</p>
+                    <h:form>
+                        <h:commandButton styleClass="btn btn-primary" value="#{loginController.nomeBotao}" actionListener="#{loginController.CacelarConta}">
+                        </h:commandButton>
+                    </h:form>
                 </div>
             </div>
         </div>

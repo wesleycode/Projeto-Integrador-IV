@@ -19,6 +19,16 @@ public class LoginController implements Serializable {
     private Avaliacao avaliacaoUsuario;
     private Endereco endereco;
     private int tipoPessoaLogin;
+    private int cont;
+    private String nomeBotao;
+
+    public String getNomeBotao() {
+        return nomeBotao;
+    }
+
+    public void setNomeBotao(String nomeBotao) {
+        this.nomeBotao = nomeBotao;
+    }
 
     public int getTipoPessoaLogin() {
         return tipoPessoaLogin;
@@ -32,6 +42,7 @@ public class LoginController implements Serializable {
         pessoa = new Pessoa();
         endereco = new Endereco();
         pessoa.getEndereco().setCidade(new Cidade());
+        nomeBotao = "Cancelar Conta";
     }
 
     public Endereco getEndereco() {
@@ -88,6 +99,31 @@ public class LoginController implements Serializable {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         pessoa = null;
         return RedirecionamentoController.irParaIndex();
+    }
+
+    public void CacelarConta(){
+        if(cont == 0){
+            cont++;
+            nomeBotao = "Tem Certeza?";
+        }else{
+            cont = 0;
+            nomeBotao = "Cancelar Conta";
+            if(pessoa == new Pessoa()){
+                FacesMessages.error("É necessário estar Logado!!!");
+            }else if(pessoa.getTipoUsuario() > 1){
+                FacesMessages.error("Sua Conta possui privilégios Demais! peça a um ADM o Cancelamento");
+            }else {
+                pessoa.setAtivo(false);
+                try{
+                    new PessoaBO().alterar(pessoa);
+                    FacesMessages.info("Sua Conta foi desativada com sucesso!");
+                    deslogar();
+                } catch (Exception e) {
+                    FacesMessages.error("Erro ao cancelar: Você não está logado!");
+                    FacesMessages.error("Erro: " + e.getMessage());
+                }
+            }
+        }
     }
 
     public String logar() {

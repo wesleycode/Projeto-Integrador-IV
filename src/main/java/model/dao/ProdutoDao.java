@@ -23,8 +23,8 @@ public class ProdutoDao extends GenericDao<Produto> {
             stringBuilder.append("SELECT p FROM Produto p ");
             stringBuilder.append("JOIN Categoria c ");
             stringBuilder.append("ON p.categoria = c.id ");
-            stringBuilder.append("WHERE c.id = :idCategoria");
-
+            stringBuilder.append("WHERE c.id = :idCategoria ");
+            stringBuilder.append("ADN c.emestoque = true");
             return getEntityManager().createQuery(stringBuilder.toString())
                     .setParameter("idCategoria", categoriaId)
                     .getResultList();
@@ -55,8 +55,10 @@ public class ProdutoDao extends GenericDao<Produto> {
             if (x != valores.length - 1) {
                 stringBuilder.append("%' OR ");
             } else {
-                stringBuilder.append("%')");
+                stringBuilder.append("%') ");
             }
+            stringBuilder.append("AND (");
+            stringBuilder.append("p.emEstoque = true)");
         }
 
         try {
@@ -67,19 +69,6 @@ public class ProdutoDao extends GenericDao<Produto> {
             throw new Exception(e.getMessage());
         } finally {
             getEntityManager().close();
-        }
-    }
-
-    //remover metodo futuramente
-    public Produto listarOProdutoAqui() throws Exception {
-        try {
-            List<Produto> list = entityManager.createQuery("SELECT a FROM Produto a where a.id = 109")
-                    .getResultList();
-            return list.get(0);
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
-        } finally {
-            entityManager.close();
         }
     }
 }
