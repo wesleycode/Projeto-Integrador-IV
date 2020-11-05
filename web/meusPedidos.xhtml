@@ -40,13 +40,16 @@
                 <div class="card">
                     <h3>Meus Pedidos</h3>
                     <p:panel header="Pedidos">
-                        <p:dataGrid var="pedidos" value="#{detalhesProdutoController.pedidoList}" layout="grid"
+                        <p:dataGrid var="pedidos" value="#{meusPedidosController.pedidoList}" layout="grid"
                                     rows="8" columns="1">
                             <hr/>
                             <p:outputLabel>COD: #{pedidos.id}</p:outputLabel>
                             <p:outputLabel>Endereço de Entrega: #{pedidos.endereco.cidade.nome}, #{pedidos.endereco.bairro}, #{pedidos.endereco.rua}, #{pedidos.endereco.numero} - #{pedidos.endereco.cep}</p:outputLabel>
+                            <br/>
                             <p:outputLabel>Quantidade: #{pedidos.quantidade}</p:outputLabel>
+                            <br/>
                             <p:outputLabel>Valor Total: R$#{pedidos.valorTotal}</p:outputLabel>
+                            <br/>
                             <p:outputLabel>Forma de Pagamento usada: #{pedidos.formaPagamento.formapagamento}</p:outputLabel>
                             <hr/>
                         </p:dataGrid>

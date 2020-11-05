@@ -48,4 +48,8 @@ public class RedirecionamentoController implements Serializable {
         return "painelVendedor?faces-redirect=true";
     }
 
+    public String irParaCadastrarformapagamento() {
+        return "cadastrarFormaPAgamento?faces-redirect=true";
+    }
+
 }

@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
@@ -38,32 +39,43 @@
         <div class="row">
             <div class="leftcolumn">
                 <div class="card" align="center">
-                    <h:messages/>
-                    <h3>Opções De Vendedor</h3>
+                    <b:messages autoUpdate="true" showDetail="true"/>
+                    <h3>Cadastrar Forma de Pagamento</h3>
                     <h:form>
-                        <br/>
-                        <br/>
-                        <h:commandButton value="  Cadastrar uma Marca " styleClass="btn btn-primary" action="#{painelVendedorController.irParaCadastrarCategoria}">
-                        </h:commandButton>
-                        <br/>
-                        <br/>
-                        <h:commandButton value="Cadastrar um Fornecedor" styleClass="btn btn-primary" action="#{painelVendedorController.irParaCadastarFornecedor}">
-                        </h:commandButton>
-                        <br/>
-                        <br/>
-                        <h:commandButton value="Cadastrar um Produto" styleClass="btn btn-primary" action="#{painelVendedorController.irParaCadastarProduto}">
-                        </h:commandButton>
-                        <br/>
-                        <br/>
-                        <h:commandButton value="Modificar um Produto" styleClass="btn btn-primary">
-                        </h:commandButton>
-                        <br/>
-                        <br/>
-                        <h:commandButton value="Cadastrar Forma De Pagamento" styleClass="btn btn-primary" action="#{redirecionamentoController.irParaCadastrarformapagamento}">
-                        </h:commandButton>
+                            <b:inputText value="#{cadastrarFormaPagamentoController.formaPagamento.formapagamento}" placeholder="Nome Marca"
+                                         required="true"
+                                         mask="{regex:'[a-zA-Z ]*'}">
+                            </b:inputText>
+                            <div style="text-align: center;">
+                                <h:commandLink styleClass="btn btn-primary" value="Cadastrar Forma de Pamento" action="#{cadastrarFormaPagamentoController.cadastrarFormaPagamento}">
+                                </h:commandLink>
+
+                            </div>
+                            <br/>
+                            <br/>
+                    </h:form>
+                    <h:form>
+                            <div style="text-align: center;">
+                                <h:commandLink styleClass="btn btn-primary" value="Voltar"
+                                               action="#{cadastrarMarcaController.irParaPainelVendedor}"/>
+
+                            </div>
                     </h:form>
                 </div>
+                <h:form>
+                    <div class="card" id="cardmarca" align="center">
+                        <h3>Lista de Marca</h3>
+                            <p:dataGrid var="formapagamento" value="#{cadastrarFormaPagamentoController.formaPagamentoList}" columns="4" layout="grid"
+                                        rows="8" paginator="true" id="cars" paginatorPosition="bottom"
+                                        paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {NextPageLink}">
+                                <hr/>
+                                <li><h:outputLabel>Forma de Pagamento: #{formapagamento.formapagamento}</h:outputLabel></li>
+                                <hr/>
+                            </p:dataGrid>
+                    </div>
+                </h:form>
             </div>
+
             <div class="rightcolumn">
 
                 <div class="card" align="center">
@@ -74,10 +86,12 @@
                     <h:outputLabel>#{loginController.pessoa.email}</h:outputLabel>
                     <h:form>
                         <h:commandButton value="Sair Login" styleClass="btn btn-primary" action="#{loginController.deslogar}">
+                            <!--Deve possuir o logoff-->
                         </h:commandButton>
 
                     </h:form>
                 </div>
+
             </div>
         </div>
 
