@@ -17,6 +17,9 @@ public class CategoriaBO implements GenericBO<Categoria> {
         }
         return false;
     }
+    public long getLastId() {
+        return new GenericDao<Categoria>().getLastId(Categoria.class);
+    }
 
     @Override
     public boolean deletar(Categoria o) throws Exception {

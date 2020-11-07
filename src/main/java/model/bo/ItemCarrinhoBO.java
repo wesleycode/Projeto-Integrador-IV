@@ -27,6 +27,10 @@ public class ItemCarrinhoBO implements GenericBO<ItemCarrinho> {
         return false;
     }
 
+    public long getLastId() {
+        return new GenericDao<ItemCarrinho>().getLastId(ItemCarrinho.class);
+    }
+
     @Override
     public boolean alterar(ItemCarrinho o) throws Exception {
         if (valida(o)) {

@@ -7,6 +7,7 @@ import java.util.List;
 
 import model.dao.GenericDao;
 import model.entities.Pessoa;
+import model.entities.Produto;
 
 public class PedidoBO implements GenericBO<Pedido> {
 
@@ -75,6 +76,10 @@ public class PedidoBO implements GenericBO<Pedido> {
             throw new Exception("Id nulo");
         }
         return true;
+    }
+
+    public long getLastId() {
+        return new GenericDao<Pedido>().getLastId(Pedido.class);
     }
 
     public List<Pedido> listarpedidosDaPessoa(Pessoa pessoa) throws Exception {

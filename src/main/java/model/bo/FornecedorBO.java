@@ -5,6 +5,8 @@ import model.entities.Fornecedor;
 
 import java.util.List;
 import model.dao.GenericDao;
+import model.entities.Produto;
+
 public class FornecedorBO implements GenericBO<Fornecedor>{
 
     private GenericDao<Fornecedor> genericDAO;
@@ -17,6 +19,9 @@ public class FornecedorBO implements GenericBO<Fornecedor>{
         FornecedorDao fornecedorDao = new FornecedorDao();
         return fornecedorDao.listarFornecedorPorNome(nome);
 
+    }
+    public long getLastId() {
+        return new GenericDao<Fornecedor>().getLastId(Fornecedor.class);
     }
 
     @Override

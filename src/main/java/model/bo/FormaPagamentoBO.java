@@ -6,6 +6,7 @@ import model.entities.FormaPagamento;
 import java.util.List;
 
 import model.dao.GenericDao;
+import model.entities.Produto;
 
 public class FormaPagamentoBO implements GenericBO<FormaPagamento> {
 
@@ -20,6 +21,10 @@ public class FormaPagamentoBO implements GenericBO<FormaPagamento> {
         }
         return false;
     }
+    public long getLastId() {
+        return new GenericDao<FormaPagamento>().getLastId(FormaPagamento.class);
+    }
+
 
     @Override
     public boolean deletar(FormaPagamento o) throws Exception {

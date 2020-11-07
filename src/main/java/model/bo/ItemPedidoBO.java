@@ -64,5 +64,8 @@ public class ItemPedidoBO implements GenericBO<ItemPedido> {
         }
         return true;
     }
+    public long getLastId() {
+        return new GenericDao<ItemPedido>().getLastId(ItemPedido.class);
+    }
 
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 import model.dao.GenericDao;
 import model.entities.Estado;
+import model.entities.Produto;
 
 public class CidadeBO implements GenericBO<Cidade> {
 
@@ -16,6 +17,9 @@ public class CidadeBO implements GenericBO<Cidade> {
             return new GenericDao<>().salvarOuAlterar(o);
         }
         return false;
+    }
+    public long getLastId() {
+        return new GenericDao<Cidade>().getLastId(Cidade.class);
     }
 
     @Override

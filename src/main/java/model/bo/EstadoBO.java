@@ -5,6 +5,8 @@ import model.entities.Estado;
 
 import java.util.List;
 import model.dao.GenericDao;
+import model.entities.Produto;
+
 public class EstadoBO implements GenericBO<Estado>{
 
     private GenericDao<Estado> genericDAO;
@@ -16,6 +18,9 @@ public class EstadoBO implements GenericBO<Estado>{
     public Estado listarEstadoPorNome(String n) throws Exception {
         EstadoDao estadoDAO = new EstadoDao();
         return estadoDAO.listarEstadoPorNome(n);
+    }
+    public long getLastId() {
+        return new GenericDao<Estado>().getLastId(Estado.class);
     }
 
     @Override

@@ -3,6 +3,7 @@ package model.bo;
 import model.entities.MarcaProduto;
 import java.util.List;
 import model.dao.GenericDao;
+import model.entities.Produto;
 
 public class MarcaProdutoBO implements GenericBO<MarcaProduto> {
 
@@ -54,6 +55,9 @@ public class MarcaProdutoBO implements GenericBO<MarcaProduto> {
             throw new Exception("Id nulo");
         }
         return true;
+    }
+    public long getLastId() {
+        return new GenericDao<MarcaProduto>().getLastId(MarcaProduto.class);
     }
 
 }

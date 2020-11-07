@@ -13,7 +13,7 @@ import java.util.List;
 @Named
 @SessionScoped
 public class LoginController implements Serializable {
-
+    private Pessoa vendedorparaComissao;
     private Pessoa pessoa;
     private Carrinho carrinho;
     private Avaliacao avaliacaoUsuario;
@@ -21,6 +21,14 @@ public class LoginController implements Serializable {
     private int tipoPessoaLogin;
     private int cont;
     private String nomeBotao;
+
+    public Pessoa getVendedorparaComissao() {
+        return vendedorparaComissao;
+    }
+
+    public void setVendedorparaComissao(Pessoa vendedorparaComissao) {
+        this.vendedorparaComissao = vendedorparaComissao;
+    }
 
     public String getNomeBotao() {
         return nomeBotao;
@@ -40,6 +48,7 @@ public class LoginController implements Serializable {
 
     public LoginController() {
         pessoa = new Pessoa();
+        vendedorparaComissao = new Pessoa();
         endereco = new Endereco();
         pessoa.getEndereco().setCidade(new Cidade());
         nomeBotao = "Cancelar Conta";
@@ -80,6 +89,23 @@ public class LoginController implements Serializable {
     public List<Estado> listarTodosOsEstados() {
         try {
             return new EstadoBO().listarTodos();
+        } catch (Exception e) {
+            FacesMessages.error("Erro: " + e.getMessage());
+            return null;
+        }
+    }
+    public String irParaIndexComVendedor(){
+        try {
+            vendedorparaComissao = new PessoaBO().getById(pessoa.getId());
+            pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(),pessoa.getSenha());
+            if(pessoa.getTipoUsuario() > 1){
+                FacesMessages.error("Este Usuário Possui Capacidades de Compras!");
+                pessoa = vendedorparaComissao;
+                return null;
+            }//Serve para vendedores não usarem como formas de "Descontos" para suas compras
+
+            return RedirecionamentoController.irParaIndex();
+
         } catch (Exception e) {
             FacesMessages.error("Erro: " + e.getMessage());
             return null;

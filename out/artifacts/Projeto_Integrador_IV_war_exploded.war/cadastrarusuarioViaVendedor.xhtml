@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <!-- JQUERY -->
+    <h:outputScript library="js" name="jquery-3.5.1.js"/>
+    <!-- BOOTSTRAP -->
+    <h:outputScript library="js" name="bootstrap.min.js"/>
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    <!-- FONTAWESOME -->
+    <h:outputScript library="js" name="all.js"/>
+    <h:outputStylesheet library="css" name="all.css"/>
+    <h:outputStylesheet library="css" name="fontawesome.css"/>
+    <!-- STYLESHEET -->
+    <h:outputStylesheet library="css" name="indexStyle.css"/>
+    <!-- SCRIPT -->
+    <script type="application/javascript">
+        $(function () {
+            $("#navbar").load("navbar.xhtml");
+            $("#footer").load("footer.xhtml");
+        });
+    </script>
+</h:head>
+
+<h:body>
+
+    <!-- Navbar -->
+    <div id="navbar"></div>
+    <!-- Conteudo da página fica aqui!!! -->
+
+    <div class="conteudo">
+
+        <div class="row">
+            <div class="leftcolumn">
+                <div class="card">
+
+                    <b:messages autoUpdate="true"/>
+
+                    <div class="form">
+
+                        <h:form class="register-form">
+
+                            <div class="col-md-12 col-sm-12" style="text-align: center; padding-top: 20px; color: white;">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">SAPITCHO</h3>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12">
+
+                                <div class="form-group col-md-12 col-sm-12">
+                                    <span class="help-block">Fale sobre o usuário</span>
+                                </div>
+
+                                <div class="form-group col-md-6 col-sm-6">
+                                    <b:inputText value="#{cadastrarUsusarioViaVendedorController.pessoa.nome}" placeholder="Nome"
+                                                 required="true"
+                                                 mask="{regex:'[a-zA-Z ]*'}">
+                                        <f:facet name="prepend">
+                                            <b:icon name="user"/>
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+
+                                <div class="form-group col-md-6 col-sm-6">
+                                    <b:inputText value="#{cadastrarUsusarioViaVendedorController.pessoa.email}" placeholder="Email"
+                                                 required="true"
+                                                 mask="email">
+                                        <f:facet name="prepend">
+                                            <b:iconAwesome name="envelope"/>
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+
+                                <div class="form-group col-md-6 col-sm-6">
+                                    <b:inputText value="#{cadastrarUsusarioViaVendedorController.pessoa.telefone}" placeholder="Telefone"
+                                                 required="true"
+                                                 mask="(99) 9999-9999">
+                                        <f:facet name="prepend">
+                                            <b:iconAwesome name="phone"/>
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+
+                                <div class="form-group col-md-6 col-sm-6">
+                                    <b:inputText value="#{cadastrarUsusarioViaVendedorController.pessoa.dataNascimento}"
+                                                 mask="dd/mm/yyyy" placeholder="Data de Nascimento" required="true">
+                                        <!--                        <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>-->
+                                        <f:converter converterId="dateConverter"/>
+                                        <f:facet name="prepend">
+                                            <b:iconAwesome name="birthday-cake"/>
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+
+                                <div class="form-group col-md-6 col-sm-6">
+                                    <b:inputSecret value="#{cadastrarUsusarioViaVendedorController.pessoa.senha}" placeholder="Senha"
+                                                   required="true"
+                                                   mask="{regex:'[a-zA-Z0-9]*'}">
+                                        <f:facet name="prepend">
+                                            <b:iconAwesome name="key"/>
+                                        </f:facet>
+                                    </b:inputSecret>
+                                </div>
+
+                                <div class="form-group col-md-6 col-sm-6">
+                                    <b:inputText value="#{cadastrarUsusarioViaVendedorController.pessoa.cpf}" placeholder="Cpf"
+                                                 required="true"
+                                                 mask="999.999.999-99">
+                                        <f:facet name="prepend">
+                                            <b:iconAwesome name="id-card"/>
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+
+                                <div class="form-group col-md-12 col-sm-12">
+                                    <b:inputText value="#{cadastrarUsusarioViaVendedorController.pessoa.endereco.rua}" placeholder="Rua"
+                                                 required="true"
+                                                 mask="{regex:'[a-zA-Z ]*'}">
+                                        <f:facet name="prepend">
+                                            <b:iconAwesome name="map-marker-alt"/>
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+
+                                <div class="form-group col-md-6 col-sm-6">
+                                    <b:selectOneMenu value="#{cadastrarUsusarioViaVendedorController.pessoa.endereco.cidade.estado}"
+                                                     ajax="true"
+                                                     process="@this" update="@next @next:@next">
+                                        <f:selectItem value="#{null}" itemLabel="Selecione um estado"/>
+                                        <f:selectItems value="#{cadastrarUsusarioViaVendedorController.listarTodosOsEstados()}" var="estado"
+                                                       itemValue="#{estado}" itemLabel="#{estado.nome}"/>
+                                        <f:ajax event="change" execute="@this" render="cidadesSelect"/>
+                                    </b:selectOneMenu>
+                                </div>
+
+                                <div class="form-group col-md-6 col-sm-6">
+                                    <b:selectOneMenu id="cidadesSelect"
+                                                     value="#{cadastrarUsusarioViaVendedorController.pessoa.endereco.cidade}" ajax="true"
+                                                     process="@this" update="@next @next:@next">
+                                        <f:selectItem value="#{null}" itemLabel="Selecione uma cidade"/>
+                                        <f:selectItems
+                                                value="#{cadastrarUsusarioViaVendedorController.listarTodosAsCidadesPorEstado(loginController.pessoa.endereco.cidade.estado)}"
+                                                var="cidade"
+                                                itemValue="#{cidade}" itemLabel="#{cidade.nome}"/>
+                                    </b:selectOneMenu>
+                                </div>
+
+                                <div class="form-group col-md-6 col-sm-6">
+                                    <span class="help-block">Onde vamos entregar seu produto?</span>
+                                </div>
+
+                            </div>
+                            <div class="col-md-12 col-sm-12" id="deceased">
+                                <div class="form-group col-md-3 col-sm-3">
+                                    <b:inputText value="#{cadastrarUsusarioViaVendedorController.pessoa.endereco.bairro}" placeholder="Bairro"
+                                                 required="true"
+                                                 mask="{regex:'[a-zA-Z ]*'}">
+                                        <f:facet name="prepend">
+                                            <b:iconAwesome name="map-marker-alt"/>
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-3">
+                                    <b:inputText value="#{cadastrarUsusarioViaVendedorController.pessoa.endereco.cep}" placeholder="Cep"
+                                                 required="true"
+                                                 mask="99999-999">
+                                        <f:facet name="prepend">
+                                            <b:iconAwesome name="map-marker-alt"/>
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-3">
+                                    <b:inputText value="#{cadastrarUsusarioViaVendedorController.pessoa.endereco.complemento}"
+                                                 placeholder="Complemento"
+                                                 required="true"
+                                                 mask="{regex:'[a-zA-Z ]*'}">
+                                        <f:facet name="prepend">
+                                            <b:iconAwesome name="map-marker-alt"/>
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-3">
+                                    <b:inputText value="#{cadastrarUsusarioViaVendedorController.pessoa.endereco.numero}" placeholder="Numero"
+                                                 required="true"
+                                                 mask="{regex:'[0-9]*'}">
+                                        <f:facet name="prepend">
+                                            <b:iconAwesome name="map-marker-alt"/>
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12" style="text-align: center;">
+                                <div class="form-group col-md-3 col-sm-3 pull-right">
+                                    <h:commandLink action="#{cadastrarUsusarioViaVendedorController.cadastrarUsuario}"
+                                                   styleClass="btn btn-primary"
+                                                   type="submit">Cadastrar</h:commandLink>
+                                </div>
+                            </div>
+
+                        </h:form>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="rightcolumn">
+
+                <div class="card" align="center">
+                    <h3>Administrador</h3>
+                    <h:outputLabel>Nome Vendedor</h:outputLabel>
+                    <h:outputLabel>#{loginController.pessoa.nome}</h:outputLabel>
+                    <h:outputLabel>Email Administrador</h:outputLabel>
+                    <h:outputLabel>#{loginController.pessoa.email}</h:outputLabel>
+                    <h:form>
+                        <h:commandButton value="Sair Login" styleClass="btn btn-primary" action="#{loginController.deslogar}">
+
+                        </h:commandButton>
+                        <hr/>
+                        <h:commandButton value="Voltar" styleClass="btn btn-primary" action="#{redirecionamentoController.irParaPainelVendedor}">
+                        </h:commandButton>
+                    </h:form>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer"></div>
+
+</h:body>
+</html>

@@ -52,4 +52,16 @@ public class RedirecionamentoController implements Serializable {
         return "cadastrarFormaPAgamento?faces-redirect=true";
     }
 
+    public String irParaCadastrarUsuarioviaVendedor() {
+        return "cadastrarusuarioViaVendedor?faces-redirect=true";
+    }
+
+    public String irParaPainelADM() {
+        return "painelADM.xhtml?faces-redirect=true";
+    }
+
+    public String irParaLogarClienteParaComissao() { return "vendedorLogandoCliente.xhtml?faces-redirect=true"; }
+
+    public String irParaRelatoriocomissao() { return "comissoesDeVendedor.xhtml?faces-redirect=true"; }
+
 }

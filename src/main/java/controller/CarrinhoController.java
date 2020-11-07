@@ -3,7 +3,9 @@ package controller;
 import model.bo.*;
 import model.entities.*;
 import net.bootsfaces.utils.FacesMessages;
+import utilities.Comissao;
 import utilities.Moeda;
+import utilities.Tempo;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -120,7 +122,7 @@ public class CarrinhoController implements Serializable {
         carrinho = new Carrinho();
     }
 
-    public void comprarProduto() {
+    public void comprarProduto(Pessoa vendedor) {
 
         System.out.println("Comprando Produto...");
         System.out.println("-------------------");
@@ -146,6 +148,7 @@ public class CarrinhoController implements Serializable {
                     pedido.setFormaPagamento(formaPagamento);
                     pedido.setValorTotal(carrinho.getValorTotal());
                     pedido.setQuantidade(carrinho.getQuantidade());
+
 
                     if (new PedidoBO().valida(pedido)) {
 
@@ -185,6 +188,26 @@ public class CarrinhoController implements Serializable {
 
                         }
                     }
+
+                }
+            }
+            //Analise de Comissão
+            Pessoa vendedorparaComissao = vendedor;
+            if(vendedorparaComissao != null){
+                if(vendedorparaComissao.getId() > 0){
+                    ComissaoVendedor comissaoVendedor = new ComissaoVendedor();
+                    comissaoVendedor.setDataComissao(Tempo.getDataAtualSql());
+                    comissaoVendedor.setPessoa(vendedorparaComissao);
+                    comissaoVendedor.setTotalComissao(carrinho.getValorTotal() * Comissao.comissaoporcentagem);
+                    long idMax = new ComissaoVendedorBO().getLastId();
+
+                    if (idMax == -1) {
+                        comissaoVendedor.setId(1);
+                    } else {
+                        comissaoVendedor.setId(idMax + 1);
+                    }
+                    new ComissaoVendedorBO().criar(comissaoVendedor);
+                    FacesMessages.info("Comissão Adquirida com sucesso!");
                 }
             }
 

@@ -6,6 +6,7 @@ import model.entities.Endereco;
 import java.util.List;
 
 import model.dao.GenericDao;
+import model.entities.Produto;
 
 public class EnderecoBO implements GenericBO<Endereco> {
 
@@ -20,6 +21,10 @@ public class EnderecoBO implements GenericBO<Endereco> {
         }
         return false;
     }
+    public long getLastId() {
+        return new GenericDao<Endereco>().getLastId(Endereco.class);
+    }
+
 
     @Override
     public boolean deletar(Endereco o) throws Exception {

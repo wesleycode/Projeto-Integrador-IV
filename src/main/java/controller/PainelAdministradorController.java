@@ -1,9 +1,6 @@
 package controller;
 
-import model.bo.CidadeBO;
-import model.bo.EnderecoBO;
-import model.bo.EstadoBO;
-import model.bo.PessoaBO;
+import model.bo.*;
 import model.entities.Cidade;
 import model.entities.Estado;
 import model.entities.Pessoa;
@@ -104,7 +101,14 @@ public class PainelAdministradorController implements Serializable {
             }
             // Grava o cliente //
             try {
-                System.out.println("Endereço ID: "+pessoa.getEndereco().getId());
+                long idMax = new PessoaBO().getLastId();
+
+                if (idMax == -1) {
+                    pessoa.setId(1);
+                } else {
+                    pessoa.setId(idMax + 1);
+                }
+
                 if (new PessoaBO().criar(pessoa)) {
                     FacesMessages.info("Usuário Cadastrado com sucesso");
                 } else {

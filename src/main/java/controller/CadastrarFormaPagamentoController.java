@@ -29,6 +29,13 @@ public class CadastrarFormaPagamentoController implements Serializable {
     }
 
     public void cadastrarFormaPagamento() {
+        long idMax = new FormaPagamentoBO().getLastId();
+
+        if (idMax == -1) {
+            formaPagamento.setId(1);
+        } else {
+            formaPagamento.setId(idMax + 1);
+        }
         try {
             if (new FormaPagamentoBO().criar(formaPagamento)) {
                 FacesMessages.info("Forma de Pagamento cadastrada com sucesso");

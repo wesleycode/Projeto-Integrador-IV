@@ -3,6 +3,7 @@ package model.bo;
 import model.dao.GenericDao;
 import model.entities.Carrinho;
 import model.entities.ItemCarrinho;
+import model.entities.Produto;
 
 import java.util.List;
 
@@ -19,6 +20,9 @@ public class CarrinhoBO implements GenericBO<Carrinho> {
             System.out.println(e.getMessage());
             return 0;
         }
+    }
+    public long getLastId() {
+        return new GenericDao<Carrinho>().getLastId(Carrinho.class);
     }
 
     public double valorTotalComFrete(List<ItemCarrinho> itensDoCarrinho) { return valorTotalDoCarrinho(itensDoCarrinho) * 1.02; }

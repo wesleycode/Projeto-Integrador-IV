@@ -6,6 +6,7 @@ import model.entities.Pessoa;
 import java.util.List;
 
 import model.dao.GenericDao;
+import model.entities.Produto;
 
 public class PessoaBO implements GenericBO<Pessoa> {
 
@@ -80,6 +81,10 @@ public class PessoaBO implements GenericBO<Pessoa> {
     }
     public List<Pessoa> listarPessoasPorNome() throws Exception {
         return new PessoaDao().listarPessoasPorNome();
+    }
+
+    public long getLastId() {
+        return new GenericDao<Pessoa>().getLastId(Pessoa.class);
     }
 
     public String logarPessoa(Pessoa pessoa) {

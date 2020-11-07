@@ -1,5 +1,6 @@
 package controller;
 
+import model.bo.FornecedorBO;
 import model.bo.MarcaProdutoBO;
 import model.bo.PessoaBO;
 import model.entities.MarcaProduto;
@@ -57,6 +58,13 @@ public class CadastrarMarcaController implements Serializable {
 
     public void cadastrarMarcaProduto() {
         try {
+            long idMax = new MarcaProdutoBO().getLastId();
+
+            if (idMax == -1) {
+                marca.setId(1);
+            } else {
+                marca.setId(idMax + 1);
+            }
             if (new MarcaProdutoBO().criar(marca)) {
                 FacesMessages.info("MarcaProduto cadastrada com sucesso");
             }

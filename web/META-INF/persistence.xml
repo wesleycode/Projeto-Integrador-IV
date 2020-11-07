@@ -19,6 +19,7 @@
     <class>model.entities.Produto</class>
     <class>model.entities.TipoEntrega</class>
     <class>model.entities.Cupom</class>
+    <class>model.entities.ComissaoVendedor</class>
     <!--  -->
     <properties>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>

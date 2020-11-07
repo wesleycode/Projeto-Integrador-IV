@@ -3,6 +3,8 @@ package model.bo;
 import model.dao.CupomDao;
 import model.dao.GenericDao;
 import model.entities.Cupom;
+import model.entities.Produto;
+
 import java.util.List;
 
 public class CupomBO implements GenericBO<Cupom> {
@@ -13,6 +15,9 @@ public class CupomBO implements GenericBO<Cupom> {
             return new GenericDao<>().salvarOuAlterar(o);
         }
         return false;
+    }
+    public long getLastId() {
+        return new GenericDao<Cupom>().getLastId(Cupom.class);
     }
 
     @Override

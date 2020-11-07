@@ -1,5 +1,6 @@
 package controller;
 
+import model.bo.FormaPagamentoBO;
 import model.bo.FornecedorBO;
 import model.bo.MarcaProdutoBO;
 import model.entities.Fornecedor;
@@ -43,6 +44,13 @@ public class CadastrarFornecedorController implements Serializable {
     }
 
     public void cadastrarFornecedor() {
+        long idMax = new FornecedorBO().getLastId();
+
+        if (idMax == -1) {
+            fornecedor.setId(1);
+        } else {
+            fornecedor.setId(idMax + 1);
+        }
         try {
             if (new FornecedorBO().criar(getFornecedor())) {
                 FacesMessages.info("Fornecedor cadastrado com sucesso");

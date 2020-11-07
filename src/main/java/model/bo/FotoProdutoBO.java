@@ -82,4 +82,5 @@ public class FotoProdutoBO implements GenericBO<FotoProduto> {
         return true;
     }
 
+
 }

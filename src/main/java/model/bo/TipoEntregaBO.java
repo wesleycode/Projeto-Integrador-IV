@@ -1,5 +1,6 @@
 package model.bo;
 
+import model.entities.Produto;
 import model.entities.TipoEntrega;
 
 import java.util.List;
@@ -11,6 +12,10 @@ public class TipoEntregaBO implements GenericBO<TipoEntrega>{
 
     public TipoEntregaBO() {
 
+    }
+
+    public long getLastId() {
+        return new GenericDao<TipoEntrega>().getLastId(TipoEntrega.class);
     }
 
     @Override
