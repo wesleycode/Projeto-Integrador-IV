@@ -33,8 +33,10 @@ public class ProdutoBO implements GenericBO<Produto> {
 
     @Override
     public boolean alterar(Produto o) throws Exception {
-        if (valida(o)) {
-            return new GenericDao<Produto>().salvarOuAlterar(o);
+        if (validarAlterarId(o.getId())) {
+            if (valida(o)) {
+                return new GenericDao<Produto>().salvarOuAlterar(o);
+            }
         }
         return false;
     }
@@ -63,6 +65,13 @@ public class ProdutoBO implements GenericBO<Produto> {
             throw new Exception("Nome do Produto nulo");
         } else if (o.getPreco() < 0) {
             throw new Exception("Preço não Permitido");
+        }
+        return true;
+    }
+
+    public boolean validarAlterarId(long id) throws Exception {
+        if ((id > new ProdutoBO().getLastId()) || (id <= 0)) {
+            throw new Exception("Id do produto que voce digitou não existe!");
         }
         return true;
     }

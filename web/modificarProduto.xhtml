@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <!-- JQUERY -->
+    <h:outputScript library="js" name="jquery-3.5.1.js"/>
+    <!-- BOOTSTRAP -->
+    <h:outputScript library="js" name="bootstrap.min.js"/>
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    <!-- FONTAWESOME -->
+    <h:outputScript library="js" name="all.js"/>
+    <h:outputStylesheet library="css" name="all.css"/>
+    <h:outputStylesheet library="css" name="fontawesome.css"/>
+    <!-- STYLESHEET -->
+    <h:outputStylesheet library="css" name="indexStyle.css"/>
+    <!-- SCRIPT -->
+    <script type="application/javascript">
+        $(function () {
+            $("#navbar").load("navbar.xhtml");
+            $("#footer").load("footer.xhtml");
+        });
+    </script>
+</h:head>
+
+<h:body>
+
+    <!-- Navbar -->
+    <div id="navbar"></div>
+    <!-- Conteudo da página fica aqui!!! -->
+
+    <div class="conteudo">
+
+        <div class="row">
+            <div class="leftcolumn">
+                <div class="card" align="center" id="cardcadastro">
+                    <b:messages autoUpdate="true" showDetail="true" globalOnly="true"/>
+                    <h3>Modificar Produto</h3>
+                    <h:form enctype="multipart/form-data">
+                        <br/>
+                        <b:dataTable value="#{alterarProdutoController.getTodosOsProdutosList()}"
+                                     placeholder="Produtos á venda"
+                                     var="produto"
+                                     required="true">
+                            <b:dataTableColumn value="#{produto.id}"/>
+                            <b:dataTableColumn value="#{produto.categoria.categoria}"/>
+                            <b:dataTableColumn value="#{produto.descricao}"/>
+                            <b:dataTableColumn value="#{produto.emEstoque}"/>
+                            <b:dataTableColumn value="#{produto.fornecedor.fornecedor}"/>
+                            <b:dataTableColumn value="#{produto.marcaProduto.nome}"/>
+                            <b:dataTableColumn value="#{produto.preco}"/>
+                        </b:dataTable>
+                        <br/>
+                        <br/>
+
+                        <h:form enctype="multipart/form-data">
+                            <b:inputText value="#{alterarProdutoController.produtoSelecionado.id}"
+                                         label="Qual o id do produto que deseja modificar?"
+                                         mask="{regex:'[0-9]*'}"
+                                         maxlength="3"
+                                         required="true"/>
+                            <br/>
+                            <b:inputText value="#{alterarProdutoController.produtoSelecionado.nome}"
+                                         label="Qual o nome do novo produto?"
+                                         required="true"/>
+                            <br/>
+                            <b:inputText value="#{alterarProdutoController.emEstoque}"
+                                         label="O produto continua em estoque? (S ou N)"
+                                         maxlength="1"
+                                         requiredMessage="CAMPO VAZIO!"
+                                         required="true"/>
+                            <br/>
+                            <p:inputTextarea rows="10" cols="100" minQueryLength="4"
+                                             required="true"
+                                             placeholder="Qual a descrição desse produto?"
+                                             value="#{alterarProdutoController.produtoSelecionado.descricao}">
+                            </p:inputTextarea>
+                            <br/>
+                            <br/>
+                            <div class="col-md-12 col-sm-12">
+                                <b:selectOneMenu value="#{alterarProdutoController.produtoSelecionado.fornecedor}"
+                                                 ajax="true" required="true"
+                                                 process="@this" update="@next @next:@next">
+                                    <f:selectItem value="#{null}" itemLabel="Qual o novo fornecedor?"/>
+                                    <f:selectItems value="#{alterarProdutoController.fornecedorList}" var="fornecedor"
+                                                   itemValue="#{fornecedor}" itemLabel="#{fornecedor.fornecedor}"/>
+                                </b:selectOneMenu>
+                            </div>
+                            <div class="col-md-12 col-sm-12">
+                                <b:selectOneMenu value="#{alterarProdutoController.produtoSelecionado.categoria}"
+                                                 ajax="true" required="true"
+                                                 process="@this" update="@next @next:@next">
+                                    <f:selectItem value="#{null}" itemLabel="Selecione uma nova categoria"/>
+                                    <f:selectItems value="#{alterarProdutoController.categoriaList}" var="categoria"
+                                                   itemValue="#{categoria}" itemLabel="#{categoria.categoria}"/>
+                                </b:selectOneMenu>
+                            </div>
+                            <div class="col-md-12 col-sm-12">
+                                <b:selectOneMenu value="#{alterarProdutoController.produtoSelecionado.marcaProduto}"
+                                                 ajax="true" required="true"
+                                                 process="@this" update="@next @next:@next">
+                                    <f:selectItem value="#{null}" itemLabel="Selecione uma nova Marca"/>
+                                    <f:selectItems value="#{alterarProdutoController.marcalist}" var="marcaProduto"
+                                                   itemValue="#{marcaProduto}" itemLabel="#{marcaProduto.nome}"/>
+                                </b:selectOneMenu>
+                            </div>
+                            <br/>
+                            <br/>
+                            <p:inputNumber value="#{alterarProdutoController.produtoSelecionado.preco}"
+                                           label="Novo preço do produto"
+                                           minValue="0" maxValue="1000000" decimalPlaces="2">
+                            </p:inputNumber>
+                            <br/>
+                            <br/>
+                        </h:form>
+                        <br/>
+                        <br/>
+                        <div style="text-align: center;" class="col-md-12 col-sm-12">
+                            <h:commandLink styleClass="btn btn-primary" value="Alterar Produto"
+                                           action="#{alterarProdutoController.alterarProduto()}"/>
+                        </div>
+                    </h:form>
+                    <br/>
+                    <br/>
+                    <h:form>
+                        <div style="text-align: center;" class="col-md-12 col-sm-12">
+                            <h:commandLink styleClass="btn btn-primary" value="Voltar"
+                                           action="#{redirecionamentoController.irParaPainelVendedor}"/>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+
+            <div class="rightcolumn">
+
+                <div class="card" align="center">
+                    <h3>Vendedor</h3>
+                    <h:outputLabel>Nome Vendedor</h:outputLabel>
+                    <h:outputLabel>#{loginController.pessoa.nome}</h:outputLabel>
+                    <h:outputLabel>Email Vendedor</h:outputLabel>
+                    <h:outputLabel>#{loginController.pessoa.email}</h:outputLabel>
+                    <h:form>
+                        <h:commandButton value="Sair Login" styleClass="btn btn-primary"
+                                         action="#{loginController.deslogar}">
+                            <!--Deve possuir o logoff-->
+                        </h:commandButton>
+
+                    </h:form>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer"></div>
+
+</h:body>
+
+</html>
