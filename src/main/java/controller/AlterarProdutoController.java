@@ -6,6 +6,7 @@ import net.bootsfaces.utils.FacesMessages;
 import utilities.Strings;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.servlet.http.Part;
 import java.io.File;
@@ -14,7 +15,7 @@ import java.nio.file.Files;
 import java.util.List;
 
 @Named
-@RequestScoped
+@ViewScoped
 public class AlterarProdutoController implements Serializable {
 
     private float preco;
@@ -181,13 +182,15 @@ public class AlterarProdutoController implements Serializable {
     }
     public void isAtivoOuDesativo(Produto p){
         try{
-            if(p.isEmEstoque() == true){
+            if(p.isEmEstoque()){
                 p.setEmEstoque(false);
+                new ProdutoBO().criar(p);
+                FacesMessages.info("A produto Teve estoque Alterado para Falso!");
             }else{
                 p.setEmEstoque(true);
+                new ProdutoBO().alterar(p);
+                FacesMessages.info("A produto Teve estoque Alterado para Verdadeiro");
             }
-            new ProdutoBO().alterar(p);
-            FacesMessages.info("A produto Foi Alterado");
         } catch (Exception e) {
             FacesMessages.error("Erro ao alterar Produto: " + e.getMessage());
         }
