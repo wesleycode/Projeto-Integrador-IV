@@ -1,8 +1,10 @@
 package controller;
 
 import model.bo.CategoriaBO;
+import model.bo.PessoaBO;
 import model.bo.ProdutoBO;
 import model.entities.Categoria;
+import model.entities.Pessoa;
 import model.entities.Produto;
 import net.bootsfaces.utils.FacesMessages;
 import javax.enterprise.context.SessionScoped;

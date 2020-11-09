@@ -120,5 +120,27 @@ public class ProdutoBO implements GenericBO<Produto> {
             }
         }
     }
+    public List<Produto> listarPorCategoriaComESemEstoque(long categoriaId,String valor) throws Exception {
+        if (valor == null) {
+            return new ProdutoDao().listarPorCategoriaComESemEstoque(categoriaId);
+        } else {
+            return listarPorCategoriaComLikeComESemEstoque(categoriaId,valor);
+        }
+    }
+    private List<Produto> listarPorCategoriaComLikeComESemEstoque(long id,String valor) throws Exception {
+        return (valor != null) ? new ProdutoDao().listarPorCategoriaComLikeComESemEstoque(valor,id) : null;
+    }
+    public List<Produto> listarProdutosComESemEstoque(Categoria categoria , String valor) throws Exception {
+        if ((categoria.getId() != 0 && categoria.getCategoria() != null) || (valor != null)) {
+            return listarPorCategoriaComESemEstoque(categoria.getId(), valor);
+        } else {
+            try {
+                return new ProdutoBO().listarTodos();
+            } catch (Exception e) {
+                FacesMessages.error("Erro: " + e.getMessage());
+                return null;
+            }
+        }
+    }
 
 }

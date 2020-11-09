@@ -25,12 +25,35 @@ public class AlterarProdutoController implements Serializable {
     private List<Categoria> categoriaList;
     private List<Fornecedor> fornecedorList;
 
+    private Categoria categoriaSelecionada;
+    private String filtertext;
+
+    public void filtrarProdutos() {
+        todosOsProdutosList = preencherTabela();
+    }
+
     public void setEmEstoque(String emEstoque) {
         if (emEstoque.equalsIgnoreCase("S") || emEstoque.equalsIgnoreCase("true")) {
             this.produtoSelecionado.setEmEstoque(true);
         } else {
             this.produtoSelecionado.setEmEstoque(false);
         }
+    }
+
+    public Categoria getCategoriaSelecionada() {
+        return categoriaSelecionada;
+    }
+
+    public void setCategoriaSelecionada(Categoria categoriaSelecionada) {
+        this.categoriaSelecionada = categoriaSelecionada;
+    }
+
+    public String getFiltertext() {
+        return filtertext;
+    }
+
+    public void setFiltertext(String filtertext) {
+        this.filtertext = filtertext;
     }
 
     public String getEmEstoque() {
@@ -91,6 +114,8 @@ public class AlterarProdutoController implements Serializable {
         categoriaList = listarCategoria();
         marcalist = listarMarca();
         fornecedorList = listarFornecedor();
+        filtertext = "";
+        categoriaSelecionada = new Categoria();
     }
 
     public List<MarcaProduto> listarMarca() {
@@ -137,6 +162,34 @@ public class AlterarProdutoController implements Serializable {
             new ProdutoBO().alterar(produtoSelecionado);
         } catch (Exception e) {
             FacesMessages.error("Erro: " + e.getMessage());
+        }
+    }
+    private List<Produto> preencherTabela() {
+        try {
+            return new ProdutoBO().listarProdutosComESemEstoque(categoriaSelecionada, filtertext);
+        } catch (Exception e) {
+            FacesMessages.error("Erro: " + e.getMessage());
+            return null;
+        }
+    }
+    public void resetarTabela() {
+        try {
+            todosOsProdutosList = new ProdutoBO().listarTodos();
+        } catch (Exception e) {
+            FacesMessages.error("Erro: " + e.getMessage());
+        }
+    }
+    public void isAtivoOuDesativo(Produto p){
+        try{
+            if(p.isEmEstoque() == true){
+                p.setEmEstoque(false);
+            }else{
+                p.setEmEstoque(true);
+            }
+            new ProdutoBO().alterar(p);
+            FacesMessages.info("A produto Foi Alterado");
+        } catch (Exception e) {
+            FacesMessages.error("Erro ao alterar Produto: " + e.getMessage());
         }
     }
 

@@ -41,22 +41,50 @@
                 <div class="card" align="center" id="cardcadastro">
                     <b:messages autoUpdate="true" showDetail="true" globalOnly="true"/>
                     <h3>Modificar Produto</h3>
-                    <h:form enctype="multipart/form-data">
+                    <h:form>
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <p:outputLabel for="textInput" value="Digite aqui: "/>
+                            <p:inputText id="textInput" placeholder="O que quer procurar?"
+                                         value="#{alterarProdutoController.filtertext}"/>
+                            <p:outputLabel value="Selecione uma Categoria"/>
+                            <b:selectOneMenu value="#{alterarProdutoController.categoriaSelecionada}"
+                                             converter="categoriaConverter">
+                                <f:selectItems value="#{alterarProdutoController.categoriaList}"
+                                               var="categoria"
+                                               itemLabel="#{categoria.categoria}" itemValue="#{categoria}"/>
+                            </b:selectOneMenu>
+                        </h:panelGrid>
+                        <h:commandButton value="Pesquisar" action="#{alterarProdutoController.filtrarProdutos}"
+                                         process="@form" update="@form :form"/>
                         <br/>
-                        <b:dataTable value="#{alterarProdutoController.getTodosOsProdutosList()}"
+                        <h:form>
+                            <h:commandButton value="Mostrar tudo" action="#{alterarProdutoController.resetarTabela}"
+                                             process="@form" update="@form :form"/>
+                        </h:form>
+                    </h:form>
+                    <h:form enctype="multipart/form-data" id="form">
+                        <br/>
+                        <p:dataGrid value="#{alterarProdutoController.todosOsProdutosList}"
                                      placeholder="Produtos á venda"
                                      var="produto"
-                                     required="true">
-                            <b:dataTableColumn value="#{produto.id}"/>
-                            <b:dataTableColumn value="#{produto.categoria.categoria}"/>
-                            <b:dataTableColumn value="#{produto.descricao}"/>
-                            <b:dataTableColumn value="#{produto.emEstoque}"/>
-                            <b:dataTableColumn value="#{produto.fornecedor.fornecedor}"/>
-                            <b:dataTableColumn value="#{produto.marcaProduto.nome}"/>
-                            <b:dataTableColumn value="#{produto.preco}"/>
-                        </b:dataTable>
+                                     required="true" columns="1"
+                                     rows="20" paginator="true" id="formularioProdutos" paginatorPosition="bottom"
+                                     paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {NextPageLink}">
+                            <p:panelGrid columns="8">
+                            <h:outputText value="#{produto.id}"/>
+                            <h:outputText value="#{produto.categoria.categoria}"/>
+                            <h:outputText value="#{produto.descricao}"/>
+                            <h:outputText value="#{produto.emEstoque}"/>
+                            <h:outputText value="#{produto.fornecedor.fornecedor}"/>
+                            <h:outputText value="#{produto.marcaProduto.nome}"/>
+                            <h:outputText value="#{produto.preco}"/>
+                            <p:commandLink type="button" value="Alterar Ativo" action="#{alterarProdutoController.isAtivoOuDesativo(produto)}"
+                                           process="@form" update="@form :form"/>
+                            </p:panelGrid>
+                        </p:dataGrid>
                         <br/>
                         <br/>
+                    </h:form>
 
                         <h:form enctype="multipart/form-data">
                             <b:inputText value="#{alterarProdutoController.produtoSelecionado.id}"
@@ -117,16 +145,13 @@
                             </p:inputNumber>
                             <br/>
                             <br/>
-                        </h:form>
                         <br/>
                         <br/>
                         <div style="text-align: center;" class="col-md-12 col-sm-12">
                             <h:commandLink styleClass="btn btn-primary" value="Alterar Produto"
                                            action="#{alterarProdutoController.alterarProduto()}"/>
                         </div>
-                    </h:form>
-                    <br/>
-                    <br/>
+                        </h:form>
                     <h:form>
                         <div style="text-align: center;" class="col-md-12 col-sm-12">
                             <h:commandLink styleClass="btn btn-primary" value="Voltar"
