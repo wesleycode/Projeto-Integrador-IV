@@ -1,5 +1,6 @@
 .conteudo {
-    background-color: #005cbf;
+    background-color: #4e555b;
+    /*background-color: #005cbf;*/
     padding: 20px 100px;
     height: 100%;
 }
@@ -15,9 +16,8 @@
     padding-left: 20px;
 }
 
-
 .card {
     background-color: white;
-    padding: 20px;
-    margin-top: 20px;
+    padding: 30px;
+    margin-top: 25px;
 }

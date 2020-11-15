@@ -94,11 +94,12 @@ public class LoginController implements Serializable {
             return null;
         }
     }
-    public String irParaIndexComVendedor(){
+
+    public String irParaIndexComVendedor() {
         try {
             vendedorparaComissao = new PessoaBO().getById(pessoa.getId());
-            pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(),pessoa.getSenha());
-            if(pessoa.getTipoUsuario() > 1){
+            pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(), pessoa.getSenha());
+            if (pessoa.getTipoUsuario() > 1) {
                 FacesMessages.error("Este Usuário Possui Capacidades de Compras!");
                 pessoa = vendedorparaComissao;
                 return null;
@@ -127,20 +128,20 @@ public class LoginController implements Serializable {
         return RedirecionamentoController.irParaIndex();
     }
 
-    public void CacelarConta(){
-        if(cont == 0){
+    public void CacelarConta() {
+        if (cont == 0) {
             cont++;
             nomeBotao = "Tem Certeza?";
-        }else{
+        } else {
             cont = 0;
             nomeBotao = "Cancelar Conta";
-            if(pessoa == new Pessoa()){
+            if (pessoa == new Pessoa()) {
                 FacesMessages.error("É necessário estar Logado!!!");
-            }else if(pessoa.getTipoUsuario() > 1){
+            } else if (pessoa.getTipoUsuario() > 1) {
                 FacesMessages.error("Sua Conta possui privilégios Demais! peça a um ADM o Cancelamento");
-            }else {
+            } else {
                 pessoa.setAtivo(false);
-                try{
+                try {
                     new PessoaBO().alterar(pessoa);
                     FacesMessages.info("Sua Conta foi desativada com sucesso!");
                     deslogar();
@@ -241,7 +242,6 @@ public class LoginController implements Serializable {
             }
             // Grava o cliente //
             try {
-                System.out.println("Endereço ID: " + pessoa.getEndereco().getId());
                 if (new PessoaBO().criar(pessoa)) {
                     FacesMessages.info("Usuário Cadastrado com sucesso");
                 } else {

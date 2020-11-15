@@ -93,44 +93,50 @@
                                         <f:convertNumber currencyCode="R$" type="currency"/>
                                     </h:outputText>
                                     <br/>
-                                    <p:commandLink type="button" styleClass="btn btn-warning" value="Comprar" action="#{carrinhoController.adicionarProdutoNoCarrinho(produto)}"/>
+                                    <p:commandLink type="button" styleClass="btn btn-success" value="Comprar"
+                                                   action="#{carrinhoController.adicionarProdutoNoCarrinho(produto)}"/>
                                     <br/>
                                     <br/>
-                                    <p:commandLink type="button" styleClass="btn btn-danger" value="Detalhes" action="#{produtoController.irParaDetalhesDeProduto(produto)}"/>
+                                    <p:commandLink type="button" styleClass="btn btn-warning" value="Detalhes"
+                                                   action="#{produtoController.irParaDetalhesDeProduto(produto)}"/>
                                 </h:panelGrid>
                             </p:panel>
-
                         </p:dataGrid>
-
                     </h:form>
                 </div>
             </div>
             <div class="rightcolumn">
                 <div class="card">
-                    <h2>Sobre nós</h2>
+                    <h3 style="text-align: center;">Sobre nós</h3>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;Somos uma empresa de vendas voltada a computadores e hardwares com várias parcerias com dezenas de fornecedores...</p>
                     <h:form>
                         <h:commandLink value="Saiba mais" action="#{redirecionamentoController.irParaSobrenos}">
                         </h:commandLink>
                     </h:form>
                 </div>
-                <div class="card">
-                    <h3>Mais Vendidos</h3>
+                <div class="card" style="text-align: center;">
+                    <h3>Coloque seu anúncio aqui!</h3>
+                    <div>
+                        <p:graphicImage library="img" name="outros/anuncio.png" width="230"
+                                        height="100"/>
+                    </div>
                 </div>
-                <div class="card">
+                <div class="card" style="text-align: center;">
                     <h3>Siga-nos</h3>
+                    <p>São várias redes sociais e formas de falar conosco!</p>
                     <h:form>
-                        <h:commandLink styleClass="btn" action="#{redirecionamentoController.irParaContato()}"
-                                       value="Nossos Contatos"/>
+                        <p:commandLink type="button" styleClass="btn btn-primary" value="Nossos Contatos"
+                                       action="#{redirecionamentoController.irParaContato()}"/>
                     </h:form>
                 </div>
-                <div class="card">
+                <div class="card" style="text-align: center;">
                     <b:messages autoUpdate="true" showDetail="true" globalOnly="true"/>
                     <h3>Login</h3>
-                    <p>Você pode Cancelar seu Login demaneira tão fácil quanto começar</p>
-                    <h:form>
-                        <h:commandButton styleClass="btn btn-primary" value="#{loginController.nomeBotao}" actionListener="#{loginController.CacelarConta}">
-                        </h:commandButton>
+                    <p>Você pode cancelar seu login, isso é tão fácil quanto começar!</p>
+                    <h:form style="text-align: center;">
+                        <p:commandLink styleClass="btn btn-primary" value="#{loginController.nomeBotao}"
+                                       actionListener="#{loginController.CacelarConta}">
+                        </p:commandLink>
                     </h:form>
                 </div>
             </div>

@@ -191,9 +191,10 @@
                         </div>
 
                         <div class="col-md-12 col-sm-12" style="text-align: center;">
-                            <h:commandLink action="#{loginController.cadastrarUsuario}"
+                            <b:commandLink action="#{loginController.cadastrarUsuario}"
                                            styleClass="btn btn-primary"
-                                           type="submit">Cadastrar</h:commandLink>
+                                           value="Cadastrar"
+                                           type="submit"/>
                             <p class="message">Já possui um cadastro? <a href="#">Logar-se</a></p>
                         </div>
 
@@ -236,7 +237,7 @@
                             <br/>
 
                             <div style="text-align: center;">
-                                <h:commandLink styleClass="btn btn-primary" value="Entrar"
+                                <b:commandLink styleClass="btn btn-primary" value="Entrar"
                                                action="#{loginController.logar()}"/>
 
                                 <br/>
@@ -253,8 +254,8 @@
 
                     <div style="text-align: center;">
                         <h:form>
-                            <h:commandButton styleClass="btn btn-warning" value="Voltar ao inicio"
-                                             action="#{redirecionamentoController.irParaIndex()}"/>
+                            <b:commandLink styleClass="btn btn-warning" value="Voltar ao inicio"
+                                           action="#{redirecionamentoController.irParaIndex()}"/>
                         </h:form>
                     </div>
 
