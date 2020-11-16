@@ -6,7 +6,6 @@ import javax.persistence.*;
 public class Endereco implements EntityBase {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String rua;
     private String cep;

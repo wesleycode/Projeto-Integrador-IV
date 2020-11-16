@@ -37,7 +37,7 @@
 
                 <div class="form">
 
-                    <h:form class="register-form">
+                    <h:form id="register" class="register-form">
 
                         <div class="col-md-12 col-sm-12" style="text-align: center; padding-top: 20px; color: white;">
                             <div class="panel-heading">
@@ -52,8 +52,7 @@
                             </div>
 
                             <div class="form-group col-md-6 col-sm-6">
-                                <b:inputText value="#{loginController.pessoa.nome}" placeholder="Nome"
-                                             required="true"
+                                <b:inputText value="#{loginController.pessoa.nome}" placeholder="Nome" required="true" requiredMessage="Adicionar um nome"
                                              mask="{regex:'[a-zA-Z ]*'}">
                                     <f:facet name="prepend">
                                         <b:icon name="user"/>
@@ -62,8 +61,7 @@
                             </div>
 
                             <div class="form-group col-md-6 col-sm-6">
-                                <b:inputText value="#{loginController.pessoa.email}" placeholder="Email"
-                                             required="true"
+                                <b:inputText value="#{loginController.pessoa.email}" placeholder="Email" required="true" requiredMessage="Adicionar um email"
                                              mask="email">
                                     <f:facet name="prepend">
                                         <b:iconAwesome name="envelope"/>
@@ -72,8 +70,7 @@
                             </div>
 
                             <div class="form-group col-md-6 col-sm-6">
-                                <b:inputText value="#{loginController.pessoa.telefone}" placeholder="Telefone"
-                                             required="true"
+                                <b:inputText value="#{loginController.pessoa.telefone}" placeholder="Telefone" required="true" requiredMessage="Adicionar um telefone"
                                              mask="(99) 9999-9999">
                                     <f:facet name="prepend">
                                         <b:iconAwesome name="phone"/>
@@ -83,8 +80,8 @@
 
                             <div class="form-group col-md-6 col-sm-6">
                                 <b:inputText value="#{loginController.pessoa.dataNascimento}"
-                                             mask="dd/mm/yyyy" placeholder="Data de Nascimento" required="true">
-                                    <!--                        <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>-->
+                                             mask="dd/mm/yyyy" placeholder="Data de Nascimento">
+<!--                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>-->
                                     <f:converter converterId="dateConverter"/>
                                     <f:facet name="prepend">
                                         <b:iconAwesome name="birthday-cake"/>
@@ -93,8 +90,7 @@
                             </div>
 
                             <div class="form-group col-md-6 col-sm-6">
-                                <b:inputSecret value="#{loginController.pessoa.senha}" placeholder="Senha"
-                                               required="true"
+                                <b:inputSecret value="#{loginController.pessoa.senha}" placeholder="Senha" required="true" requiredMessage="Adicionar uma senha"
                                                mask="{regex:'[a-zA-Z0-9]*'}">
                                     <f:facet name="prepend">
                                         <b:iconAwesome name="key"/>
@@ -103,8 +99,7 @@
                             </div>
 
                             <div class="form-group col-md-6 col-sm-6">
-                                <b:inputText value="#{loginController.pessoa.cpf}" placeholder="Cpf"
-                                             required="true"
+                                <b:inputText value="#{loginController.pessoa.cpf}" placeholder="Cpf" required="true" requiredMessage="Adicionar um cpf"
                                              mask="999.999.999-99">
                                     <f:facet name="prepend">
                                         <b:iconAwesome name="id-card"/>
@@ -113,8 +108,7 @@
                             </div>
 
                             <div class="form-group col-md-12 col-sm-12">
-                                <b:inputText value="#{loginController.pessoa.endereco.rua}" placeholder="Rua"
-                                             required="true"
+                                <b:inputText value="#{loginController.endereco.rua}" placeholder="Rua" required="true" requiredMessage="Adicionar uma rua"
                                              mask="{regex:'[a-zA-Z ]*'}">
                                     <f:facet name="prepend">
                                         <b:iconAwesome name="map-marker-alt"/>
@@ -123,7 +117,7 @@
                             </div>
 
                             <div class="form-group col-md-6 col-sm-6">
-                                <b:selectOneMenu value="#{loginController.pessoa.endereco.cidade.estado}"
+                                <b:selectOneMenu value="#{loginController.estadoSelecionado}" required="true" requiredMessage="Selecionar um estado"
                                                  ajax="true"
                                                  process="@this" update="@next @next:@next">
                                     <f:selectItem value="#{null}" itemLabel="Selecione um estado"/>
@@ -135,11 +129,11 @@
 
                             <div class="form-group col-md-6 col-sm-6">
                                 <b:selectOneMenu id="cidadesSelect"
-                                                 value="#{loginController.pessoa.endereco.cidade}" ajax="true"
+                                                 value="#{loginController.cidadeSelecionada}" ajax="true" required="true" requiredMessage="Selecionar uma cidade"
                                                  process="@this" update="@next @next:@next">
                                     <f:selectItem value="#{null}" itemLabel="Selecione uma cidade"/>
                                     <f:selectItems
-                                            value="#{loginController.listarTodosAsCidadesPorEstado(loginController.pessoa.endereco.cidade.estado)}"
+                                            value="#{loginController.listarTodosAsCidadesPorEstado(loginController.estadoSelecionado)}"
                                             var="cidade"
                                             itemValue="#{cidade}" itemLabel="#{cidade.nome}"/>
                                 </b:selectOneMenu>
@@ -152,8 +146,7 @@
                         </div>
                         <div class="col-md-12 col-sm-12" id="deceased">
                             <div class="form-group col-md-3 col-sm-3">
-                                <b:inputText value="#{loginController.pessoa.endereco.bairro}" placeholder="Bairro"
-                                             required="true"
+                                <b:inputText value="#{loginController.endereco.bairro}" placeholder="Bairro" required="true" requiredMessage="Adicionar um bairro"
                                              mask="{regex:'[a-zA-Z ]*'}">
                                     <f:facet name="prepend">
                                         <b:iconAwesome name="map-marker-alt"/>
@@ -161,8 +154,7 @@
                                 </b:inputText>
                             </div>
                             <div class="form-group col-md-3 col-sm-3">
-                                <b:inputText value="#{loginController.pessoa.endereco.cep}" placeholder="Cep"
-                                             required="true"
+                                <b:inputText value="#{loginController.endereco.cep}" placeholder="Cep" required="true" requiredMessage="Adicionar um cep"
                                              mask="99999-999">
                                     <f:facet name="prepend">
                                         <b:iconAwesome name="map-marker-alt"/>
@@ -170,9 +162,8 @@
                                 </b:inputText>
                             </div>
                             <div class="form-group col-md-3 col-sm-3">
-                                <b:inputText value="#{loginController.pessoa.endereco.complemento}"
+                                <b:inputText value="#{loginController.endereco.complemento}" required="true" requiredMessage="Adicionar um complemento"
                                              placeholder="Complemento"
-                                             required="true"
                                              mask="{regex:'[a-zA-Z ]*'}">
                                     <f:facet name="prepend">
                                         <b:iconAwesome name="map-marker-alt"/>
@@ -180,8 +171,7 @@
                                 </b:inputText>
                             </div>
                             <div class="form-group col-md-3 col-sm-3">
-                                <b:inputText value="#{loginController.pessoa.endereco.numero}" placeholder="Numero"
-                                             required="true"
+                                <b:inputText value="#{loginController.endereco.numero}" placeholder="Numero"
                                              mask="{regex:'[0-9]*'}">
                                     <f:facet name="prepend">
                                         <b:iconAwesome name="map-marker-alt"/>
@@ -191,7 +181,7 @@
                         </div>
 
                         <div class="col-md-12 col-sm-12" style="text-align: center;">
-                            <b:commandLink action="#{loginController.cadastrarUsuario}"
+                            <b:commandLink action="#{loginController.cadastrarUsuario()}"
                                            styleClass="btn btn-primary"
                                            value="Cadastrar"/>
                             <p class="message">Já possui um cadastro? <a href="#">Logar-se</a></p>

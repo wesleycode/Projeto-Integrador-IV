@@ -59,7 +59,7 @@ public class Tempo {
     }
 
     public static Date getDataAtualSql(int dia, int mes, int ano) {
-        return Date.valueOf(LocalDate.of(dia, mes, ano));
+        return Date.valueOf(LocalDate.of(ano,mes,dia));
     }
 
     public static Time getHoraAtualSql() {

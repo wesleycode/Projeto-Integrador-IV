@@ -3,16 +3,21 @@ package controller;
 import model.bo.*;
 import model.entities.*;
 import net.bootsfaces.utils.FacesMessages;
+import utilities.Tempo;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 
 @Named
 @SessionScoped
 public class LoginController implements Serializable {
+
+    private Estado estadoSelecionado;
+    private Cidade cidadeSelecionada;
     private Pessoa vendedorparaComissao;
     private Pessoa pessoa;
     private Carrinho carrinho;
@@ -21,6 +26,30 @@ public class LoginController implements Serializable {
     private int tipoPessoaLogin;
     private int cont;
     private String nomeBotao;
+
+    public Estado getEstadoSelecionado() {
+        return estadoSelecionado;
+    }
+
+    public void setEstadoSelecionado(Estado estadoSelecionado) {
+        this.estadoSelecionado = estadoSelecionado;
+    }
+
+    public Cidade getCidadeSelecionada() {
+        return cidadeSelecionada;
+    }
+
+    public void setCidadeSelecionada(Cidade cidadeSelecionada) {
+        this.cidadeSelecionada = cidadeSelecionada;
+    }
+
+    public int getCont() {
+        return cont;
+    }
+
+    public void setCont(int cont) {
+        this.cont = cont;
+    }
 
     public Pessoa getVendedorparaComissao() {
         return vendedorparaComissao;
@@ -48,9 +77,11 @@ public class LoginController implements Serializable {
 
     public LoginController() {
         pessoa = new Pessoa();
-        vendedorparaComissao = new Pessoa();
+        pessoa.setDataNascimento(Tempo.getDataAtualSql());
         endereco = new Endereco();
-        pessoa.getEndereco().setCidade(new Cidade());
+        estadoSelecionado = new Estado();
+        cidadeSelecionada = new Cidade();
+        vendedorparaComissao = new Pessoa();
         nomeBotao = "Cancelar Conta";
     }
 
@@ -127,41 +158,43 @@ public class LoginController implements Serializable {
         pessoa = null;
         return RedirecionamentoController.irParaIndex();
     }
+
     public void cadastrarUsuario() {
-        System.out.println("11111111111111111");
-        pessoa.setAtivo(true);
-        pessoa.setTipoUsuario(1);
-        if (pessoa.getEndereco().getCidade() == null) {
-            FacesMessages.error("Informe a Cidade");
-        } else if (pessoa.getEndereco().getCidade().getEstado() == null) {
-            FacesMessages.error("Informe o Estado");
-        } else {
-            try {
-                pessoa.setEndereco(new EnderecoBO().listarultimoendereco());
-                if (new EnderecoBO().criar(pessoa.getEndereco())) {
-                    FacesMessages.info("Endereco cadastrado com sucesso");
-                } else {
-                    FacesMessages.error("Erro ao cadastrar endereço do usuario");
-                }
-            } catch (Exception e) {
-                FacesMessages.error("Erro: " + e.getMessage());
+
+        try {
+            long lastId = new EnderecoBO().getLastId();
+            if (lastId == -1) {
+                endereco.setId(1);
+            } else {
+                endereco.setId(lastId + 1);
             }
-            // Grava o cliente //
-            try {
-                long lastId = new PessoaBO().getLastId();
-                if (lastId == -1) {
-                    pessoa.setId(1);
-                } else {
-                    pessoa.setId(lastId + 1);
-                }
-                if (new PessoaBO().criar(pessoa)) {
-                    FacesMessages.info("Usuário Cadastrado com sucesso");
-                } else {
-                    FacesMessages.error("Erro ao cadastrar usuário");
-                }
-            } catch (Exception e) {
-                FacesMessages.error("Erro: " + e.getMessage());
+            endereco.setCidade(cidadeSelecionada);
+            pessoa.setEndereco(endereco);
+            if (new EnderecoBO().criar(pessoa.getEndereco())) {
+                FacesMessages.info("Endereco cadastrado com sucesso");
+            } else {
+                FacesMessages.error("Erro ao cadastrar endereço do usuario");
             }
+        } catch (Exception e) {
+            FacesMessages.error("Erro: " + e.getMessage());
+        }
+
+        try {
+            long lastId = new PessoaBO().getLastId();
+            if (lastId == -1) {
+                pessoa.setId(1);
+            } else {
+                pessoa.setId(lastId + 1);
+            }
+            pessoa.setAtivo(true);
+            pessoa.setTipoUsuario(1);
+            if (new PessoaBO().criar(pessoa)) {
+                FacesMessages.info("Usuário Cadastrado com sucesso");
+            } else {
+                FacesMessages.error("Erro ao cadastrar usuário");
+            }
+        } catch (Exception e) {
+            FacesMessages.error("Erro: " + e.getMessage());
         }
     }
 
@@ -258,6 +291,5 @@ public class LoginController implements Serializable {
             return "";
         }
     }
-    public void test(){}
 
 }

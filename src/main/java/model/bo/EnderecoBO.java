@@ -21,6 +21,7 @@ public class EnderecoBO implements GenericBO<Endereco> {
         }
         return false;
     }
+
     public long getLastId() {
         return new GenericDao<Endereco>().getLastId(Endereco.class);
     }
@@ -69,6 +70,7 @@ public class EnderecoBO implements GenericBO<Endereco> {
         }
         return true;
     }
+
     public Endereco listarultimoendereco() throws Exception {
         return new EnderecoDao().listarultimoendereco();
     }
