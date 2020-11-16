@@ -70,6 +70,7 @@ public class CadastrarUsusarioViaVendedorController implements Serializable {
 
     public void cadastrarUsuario() {
         pessoa.setTipoUsuario(1);//Sempre Cliente
+        pessoa.setAtivo(true);
         if(pessoa.getEndereco().getCidade().getId() < 0){
             FacesMessages.error("Informe a Cidade");
         }else if(pessoa.getEndereco().getCidade().getEstado().getId() < 0){
@@ -87,6 +88,12 @@ public class CadastrarUsusarioViaVendedorController implements Serializable {
             }
             // Grava o cliente //
             try {
+                long lastId = new PessoaBO().getLastId();
+                if (lastId == -1) {
+                    pessoa.setId(1);
+                } else {
+                    pessoa.setId(lastId + 1);
+                }
                 if (new PessoaBO().criar(pessoa)) {
                     FacesMessages.info("Usuário Cadastrado com sucesso");
                 } else {

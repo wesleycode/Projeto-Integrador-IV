@@ -37,7 +37,7 @@
 
                 <div class="form">
 
-                    <h:form class="register-form">
+                    <h:form>
 
                         <div class="col-md-12 col-sm-12" style="text-align: center; padding-top: 20px; color: white;">
                             <div class="panel-heading">
@@ -191,10 +191,9 @@
                         </div>
 
                         <div class="col-md-12 col-sm-12" style="text-align: center;">
-                            <b:commandLink action="#{loginController.cadastrarUsuario}"
+                            <h:commandLink action="#{loginController.cadastrarUsuario}"
                                            styleClass="btn btn-primary"
-                                           value="Cadastrar"
-                                           type="submit"/>
+                                           value="Cadastrar"/>
                             <p class="message">Já possui um cadastro? <a href="#">Logar-se</a></p>
                         </div>
 

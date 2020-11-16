@@ -5,6 +5,7 @@ import model.entities.Pedido;
 import model.entities.Pessoa;
 import net.bootsfaces.utils.FacesMessages;
 
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -12,7 +13,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Named
-@ViewScoped
+@RequestScoped
 public class MeusPedidosController implements Serializable {
     private List<Pedido> pedidoList;
     private Pessoa pessoa;

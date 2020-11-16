@@ -127,6 +127,43 @@ public class LoginController implements Serializable {
         pessoa = null;
         return RedirecionamentoController.irParaIndex();
     }
+    public void cadastrarUsuario() {
+        System.out.println("11111111111111111");
+        pessoa.setAtivo(true);
+        pessoa.setTipoUsuario(1);
+        if (pessoa.getEndereco().getCidade() == null) {
+            FacesMessages.error("Informe a Cidade");
+        } else if (pessoa.getEndereco().getCidade().getEstado() == null) {
+            FacesMessages.error("Informe o Estado");
+        } else {
+            try {
+                pessoa.setEndereco(new EnderecoBO().listarultimoendereco());
+                if (new EnderecoBO().criar(pessoa.getEndereco())) {
+                    FacesMessages.info("Endereco cadastrado com sucesso");
+                } else {
+                    FacesMessages.error("Erro ao cadastrar endereço do usuario");
+                }
+            } catch (Exception e) {
+                FacesMessages.error("Erro: " + e.getMessage());
+            }
+            // Grava o cliente //
+            try {
+                long lastId = new PessoaBO().getLastId();
+                if (lastId == -1) {
+                    pessoa.setId(1);
+                } else {
+                    pessoa.setId(lastId + 1);
+                }
+                if (new PessoaBO().criar(pessoa)) {
+                    FacesMessages.info("Usuário Cadastrado com sucesso");
+                } else {
+                    FacesMessages.error("Erro ao cadastrar usuário");
+                }
+            } catch (Exception e) {
+                FacesMessages.error("Erro: " + e.getMessage());
+            }
+        }
+    }
 
     public void CacelarConta() {
         if (cont == 0) {
@@ -221,36 +258,6 @@ public class LoginController implements Serializable {
             return "";
         }
     }
-
-    public void cadastrarUsuario() {
-        pessoa.setAtivo(true);
-        pessoa.setTipoUsuario(1);
-        if (pessoa.getEndereco().getCidade().getId() < 0) {
-            FacesMessages.error("Informe a Cidade");
-        } else if (pessoa.getEndereco().getCidade().getEstado().getId() < 0) {
-            FacesMessages.error("Informe o Estado");
-        } else {
-            try {
-                pessoa.setEndereco(new EnderecoBO().listarultimoendereco());
-                if (new EnderecoBO().criar(pessoa.getEndereco())) {
-                    FacesMessages.info("Endereco cadastrado com sucesso");
-                } else {
-                    FacesMessages.error("Erro ao cadastrar endereço do usuario");
-                }
-            } catch (Exception e) {
-                FacesMessages.error("Erro: " + e.getMessage());
-            }
-            // Grava o cliente //
-            try {
-                if (new PessoaBO().criar(pessoa)) {
-                    FacesMessages.info("Usuário Cadastrado com sucesso");
-                } else {
-                    FacesMessages.error("Erro ao cadastrar usuário");
-                }
-            } catch (Exception e) {
-                FacesMessages.error("Erro: " + e.getMessage());
-            }
-        }
-    }
+    public void test(){}
 
 }
