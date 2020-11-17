@@ -17,6 +17,7 @@ import java.util.List;
 @Named
 @ViewScoped
 public class CadastrarUsusarioViaVendedorController implements Serializable {
+
     private Pessoa pessoa;
     private int tipoPessoaCadastro;
 
@@ -48,7 +49,6 @@ public class CadastrarUsusarioViaVendedorController implements Serializable {
         return "modificarusuario?faces-redirect=true";
     }
 
-
     public List<Estado> listarTodosOsEstados() {
         try {
             return new EstadoBO().listarTodos();
@@ -67,15 +67,14 @@ public class CadastrarUsusarioViaVendedorController implements Serializable {
         }
     }
 
-
     public void cadastrarUsuario() {
-        pessoa.setTipoUsuario(1);//Sempre Cliente
+        pessoa.setTipoUsuario(1);
         pessoa.setAtivo(true);
-        if(pessoa.getEndereco().getCidade().getId() < 0){
+        if (pessoa.getEndereco().getCidade().getId() < 0) {
             FacesMessages.error("Informe a Cidade");
-        }else if(pessoa.getEndereco().getCidade().getEstado().getId() < 0){
+        } else if (pessoa.getEndereco().getCidade().getEstado().getId() < 0) {
             FacesMessages.error("Informe o Estado");
-        }else {
+        } else {
             try {
                 pessoa.setEndereco(new EnderecoBO().listarultimoendereco());
                 if (new EnderecoBO().criar(pessoa.getEndereco())) {

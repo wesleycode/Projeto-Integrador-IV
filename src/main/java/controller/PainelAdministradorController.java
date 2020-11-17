@@ -15,6 +15,7 @@ import java.util.List;
 @Named
 @ViewScoped
 public class PainelAdministradorController implements Serializable {
+
     private Pessoa pessoa;
     private int tipoPessoaCadastro;
 
@@ -46,7 +47,6 @@ public class PainelAdministradorController implements Serializable {
         return "modificarusuario?faces-redirect=true";
     }
 
-
     public List<Estado> listarTodosOsEstados() {
         try {
             return new EstadoBO().listarTodos();
@@ -65,7 +65,7 @@ public class PainelAdministradorController implements Serializable {
         }
     }
 
-    public void cadastrar(){
+    public void cadastrar() {
         switch (getTipoPessoaCadastro()) {
             case 1:
                 cadastrarNovoCliente();
@@ -83,12 +83,12 @@ public class PainelAdministradorController implements Serializable {
     }
 
     private void cadastrarUsuario() {
-
-        if(pessoa.getEndereco().getCidade().getId() < 0){
+        pessoa.setAtivo(true);
+        if (pessoa.getEndereco().getCidade().getId() < 0) {
             FacesMessages.error("Informe a Cidade");
-        }else if(pessoa.getEndereco().getCidade().getEstado().getId() < 0){
+        } else if (pessoa.getEndereco().getCidade().getEstado().getId() < 0) {
             FacesMessages.error("Informe o Estado");
-        }else {
+        } else {
             try {
                 pessoa.setEndereco(new EnderecoBO().listarultimoendereco());
                 if (new EnderecoBO().criar(pessoa.getEndereco())) {
@@ -102,13 +102,11 @@ public class PainelAdministradorController implements Serializable {
             // Grava o cliente //
             try {
                 long idMax = new PessoaBO().getLastId();
-
                 if (idMax == -1) {
                     pessoa.setId(1);
                 } else {
                     pessoa.setId(idMax + 1);
                 }
-
                 if (new PessoaBO().criar(pessoa)) {
                     FacesMessages.info("Usuário Cadastrado com sucesso");
                 } else {
@@ -121,19 +119,16 @@ public class PainelAdministradorController implements Serializable {
     }
 
     private void cadastrarNovoCliente() {
-        pessoa.setAtivo(true);
         pessoa.setTipoUsuario(1);
         cadastrarUsuario();
     }
 
     private void cadastrarNovoVendedor() {
-        pessoa.setAtivo(true);
         pessoa.setTipoUsuario(2);
         cadastrarUsuario();
     }
 
     private void cadastrarNovoAdministrador() {
-        pessoa.setAtivo(true);
         pessoa.setTipoUsuario(3);
         cadastrarUsuario();
     }

@@ -9,7 +9,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.List;
 
 @Named
@@ -23,7 +22,6 @@ public class LoginController implements Serializable {
     private Carrinho carrinho;
     private Avaliacao avaliacaoUsuario;
     private Endereco endereco;
-    private int tipoPessoaLogin;
     private int cont;
     private String nomeBotao;
 
@@ -67,14 +65,6 @@ public class LoginController implements Serializable {
         this.nomeBotao = nomeBotao;
     }
 
-    public int getTipoPessoaLogin() {
-        return tipoPessoaLogin;
-    }
-
-    public void setTipoPessoaLogin(int tipoPessoaLogin) {
-        this.tipoPessoaLogin = tipoPessoaLogin;
-    }
-
     public LoginController() {
         pessoa = new Pessoa();
         pessoa.setDataNascimento(Tempo.getDataAtualSql());
@@ -93,9 +83,7 @@ public class LoginController implements Serializable {
         this.endereco = endereco;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
+    public Pessoa getPessoa() { return pessoa; }
 
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
@@ -134,8 +122,8 @@ public class LoginController implements Serializable {
                 FacesMessages.error("Este Usuário Possui Capacidades de Compras!");
                 pessoa = vendedorparaComissao;
                 return null;
-            }//Serve para vendedores não usarem como formas de "Descontos" para suas compras
-
+            }
+            //Serve para vendedores não usarem como formas de "Descontos" para suas compras
             return RedirecionamentoController.irParaIndex();
 
         } catch (Exception e) {
@@ -160,7 +148,6 @@ public class LoginController implements Serializable {
     }
 
     public void cadastrarUsuario() {
-
         try {
             long lastId = new EnderecoBO().getLastId();
             if (lastId == -1) {
@@ -198,7 +185,7 @@ public class LoginController implements Serializable {
         }
     }
 
-    public void CacelarConta() {
+    public void cancelarConta() {
         if (cont == 0) {
             cont++;
             nomeBotao = "Tem Certeza?";
@@ -223,59 +210,7 @@ public class LoginController implements Serializable {
         }
     }
 
-    public String logar() {
-        switch (getTipoPessoaLogin()) {
-            case 0:
-                FacesMessages.info("Selecione uma forma de Pagmanto!");
-            case 1:
-                return logarCliente();
-            case 2:
-                return logarVendedor();
-            case 3:
-                return logarAdministrador();
-            default:
-                return null;
-        }
-    }
-
-    private String logarAdministrador() {
-        pessoa.setTipoUsuario(3);
-        if (new PessoaBO().logarPessoa(pessoa).equals("OK")) {
-            try {
-                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(), pessoa.getSenha());
-                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("pessoa", pessoa);
-            } catch (Exception e) {
-                FacesMessages.error("Erro ao logar: " + e.getMessage());
-                return "";
-            }
-            FacesMessages.info("Logado com sucesso");
-            return "/painelADM.xhtml?faces-redirect=true";
-        } else {
-            FacesMessages.info("Usuário e/ou senha inválidos");
-            return "";
-        }
-    }
-
-    private String logarVendedor() {
-        pessoa.setTipoUsuario(2);
-        if (new PessoaBO().logarPessoa(pessoa).equals("OK")) {
-            try {
-                pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(), pessoa.getSenha());
-                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("pessoa", pessoa);
-            } catch (Exception e) {
-                FacesMessages.error("Erro ao logar: " + e.getMessage());
-                return "";
-            }
-            FacesMessages.info("Logado com sucesso", "detail message");
-            return "/painelVendedor?faces-redirect=true";
-        } else {
-            FacesMessages.info("Usuário e/ou senha inválidos");
-            return "";
-        }
-    }
-
-    private String logarCliente() {
-        pessoa.setTipoUsuario(1);
+    public String logarUsuario() {
         if (new PessoaBO().logarPessoa(pessoa).equals("OK")) {
             try {
                 pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(), pessoa.getSenha());
