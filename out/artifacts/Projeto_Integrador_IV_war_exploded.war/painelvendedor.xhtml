@@ -40,35 +40,37 @@
                 <div class="card" align="center">
                     <h:messages/>
                     <h3>Opções De Vendedor</h3>
+                    <br/>
                     <h:form>
-                        <br/>
-                        <br/>
-                        <h:commandButton value="  Cadastrar uma Marca " styleClass="btn btn-primary" action="#{painelVendedorController.irParaCadastrarCategoria}">
-                        </h:commandButton>
-                        <br/>
-                        <br/>
-                        <h:commandButton value="Cadastrar um Fornecedor" styleClass="btn btn-primary" action="#{painelVendedorController.irParaCadastarFornecedor}">
-                        </h:commandButton>
-                        <br/>
-                        <h:commandButton value="Cadastrar um Produto" styleClass="btn btn-primary" action="#{painelVendedorController.irParaCadastarProduto}">
-                        </h:commandButton>
-                        <br/>
-                        <h:commandButton value="Modificar um Produto" styleClass="btn btn-primary" action="#{painelVendedorController.irParaModificarProduto}">
-                        </h:commandButton>
-                        <br/>
-                        <h:commandButton value="Cadastrar Forma De Pagamento" styleClass="btn btn-primary" action="#{redirecionamentoController.irParaCadastrarformapagamento}">
-                        </h:commandButton>
-                        <br/>
-                        <h:commandButton value="Cadastrar Usuário" styleClass="btn btn-primary" action="#{redirecionamentoController.irParaCadastrarUsuarioviaVendedor}">
-                        </h:commandButton>
-                        <br/>
-                        <h:commandButton value="Logar Usuário" styleClass="btn btn-primary" action="#{redirecionamentoController.irParaLogarClienteParaComissao}">
-                        </h:commandButton>
-                        <p>(Logar Para Obter comissão)</p>
-                        <br/>
-                        <h:commandButton value="Relatório de Comissão" styleClass="btn btn-primary" action="#{redirecionamentoController.irParaRelatoriocomissao}">
-                        </h:commandButton>
+                        <p:panelGrid columns="2" layout="grid" style="margin: 0 auto;"
+                                     contentStyle="border-style: none;">
+                            <h:commandButton value="Cadastrar uma Marca" styleClass="btn btn-primary"
+                                             style="width: 300px"
+                                             action="#{painelVendedorController.irParaCadastrarCategoria}"/>
+                            <h:commandButton value="Cadastrar um fornecedor" styleClass="btn btn-primary"
+                                             style="width: 300px"
+                                             action="#{painelVendedorController.irParaCadastarFornecedor}"/>
+                            <h:commandButton value="Cadastrar um novo produto" styleClass="btn btn-primary"
+                                             style="width: 300px"
+                                             action="#{painelVendedorController.irParaCadastarProduto}"/>
+                            <h:commandButton value="Modificar produto ja existente" styleClass="btn btn-primary"
+                                             style="width: 300px"
+                                             action="#{painelVendedorController.irParaModificarProduto}"/>
+                            <h:commandButton value="Cadastrar forma de pagamento" styleClass="btn btn-primary"
+                                             style="width: 300px"
+                                             action="#{redirecionamentoController.irParaCadastrarformapagamento}"/>
+                            <h:commandButton value="Cadastrar novo usuário" styleClass="btn btn-primary"
+                                             style="width: 300px"
+                                             action="#{redirecionamentoController.irParaCadastrarUsuarioviaVendedor}"/>
+                            <h:commandButton value="Relatório de Comissão" styleClass="btn btn-primary"
+                                             style="width: 300px"
+                                             action="#{redirecionamentoController.irParaRelatoriocomissao}"/>
+                            <h:commandButton value="Logar como usuário" styleClass="btn btn-primary"
+                                             style="width: 300px"
+                                             action="#{redirecionamentoController.irParaLogarClienteParaComissao}"/>
+                        </p:panelGrid>
                     </h:form>
+                    <br/>
                 </div>
             </div>
             <div class="rightcolumn">
@@ -80,7 +82,8 @@
                     <h:outputLabel>Email Vendedor</h:outputLabel>
                     <h:outputLabel>#{loginController.pessoa.email}</h:outputLabel>
                     <h:form>
-                        <h:commandButton value="Sair Login" styleClass="btn btn-primary" action="#{loginController.deslogar}">
+                        <h:commandButton value="Sair Login" styleClass="btn btn-primary"
+                                         action="#{loginController.deslogar}">
                         </h:commandButton>
 
                     </h:form>

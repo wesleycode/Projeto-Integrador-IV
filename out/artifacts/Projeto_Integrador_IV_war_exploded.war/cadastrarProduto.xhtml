@@ -42,61 +42,72 @@
                     <b:messages autoUpdate="true" showDetail="true" globalOnly="true"/>
                     <h3>Cadastrar Produto</h3>
                     <h:form enctype="multipart/form-data">
-                        <b:inputText value="#{cadastrarProdutoController.produto.nome}"
-                                     placeholder="Título do Produto"
-                                     required="true">
-                        </b:inputText>
-                        <br/>
-                        <p:inputTextarea rows="10" cols="100" minQueryLength="4" placeholder="Comentário"
-                                         value="#{cadastrarProdutoController.produto.descricao}">
-                        </p:inputTextarea>
-                        <div class="col-md-12 col-sm-12">
-                            <b:selectOneMenu value="#{cadastrarProdutoController.produto.fornecedor}"
-                                             ajax="true"
-                                             process="@this" update="@next @next:@next">
-                                <f:selectItem value="#{null}" itemLabel="Selecione um fornecedor"/>
-                                <f:selectItems value="#{cadastrarProdutoController.fornecedorList}" var="fornecedor"
-                                               itemValue="#{fornecedor}" itemLabel="#{fornecedor.fornecedor}"/>
-                            </b:selectOneMenu>
-                        </div>
-                        <div class="col-md-12 col-sm-12">
-                            <b:selectOneMenu value="#{cadastrarProdutoController.produto.categoria}"
-                                             ajax="true"
-                                             process="@this" update="@next @next:@next">
-                                <f:selectItem value="#{null}" itemLabel="Selecione uma Categoria"/>
-                                <f:selectItems value="#{cadastrarProdutoController.categoriaList}" var="categoria"
-                                               itemValue="#{categoria}" itemLabel="#{categoria.categoria}"/>
-                            </b:selectOneMenu>
-                        </div>
-                        <div class="col-md-12 col-sm-12">
-                            <b:selectOneMenu value="#{cadastrarProdutoController.produto.marcaProduto}"
-                                             ajax="true"
-                                             process="@this" update="@next @next:@next">
-                                <f:selectItem value="#{null}" itemLabel="Selecione uma Marca"/>
-                                <f:selectItems value="#{cadastrarProdutoController.marcalist}" var="marcaProduto"
-                                               itemValue="#{marcaProduto}" itemLabel="#{marcaProduto.nome}"/>
-                            </b:selectOneMenu>
-                        </div>
-                        <p:inputNumber value="#{cadastrarProdutoController.produto.preco}" placeholder="Preço"
-                                       minValue="0" maxValue="1000000" decimalPlaces="2">
-                        </p:inputNumber>
-                        <br/>
-                        <br/>
-                        <div class="col-md-12 col-sm-12">
-                            <p:outputLabel value="Foto Produto"/>
-                            <h:inputFile value="#{cadastrarProdutoController.arquivo}" required="true"
-                                         requiredMessage="Uma imagem deve ser enviada!"/>
-                            <br/>
-                        </div>
-                        <br/>
+
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <p:outputLabel value="Nome do Produto"/>
+                            <b:inputText value="#{cadastrarProdutoController.produto.nome}"
+                                         placeholder="Título do Produto"
+                                         required="true">
+                            </b:inputText>
+                            <p:outputLabel value="Descrição do produto"/>
+                            <p:inputTextarea rows="10" cols="100" minQueryLength="4"
+                                             placeholder="Comentário"
+                                             value="#{cadastrarProdutoController.produto.descricao}">
+                            </p:inputTextarea>
+                            <p:outputLabel value="Preço do produto"/>
+                            <p:inputNumber value="#{cadastrarProdutoController.produto.preco}"
+                                           placeholder="Preço"
+                                           minValue="0" maxValue="1000000" decimalPlaces="2">
+                            </p:inputNumber>
+
+                            <div class="col-md-12 col-sm-12">
+                                <b:selectOneMenu label="Fornecedor do produto"
+                                                 value="#{cadastrarProdutoController.produto.fornecedor}"
+                                                 ajax="true"
+                                                 process="@this" update="@next @next:@next">
+                                    <f:selectItem value="#{null}" itemLabel="Selecione um fornecedor"/>
+                                    <f:selectItems value="#{cadastrarProdutoController.fornecedorList}" var="fornecedor"
+                                                   itemValue="#{fornecedor}" itemLabel="#{fornecedor.fornecedor}"/>
+                                </b:selectOneMenu>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12">
+                                <b:selectOneMenu label="Categoria do produto"
+                                                 value="#{cadastrarProdutoController.produto.categoria}"
+                                                 ajax="true"
+                                                 process="@this" update="@next @next:@next">
+                                    <f:selectItem value="#{null}" itemLabel="Selecione uma Categoria"/>
+                                    <f:selectItems value="#{cadastrarProdutoController.categoriaList}" var="categoria"
+                                                   itemValue="#{categoria}" itemLabel="#{categoria.categoria}"/>
+                                </b:selectOneMenu>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12">
+                                <b:selectOneMenu label="Marca do produto"
+                                                 value="#{cadastrarProdutoController.produto.marcaProduto}"
+                                                 ajax="true"
+                                                 process="@this" update="@next @next:@next">
+                                    <f:selectItem value="#{null}" itemLabel="Selecione uma Marca"/>
+                                    <f:selectItems value="#{cadastrarProdutoController.marcalist}" var="marcaProduto"
+                                                   itemValue="#{marcaProduto}" itemLabel="#{marcaProduto.nome}"/>
+                                </b:selectOneMenu>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12">
+                                <p:outputLabel value="Foto Produto"/>
+                                <h:inputFile value="#{cadastrarProdutoController.arquivo}" required="true"
+                                             requiredMessage="Uma imagem deve ser enviada!"/>
+                            </div>
+
+                        </h:panelGrid>
                         <br/>
                         <div style="text-align: center;" class="col-md-12 col-sm-12">
                             <h:commandLink styleClass="btn btn-primary" value="Cadastrar Produto"
                                            action="#{cadastrarProdutoController.cadastrarProduto()}"/>
                         </div>
-                        -------------
-
+                        <br/>
                     </h:form>
+                    <br/>
                     <h:form>
                         <div style="text-align: center;" class="col-md-12 col-sm-12">
                             <h:commandLink styleClass="btn btn-primary" value="Voltar"
@@ -122,7 +133,7 @@
                         <hr/>
                         <h:commandButton value="Voltar" styleClass="btn btn-primary"
                                          action="#{redirecionamentoController.irParaPainelVendedor}">
-                         </h:commandButton>
+                        </h:commandButton>
 
                     </h:form>
                 </div>
