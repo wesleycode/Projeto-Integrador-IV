@@ -65,93 +65,102 @@
                     <h:form enctype="multipart/form-data" id="form">
                         <br/>
                         <p:dataGrid value="#{alterarProdutoController.todosOsProdutosList}"
-                                     placeholder="Produtos á venda"
-                                     var="produto"
-                                     required="true" columns="1"
-                                     rows="20" paginator="true" id="formularioProdutos" paginatorPosition="bottom"
-                                     paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {NextPageLink}">
+                                    placeholder="Produtos á venda"
+                                    var="produto"
+                                    required="true" columns="1"
+                                    rows="20" paginator="true" id="formularioProdutos" paginatorPosition="bottom"
+                                    paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {NextPageLink}">
                             <p:panelGrid columns="8">
-                            <h:outputText value="#{produto.id}"/>
-                            <h:outputText value="#{produto.categoria.categoria}"/>
-                            <h:outputText value="#{produto.descricao}"/>
-                            <h:outputText value="#{produto.emEstoque}"/>
-                            <h:outputText value="#{produto.fornecedor.fornecedor}"/>
-                            <h:outputText value="#{produto.marcaProduto.nome}"/>
-                            <h:outputText value="#{produto.preco}"/>
-                            <p:commandLink type="button" value="Alterar Ativo" action="#{alterarProdutoController.isAtivoOuDesativo(produto)}"
-                                           process="@form" update="@form :form"/>
+                                <h:outputText value="#{produto.id}"/>
+                                <h:outputText value="#{produto.categoria.categoria}"/>
+                                <h:outputText value="#{produto.descricao}"/>
+                                <h:outputText value="#{produto.emEstoque}"/>
+                                <h:outputText value="#{produto.fornecedor.fornecedor}"/>
+                                <h:outputText value="#{produto.marcaProduto.nome}"/>
+                                <h:outputText value="#{produto.preco}"/>
+                                <p:commandLink type="button" value="Alterar Ativo"
+                                               action="#{alterarProdutoController.isAtivoOuDesativo(produto)}"
+                                               process="@form" update="@form :form"/>
                             </p:panelGrid>
                         </p:dataGrid>
                         <br/>
                         <br/>
                     </h:form>
 
-                        <h:form enctype="multipart/form-data">
-                            <b:inputText value="#{alterarProdutoController.produtoSelecionado.id}"
-                                         label="Qual o id do produto que deseja modificar?"
-                                         mask="{regex:'[0-9]*'}"
-                                         maxlength="3"
-                                         required="true"/>
-                            <br/>
-                            <b:inputText value="#{alterarProdutoController.produtoSelecionado.nome}"
-                                         label="Qual o nome do novo produto?"
-                                         required="true"/>
-                            <br/>
-                            <b:inputText value="#{alterarProdutoController.emEstoque}"
-                                         label="O produto continua em estoque? (S ou N)"
-                                         maxlength="1"
-                                         requiredMessage="CAMPO VAZIO!"
-                                         required="true"/>
-                            <br/>
-                            <p:inputTextarea rows="10" cols="100" minQueryLength="4"
-                                             required="true"
-                                             placeholder="Qual a descrição desse produto?"
-                                             value="#{alterarProdutoController.produtoSelecionado.descricao}">
-                            </p:inputTextarea>
-                            <br/>
-                            <br/>
-                            <div class="col-md-12 col-sm-12">
-                                <b:selectOneMenu value="#{alterarProdutoController.produtoSelecionado.fornecedor}"
-                                                 ajax="true" required="true"
-                                                 process="@this" update="@next @next:@next">
-                                    <f:selectItem value="#{null}" itemLabel="Qual o novo fornecedor?"/>
-                                    <f:selectItems value="#{alterarProdutoController.fornecedorList}" var="fornecedor"
-                                                   itemValue="#{fornecedor}" itemLabel="#{fornecedor.fornecedor}"/>
-                                </b:selectOneMenu>
-                            </div>
-                            <div class="col-md-12 col-sm-12">
-                                <b:selectOneMenu value="#{alterarProdutoController.produtoSelecionado.categoria}"
-                                                 ajax="true" required="true"
-                                                 process="@this" update="@next @next:@next">
-                                    <f:selectItem value="#{null}" itemLabel="Selecione uma nova categoria"/>
-                                    <f:selectItems value="#{alterarProdutoController.categoriaList}" var="categoria"
-                                                   itemValue="#{categoria}" itemLabel="#{categoria.categoria}"/>
-                                </b:selectOneMenu>
-                            </div>
-                            <div class="col-md-12 col-sm-12">
-                                <b:selectOneMenu value="#{alterarProdutoController.produtoSelecionado.marcaProduto}"
-                                                 ajax="true" required="true"
-                                                 process="@this" update="@next @next:@next">
-                                    <f:selectItem value="#{null}" itemLabel="Selecione uma nova Marca"/>
-                                    <f:selectItems value="#{alterarProdutoController.marcalist}" var="marcaProduto"
-                                                   itemValue="#{marcaProduto}" itemLabel="#{marcaProduto.nome}"/>
-                                </b:selectOneMenu>
-                            </div>
-                            <br/>
-                            <br/>
-                            <p:inputNumber value="#{alterarProdutoController.produtoSelecionado.preco}"
-                                           label="Novo preço do produto"
-                                           minValue="0" maxValue="1000000" decimalPlaces="2">
-                            </p:inputNumber>
-                            <br/>
-                            <br/>
+                    <h:form enctype="multipart/form-data">
+                        <b:messages autoUpdate="true" globalOnly="true"/>
+                        <b:inputText value="#{alterarProdutoController.produtoSelecionado.id}"
+                                     label="Qual o id do produto que deseja modificar?"
+                                     mask="{regex:'[0-9]*'}"
+                                     maxlength="3"
+                                     required="true"/>
+                        <br/>
+                        <b:inputText value="#{alterarProdutoController.produtoSelecionado.nome}"
+                                     label="Qual o nome do novo produto?"
+                                     required="true"/>
+                        <br/>
+                        <b:inputText value="#{alterarProdutoController.emEstoque}"
+                                     label="O produto continua em estoque? (S ou N)"
+                                     maxlength="1"
+                                     requiredMessage="CAMPO VAZIO!"
+                                     required="true"/>
+                        <br/>
+                        <p:outputLabel value="Nova Descrição do produto"/>
+                        <br/>
+                        <p:inputTextarea rows="10" cols="100" minQueryLength="4"
+                                         required="true"
+                                         placeholder="Qual a descrição desse produto?"
+                                         value="#{alterarProdutoController.produtoSelecionado.descricao}">
+                        </p:inputTextarea>
+                        <br/>
+                        <br/>
+                        <div class="col-md-12 col-sm-12">
+                            <p:outputLabel value="Novo Fornecedor do produto"/>
+                            <b:selectOneMenu value="#{alterarProdutoController.produtoSelecionado.fornecedor}"
+                                             ajax="true" required="true"
+                                             process="@this" update="@next @next:@next">
+                                <f:selectItem value="#{null}" itemLabel="Qual o novo fornecedor?"/>
+                                <f:selectItems value="#{alterarProdutoController.fornecedorList}" var="fornecedor"
+                                               itemValue="#{fornecedor}" itemLabel="#{fornecedor.fornecedor}"/>
+                            </b:selectOneMenu>
+                        </div>
+                        <div class="col-md-12 col-sm-12">
+                            <p:outputLabel value="Nova Categoria do produto"/>
+                            <b:selectOneMenu value="#{alterarProdutoController.produtoSelecionado.categoria}"
+                                             ajax="true" required="true"
+                                             process="@this" update="@next @next:@next">
+                                <f:selectItem value="#{null}" itemLabel="Selecione uma nova categoria"/>
+                                <f:selectItems value="#{alterarProdutoController.categoriaList}" var="categoria"
+                                               itemValue="#{categoria}" itemLabel="#{categoria.categoria}"/>
+                            </b:selectOneMenu>
+                        </div>
+                        <div class="col-md-12 col-sm-12">
+                            <p:outputLabel value="Nova Marca do produto"/>
+                            <b:selectOneMenu value="#{alterarProdutoController.produtoSelecionado.marcaProduto}"
+                                             ajax="true" required="true"
+                                             process="@this" update="@next @next:@next">
+                                <f:selectItem value="#{null}" itemLabel="Selecione uma nova Marca"/>
+                                <f:selectItems value="#{alterarProdutoController.marcalist}" var="marcaProduto"
+                                               itemValue="#{marcaProduto}" itemLabel="#{marcaProduto.nome}"/>
+                            </b:selectOneMenu>
+                        </div>
+                        <br/>
+                        <br/>
+                        <p:outputLabel value="Novo preço do produto"/>
+                        <br/>
+                        <p:inputNumber value="#{alterarProdutoController.produtoSelecionado.preco}"
+                                       minValue="0" maxValue="1000000" decimalPlaces="2">
+                        </p:inputNumber>
+                        <br/>
+                        <br/>
                         <br/>
                         <br/>
                         <div style="text-align: center;" class="col-md-12 col-sm-12">
                             <h:commandLink styleClass="btn btn-primary" value="Alterar Produto"
                                            action="#{alterarProdutoController.alterarProduto()}"/>
+                            <br/>
                         </div>
-                        </h:form>
+                    </h:form>
                     <h:form>
                         <div style="text-align: center;" class="col-md-12 col-sm-12">
                             <h:commandLink styleClass="btn btn-primary" value="Voltar"

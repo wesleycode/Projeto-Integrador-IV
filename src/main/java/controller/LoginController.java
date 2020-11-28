@@ -215,12 +215,18 @@ public class LoginController implements Serializable {
             try {
                 pessoa = new PessoaBO().getByEmailandsenha(pessoa.getEmail(), pessoa.getSenha());
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("pessoa", pessoa);
+                FacesMessages.info("Logado com sucesso", "detail message");
+                if (pessoa.getTipoUsuario() == 1) {
+                    return RedirecionamentoController.irParaIndex();
+                } else if (pessoa.getTipoUsuario() == 2) {
+                    return new RedirecionamentoController().irParaPainelVendedor();
+                } else {
+                    return new RedirecionamentoController().irParaPainelADM();
+                }
             } catch (Exception e) {
                 FacesMessages.error("Erro ao logar: " + e.getMessage());
                 return "";
             }
-            FacesMessages.info("Logado com sucesso", "detail message");
-            return RedirecionamentoController.irParaIndex();
         } else {
             FacesMessages.info("Usuário e/ou senha inválidos");
             return "";

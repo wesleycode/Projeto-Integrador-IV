@@ -7,7 +7,6 @@ import javax.persistence.*;
 public class MarcaProduto implements EntityBase {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nome;
 

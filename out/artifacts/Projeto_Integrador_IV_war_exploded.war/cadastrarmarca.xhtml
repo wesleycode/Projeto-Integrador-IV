@@ -42,34 +42,36 @@
                     <b:messages autoUpdate="true" showDetail="true"/>
                     <h3>Cadastrar Marca</h3>
                     <h:form>
-                            <b:inputText value="#{cadastrarMarcaController.marcaProduto.nome}" placeholder="Nome Marca"
-                                         required="true"
-                                         mask="{regex:'[a-zA-Z ]*'}">
-                            </b:inputText>
-                            <div style="text-align: center;">
-                                <h:commandLink styleClass="btn btn-primary" value="Cadastrar Marca Produto" action="#{cadastrarMarcaController.cadastrarMarcaProduto}">
-                                </h:commandLink>
+                        <b:inputText value="#{cadastrarMarcaController.marcaProduto.nome}" placeholder="Nome Marca"
+                                     required="true"
+                                     mask="{regex:'[a-zA-Z ]*'}">
+                        </b:inputText>
+                        <div style="text-align: center;">
+                            <h:commandLink styleClass="btn btn-primary" value="Cadastrar Marca Produto"
+                                           action="#{cadastrarMarcaController.cadastrarMarcaProduto()}">
+                            </h:commandLink>
 
-                            </div>
-                            <br/>
-                            <br/>
+                        </div>
+                        <br/>
+                        <br/>
                     </h:form>
                     <h:form>
-                            <div style="text-align: center;">
-                                <h:commandLink styleClass="btn btn-primary" value="Voltar"
-                                               action="#{cadastrarMarcaController.irParaPainelVendedor}"/>
+                        <div style="text-align: center;">
+                            <h:commandLink styleClass="btn btn-primary" value="Voltar"
+                                           action="#{cadastrarMarcaController.irParaPainelVendedor}"/>
 
-                            </div>
+                        </div>
                     </h:form>
                 </div>
                 <h:form>
                     <div class="card" id="cardmarca" align="center">
                         <h3>Lista de Marca</h3>
-                            <p:dataGrid var="marca" value="#{cadastrarMarcaController.todasMarcaProdutoList}" columns="4" layout="grid"
-                                        rows="8" paginator="true" id="cars" paginatorPosition="bottom"
-                                        paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {NextPageLink}">
-                                <li><h:outputLabel>Marca: #{marca.nome}</h:outputLabel></li>
-                            </p:dataGrid>
+                        <p:dataGrid var="marca" value="#{cadastrarMarcaController.todasMarcaProdutoList}" columns="4"
+                                    layout="grid"
+                                    rows="8" paginator="true" id="cars" paginatorPosition="bottom"
+                                    paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {NextPageLink}">
+                            <li><h:outputLabel>Marca: #{marca.nome}</h:outputLabel></li>
+                        </p:dataGrid>
                     </div>
                 </h:form>
             </div>
@@ -83,11 +85,13 @@
                     <h:outputLabel>Email Vendedor</h:outputLabel>
                     <h:outputLabel>#{loginController.pessoa.email}</h:outputLabel>
                     <h:form>
-                        <h:commandButton value="Sair Login" styleClass="btn btn-primary" action="#{loginController.deslogar}">
+                        <h:commandButton value="Sair Login" styleClass="btn btn-primary"
+                                         action="#{loginController.deslogar}">
                             <!--Deve possuir o logoff-->
                         </h:commandButton>
                         <hr/>
-                        <h:commandButton value="Voltar" styleClass="btn btn-primary" action="#{redirecionamentoController.irParaPainelVendedor}">
+                        <h:commandButton value="Voltar" styleClass="btn btn-primary"
+                                         action="#{redirecionamentoController.irParaPainelVendedor}">
                         </h:commandButton>
 
                     </h:form>

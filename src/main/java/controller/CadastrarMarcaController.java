@@ -59,16 +59,19 @@ public class CadastrarMarcaController implements Serializable {
     public void cadastrarMarcaProduto() {
         try {
             long idMax = new MarcaProdutoBO().getLastId();
-
             if (idMax == -1) {
                 marca.setId(1);
             } else {
                 marca.setId(idMax + 1);
             }
+            System.out.println("AQUI " + idMax);
+            System.out.println("AQUI " + marca.getId());
+            System.out.println("AQUI " + marca.getNome());
             if (new MarcaProdutoBO().criar(marca)) {
                 FacesMessages.info("MarcaProduto cadastrada com sucesso");
             }
         } catch (Exception e) {
+            e.printStackTrace();
             FacesMessages.error("Erro: " + e.getMessage());
         }
     }
